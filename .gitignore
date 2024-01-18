@@ -1,0 +1,17 @@
+*
+!bat/
+!bat/**
+!fish/
+!fish/**
+!git/
+!git/**
+!kitty/
+!kitty/**
+!lazygit/
+!lazygit/**
+!neovide/
+!neovide/**
+!nvim/
+!nvim/**
+!starship/
+!starship/**

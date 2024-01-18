@@ -1,0 +1,5 @@
+# 初始化一些前置的、必要的环境变量等
+# init.fish.example => init.fish
+
+set -gx HOMEBREW_PREFIX "/opt/homebrew"
+#set -gx HOMEBREW_PREFIX "/usr/local"

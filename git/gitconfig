@@ -1,0 +1,35 @@
+[user]
+  name = anhoder
+  email = anhoder@88.com
+
+[credential]
+  helper = osxkeychain
+
+[core]
+  editor = nvim
+  pager = delta
+  excludesFile = ~/.config/git/gitignore
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+
+[delta]
+  features = gruvmax-fang
+  navigate = true
+  light = false
+  line-numbers = true
+  side-by-side = false
+  hyperlinks = true
+  paging = auto
+
+[delta "interactive"]
+  keep-plus-minus-markers = true
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+
+[include]
+  path = ./themes.gitconfig
