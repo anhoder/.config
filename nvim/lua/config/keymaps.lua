@@ -11,7 +11,7 @@ local toggleterm = require("toggleterm.terminal")
 local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")
 local telescope_themes = require("telescope.themes")
-local ivy_theme = telescope_themes.get_ivy()
+local ivy_theme = telescope_themes.get_ivy({ sorting_strategy = "descending" })
 local Util = require("lazyvim.util")
 local neotree_manager = require("neo-tree.sources.manager")
 local neotree_render = require("neo-tree.ui.renderer")
@@ -143,13 +143,16 @@ map({ "i" }, "<D-Left>", "<Esc>^i", { desc = "Beginning of line" })
 map({ "i" }, "<D-Right>", "<Esc>$a", { desc = "End of line" })
 
 -- move to left/right
-map({ "n", "v", "i" }, "<A-Left>", "<ScrollWheelLeft>", { desc = "Scroll to left", noremap = true })
-map({ "n", "v", "i" }, "<A-Right>", "<ScrollWheelRight>", { desc = "Scroll to right", noremap = true })
+map({ "n", "v", "i" }, "<A-Left>", "<cmd>normal! z5h<cr>", { desc = "Scroll to left", noremap = true })
+map({ "n", "v", "i" }, "<A-Right>", "<cmd>normal! z5l<cr>", { desc = "Scroll to right", noremap = true })
 
 -- Select
 map({ "n", "i", "v" }, "<D-S-Left>", "<Esc>v^", { desc = "Select to beginning of line" })
 map({ "n", "i", "v" }, "<D-S-Right>", "<Esc>v$h", { desc = "Select to end of line" })
 map({ "n", "i", "v" }, "<D-a>", "<Esc>ggVG", { desc = "Select all" })
+
+-- Format code
+map({ "n", "i", "v" }, "<A-f>", vim.lsp.buf.format, { desc = "Format code" })
 
 -- Comment
 map({ "i", "n" }, "<D-/>", function()
@@ -331,6 +334,11 @@ end, { desc = "Find files(cwd)" })
 map({ "n" }, "<leader>fg", function()
   telescope_pickers.prettyFilesPicker({ picker = "git_files" })
 end, { desc = "Git files" })
+
+-- Open git remote
+map({ "n" }, "<leader>go", function()
+  vim.fn.system("git open")
+end, { desc = "Open git remote" })
 
 -- Buffer picker
 map({ "n" }, "<leader>fb", function()

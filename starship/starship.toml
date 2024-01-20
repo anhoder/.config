@@ -3,7 +3,7 @@ $username\
 $directory\
 $git_branch\
 $git_state\
-$git_status\
+$git_status \
 $cmd_duration\
 $status\
 $line_break\
@@ -32,7 +32,7 @@ style = "bright-yellow"
 
 [git_status]
 disabled = false
-format = '[[(*$conflicted$untracked$modified$staged$renamed$deleted)](red)($ahead_behind)]($style) '
+format = '[[(*$conflicted$untracked$modified$staged$renamed$deleted)](red)($ahead_behind)]($style)'
 style = "red"
 ignore_submodules = true
 untracked = ""
