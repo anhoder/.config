@@ -15,3 +15,5 @@
 !nvim/**
 !starship/
 !starship/**
+!phpstorm/
+!phpstorm/**

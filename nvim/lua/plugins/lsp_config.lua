@@ -55,7 +55,10 @@ return {
           settings = {
             intelephense = {
               environment = {
-                includePaths = { home .. "/Desktop/www/yii/" },
+                includePaths = {
+                  home .. "/Desktop/www/yii/",
+                  home .. "/.config/phpstorm-stubs/",
+                },
               },
             },
           },
