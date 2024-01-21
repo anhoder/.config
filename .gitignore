@@ -15,5 +15,5 @@
 !nvim/**
 !starship/
 !starship/**
-!phpstorm/
-!phpstorm/**
+!phpstorm-stubs/
+!phpstorm-stubs/**
