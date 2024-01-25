@@ -114,8 +114,8 @@ map({ "n", "i", "v", "s", "c" }, "<D-z>", "<cmd>undo<cr>", { desc = "Undo" })
 map({ "n", "i", "v", "s", "c" }, "<D-y>", "<cmd>redo<cr>", { desc = "Redo" })
 
 -- Dup one line
-map({ "n", "v" }, "<D-d>", "<cmd>normal yyp<cr>", { desc = "Paste", noremap = true })
-map({ "i" }, "<D-d>", "<cmd>normal yypi<cr>", { desc = "Paste", noremap = true })
+map({ "n", "i" }, "<D-d>", "<cmd>LineDuplicate +1<cr>", { desc = "Paste", noremap = true })
+map({ "v" }, "<D-d>", "<cmd>VisualDuplicate +1<cr>", { desc = "Paste", noremap = true })
 
 -- Copy, paste, cut
 map({ "n", "v" }, "<D-c>", '"+y', { desc = "Copy", noremap = true })
@@ -147,8 +147,10 @@ map({ "n", "v", "i" }, "<A-Left>", "<cmd>normal! z5h<cr>", { desc = "Scroll to l
 map({ "n", "v", "i" }, "<A-Right>", "<cmd>normal! z5l<cr>", { desc = "Scroll to right", noremap = true })
 
 -- Select
-map({ "n", "i", "v" }, "<D-S-Left>", "<Esc>v^", { desc = "Select to beginning of line" })
-map({ "n", "i", "v" }, "<D-S-Right>", "<Esc>v$h", { desc = "Select to end of line" })
+map({ "n", "v" }, "<D-S-Left>", "v^", { desc = "Select to beginning of line" })
+map({ "i" }, "<D-S-Left>", "<Esc>v^", { desc = "Select to beginning of line" })
+map({ "n", "v" }, "<D-S-Right>", "v$h", { desc = "Select to end of line" })
+map({ "i" }, "<D-S-Right>", "<Esc>lv$h", { desc = "Select to end of line" })
 map({ "n", "i", "v" }, "<D-a>", "<Esc>ggVG", { desc = "Select all" })
 
 -- Format code
