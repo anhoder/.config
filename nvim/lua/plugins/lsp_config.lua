@@ -28,12 +28,31 @@ local keymap_rewrite = {
     opts["reuse_win"] = true
     telescope_pickers.prettyLsp(opts)
   end,
+
+  -- hover fold
+  ["K"] = function()
+    local winid = require("ufo").peekFoldedLinesUnderCursor()
+    if not winid then
+      vim.lsp.buf.hover()
+    end
+  end,
 }
 
 return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      inlay_hints = {
+        enabled = true,
+      },
+      capabilities = {
+        textDocument = {
+          foldingRange = {
+            dynamicRegistration = false,
+            lineFoldingOnly = true,
+          },
+        },
+      },
       servers = {
         -- php
         intelephense = {
