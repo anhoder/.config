@@ -61,6 +61,8 @@ return {
                 },
               },
             },
+            -- The settings only work by putting the licence key in ~/intelephense/licence.txt
+            -- licenceKey = "XXXXXXXXXXXXXXX",
           },
           autostart = true,
         },

@@ -54,3 +54,6 @@ vim.g.neovide_cursor_animate_command_line = true
 -- vim.g.neovide_cursor_vfx_particle_density = 15.0
 vim.g.neovide_fullscreen = false
 vim.g.neovide_input_macos_alt_is_meta = true
+
+-- vim.lsp.set_log_level("debug")
+-- require("vim.lsp.log").set_format_func(vim.inspect)
