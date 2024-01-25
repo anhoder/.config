@@ -35,6 +35,7 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       servers = {
+        -- php
         intelephense = {
           single_file_support = true,
           on_attach = function(client, bufnr)
@@ -70,21 +71,29 @@ return {
           single_file_support = true,
           filetypes = { "php" },
           init_options = {
-            -- ["language_server.diagnostics_on_open"] = false,
-            -- ["language_server.diagnostics_on_save"] = false,
-            -- ["language_server.diagnostics_on_update"] = false,
-            ["language_server_worse_reflection.inlay_hints.enable"] = true,
-            ["language_server_worse_reflection.inlay_hints.types"] = true,
-            ["language_server_worse_reflection.inlay_hints.params"] = true,
+            ["indexer.stub_paths"] = { home .. "/Desktop/www/yii/" },
+            ["completion_worse.completor.constant.enabled"] = true,
+            ["language_server.diagnostics_on_update"] = false,
+            ["language_server.diagnostic_sleep_time"] = 500,
           },
           autostart = false,
         },
+
+        -- golang
         gopls = {
           single_file_support = true,
           settings = {
             gopls = {
               buildFlags = { "-tags=wireinject" },
             },
+          },
+        },
+
+        -- clang
+        clangd = {
+          cmd = {
+            "clangd",
+            "--offset-encoding=utf-16",
           },
         },
       },
