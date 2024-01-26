@@ -7,7 +7,6 @@ return {
     }
 
     ---@param bufnr number
-    ---@return Promise
     local function customizeSelector(bufnr)
       local function handleFallbackException(err, providerName)
         if type(err) == "string" and err:match("UfoFallbackException") then
@@ -29,7 +28,7 @@ return {
 
     require("ufo").setup({
       open_fold_hl_timeout = 150,
-      close_fold_kinds = { "imports", "comment" },
+      close_fold_kinds = { "imports" },
       provider_selector = function(bufnr, filetype, buftype)
         return ftMap[filetype] or customizeSelector
       end,
@@ -57,7 +56,7 @@ return {
           end
           curWidth = curWidth + chunkWidth
         end
-        table.insert(newVirtText, { suffix, "Comment" })
+        table.insert(newVirtText, { suffix, "Folded" })
         return newVirtText
       end,
     })

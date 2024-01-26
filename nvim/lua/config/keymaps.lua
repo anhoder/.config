@@ -16,7 +16,8 @@ local Util = require("lazyvim.util")
 local neotree_manager = require("neo-tree.sources.manager")
 local neotree_render = require("neo-tree.ui.renderer")
 local state = require("hbac.state")
-local telescope_pickers = require("config.telescope_pickers")
+local telescope_pickers = require("utils.telescope_pickers")
+local ufo = require("ufo")
 
 local Terminal = toggleterm.Terminal
 local float_opts = {
@@ -160,7 +161,7 @@ map({ "n", "i", "v" }, "<A-f>", vim.lsp.buf.format, { desc = "Format code" })
 map({ "i", "n" }, "<D-/>", function()
   return "<Esc>" .. MiniComment.operator() .. "_"
 end, { expr = true, desc = "Comment" })
-map("v", "<D-/>", "g@", { remap = true, desc = "Comment selection" })
+map("v", "<D-/>", "gc", { remap = true, desc = "Comment selection" })
 
 -- Terminal
 local hide_all = function()
@@ -429,3 +430,7 @@ end, { desc = "Git Blame", noremap = true })
 -- mouse go tnormalo
 map({ "n", "i", "v" }, "<D-LeftMouse>", "<LeftMouse><cmd>normal gd<cr>", { desc = "Jump to", noremap = true })
 map({ "n", "i", "v" }, "<RightMouse>", "<LeftMouse><cmd>normal K<cr>", { desc = "Jump to", noremap = true })
+
+-- ufo fold
+map({ "n" }, "zM", ufo.closeAllFolds, { desc = "Close all folds(ufo)", remap = true })
+map({ "n" }, "zR", ufo.openAllFolds, { desc = "Close all folds(ufo)", remap = true })

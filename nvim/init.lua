@@ -19,8 +19,8 @@ vim.opt.pumblend = 10
 vim.opt.mousemoveevent = true
 vim.opt.termguicolors = true
 vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
+vim.o.foldlevel = 999 -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 999
 vim.o.foldenable = true
 
 vim.diagnostic.config({
@@ -29,6 +29,9 @@ vim.diagnostic.config({
     source = true,
   },
 })
+
+vim.cmd("hi Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
+vim.cmd("hi GitSignsCurrentLineBlame cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
 
 vim.g.minimap_auto_start = 1
 vim.g.minimap_auto_start_win_enter = 1

@@ -9,10 +9,8 @@ return {
       ignore_whitespace = false,
       virt_text_priority = 5000,
     },
-    current_line_blame_formatter = "<author>, <author_time:%Y/%m/%d %H:%M>, <summary>",
+    current_line_blame_formatter = "   <author>, <author_time:%Y/%m/%d %H:%M>, <summary>",
     on_attach = function(bufnr)
-      vim.cmd("highlight gitsignscurrentlineblame guifg=#798088")
-
       local gs = package.loaded.gitsigns
 
       local function map(mode, l, r, desc)

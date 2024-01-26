@@ -1,5 +1,5 @@
 -- Declare the module
-local telescopePickers = {}
+local M = {}
 
 -- Store Utilities we'll use frequently
 local telescopeUtilities = require("telescope.utils")
@@ -16,7 +16,7 @@ local fileTypeIconWidth = plenaryStrings.strdisplaywidth(devIcons.get_icon("fnam
 ---- Helper functions ----
 
 -- Gets the File Path and its Tail (the file name) as a Tuple
-function telescopePickers.getPathAndTail(fileName)
+function M.getPathAndTail(fileName)
   -- Get the Tail
   local bufferNameTail = telescopeUtilities.path_tail(fileName)
 
@@ -47,7 +47,7 @@ end
 --                                      picker = '<pickerName>',
 --                                      (optional) options = { ... }
 --                                   }
-function telescopePickers.prettyFilesPicker(pickerAndOptions)
+function M.prettyFilesPicker(pickerAndOptions)
   -- Parameter integrity check
   if type(pickerAndOptions) ~= "table" or pickerAndOptions.picker == nil then
     print("Incorrect argument format. Correct format is: { picker = 'desiredPicker', (optional) options = { ... } }")
@@ -102,7 +102,7 @@ function telescopePickers.prettyFilesPicker(pickerAndOptions)
     -- HELP: Read the 'make_entry.lua' file for more info on how all of this works
     originalEntryTable.display = function(entry)
       -- Get the Tail and the Path to display
-      local tail, pathToDisplay = telescopePickers.getPathAndTail(entry.value)
+      local tail, pathToDisplay = M.getPathAndTail(entry.value)
 
       -- Add an extra space to the tail so that it looks nicely separated from the path
       local tailForDisplay = tail .. " "
@@ -148,7 +148,7 @@ end
 --                                      picker = '<pickerName>',
 --                                      (optional) options = { ... }
 --                                   }
-function telescopePickers.prettyGrepPicker(pickerAndOptions)
+function M.prettyGrepPicker(pickerAndOptions)
   -- Parameter integrity check
   if type(pickerAndOptions) ~= "table" or pickerAndOptions.picker == nil then
     print("Incorrect argument format. Correct format is: { picker = 'desiredPicker', (optional) options = { ... } }")
@@ -207,7 +207,7 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
       -------------------------------
 
       -- Get the Tail and the Path to display
-      local tail, pathToDisplay = telescopePickers.getPathAndTail(entry.filename)
+      local tail, pathToDisplay = M.getPathAndTail(entry.filename)
 
       -- Get the Icon with its corresponding Highlight information
       local icon, iconHighlight = telescopeUtilities.get_devicons(tail)
@@ -220,11 +220,12 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
 
       if not options.disable_coordinates then
         if entry.lnum then
-          if entry.col then
-            coordinates = string.format("@%s:%s", entry.lnum, entry.col)
-          else
-            coordinates = string.format("@%s", entry.lnum)
-          end
+          coordinates = string.format("@%s", entry.lnum)
+          -- if entry.col then
+          --   coordinates = string.format("@%s:%s", entry.lnum, entry.col)
+          -- else
+          --   coordinates = string.format("@%s", entry.lnum)
+          -- end
         end
       end
 
@@ -263,7 +264,7 @@ function telescopePickers.prettyGrepPicker(pickerAndOptions)
   end
 end
 
-function telescopePickers.prettyBuffersPicker(localOptions)
+function M.prettyBuffersPicker(localOptions)
   if localOptions ~= nil and type(localOptions) ~= "table" then
     print("Options must be a table.")
     return
@@ -287,7 +288,7 @@ function telescopePickers.prettyBuffersPicker(localOptions)
     })
 
     originalEntryTable.display = function(entry)
-      local tail, path = telescopePickers.getPathAndTail(entry.filename)
+      local tail, path = M.getPathAndTail(entry.filename)
       local tailForDisplay = tail .. " "
       local icon, iconHighlight = telescopeUtilities.get_devicons(tail)
 
@@ -305,7 +306,7 @@ function telescopePickers.prettyBuffersPicker(localOptions)
   require("telescope.builtin").buffers(options)
 end
 
-function telescopePickers.prettyLsp(pickerAndOptions)
+function M.prettyLsp(pickerAndOptions)
   if type(pickerAndOptions) ~= "table" or pickerAndOptions.picker == nil then
     print("Incorrect argument format. Correct format is: { picker = 'lsp_references', (optional) options = { ... } }")
     return
@@ -333,10 +334,27 @@ function telescopePickers.prettyLsp(pickerAndOptions)
       -------------------------------
 
       -- Get the Tail and the Path to display
-      local tail, pathToDisplay = telescopePickers.getPathAndTail(entry.filename)
+      local tail, pathToDisplay = M.getPathAndTail(entry.filename)
 
       -- Get the Icon with its corresponding Highlight information
       local icon, iconHighlight = telescopeUtilities.get_devicons(tail)
+
+      -- Add coordinates if required by 'options'
+      local coordinates = ""
+
+      if not options.disable_coordinates then
+        if entry.lnum then
+          coordinates = string.format("@%s", entry.lnum)
+          -- if entry.col then
+          --   coordinates = string.format("@%s:%s", entry.lnum, entry.col)
+          -- else
+          --   coordinates = string.format("@%s", entry.lnum)
+          -- end
+        end
+      end
+
+      -- Append coordinates to tail
+      tail = tail .. coordinates
 
       -- Add an extra space to the tail so that it looks nicely separated from the path
       local tailForDisplay = tail .. " "
@@ -374,4 +392,4 @@ function telescopePickers.prettyLsp(pickerAndOptions)
 end
 
 -- Return the module for use
-return telescopePickers
+return M
