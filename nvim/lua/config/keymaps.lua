@@ -119,10 +119,10 @@ map({ "v" }, "<D-d>", "<cmd>VisualDuplicate +1<cr>", { desc = "Paste", noremap =
 
 -- Copy, paste, cut
 map({ "n", "v" }, "<D-c>", '"+y', { desc = "Copy", noremap = true })
-map({ "n", "v" }, "<D-v>", '"+pgvy', { desc = "Paste", noremap = true })
+map({ "v" }, "<D-v>", '"+pgvy', { desc = "Paste", noremap = true })
 map({ "t" }, "<D-v>", '<cmd>stopinsert<cr>"+pi', { desc = "Paste", noremap = true })
 map({ "n", "v" }, "<D-x>", '"+x', { desc = "Cut", noremap = true })
-map({ "i", "c" }, "<D-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { desc = "Paste", noremap = true })
+map({ "n", "i", "c" }, "<D-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { desc = "Paste", noremap = true })
 
 map({ "n", "v" }, "<D-S-c>", '"+y', { desc = "Copy", noremap = true })
 map({ "n", "v" }, "<D-S-v>", '"+pgvy', { desc = "Paste", noremap = true })
@@ -160,7 +160,7 @@ map({ "n", "i", "v" }, "<A-f>", vim.lsp.buf.format, { desc = "Format code" })
 map({ "i", "n" }, "<D-/>", function()
   return "<Esc>" .. MiniComment.operator() .. "_"
 end, { expr = true, desc = "Comment" })
-map("v", "<D-/>", [[:<c-u>lua MiniComment.operator('visual')<cr>]], { desc = "Comment selection" })
+map("v", "<D-/>", "g@", { remap = true, desc = "Comment selection" })
 
 -- Terminal
 local hide_all = function()

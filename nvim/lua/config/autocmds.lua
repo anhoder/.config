@@ -54,10 +54,8 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- PersistedLoadPost
-local persisted_load_group = vim.api.nvim_create_augroup("autopin", {})
 vim.api.nvim_create_autocmd({ "User" }, {
   pattern = "PersistedLoadPost",
-  group = persisted_load_group,
   callback = function()
     -- auto pin all
     require("hbac.command.actions").pin_all()
@@ -65,7 +63,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
     -- delete last buffers(neo-tree)
     local buflist = require("hbac.utils").get_listed_buffers()
     if #buflist > 0 then
-      require("mini.bufremove").delete(buflist[#buflist], false)
+      require("mini.bufremove").delete(buflist[#buflist], true)
     end
 
     -- manually load launch.json
