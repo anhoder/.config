@@ -62,12 +62,19 @@ vim.api.nvim_create_autocmd({ "User" }, {
 
     -- delete last buffers(neo-tree)
     local buflist = require("hbac.utils").get_listed_buffers()
-    if #buflist > 0 then
+    if #buflist > 0 and vim.api.nvim_buf_get_name(buflist[#buflist]) == vim.fn.getcwd() then
       require("mini.bufremove").delete(buflist[#buflist], true)
     end
 
     -- manually load launch.json
     require("dap.ext.vscode").load_launchjs()
+  end,
+})
+
+-- VimLeave (wait libuv)
+vim.api.nvim_create_autocmd({ "VimLeave" }, {
+  callback = function()
+    vim.cmd("sleep 10m")
   end,
 })
 

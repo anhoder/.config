@@ -4,15 +4,38 @@ local keys = require("lazyvim.plugins.lsp.keymaps").get()
 local telescope_themes = require("telescope.themes")
 local lsputil = require("utils.lsp")
 
+table.insert(keys, {
+  "gR",
+  function()
+    vim.cmd("Glance references")
+  end,
+  desc = "Goto references",
+})
+
+table.insert(keys, {
+  "gi",
+  function()
+    local opts = telescope_themes.get_ivy()
+    opts["picker"] = "lsp_implementations"
+    opts["reuse_win"] = true
+    telescope_pickers.prettyLsp(opts)
+  end,
+  desc = "Goto implementations",
+})
+
+table.insert(keys, {
+  "gY",
+  function()
+    vim.cmd("Glance type_definitions")
+  end,
+  desc = "Goto type definitions",
+})
+
 local keymap_rewrite = {
   ["gr"] = function()
     local opts = telescope_themes.get_ivy()
     opts["picker"] = "lsp_references"
     telescope_pickers.prettyLsp(opts)
-  end,
-
-  ["gR"] = function()
-    vim.cmd("Glance references")
   end,
 
   ["gd"] = function()
@@ -38,13 +61,6 @@ local keymap_rewrite = {
     end)
   end,
 
-  ["gi"] = function()
-    local opts = telescope_themes.get_ivy()
-    opts["picker"] = "lsp_implementations"
-    opts["reuse_win"] = true
-    telescope_pickers.prettyLsp(opts)
-  end,
-
   ["gI"] = function()
     vim.cmd("Glance implementations")
   end,
@@ -54,10 +70,6 @@ local keymap_rewrite = {
     opts["picker"] = "lsp_type_definitions"
     opts["reuse_win"] = true
     telescope_pickers.prettyLsp(opts)
-  end,
-
-  ["gY"] = function()
-    vim.cmd("Glance type_definitions")
   end,
 
   -- hover fold
