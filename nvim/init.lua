@@ -32,6 +32,7 @@ vim.diagnostic.config({
 
 vim.cmd("hi Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
 vim.cmd("hi GitSignsCurrentLineBlame cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
+vim.cmd("hi LspInlayHint guibg=#393235 guifg=#969696")
 
 vim.g.minimap_auto_start = 1
 vim.g.minimap_auto_start_win_enter = 1

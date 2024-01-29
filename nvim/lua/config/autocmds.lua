@@ -62,8 +62,14 @@ vim.api.nvim_create_autocmd({ "User" }, {
 
     -- delete last buffers(neo-tree)
     local buflist = require("hbac.utils").get_listed_buffers()
-    if #buflist > 0 and vim.api.nvim_buf_get_name(buflist[#buflist]) == vim.fn.getcwd() then
-      require("mini.bufremove").delete(buflist[#buflist], true)
+    local cwd = vim.fn.getcwd()
+    local bufremove = require("mini.bufremove")
+    for _, bufnr in ipairs(buflist) do
+      -- vim.notify(vim.api.nvim_buf_get_name(bufnr))
+      local name = vim.api.nvim_buf_get_name(bufnr)
+      if name == cwd or string.sub(name, -1) == "/" then
+        bufremove.delete(bufnr, true)
+      end
     end
 
     -- manually load launch.json
