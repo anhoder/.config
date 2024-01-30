@@ -151,7 +151,7 @@ return {
           },
         },
 
-        -- clang
+        -- clang use `bear`
         clangd = {
           cmd = {
             "clangd",
