@@ -99,6 +99,12 @@ return {
       servers = {
         -- php
         intelephense = {
+          capabilities = {
+            textDocument = {
+              rangeFormatting = true,
+              formatting = true,
+            },
+          },
           single_file_support = true,
           on_attach = function(client, bufnr)
             -- 仅格式化修改内容

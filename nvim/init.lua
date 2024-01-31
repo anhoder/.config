@@ -18,10 +18,10 @@ vim.opt.winblend = 10
 vim.opt.pumblend = 10
 vim.opt.mousemoveevent = true
 vim.opt.termguicolors = true
-vim.o.foldcolumn = "1" -- '0' is not bad
-vim.o.foldlevel = 999 -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 999
-vim.o.foldenable = true
+vim.opt.foldcolumn = "1" -- '0' is not bad
+vim.opt.foldlevel = 999 -- Using ufo provider need a large value, feel free to decrease the value
+vim.opt.foldlevelstart = 999
+vim.opt.foldenable = true
 
 vim.diagnostic.config({
   underline = true,
@@ -40,6 +40,8 @@ vim.cmd("hi! link @constant Constant")
 vim.cmd("hi! link NormalFloat Pmenu")
 vim.cmd("hi! link Delimiter Special")
 vim.cmd("hi! link Title GruvboxGreenBold")
+vim.cmd("hi! link @type.builtin GruvboxYellow")
+vim.cmd("hi! link @variable.builtin GruvboxBlue")
 
 vim.g.minimap_auto_start = 1
 vim.g.minimap_auto_start_win_enter = 1
