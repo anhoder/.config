@@ -31,8 +31,15 @@ vim.diagnostic.config({
 })
 
 vim.cmd("hi Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
-vim.cmd("hi GitSignsCurrentLineBlame cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
-vim.cmd("hi LspInlayHint guibg=#393235 guifg=#969696")
+vim.cmd("hi GitSignsCurrentLineBlame cterm=italic gui=italic guifg=#858577 guibg=0")
+vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#969696")
+
+-- for neovim >= 0.10.0
+vim.cmd("hi! link @variable Identifier")
+vim.cmd("hi! link @constant Constant")
+vim.cmd("hi! link NormalFloat Pmenu")
+vim.cmd("hi! link Delimiter Special")
+vim.cmd("hi! link Title GruvboxGreenBold")
 
 vim.g.minimap_auto_start = 1
 vim.g.minimap_auto_start_win_enter = 1

@@ -142,6 +142,9 @@ map({ "n" }, "<D-Right>", "$", { desc = "End of line" })
 map({ "v" }, "<D-Right>", "$h", { desc = "End of line" })
 map({ "i" }, "<D-Left>", "<Esc>^i", { desc = "Beginning of line" })
 map({ "i" }, "<D-Right>", "<Esc>$a", { desc = "End of line" })
+map({ "c" }, "<D-Left>", "<C-b>", { desc = "Beginning of line" })
+map({ "t" }, "<D-Left>", "<C-a>", { desc = "Beginning of line" })
+map({ "c", "t" }, "<D-Right>", "<C-e>", { desc = "End of line" })
 
 -- move to left/right
 map({ "n", "v", "i" }, "<A-Left>", "<cmd>normal! z5h<cr>", { desc = "Scroll to left", noremap = true })

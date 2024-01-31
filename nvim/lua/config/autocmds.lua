@@ -54,17 +54,20 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- PersistedLoadPre
-vim.api.nvim_create_autocmd({ "User" }, {
-  pattern = "PersistedLoadPre",
-  callback = function()
-    -- delete last buffers(neo-tree)
-    local buflist = require("hbac.utils").get_listed_buffers()
-    local bufremove = require("mini.bufremove")
-    for _, bufnr in ipairs(buflist) do
-      bufremove.delete(bufnr, true)
-    end
-  end,
-})
+-- vim.api.nvim_create_autocmd({ "User" }, {
+--   pattern = "PersistedLoadPre",
+--   callback = function()
+--     -- auto pin all
+--     require("hbac.command.actions").unpin_all()
+--
+--     -- delete last buffers(neo-tree)
+--     local buflist = require("hbac.utils").get_listed_buffers()
+--     local bufremove = require("mini.bufremove")
+--     for _, bufnr in ipairs(buflist) do
+--       bufremove.delete(bufnr, false)
+--     end
+--   end,
+-- })
 
 -- PersistedLoadPost
 vim.api.nvim_create_autocmd({ "User" }, {
@@ -78,7 +81,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
       -- vim.notify(vim.api.nvim_buf_get_name(bufnr))
       local name = vim.api.nvim_buf_get_name(bufnr)
       if name == cwd or string.sub(name, -1) == "/" then
-        bufremove.delete(bufnr, true)
+        bufremove.delete(bufnr, false)
       end
     end
 

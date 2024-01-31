@@ -16,6 +16,7 @@ return {
       "luap",
       "go",
       "php",
+      "phpdoc",
       "markdown",
       "markdown_inline",
       "query",
@@ -30,6 +31,5 @@ return {
       "sql",
     },
     auto_install = true,
-    ignore_install = {},
   },
 }
