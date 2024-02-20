@@ -1,5 +1,4 @@
 local bufferline = require("bufferline")
-local state = require("hbac.state")
 return {
   "akinsho/bufferline.nvim",
   opts = {
@@ -13,12 +12,6 @@ return {
         delay = 50,
         reveal = { "close" },
       },
-      name_formatter = function(buf)
-        if state.is_pinned(buf.bufnr) then
-          return "󰐃 " .. buf.name
-        end
-        return buf.name
-      end,
     },
     highlights = {
       indicator_selected = {

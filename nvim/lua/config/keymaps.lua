@@ -15,7 +15,6 @@ local ivy_theme = telescope_themes.get_ivy({ sorting_strategy = "descending" })
 local Util = require("lazyvim.util")
 local neotree_manager = require("neo-tree.sources.manager")
 local neotree_render = require("neo-tree.ui.renderer")
-local state = require("hbac.state")
 local telescope_pickers = require("utils.telescope_pickers")
 local ufo = require("ufo")
 
@@ -391,13 +390,9 @@ end, { desc = "Open file in code" })
 -- locate cur file in neo-tree
 map({ "n", "v", "i", "o", "s" }, "<C-D-/>", "<cmd>Neotree reveal<cr>", { desc = "Locate cur file in neo-tree" })
 
--- pin buffer
+-- toggle pin buffer
 map({ "n", "v", "i" }, "<D-p>", function()
-  local bufnr = vim.api.nvim_get_current_buf()
-  if state.is_pinned(bufnr) then
-    return
-  end
-  state.toggle_pin(bufnr)
+  vim.cmd("BufferLineTogglePin")
 end, { desc = "Pin cur buffer" })
 
 -- disable ScrollWheelLeft, ScrollWheelRight

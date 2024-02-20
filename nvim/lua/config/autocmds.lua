@@ -57,14 +57,11 @@ vim.api.nvim_create_autocmd("BufEnter", {
 vim.api.nvim_create_autocmd({ "User" }, {
   pattern = "PersistedLoadPre",
   callback = function()
-    -- auto pin all
-    require("hbac.command.actions").unpin_all()
-
     -- delete last buffers(neo-tree)
-    local buflist = require("hbac.utils").get_listed_buffers()
-    local bufremove = require("mini.bufremove")
+    local buflist = require("utils.buffer").get_listed_buffers()
+
     for _, bufnr in ipairs(buflist) do
-      bufremove.delete(bufnr, false)
+      require("mini.bufremove").delete(bufnr, true)
     end
   end,
 })
@@ -73,20 +70,15 @@ vim.api.nvim_create_autocmd({ "User" }, {
 vim.api.nvim_create_autocmd({ "User" }, {
   pattern = "PersistedLoadPost",
   callback = function()
-    -- delete last buffers(neo-tree)
-    local buflist = require("hbac.utils").get_listed_buffers()
+    local buflist = require("utils.buffer").get_listed_buffers()
     local cwd = vim.fn.getcwd()
-    local bufremove = require("mini.bufremove")
     for _, bufnr in ipairs(buflist) do
       -- vim.notify(vim.api.nvim_buf_get_name(bufnr))
       local name = vim.api.nvim_buf_get_name(bufnr)
       if name == cwd or string.sub(name, -1) == "/" then
-        bufremove.delete(bufnr, false)
+        require("mini.bufremove").delete(bufnr, true)
       end
     end
-
-    -- auto pin all
-    require("hbac.command.actions").pin_all()
 
     -- manually load launch.json
     require("dap.ext.vscode").load_launchjs()
