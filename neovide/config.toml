@@ -1,7 +1,7 @@
 wsl = false
 no-multigrid = false
 # multigrid = false
-vsync = true
+vsync = false
 maximized = true
 srgb = false
 idle = true
