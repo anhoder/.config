@@ -70,7 +70,7 @@ vim.g.neovide_cursor_animate_in_insert_mode = true
 vim.g.neovide_cursor_animate_command_line = true
 -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
 -- vim.g.neovide_cursor_vfx_particle_density = 15.0
-vim.g.neovide_fullscreen = false
+vim.g.neovide_fullscreen = true
 vim.g.neovide_input_macos_alt_is_meta = true
 
 -- vim.lsp.set_log_level("debug")
