@@ -33,7 +33,11 @@ vim.diagnostic.config({
 
 vim.cmd("hi Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
 vim.cmd("hi GitSignsCurrentLineBlame cterm=italic gui=italic guifg=#858577 guibg=0")
-vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#969696")
+if vim.g.neovide then
+  vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
+else
+  vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=0 guifg=#767676")
+end
 
 -- for neovim >= 0.10.0
 vim.cmd("hi! link @variable Identifier")
