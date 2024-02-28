@@ -2,29 +2,6 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
--- auto focus
-local focus = vim.api.nvim_create_augroup("FocusDisable", { clear = true })
-local ignore_filetypes = { "neo-tree", "aerial", "fugitiveblame" }
-vim.api.nvim_create_autocmd("FileType", {
-  group = focus,
-  callback = function(_)
-    if vim.tbl_contains(ignore_filetypes, vim.bo.filetype) then
-      vim.b.focus_disable = true
-      return
-    end
-    -- if vim.bo.filetype ~= "notify" and vim.bo.filetype ~= "noice" then
-    --   vim.notify(vim.bo.filetype)
-    -- end
-
-    if string.sub(vim.bo.filetype, 1, 3) == "dap" then
-      vim.b.focus_disable = true
-      return
-    end
-    vim.b.focus_disable = false
-  end,
-  desc = "Disable focus autoresize for FileType",
-})
-
 -- auto format
 local auto_format = vim.api.nvim_create_augroup("AutoFormat", { clear = true })
 local ignore_format_filetypes = { "php" }
@@ -107,8 +84,6 @@ vim.api.nvim_create_autocmd("User", {
 
 -- for neovide
 if vim.g.neovide then
-  vim.g.neovide_fullscreen = true
-
   vim.api.nvim_create_autocmd("BufLeave", {
     callback = function()
       vim.g.neovide_scroll_animation_length = 0

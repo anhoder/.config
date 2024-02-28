@@ -1,5 +1,6 @@
 -- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
+local colors = require("utils.colors")
 
 vim.g.guifont = "JetBrainsMono Nerd Font Mono"
 vim.g.guifontsize = 15
@@ -38,6 +39,17 @@ if vim.g.neovide then
 else
   vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=0 guifg=#767676")
 end
+
+vim.cmd("hi DashboardHeader guifg=" .. colors.random_color())
+vim.cmd("hi DashboardFooter guifg=#787c99")
+vim.cmd("hi DashboardFind guifg=#C0CAF5")
+vim.cmd("hi DashboardRecent guifg=#9d7cd8")
+vim.cmd("hi DashboardProject guifg=#7aa2f7")
+vim.cmd("hi DashboardConfiguration guifg=#ffffff")
+vim.cmd("hi DashboardSession guifg=#9ece6a")
+vim.cmd("hi DashboardLazy guifg=#0DB9D7")
+vim.cmd("hi DashboardServer guifg=#e0af68")
+vim.cmd("hi DashboardQuit guifg=#f7768e")
 
 -- for neovim >= 0.10.0
 vim.cmd("hi! link @variable Identifier")
