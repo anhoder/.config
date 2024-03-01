@@ -2,7 +2,6 @@ return {
   "petertriho/nvim-scrollbar",
   event = { "BufReadPost", "BufNewFile" },
   opts = {
-    set_highlights = false,
     excluded_filetypes = {
       "prompt",
       "TelescopePrompt",
@@ -14,6 +13,10 @@ return {
       "mason",
       "DressingInput",
       "",
+    },
+    handle = {
+      color = "#484848", -- Color of the handle
+      blend = 10, -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
     },
     handlers = {
       gitsigns = true,

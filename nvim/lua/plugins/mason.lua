@@ -6,7 +6,12 @@ return {
     "mason-lspconfig.nvim",
   },
   {
+    "fatih/vim-go",
+    event = { "CmdlineEnter" },
+  },
+  {
     "anhoder/go.nvim",
+    -- enabled = false,
     dependencies = { -- optional packages
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",

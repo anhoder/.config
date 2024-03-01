@@ -9,6 +9,7 @@ return {
   },
   {
     "NvChad/nvim-colorizer.lua",
+    event = "VeryLazy",
     opts = {
       user_default_options = {
         tailwind = true,
@@ -18,7 +19,7 @@ return {
   {
     "hrsh7th/nvim-cmp",
     dependencies = {
-      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true },
+      { "roobert/tailwindcss-colorizer-cmp.nvim", config = true, event = "VeryLazy" },
     },
     opts = function(_, opts)
       -- original LazyVim kind icon formatter

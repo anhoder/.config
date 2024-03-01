@@ -11,9 +11,9 @@ return {
       hide = {
         -- this is taken care of by lualine
         -- enabling this messes up the actual laststatus setting after loading a file
-        statusline = 0,
-        tabline = 0,
-        winbar = 0,
+        statusline = false,
+        tabline = false,
+        winbar = false,
       },
       config = {
         header = Logos(),

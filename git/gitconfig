@@ -2,6 +2,12 @@
   name = anhoder
   email = anhoder@88.com
 
+[log]
+	date = iso-strict-local
+
+[merge]
+  conflictStyle = diff3
+
 [credential]
   helper = osxkeychain
 

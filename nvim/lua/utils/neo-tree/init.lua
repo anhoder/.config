@@ -1,16 +1,16 @@
-local telescope = require("utils.telescope")
+-- local telescope = require("utils.telescope")
 local icons = require("utils.icons")
 
 local config = {
   enable_normal_mode_for_inputs = true,
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-  popup_border_style = telescope.borderchars("thick", "tl-t-tr-r-br-b-bl-l"),
+  -- popup_border_style = telescope.borderchars("thick", "tl-t-tr-r-br-b-bl-l"),
   sources = {
     "filesystem",
     "buffers",
     "git_status",
+    "document_symbols",
     "diagnostics",
-    -- "document_symbols",
   },
   source_selector = {
     winbar = true, -- toggle to show selector on winbar
@@ -21,7 +21,7 @@ local config = {
       { source = "filesystem", display_name = "󰉓" },
       { source = "buffers", display_name = "󰈙" },
       { source = "git_status", display_name = "" },
-      -- { source = "document_symbols", display_name = "o" },
+      { source = "document_symbols", display_name = "" },
       { source = "diagnostics", display_name = "󰒡" },
     },
   },
@@ -87,12 +87,14 @@ local function hideCursor()
   vim.cmd([[
     setlocal guicursor=n:block-Cursor
     hi Cursor blend=100
+    hi CursorLine guibg=#4c4846
   ]])
 end
 local function showCursor()
   vim.cmd([[
     setlocal guicursor=n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20
     hi Cursor blend=0
+    hi CursorLine guibg=#3c3836
   ]])
 end
 

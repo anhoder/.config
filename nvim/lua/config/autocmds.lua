@@ -2,6 +2,16 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 
+-- notify filetype
+-- vim.api.nvim_create_autocmd("FileType", {
+--   callback = function(_)
+--     if vim.bo.filetype ~= "notify" and vim.bo.filetype ~= "noice" then
+--       vim.notify(vim.bo.filetype)
+--     end
+--   end,
+--   desc = "Notify FileType",
+-- })
+
 -- auto format
 local auto_format = vim.api.nvim_create_augroup("AutoFormat", { clear = true })
 local ignore_format_filetypes = { "php" }
@@ -9,6 +19,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   group = auto_format,
   pattern = ignore_format_filetypes,
   callback = function()
+    --- @diagnostic disable-next-line
     vim.b.autoformat = false
   end,
 })

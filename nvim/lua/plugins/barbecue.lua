@@ -1,3 +1,7 @@
+if true then
+  return {}
+end
+
 local icons = require("utils.icons")
 
 return {
@@ -14,5 +18,8 @@ return {
     exclude_filetypes = { "gitcommit", "Trouble", "toggleterm" },
     show_modified = false,
     kinds = icons.kinds,
+    custom_section = function(bufnr, winnr)
+      return { { " ", "WinBar" } }
+    end,
   },
 }
