@@ -60,6 +60,11 @@ vim.cmd("hi! link Title GruvboxGreenBold")
 vim.cmd("hi! link @type.builtin GruvboxYellow")
 vim.cmd("hi! link @variable.builtin GruvboxBlue")
 
+-- for go.nvim
+vim.cmd("hi goCoverageCovered guifg=#9ece6a")
+vim.cmd("hi goCoveragePartial guifg=#e0af68")
+vim.cmd("hi goCoverageUncovered guifg=#f7768e")
+
 vim.g.minimap_auto_start = 1
 vim.g.minimap_auto_start_win_enter = 1
 

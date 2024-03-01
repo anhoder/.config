@@ -5,10 +5,10 @@ return {
   {
     "mason-lspconfig.nvim",
   },
-  {
-    "fatih/vim-go",
-    event = { "CmdlineEnter" },
-  },
+  -- {
+  --   "fatih/vim-go",
+  --   event = { "CmdlineEnter" },
+  -- },
   {
     "anhoder/go.nvim",
     -- enabled = false,
