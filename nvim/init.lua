@@ -54,6 +54,7 @@ vim.cmd("hi DashboardQuit guifg=#f7768e")
 -- for neovim >= 0.10.0
 vim.cmd("hi! link @variable Identifier")
 vim.cmd("hi! link @constant Constant")
+vim.cmd("hi Pmenu guifg=0 guibg=#353535")
 vim.cmd("hi! link NormalFloat Pmenu")
 vim.cmd("hi! link Delimiter Special")
 vim.cmd("hi! link Title GruvboxGreenBold")
