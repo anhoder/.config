@@ -6,5 +6,10 @@ return {
         silent = true,
       },
     },
+    status = {
+      command = {
+        has = false,
+      },
+    },
   },
 }

@@ -406,9 +406,6 @@ map(
   { desc = "Disabled", noremap = true }
 )
 
--- Aerial
-map({ "n" }, "<leader>a", "<cmd>AerialToggle!<CR>", { desc = "Aerial" })
-
 -- notify cwd
 map({ "n" }, "<leader>cp", function()
   vim.notify(vim.fn.expand("%"))

@@ -1,7 +1,3 @@
-if true then
-  return {}
-end
-
 local icons = require("utils.icons")
 
 return {
@@ -12,7 +8,7 @@ return {
     "nvim-tree/nvim-web-devicons",
   },
   opts = {
-    attach_navic = false,
+    attach_navic = true,
     theme = "auto",
     include_buftypes = { "" },
     exclude_filetypes = { "gitcommit", "Trouble", "toggleterm" },
