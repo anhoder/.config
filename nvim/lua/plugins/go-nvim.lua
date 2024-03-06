@@ -8,8 +8,8 @@ return {
     end,
   },
   {
-    "anhoder/go.nvim",
-    -- "ray-x/go.nvim",
+    -- "anhoder/go.nvim",
+    "ray-x/go.nvim",
     -- enabled = false,
     dependencies = { -- optional packages
       "ray-x/guihua.lua",
@@ -26,6 +26,10 @@ return {
         lsp_keymaps = false,
         diagnostic = {
           hdlr = true,
+        },
+        lsp_inlay_hints = {
+          enable = false,
+          style = "eol",
         },
       })
       local cfg = require("go.lsp").config()
