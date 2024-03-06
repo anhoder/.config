@@ -11,7 +11,7 @@ return {
   },
   init = function()
     vim.o.winwidth = 30
-    vim.o.winminwidth = 30
+    -- vim.o.winminwidth = 30
     vim.o.equalalways = true
   end,
 }

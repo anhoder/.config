@@ -1,3 +1,4 @@
 init.fish
 .DS_Store
 .code
+completions/docker.fish

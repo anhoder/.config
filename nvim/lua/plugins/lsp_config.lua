@@ -153,6 +153,12 @@ return {
           settings = {
             gopls = {
               buildFlags = { "-tags=wireinject" },
+              analyses = {
+                fieldalignment = false,
+                ST1000 = false,
+                ST1003 = false,
+                SA4006 = false,
+              },
             },
           },
         },
