@@ -119,10 +119,10 @@ map({ "v" }, "<D-d>", "<cmd>VisualDuplicate +1<cr>", { desc = "Paste", noremap =
 
 -- Copy, paste, cut
 map({ "n", "v" }, "<D-c>", '"+y', { desc = "Copy", noremap = true })
-map({ "v" }, "<D-v>", '"+pgvy', { desc = "Paste", noremap = true })
+map({ "n", "v" }, "<D-v>", '"+pgvy', { desc = "Paste", noremap = true })
 map({ "t" }, "<D-v>", '<cmd>stopinsert<cr>"+pi', { desc = "Paste", noremap = true })
 map({ "n", "v" }, "<D-x>", '"+x', { desc = "Cut", noremap = true })
-map({ "n", "i", "c" }, "<D-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { desc = "Paste", noremap = true })
+map({ "i", "c" }, "<D-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { desc = "Paste", noremap = true })
 
 map({ "n", "v" }, "<D-S-c>", '"+y', { desc = "Copy", noremap = true })
 map({ "n", "v" }, "<D-S-v>", '"+pgvy', { desc = "Paste", noremap = true })
@@ -133,7 +133,7 @@ map({ "i", "c" }, "<D-S-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { d
 -- Delete a word
 map({ "i" }, "<D-BS>", "<C-w>", { desc = "Delete word", noremap = true })
 map({ "n" }, "<D-BS>", '"_cb', { desc = "Delete word", noremap = false })
-map({ "i", "n" }, "<D-S-BS>", '<Esc>"_ciw', { desc = "Delete a whole word", noremap = false })
+map({ "i", "n", "v" }, "<D-S-BS>", '<Esc>"_ciw', { desc = "Delete a whole word", noremap = false })
 
 -- Move to beginning/end of line
 map({ "n", "v" }, "<D-Left>", "^", { desc = "Beginning of line" })

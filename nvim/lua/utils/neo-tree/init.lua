@@ -1,10 +1,10 @@
--- local telescope = require("utils.telescope")
+local telescope = require("utils.telescope")
 local icons = require("utils.icons")
 
 local config = {
   enable_normal_mode_for_inputs = true,
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-  -- popup_border_style = telescope.borderchars("thick", "tl-t-tr-r-br-b-bl-l"),
+  popup_border_style = telescope.borderchars("rounded", "tl-t-tr-r-br-b-bl-l"),
   sources = {
     "filesystem",
     "buffers",
@@ -74,10 +74,10 @@ local config = {
     follow_current_file = {
       enabled = false,
       leave_dirs_open = false,
-      group_empty_dirs = true,
+      group_empty_dirs = false,
     }, -- This will find and focus the file in the active buffer every
     -- time the current file is changed while the tree is open.
-    group_empty_dirs = true, -- when true, empty folders will be grouped together
+    group_empty_dirs = false, -- when true, empty folders will be grouped together
   },
   async_directory_scan = "always",
 }
