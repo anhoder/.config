@@ -22,10 +22,10 @@ local Terminal = toggleterm.Terminal
 local float_opts = {
   border = "curved",
   width = function()
-    return math.floor(vim.o.columns * 0.95)
+    return math.floor(vim.o.columns * 0.98)
   end,
   height = function()
-    return math.floor(vim.o.lines * 0.95)
+    return math.floor(vim.o.lines * 0.94)
   end,
 }
 local term0 = Terminal:new({ display_name = "term0", direction = "horizontal" })

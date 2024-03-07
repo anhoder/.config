@@ -11,6 +11,8 @@ return {
     -- "anhoder/go.nvim",
     "ray-x/go.nvim",
     -- enabled = false,
+    event = { "VeryLazy" },
+    ft = { "go", "gomod", "gosum" },
     dependencies = { -- optional packages
       "ray-x/guihua.lua",
       "neovim/nvim-lspconfig",
@@ -48,7 +50,6 @@ return {
       vim.cmd("hi! link goCoverageUncovered GruvboxRed")
     end,
     event = { "CmdlineEnter" },
-    ft = { "go", "gomod" },
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },
 }
