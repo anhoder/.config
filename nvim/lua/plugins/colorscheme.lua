@@ -11,10 +11,17 @@ vim.g.gruvbox_improved_warnings = 1
 
 return {
   -- add gruvbox
-  { "morhetz/gruvbox" },
-  { "rebelot/kanagawa.nvim" },
+  {
+    "morhetz/gruvbox",
+    event = { "VeryLazy" },
+  },
+  {
+    "rebelot/kanagawa.nvim",
+    event = { "VeryLazy" },
+  },
   {
     "olimorris/onedarkpro.nvim",
+    event = { "VeryLazy" },
     opts = {
       options = {
         -- transparency = true,
