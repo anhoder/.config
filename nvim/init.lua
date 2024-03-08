@@ -11,6 +11,7 @@ vim.opt.guifont = vim.g.guifont .. ":h" .. vim.g.guifontsize
 -- vim.opt.fileencoding = "utf-8"
 vim.opt.filetype = "on"
 vim.opt.ignorecase = true
+vim.opt.smartcase = false
 vim.opt.sessionoptions = "buffers,curdir,folds,globals,tabpages,terminal"
 vim.opt.jumpoptions = "stack"
 vim.opt.swapfile = false

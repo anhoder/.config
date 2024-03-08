@@ -16,6 +16,9 @@ local dapvscode = require("dap.ext.vscode")
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
+    {
+      "ldelossa/nvim-dap-projects",
+    },
     -- fancy UI for the debugger
     {
       "rcarriga/nvim-dap-ui",
@@ -56,7 +59,10 @@ return {
     -- virtual text for the debugger
     {
       "theHamsta/nvim-dap-virtual-text",
-      opts = {},
+      opts = {
+        virt_text_pos = "eol",
+        highlight_changed_variables = true,
+      },
     },
 
     -- which key integration
