@@ -2,7 +2,6 @@ local telescope = require("utils.telescope")
 local icons = require("utils.icons")
 
 local config = {
-  enable_normal_mode_for_inputs = true,
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = telescope.borderchars("rounded", "tl-t-tr-r-br-b-bl-l"),
   sources = {

@@ -429,3 +429,6 @@ map({ "n", "i", "v" }, "<RightMouse>", "<LeftMouse><cmd>normal K<cr>", { desc = 
 -- ufo fold
 map({ "n" }, "zM", ufo.closeAllFolds, { desc = "Close all folds(ufo)", remap = true })
 map({ "n" }, "zR", ufo.openAllFolds, { desc = "Close all folds(ufo)", remap = true })
+
+-- window to tab
+map({ "n" }, "<leader>w<Tab>", "<C-w>T", { desc = "Break out into a new tab", remap = true })

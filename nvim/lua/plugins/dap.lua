@@ -12,6 +12,7 @@ end
 
 local dapui = require("dapui")
 local dapvscode = require("dap.ext.vscode")
+local dapui_open = false
 
 return {
   "mfussenegger/nvim-dap",
@@ -25,11 +26,19 @@ return {
       -- stylua: ignore
       keys = {
         { "<leader>du", function()
-          dapui.toggle({ })
-          vim.cmd("Neotree close") -- close neotree
+          if dapui_open then
+            dapui.close()
+          else
+            dapui.open({reset = true})
+            vim.cmd("Neotree close") -- close neotree
+          end
+          dapui_open = not dapui_open
         end, desc = "Dap UI", mode = {"n", "v"} },
+        --- @diagnostic disable-next-line
         { "<leader>de", function() dapui.eval(nil, {enter = true}) end, desc = "Eval", mode = {"n", "v"} },
+        --- @diagnostic disable-next-line
         { "<leader>dfv", function () dapui.float_element("scopes", {enter = true}) end, desc = "Dap float scopes", mode = {"n", "v"}},
+        --- @diagnostic disable-next-line
         { "<leader>dfs", function () dapui.float_element("stacks", {enter = true}) end, desc = "Dap float stacks", mode = {"n", "v"}},
       },
       opts = {},
@@ -38,19 +47,23 @@ return {
         require("nvim-dap-projects").search_project_config()
         dapvscode.load_launchjs()
         local dap = require("dap")
+        local dap_repl = require("dap.repl")
         dapui.setup(opts)
         dap.listeners.after.event_initialized["dapui_config"] = function()
           -- 自动开启
-          -- dapui.open({})
-          -- vim.cmd("Neotree close")
+          dap_repl.open()
+          vim.cmd("Neotree close")
         end
         dap.listeners.before.event_terminated["dapui_config"] = function()
-          dapui.close({})
+          dap_repl.close()
+          dapui.close()
         end
         dap.listeners.before.event_exited["dapui_config"] = function()
-          dapui.close({})
+          dap_repl.close()
+          dapui.close()
         end
         dap.listeners.before.disconnect["dapui_config"] = function()
+          dap_repl.close()
           dapui.close()
         end
       end,
