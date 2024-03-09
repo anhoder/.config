@@ -47,23 +47,18 @@ return {
         require("nvim-dap-projects").search_project_config()
         dapvscode.load_launchjs()
         local dap = require("dap")
-        local dap_repl = require("dap.repl")
         dapui.setup(opts)
         dap.listeners.after.event_initialized["dapui_config"] = function()
           -- 自动开启
-          dap_repl.open()
           vim.cmd("Neotree close")
         end
         dap.listeners.before.event_terminated["dapui_config"] = function()
-          dap_repl.close()
           dapui.close()
         end
         dap.listeners.before.event_exited["dapui_config"] = function()
-          dap_repl.close()
           dapui.close()
         end
         dap.listeners.before.disconnect["dapui_config"] = function()
-          dap_repl.close()
           dapui.close()
         end
       end,
