@@ -12,7 +12,6 @@ end
 
 local dapui = require("dapui")
 local dapvscode = require("dap.ext.vscode")
-local dapui_open = false
 
 return {
   "mfussenegger/nvim-dap",
@@ -26,13 +25,8 @@ return {
       -- stylua: ignore
       keys = {
         { "<leader>du", function()
-          if dapui_open then
-            dapui.close()
-          else
-            dapui.open({reset = true})
-            vim.cmd("Neotree close") -- close neotree
-          end
-          dapui_open = not dapui_open
+          dapui.toggle({reset = true})
+          vim.cmd("Neotree close") -- close neotree
         end, desc = "Dap UI", mode = {"n", "v"} },
         --- @diagnostic disable-next-line
         { "<leader>de", function() dapui.eval(nil, {enter = true}) end, desc = "Eval", mode = {"n", "v"} },
@@ -136,6 +130,7 @@ return {
       sign = type(sign) == "table" and sign or { sign }
       vim.fn.sign_define(
         "Dap" .. name,
+        --- @diagnostic disable-next-line
         { text = sign[1], texthl = sign[2] or "DiagnosticInfo", linehl = sign[3], numhl = sign[3] }
       )
     end

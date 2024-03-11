@@ -16,7 +16,7 @@ return {
         winbar = false,
       },
       config = {
-        header = Logos(),
+        header = Logos("night_fury"),
         center = {
           {
             action = "Telescope find_files",

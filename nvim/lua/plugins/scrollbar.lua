@@ -12,6 +12,7 @@ return {
       "lazy",
       "mason",
       "DressingInput",
+      "neo-tree-popup",
       "",
     },
     handle = {

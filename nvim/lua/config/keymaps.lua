@@ -2,11 +2,13 @@
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
 
+local map = vim.keymap.set
+
 if vim.g.vscode then
+  map("n", "gi", "<Cmd>call VSCodeNotify('editor.action.goToImplementation')<CR>")
   return
 end
 
-local map = vim.keymap.set
 local toggleterm = require("toggleterm.terminal")
 local telescope = require("telescope")
 local telescope_builtin = require("telescope.builtin")

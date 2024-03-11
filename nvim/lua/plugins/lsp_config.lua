@@ -88,6 +88,9 @@ return {
       inlay_hints = {
         enabled = true,
       },
+      codelens = {
+        enabled = true,
+      },
       capabilities = {
         textDocument = {
           foldingRange = {
