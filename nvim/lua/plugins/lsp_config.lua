@@ -173,6 +173,17 @@ return {
             "--offset-encoding=utf-16",
           },
         },
+
+        --lua
+        lua_ls = {
+          settings = {
+            Lua = {
+              codeLens = {
+                enable = false,
+              },
+            },
+          },
+        },
       },
     },
     init = function()

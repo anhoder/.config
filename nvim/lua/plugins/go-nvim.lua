@@ -32,8 +32,12 @@ return {
         lsp_inlay_hints = {
           enable = false,
           style = "eol",
+          highlight = "LspInlayHint",
         },
         dap_debug_vt = false,
+        sign_covered_hl = "GruvboxAqua",
+        sign_partial_hl = "GruvboxYellow",
+        sign_uncovered_hl = "GruvboxRed",
       })
       local cfg = require("go.lsp").config()
       if cfg then
@@ -46,9 +50,6 @@ return {
         cfg.settings.gopls.buildFlags = { "-tags=wireinject" }
       end
       require("lspconfig").gopls.setup(cfg)
-      vim.cmd("hi! link goCoverageCovered GruvboxAqua")
-      vim.cmd("hi! link goCoveragePartial GruvboxYellow")
-      vim.cmd("hi! link goCoverageUncovered GruvboxRed")
     end,
     build = ':lua require("go.install").update_all_sync()', -- if you need to install/update all binaries
   },

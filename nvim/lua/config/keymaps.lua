@@ -161,6 +161,9 @@ map({ "n", "i", "v" }, "<D-a>", "<Esc>ggVG", { desc = "Select all" })
 -- Format code
 map({ "n", "i", "v" }, "<A-f>", vim.lsp.buf.format, { desc = "Format code" })
 
+-- code len action
+map({ "n", "v" }, "<leader>co", vim.lsp.codelens.run, { desc = "Run CodeLenAct" })
+
 -- Comment
 map({ "i", "n" }, "<D-/>", function()
   return "<Esc>" .. MiniComment.operator() .. "_"

@@ -64,6 +64,8 @@ return {
       opts = {
         virt_text_pos = "eol",
         highlight_changed_variables = true,
+        highlight_new_as_changed = true,
+        clear_on_continue = true,
       },
     },
 
