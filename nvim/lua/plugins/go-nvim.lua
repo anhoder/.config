@@ -41,6 +41,10 @@ return {
       })
       local cfg = require("go.lsp").config()
       if cfg then
+        -- cfg.cmd = {
+        --   "gopls",
+        --   "-remote=127.0.0.1:37374",
+        -- }
         cfg.settings.gopls.analyses = {
           fieldalignment = false,
           ST1000 = false,
