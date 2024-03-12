@@ -172,6 +172,7 @@ return {
             "clangd",
             "--offset-encoding=utf-16",
           },
+          filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
         },
 
         --lua
@@ -187,6 +188,20 @@ return {
       },
     },
     init = function()
+      -- local lspconfig = require("lspconfig")
+      -- local configs = require("lspconfig.configs")
+      --
+      -- if not configs.pls then
+      --   configs.pls = {
+      --     default_config = {
+      --       cmd = { "pls" },
+      --       root_dir = lspconfig.util.root_pattern(".git"),
+      --       filetypes = { "proto" },
+      --     },
+      --   }
+      -- end
+      -- lspconfig.pls.setup({})
+
       for i, key in pairs(keys) do
         if keymap_rewrite[key[1]] then
           keys[i][2] = keymap_rewrite[key[1]]

@@ -6,6 +6,6 @@ return {
     max_width = 50,
     max_height = 10,
     -- render = "wrapped-compact",
-    top_down = true,
+    top_down = false,
   },
 }

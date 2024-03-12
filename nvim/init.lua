@@ -60,7 +60,11 @@ vim.cmd("hi! link NormalFloat Pmenu")
 vim.cmd("hi! link Delimiter Special")
 vim.cmd("hi! link Title GruvboxGreenBold")
 vim.cmd("hi! link @type.builtin GruvboxYellow")
-vim.cmd("hi! link @variable.builtin GruvboxBlue")
+vim.cmd("hi! link @variable.builtin Special")
+vim.cmd("hi! link @lsp.typemod.variable.readonly Constant")
+vim.cmd("hi! link @lsp.typemod.variable.defaultLibrary GruvboxPurple")
+vim.cmd("hi! link @lsp.type.member Function")
+vim.cmd("hi! link @lsp.type.property Field")
 
 vim.g.minimap_auto_start = 1
 vim.g.minimap_auto_start_win_enter = 1

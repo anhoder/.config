@@ -13,6 +13,7 @@ return {
   -- add gruvbox
   {
     "morhetz/gruvbox",
+    -- "gruvbox-community/gruvbox",
     event = { "VeryLazy" },
   },
   {

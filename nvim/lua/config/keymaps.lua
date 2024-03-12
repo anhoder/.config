@@ -428,7 +428,7 @@ map("n", "<leader>ghb", function()
 end, { desc = "Git Blame", noremap = true })
 
 -- mouse go tnormalo
-map({ "n", "i", "v" }, "<D-LeftMouse>", "<LeftMouse><cmd>normal gd<cr>", { desc = "Jump to", noremap = true })
+map({ "n", "i", "v" }, "<D-LeftMouse>", "<LeftMouse><cmd>normal gD<cr>", { desc = "Jump to", noremap = true })
 map({ "n", "i", "v" }, "<RightMouse>", "<LeftMouse><cmd>normal K<cr>", { desc = "Jump to", noremap = true })
 
 -- ufo fold
