@@ -25,6 +25,7 @@ vim.opt.foldcolumn = "1" -- '0' is not bad
 vim.opt.foldlevel = 999 -- Using ufo provider need a large value, feel free to decrease the value
 vim.opt.foldlevelstart = 999
 vim.opt.foldenable = true
+vim.opt.list = false
 
 vim.diagnostic.config({
   underline = true,
