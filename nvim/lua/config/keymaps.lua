@@ -19,6 +19,7 @@ local neotree_manager = require("neo-tree.sources.manager")
 local neotree_render = require("neo-tree.ui.renderer")
 local telescope_pickers = require("utils.telescope_pickers")
 local ufo = require("ufo")
+local spectre = require("spectre")
 
 local Terminal = toggleterm.Terminal
 local float_opts = {
@@ -164,7 +165,7 @@ map({ "n", "i", "v" }, "<D-a>", "<Esc>ggVG", { desc = "Select all" })
 map({ "n", "i", "v" }, "<A-f>", vim.lsp.buf.format, { desc = "Format code" })
 
 -- code len action
-map({ "n", "v" }, "<leader>co", vim.lsp.codelens.run, { desc = "Run CodeLenAct" })
+map({ "n" }, "<leader>co", vim.lsp.codelens.run, { desc = "Run CodeLenAct" })
 
 -- Comment
 map({ "i", "n" }, "<D-/>", function()
@@ -439,3 +440,11 @@ map({ "n" }, "zR", ufo.openAllFolds, { desc = "Close all folds(ufo)", remap = tr
 
 -- window to tab
 map({ "n" }, "<leader>w<Tab>", "<C-w>T", { desc = "Break out into a new tab", remap = true })
+
+-- spectre: search and replace
+map({ "n", "v" }, "<leader>sr", function()
+  spectre.open_file_search()
+end, { desc = "Search on current file" })
+map({ "n", "v" }, "<leader>sR", function()
+  spectre.open_visual()
+end, { desc = "Search " })
