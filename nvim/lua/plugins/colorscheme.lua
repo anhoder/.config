@@ -13,28 +13,14 @@ return {
     -- "gruvbox-community/gruvbox",
     event = { "VeryLazy" },
   },
-  {
-    "rebelot/kanagawa.nvim",
-    event = { "VeryLazy" },
-  },
-  {
-    "olimorris/onedarkpro.nvim",
-    event = { "VeryLazy" },
-    opts = {
-      options = {
-        -- transparency = true,
-        cursorline = true,
-      },
-    },
-  },
 
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
+    -- version = "10.12.1",
     opts = {
-      -- colorscheme = "onedark",
       colorscheme = "gruvbox",
-      -- colorscheme = "kanagawa",
+      -- colorscheme = "habamax",
     },
   },
 }

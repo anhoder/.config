@@ -1,5 +1,5 @@
 wsl = false
-no-multigrid = true
+no-multigrid = false
 # multigrid = false
 vsync = false
 maximized = true

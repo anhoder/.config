@@ -151,20 +151,7 @@ return {
         },
 
         -- golang
-        gopls = {
-          single_file_support = true,
-          settings = {
-            gopls = {
-              buildFlags = { "-tags=wireinject" },
-              analyses = {
-                fieldalignment = false,
-                ST1000 = false,
-                ST1003 = false,
-                SA4006 = false,
-              },
-            },
-          },
-        },
+        gopls = require("utils.lsp").gopls_config(),
 
         -- clang use `bear`
         clangd = {

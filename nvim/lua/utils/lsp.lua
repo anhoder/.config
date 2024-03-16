@@ -49,4 +49,25 @@ function M.definition_handle(handler)
   end)
 end
 
+function M.gopls_config()
+  return {
+    -- cmd = {
+    --   "gopls",
+    --   "-remote=127.0.0.1:37374",
+    -- },
+    single_file_support = true,
+    settings = {
+      gopls = {
+        buildFlags = { "-tags=wireinject" },
+        analyses = {
+          fieldalignment = false,
+          ST1000 = false,
+          ST1003 = false,
+          SA4006 = false,
+        },
+      },
+    },
+  }
+end
+
 return M

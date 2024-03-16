@@ -1,7 +1,7 @@
 -- neovide 不使用neoscroll
--- if vim.g.neovide then
---   return {}
--- end
+if vim.g.neovide then
+  return {}
+end
 
 return {
   "karb94/neoscroll.nvim",
