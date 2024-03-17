@@ -26,6 +26,7 @@ set -gx HOMEBREW_BREW_GIT_REMOTE https://mirrors.aliyun.com/homebrew/brew.git
 set -gx HOMEBREW_CORE_GIT_REMOTE https://mirrors.aliyun.com/homebrew/homebrew-core.git
 set -gx HOMEBREW_BOTTLE_DOMAIN https://mirrors.aliyun.com/homebrew/homebrew-bottles
 set -gx HOMEBREW_AUTO_UPDATE_SECS 86400
+set -gx HOMEBREW_BUNDLE_FILE "$HOME/.config/homebrew/brewfile"
 if test -z "$HOMEBREW_PREFIX"
     # 默认/usr/local，需要变更，在init.fish中设置
     set -gx HOMEBREW_PREFIX /usr/local

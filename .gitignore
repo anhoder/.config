@@ -18,3 +18,5 @@
 !phpstorm-stubs
 !phpstorm-stubs/
 !phpstorm-stubs/**
+!homebrew/
+!homebrew/**
