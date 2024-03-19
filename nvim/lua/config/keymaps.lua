@@ -21,6 +21,21 @@ local telescope_pickers = require("utils.telescope_pickers")
 local ufo = require("ufo")
 local spectre = require("spectre")
 
+local close_buf = function()
+  local bd = require("mini.bufremove").delete
+  if vim.bo.modified then
+    local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
+    if choice == 1 then -- Yes
+      vim.cmd.write()
+      bd(0)
+    elseif choice == 2 then -- No
+      bd(0, true)
+    end
+  else
+    bd(0)
+  end
+end
+
 local Terminal = toggleterm.Terminal
 local float_opts = {
   border = "curved",
@@ -96,20 +111,7 @@ map({ "n", "i", "v", "t" }, "<C-A-S-Up>", "<Esc><C-w>k", { desc = "Go to upper w
 map({ "n", "i", "v", "t" }, "<C-A-S-Right>", "<Esc><C-w>l", { desc = "Go to right window", noremap = true })
 
 -- Close window
-map({ "n", "i", "v", "t" }, "<D-w>", function()
-  local bd = require("mini.bufremove").delete
-  if vim.bo.modified then
-    local choice = vim.fn.confirm(("Save changes to %q?"):format(vim.fn.bufname()), "&Yes\n&No\n&Cancel")
-    if choice == 1 then -- Yes
-      vim.cmd.write()
-      bd(0)
-    elseif choice == 2 then -- No
-      bd(0, true)
-    end
-  else
-    bd(0)
-  end
-end, { desc = "Close buffer" })
+map({ "n", "i", "v", "t" }, "<D-w>", close_buf, { desc = "Close buffer" })
 
 -- Save
 map({ "n", "i", "v" }, "<D-s>", "<cmd>w<cr><Esc>", { desc = "Save" })
@@ -404,11 +406,16 @@ map({ "n", "v", "i" }, "<D-p>", function()
 end, { desc = "Pin cur buffer" })
 
 -- disable ScrollWheelLeft, ScrollWheelRight
-map({ "n", "v", "i", "s", "c", "o" }, "<ScrollWheelLeft>", "<Nop>", { desc = "Disabled", noremap = true })
-map({ "n", "v", "i", "s", "c", "o" }, "<ScrollWheelRight>", "<Nop>", { desc = "Disabled", noremap = true })
-map({ "n", "v", "i", "s", "c", "o" }, "<S-ScrollWheelLeft>", "<ScrollWheelLeft>", { desc = "Disabled", noremap = true })
+map({ "n", "v", "i", "s", "c", "o", "t" }, "<ScrollWheelLeft>", "<Nop>", { desc = "Disabled", noremap = true })
+map({ "n", "v", "i", "s", "c", "o", "t" }, "<ScrollWheelRight>", "<Nop>", { desc = "Disabled", noremap = true })
 map(
-  { "n", "v", "i", "s", "c", "o" },
+  { "n", "v", "i", "s", "c", "o", "t" },
+  "<S-ScrollWheelLeft>",
+  "<ScrollWheelLeft>",
+  { desc = "Disabled", noremap = true }
+)
+map(
+  { "n", "v", "i", "s", "c", "o", "t" },
   "<S-ScrollWheelRight>",
   "<ScrollWheelRight>",
   { desc = "Disabled", noremap = true }

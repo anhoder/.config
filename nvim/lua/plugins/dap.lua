@@ -10,9 +10,6 @@ local function get_args(config)
   return config
 end
 
-local dapui = require("dapui")
-local dapvscode = require("dap.ext.vscode")
-
 return {
   "mfussenegger/nvim-dap",
   dependencies = {
@@ -23,37 +20,66 @@ return {
     {
       "rcarriga/nvim-dap-ui",
       -- stylua: ignore
+      dependencies = {
+        "nvim-neotest/nvim-nio",
+      },
       keys = {
-        { "<leader>du", function()
-          dapui.toggle({reset = true})
-          vim.cmd("Neotree close") -- close neotree
-        end, desc = "Dap UI", mode = {"n", "v"} },
+        {
+          "<leader>du",
+          function()
+            require("dapui").toggle({ reset = true })
+            vim.cmd("Neotree close") -- close neotree
+          end,
+          desc = "Dap UI",
+          mode = { "n", "v" },
+        },
         --- @diagnostic disable-next-line
-        { "<leader>de", function() dapui.eval(nil, {enter = true}) end, desc = "Eval", mode = {"n", "v"} },
+        {
+          "<leader>de",
+          function()
+            require("dapui").eval(nil, { enter = true })
+          end,
+          desc = "Eval",
+          mode = { "n", "v" },
+        },
         --- @diagnostic disable-next-line
-        { "<leader>dfv", function () dapui.float_element("scopes", {enter = true}) end, desc = "Dap float scopes", mode = {"n", "v"}},
+        {
+          "<leader>dfv",
+          function()
+            require("dapui").float_element("scopes", { enter = true })
+          end,
+          desc = "Dap float scopes",
+          mode = { "n", "v" },
+        },
         --- @diagnostic disable-next-line
-        { "<leader>dfs", function () dapui.float_element("stacks", {enter = true}) end, desc = "Dap float stacks", mode = {"n", "v"}},
+        {
+          "<leader>dfs",
+          function()
+            require("dapui").float_element("stacks", { enter = true })
+          end,
+          desc = "Dap float stacks",
+          mode = { "n", "v" },
+        },
       },
       opts = {},
       config = function(_, opts)
         -- setup dap config by VsCode launch.json file
         require("nvim-dap-projects").search_project_config()
-        dapvscode.load_launchjs()
+        require("dap.ext.vscode").load_launchjs()
         local dap = require("dap")
-        dapui.setup(opts)
+        require("dapui").setup(opts)
         dap.listeners.after.event_initialized["dapui_config"] = function()
           -- 自动开启
           -- vim.cmd("Neotree close")
         end
         dap.listeners.before.event_terminated["dapui_config"] = function()
-          dapui.close()
+          require("dapui").close()
         end
         dap.listeners.before.event_exited["dapui_config"] = function()
-          dapui.close()
+          require("dapui").close()
         end
         dap.listeners.before.disconnect["dapui_config"] = function()
-          dapui.close()
+          require("dapui").close()
         end
       end,
     },

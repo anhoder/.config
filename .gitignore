@@ -20,3 +20,5 @@
 !phpstorm-stubs/**
 !homebrew/
 !homebrew/**
+!wezterm/
+!wezterm/**
