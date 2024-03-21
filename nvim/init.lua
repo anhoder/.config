@@ -30,8 +30,8 @@ vim.opt.smartcase = false
 vim.opt.sessionoptions = "buffers,curdir,folds,globals,tabpages,terminal"
 vim.opt.jumpoptions = "stack"
 vim.opt.swapfile = false
-vim.opt.autoindent = false
-vim.opt.smartindent = false
+vim.opt.autoindent = true
+vim.opt.smartindent = true
 vim.opt.winblend = 10
 vim.opt.pumblend = 10
 vim.opt.mousemoveevent = true
@@ -82,6 +82,8 @@ vim.cmd("hi! link @lsp.typemod.variable.readonly Constant")
 vim.cmd("hi! link @lsp.typemod.variable.defaultLibrary GruvboxPurple")
 vim.cmd("hi! link @lsp.type.member Function")
 vim.cmd("hi! link @lsp.type.property Field")
+vim.cmd("hi! link SagaTitle GruvboxBlueBold")
+vim.cmd("hi! link SagaFinderFname GruvboxAqua")
 
 vim.g.minimap_auto_start = 1
 vim.g.minimap_auto_start_win_enter = 1

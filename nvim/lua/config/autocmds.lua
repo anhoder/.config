@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = startup,
   pattern = "*",
   callback = function()
-    vim.opt.formatoptions = vim.opt.formatoptions - { "c", "r", "o" }
+    vim.opt.formatoptions = vim.opt.formatoptions - { "o" }
   end,
 })
 

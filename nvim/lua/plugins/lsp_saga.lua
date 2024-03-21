@@ -8,12 +8,15 @@ return {
       callhierarchy = {
         keys = {
           vsplit = "v",
-          toggle_or_open = { "<CR>", "o" },
+          toggle_or_open = { "<CR>", "o", "<2-LeftMouse>" },
           quit = { "q", "<ESC>" },
         },
       },
       code_action = {
         extend_gitsigns = false,
+        keys = {
+          quit = { "q", "<ESC>" },
+        },
       },
       diagnostic = {
         extend_relatedInformation = true,
@@ -25,7 +28,7 @@ return {
       finder = {
         keys = {
           vsplit = "v",
-          toggle_or_open = { "<CR>", "o" },
+          toggle_or_open = { "<CR>", "o", "<2-LeftMouse>" },
           quit = { "q", "<ESC>" },
         },
       },
@@ -35,17 +38,15 @@ return {
         virtual_text = true,
       },
       hover = {
-        max_width = 0.8,
-        max_height = 0.5,
+        -- max_width = 0.8,
+        -- max_height = 0.5,
       },
       lightbulb = {
-        enable = true,
-        sign = false,
-        virtual_text = true,
+        enable = false,
       },
       outline = {
         keys = {
-          toggle_or_jump = { "<CR>", "o" },
+          toggle_or_jump = { "<CR>", "o", "<2-LeftMouse>" },
           jump = { "<CR>", "e" },
           quit = { "q", "<ESC>" },
         },
@@ -64,8 +65,8 @@ return {
         scroll_up = "<C-b>",
       },
       ui = {
-        border = "rounded",
-        title = false,
+        -- border = "rounded",
+        -- title = true,
       },
     })
   end,

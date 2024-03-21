@@ -114,7 +114,7 @@ map({ "v" }, "<D-d>", "<cmd>VisualDuplicate +1<cr>", { desc = "Paste", noremap =
 
 -- Copy, paste, cut
 map({ "n", "v" }, "<D-c>", '"+y', { desc = "Copy", noremap = true })
-map({ "n", "v" }, "<D-v>", '"+pgvy', { desc = "Paste", noremap = true })
+map({ "n", "v" }, "<D-v>", "P", { desc = "Paste", noremap = true })
 map({ "t" }, "<D-v>", '<cmd>stopinsert<cr>"+pi', { desc = "Paste", noremap = true })
 map({ "n", "v" }, "<D-x>", '"+x', { desc = "Cut", noremap = true })
 map({ "i", "c" }, "<D-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { desc = "Paste", noremap = true })
@@ -419,9 +419,9 @@ map("n", "<leader>ghb", function()
 end, { desc = "Git Blame", noremap = true })
 
 -- mouse go tnormalo
-map({ "n", "i", "v" }, "<D-LeftMouse>", "<C-LeftMouse>", { desc = "Jump to", noremap = true })
+map({ "n", "i", "v" }, "<D-LeftMouse>", "<LeftMouse>gd", { desc = "Jump to", remap = true })
 map({ "n", "i", "v" }, "<RightMouse>", "<LeftMouse><cmd>normal K<cr>", { desc = "Jump to", noremap = true })
-map({ "n", "i", "v" }, "<2-RightMouse>", "<C-LeftMouse>", { desc = "Jump to", noremap = true })
+map({ "n", "i", "v" }, "<2-RightMouse>", "<LeftMouse>gd", { desc = "Jump to", remap = true })
 
 -- ufo fold
 map({ "n" }, "zM", ufo.closeAllFolds, { desc = "Close all folds(ufo)", remap = true })
