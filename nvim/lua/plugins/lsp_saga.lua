@@ -56,7 +56,9 @@ return {
       },
       rename = {
         auto_save = true,
-        quit = { "<ESC>" },
+        keys = {
+          quit = { "<ESC>" },
+        },
       },
       beacon = {
         enable = false,

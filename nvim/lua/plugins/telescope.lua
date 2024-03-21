@@ -40,6 +40,34 @@ return {
         },
       },
     },
+    config = function()
+      local colors = require("utils.gruvbox").base_30
+      vim.cmd(string.format("hi TelescopePromptPrefix guifg=%s guibg=%s", colors.red, colors.black2))
+      vim.cmd(string.format("hi TelescopeNormal guibg=%s", colors.darker_black))
+      vim.cmd(string.format("hi TelescopePreviewTitle guifg=%s guibg=%s", colors.black, colors.green))
+      vim.cmd(string.format("hi TelescopePromptTitle guifg=%s guibg=%s", colors.black, colors.red))
+      vim.cmd(string.format("hi TelescopeSelection guifg=%s guibg=%s", colors.white, colors.black2))
+      vim.cmd(string.format("hi TelescopeResultsDiffAdd guifg=%s", colors.green))
+      vim.cmd(string.format("hi TelescopeResultsDiffChange guifg=%s", colors.yellow))
+      vim.cmd(string.format("hi TelescopeResultsDiffDelete guifg=%s", colors.red))
+      vim.cmd(string.format("hi TelescopeMatching guifg=%s guibg=%s", colors.blue, colors.one_bg))
+
+      -- for borderless
+      -- vim.cmd(string.format("hi TelescopeBorder guifg=%s guibg=%s", colors.darker_black, colors.darker_black))
+      -- vim.cmd(string.format("hi TelescopePromptBorder guifg=%s guibg=%s", colors.black2, colors.black2))
+      -- vim.cmd(string.format("hi TelescopePromptNormal guifg=%s guibg=%s", colors.white, colors.black2))
+      -- vim.cmd(string.format("hi TelescopeResultsTitle guifg=%s guibg=%s", colors.darker_black, colors.darker_black))
+      -- vim.cmd(string.format("hi TelescopePromptPrefix guifg=%s guibg=%s", colors.red, colors.black2))
+
+      -- for bordered
+      vim.cmd(string.format("hi TelescopeBorder guifg=%s ", colors.one_bg3))
+      vim.cmd(string.format("hi TelescopePromptBorder guifg=%s ", colors.one_bg3))
+      vim.cmd(string.format("hi TelescopeResultsTitle guifg=%s guibg=%s", colors.black, colors.green))
+      vim.cmd(string.format("hi TelescopePreviewTitle guifg=%s guibg=%s", colors.black, colors.blue))
+      vim.cmd(string.format("hi TelescopePromptPrefix guifg=%s guibg=%s", colors.red, colors.black))
+      vim.cmd(string.format("hi TelescopeNormal guibg=%s", colors.black))
+      vim.cmd(string.format("hi TelescopePromptNormal guibg=%s", colors.black))
+    end,
   },
   {
     "nvim-telescope/telescope-fzf-native.nvim",
