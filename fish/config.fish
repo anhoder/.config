@@ -16,6 +16,11 @@ alias ga="git add"
 alias gm="git merge"
 alias gc="git commit"
 
+# ls
+alias ls="gls --color -h --hyperlink=auto"
+
+alias kssh="kitten ssh"
+
 # VSCode-Insider
 alias code="code-insiders"
 
@@ -47,7 +52,10 @@ set -gx PATH "$HOME/.composer/vendor/bin:$PATH"
 set -gx PATH "$HOMEBREW_PREFIX/opt/openssl@1.1/bin:$HOMEBREW_PREFIX/opt/libiconv/bin:$HOMEBREW_PREFIX/opt/curl/bin:$HOMEBREW_PREFIX/opt/bison/bin:$GOPATH/bin:$PATH"
 
 # LDFLAGS
-set -gx LDFLAGS "$LDFLAGS -L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/libiconv/lib -L$HOMEBREW_PREFIX/opt/curl/lib -L$HOMEBREW_PREFIX/opt/bison/lib"
+set -gx LDFLAGS "$LDFLAGS -L$HOMEBREW_PREFIX/lib -L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/libiconv/lib -L$HOMEBREW_PREFIX/opt/curl/lib -L$HOMEBREW_PREFIX/opt/bison/lib -L$HOMEBREW_PREFIX/opt/cairo/lib"
+
+# DYLD_LIBRARY_PATH
+set -gx DYLD_FALLBACK_LIBRARY_PATH "$DYLD_FALLBACK_LIBRARY_PATH:$HOMEBREW_PREFIX/lib:$HOMEBREW_PREFIX/opt/openssl@1.1/lib:$HOMEBREW_PREFIX/opt/libiconv/lib:$HOMEBREW_PREFIX/opt/curl/lib:$HOMEBREW_PREFIX/opt/bison/lib:$HOMEBREW_PREFIX/opt/cairo/lib"
 
 # LIBS
 set -gx LIBS "$LIBS -lssl -lcrypto"

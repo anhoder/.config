@@ -94,21 +94,11 @@ map({ "n", "i", "v", "t" }, "<C-D-Down>", "<cmd>resize -2<cr>", { desc = "Decrea
 map({ "n", "i", "v", "t" }, "<C-D-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
 map({ "n", "i", "v", "t" }, "<C-D-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
 
-map({ "n", "i", "v", "t" }, "<C-D-S-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })
-map({ "n", "i", "v", "t" }, "<C-D-S-Down>", "<cmd>resize -2<cr>", { desc = "Decrease window height" })
-map({ "n", "i", "v", "t" }, "<C-D-S-Left>", "<cmd>vertical resize -2<cr>", { desc = "Decrease window width" })
-map({ "n", "i", "v", "t" }, "<C-D-S-Right>", "<cmd>vertical resize +2<cr>", { desc = "Increase window width" })
-
 -- Move to window using the <ctrl> hjkl keys
 map({ "n", "i", "v", "t" }, "<C-A-Left>", "<Esc><Esc><C-w>h", { desc = "Go to left window", noremap = true })
 map({ "n", "i", "v", "t" }, "<C-A-Down>", "<Esc><Esc><C-w>j", { desc = "Go to lower window", noremap = true })
 map({ "n", "i", "v", "t" }, "<C-A-Up>", "<Esc><Esc><C-w>k", { desc = "Go to upper window", noremap = true })
 map({ "n", "i", "v", "t" }, "<C-A-Right>", "<Esc><Esc><C-w>l", { desc = "Go to right window", noremap = true })
-
-map({ "n", "i", "v", "t" }, "<C-A-S-Left>", "<Esc><C-w>h", { desc = "Go to left window", noremap = true })
-map({ "n", "i", "v", "t" }, "<C-A-S-Down>", "<Esc><C-w>j", { desc = "Go to lower window", noremap = true })
-map({ "n", "i", "v", "t" }, "<C-A-S-Up>", "<Esc><C-w>k", { desc = "Go to upper window", noremap = true })
-map({ "n", "i", "v", "t" }, "<C-A-S-Right>", "<Esc><C-w>l", { desc = "Go to right window", noremap = true })
 
 -- Close window
 map({ "n", "i", "v", "t" }, "<D-w>", close_buf, { desc = "Close buffer" })
@@ -128,12 +118,6 @@ map({ "n", "v" }, "<D-v>", '"+pgvy', { desc = "Paste", noremap = true })
 map({ "t" }, "<D-v>", '<cmd>stopinsert<cr>"+pi', { desc = "Paste", noremap = true })
 map({ "n", "v" }, "<D-x>", '"+x', { desc = "Cut", noremap = true })
 map({ "i", "c" }, "<D-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { desc = "Paste", noremap = true })
-
-map({ "n", "v" }, "<D-S-c>", '"+y', { desc = "Copy", noremap = true })
-map({ "n", "v" }, "<D-S-v>", '"+pgvy', { desc = "Paste", noremap = true })
-map({ "t" }, "<D-S-v>", '<cmd>stopinsert<cr>"+pi', { desc = "Paste", noremap = true })
-map({ "n", "v" }, "<D-S-x>", '"+x', { desc = "Cut", noremap = true })
-map({ "i", "c" }, "<D-S-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { desc = "Paste", noremap = true })
 
 -- Delete a word
 map({ "i" }, "<D-BS>", "<C-w>", { desc = "Delete word backword", noremap = true })
@@ -165,9 +149,6 @@ map({ "n", "i", "v" }, "<D-a>", "<Esc>ggVG", { desc = "Select all" })
 
 -- Format code
 map({ "n", "i", "v" }, "<A-f>", vim.lsp.buf.format, { desc = "Format code" })
-
--- code len action
-map({ "n" }, "<leader>co", vim.lsp.codelens.run, { desc = "Run CodeLenAct" })
 
 -- Comment
 map({ "i", "n" }, "<D-/>", function()
@@ -438,8 +419,9 @@ map("n", "<leader>ghb", function()
 end, { desc = "Git Blame", noremap = true })
 
 -- mouse go tnormalo
-map({ "n", "i", "v" }, "<D-LeftMouse>", "<LeftMouse><cmd>normal gD<cr>", { desc = "Jump to", noremap = true })
+map({ "n", "i", "v" }, "<D-LeftMouse>", "<C-LeftMouse>", { desc = "Jump to", noremap = true })
 map({ "n", "i", "v" }, "<RightMouse>", "<LeftMouse><cmd>normal K<cr>", { desc = "Jump to", noremap = true })
+map({ "n", "i", "v" }, "<2-RightMouse>", "<C-LeftMouse>", { desc = "Jump to", noremap = true })
 
 -- ufo fold
 map({ "n" }, "zM", ufo.closeAllFolds, { desc = "Close all folds(ufo)", remap = true })

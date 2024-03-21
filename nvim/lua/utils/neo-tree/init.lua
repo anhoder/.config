@@ -8,8 +8,8 @@ local config = {
     "filesystem",
     "buffers",
     "git_status",
-    "document_symbols",
-    "diagnostics",
+    -- "document_symbols",
+    -- "diagnostics",
   },
   source_selector = {
     winbar = true, -- toggle to show selector on winbar

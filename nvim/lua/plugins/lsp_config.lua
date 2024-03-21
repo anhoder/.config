@@ -1,90 +1,13 @@
 local home = vim.fn.expand("$HOME")
 local telescope_pickers = require("utils.telescope_pickers")
-local keys = require("lazyvim.plugins.lsp.keymaps").get()
 local telescope_themes = require("telescope.themes")
 local lsputil = require("utils.lsp")
-
-table.insert(keys, {
-  "gR",
-  function()
-    local opts = telescope_themes.get_ivy()
-    opts["picker"] = "lsp_references"
-    telescope_pickers.prettyLsp(opts)
-  end,
-  desc = "Goto references",
-})
-
-table.insert(keys, {
-  "gi",
-  function()
-    vim.cmd("Glance implementations")
-  end,
-  desc = "Goto implementations",
-})
-
-table.insert(keys, {
-  "gY",
-  function()
-    local opts = telescope_themes.get_ivy()
-    opts["picker"] = "lsp_type_definitions"
-    opts["reuse_win"] = true
-    telescope_pickers.prettyLsp(opts)
-  end,
-  desc = "Goto type definitions",
-})
-
-local keymap_rewrite = {
-  ["gr"] = function()
-    vim.cmd("Glance references")
-  end,
-
-  ["gD"] = function()
-    lsputil.definition_handle(function(is_definition)
-      local opts = telescope_themes.get_ivy()
-      opts["picker"] = "lsp_references"
-
-      if is_definition then
-        opts["picker"] = "lsp_definitions"
-      end
-
-      telescope_pickers.prettyLsp(opts)
-    end)
-  end,
-
-  ["gd"] = function()
-    lsputil.definition_handle(function(is_definition)
-      if is_definition then
-        vim.cmd("Glance definitions")
-        return
-      end
-      vim.cmd("Glance references")
-    end)
-  end,
-
-  ["gI"] = function()
-    local opts = telescope_themes.get_ivy()
-    opts["picker"] = "lsp_implementations"
-    opts["reuse_win"] = true
-    telescope_pickers.prettyLsp(opts)
-  end,
-
-  ["gy"] = function()
-    vim.cmd("Glance type_definitions")
-  end,
-
-  -- hover fold
-  ["K"] = function()
-    local winid = require("ufo").peekFoldedLinesUnderCursor()
-    if not winid then
-      vim.lsp.buf.hover()
-    end
-  end,
-}
 
 return {
   {
     "neovim/nvim-lspconfig",
     opts = {
+      single_file_support = true,
       inlay_hints = {
         enabled = true,
       },
@@ -175,6 +98,90 @@ return {
       },
     },
     init = function()
+      local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      keys[#keys + 1] = { "gr", "<cmd>Lspsaga finder ref<cr>", desc = "Saga List references" }
+      keys[#keys + 1] = {
+        "gR",
+        function()
+          local opts = telescope_themes.get_ivy()
+          opts["picker"] = "lsp_references"
+          telescope_pickers.prettyLsp(opts)
+        end,
+        desc = "Goto references",
+      }
+
+      keys[#keys + 1] = { "gi", "<cmd>Lspsaga finder imp<cr>", desc = "Saga Goto implementations" }
+      keys[#keys + 1] = {
+        "gI",
+        function()
+          local opts = telescope_themes.get_ivy()
+          opts["picker"] = "lsp_implementations"
+          opts["reuse_win"] = true
+          telescope_pickers.prettyLsp(opts)
+        end,
+        desc = "Goto implementations",
+      }
+
+      keys[#keys + 1] = { "gy", "Lspsaga goto_type_definition", desc = "Saga Goto type definitions" }
+      keys[#keys + 1] = {
+        "gY",
+        function()
+          local opts = telescope_themes.get_ivy()
+          opts["picker"] = "lsp_type_definitions"
+          opts["reuse_win"] = true
+          telescope_pickers.prettyLsp(opts)
+        end,
+        desc = "Goto type definitions",
+      }
+
+      keys[#keys + 1] = {
+        "gd",
+        function()
+          lsputil.definition_handle(function(is_definition)
+            if is_definition then
+              vim.cmd("Lspsaga goto_definition")
+              return
+            end
+            vim.cmd("Lspsaga finder ref")
+          end)
+        end,
+        desc = "Saga Goto definition",
+      }
+      keys[#keys + 1] = {
+        "gD",
+        function()
+          lsputil.definition_handle(function(is_definition)
+            local opts = telescope_themes.get_ivy()
+            opts["picker"] = "lsp_references"
+
+            if is_definition then
+              opts["picker"] = "lsp_definitions"
+            end
+            telescope_pickers.prettyLsp(opts)
+          end)
+        end,
+        desc = "Goto definition",
+      }
+
+      keys[#keys + 1] = {
+        "K",
+        function()
+          local winid = require("ufo").peekFoldedLinesUnderCursor()
+          if not winid then
+            -- vim.cmd("Lspsaga hover_doc")
+            vim.lsp.buf.hover()
+          end
+        end,
+        desc = "Hover",
+      }
+
+      keys[#keys + 1] = { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Saga Code Action" }
+      keys[#keys + 1] = { "<leader>co", vim.lsp.codelens.run, desc = "Saga Run CodeLenAct" }
+      keys[#keys + 1] = { "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Saga Goto next diagnostic" }
+      keys[#keys + 1] = { "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Saga Goto prev diagnostic" }
+      keys[#keys + 1] = { "<leader>cs", "<cmd>Lspsaga outline<cr>", desc = "Saga Open outline" }
+      keys[#keys + 1] = { "<leader>cr", "<cmd>Lspsaga rename<cr>", desc = "Saga Rename" }
+
       -- local lspconfig = require("lspconfig")
       -- local configs = require("lspconfig.configs")
       --
@@ -188,12 +195,6 @@ return {
       --   }
       -- end
       -- lspconfig.pls.setup({})
-
-      for i, key in pairs(keys) do
-        if keymap_rewrite[key[1]] then
-          keys[i][2] = keymap_rewrite[key[1]]
-        end
-      end
     end,
   },
 }

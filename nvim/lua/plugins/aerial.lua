@@ -1,3 +1,7 @@
+if true then
+  return {}
+end
+
 local Config = require("lazyvim.config")
 local Util = require("lazyvim.util")
 

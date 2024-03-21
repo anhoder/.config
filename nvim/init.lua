@@ -91,6 +91,9 @@ vim.g.go_highlight_generate_tags = 1
 
 vim.g.neovide_scale_factor = 1.0
 vim.g.neovide_transparency = 0.8
+vim.g.neovide_window_blurred = true
+vim.g.neovide_floating_shadow = true
+vim.g.neovide_scroll_animation_length = 0.2
 -- vim.g.neovide_background_color = "#0f111700"
 
 -- vim.g.transparency = 0.8
@@ -104,12 +107,12 @@ vim.g.neovide_input_ime = true
 
 -- vim.g.neovide_hide_mouse_when_typing = true
 vim.g.neovide_cursor_animation_length = 0.05
-vim.g.neovide_cursor_trail_size = 0.5
+vim.g.neovide_cursor_trail_size = 0
 vim.g.neovide_refresh_rate_idle = 60
 vim.g.neovide_confirm_quit = true
 vim.g.neovide_remember_window_size = true
-vim.g.neovide_cursor_animate_in_insert_mode = true
-vim.g.neovide_cursor_animate_command_line = true
+vim.g.neovide_cursor_animate_in_insert_mode = false
+vim.g.neovide_cursor_animate_command_line = false
 -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
 -- vim.g.neovide_cursor_vfx_particle_density = 15.0
 vim.g.neovide_fullscreen = true

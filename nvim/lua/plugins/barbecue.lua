@@ -1,3 +1,7 @@
+if true then
+  return {}
+end
+
 local icons = require("utils.icons")
 
 return {

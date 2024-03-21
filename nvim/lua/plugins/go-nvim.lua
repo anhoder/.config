@@ -52,6 +52,7 @@ return {
         end,
         group = format_sync_grp,
       })
+      vim.keymap.set("n", "<leader>ci", require("go.format").goimport, { desc = "import go module" })
     end,
     build = ':lua require("go.install").update_all_sync()',
   },

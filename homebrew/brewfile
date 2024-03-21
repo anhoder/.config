@@ -59,6 +59,7 @@ brew "vim"
 brew "watch"
 brew "wget"
 brew "yarn"
+brew "g-ls"
 brew "anhoder/repo/neovim", link: false
 brew "git-chglog/git-chglog/git-chglog"
 brew "anhoder/repo/neovim-nightly"

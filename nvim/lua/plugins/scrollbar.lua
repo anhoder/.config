@@ -13,6 +13,7 @@ return {
       "mason",
       "DressingInput",
       "neo-tree-popup",
+      "sagafinder",
       "",
     },
     handle = {
