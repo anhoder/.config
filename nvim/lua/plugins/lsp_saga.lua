@@ -56,6 +56,7 @@ return {
       },
       rename = {
         auto_save = true,
+        quit = { "<ESC>" },
       },
       beacon = {
         enable = false,
@@ -65,7 +66,7 @@ return {
         scroll_up = "<C-b>",
       },
       ui = {
-        -- border = "rounded",
+        border = "single",
         -- title = true,
       },
     })
