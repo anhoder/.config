@@ -47,7 +47,7 @@ return {
       outline = {
         keys = {
           toggle_or_jump = { "<CR>", "o", "<2-LeftMouse>" },
-          jump = { "<CR>", "e" },
+          jump = { "e" },
           quit = { "q", "<ESC>" },
         },
         close_after_jump = true,
@@ -55,6 +55,7 @@ return {
         layout = "float",
       },
       rename = {
+        in_select = false,
         auto_save = true,
         keys = {
           quit = { "<ESC>" },

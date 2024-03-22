@@ -32,8 +32,8 @@ vim.opt.jumpoptions = "stack"
 vim.opt.swapfile = false
 vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.winblend = 5
-vim.opt.pumblend = 5
+vim.opt.winblend = 10
+vim.opt.pumblend = 10
 vim.opt.mousemoveevent = true
 vim.opt.termguicolors = true
 vim.opt.foldcolumn = "1" -- '0' is not bad
@@ -85,6 +85,25 @@ vim.cmd("hi! link @lsp.type.property Field")
 vim.cmd("hi! link SagaTitle GruvboxBlueBold")
 vim.cmd("hi! link SagaFinderFname GruvboxAqua")
 
+-- for telescope
+local base30 = require("utils.gruvbox").base_30
+vim.cmd(string.format("hi TelescopePromptPrefix guifg=%s guibg=%s", base30.pink, base30.one_bg2))
+vim.cmd(string.format("hi TelescopeNormal guibg=%s", base30.black2))
+vim.cmd(string.format("hi TelescopePreviewTitle guifg=%s guibg=%s", base30.one_bg, base30.green))
+vim.cmd(string.format("hi TelescopePromptTitle guifg=%s guibg=%s", base30.one_bg, base30.pink))
+vim.cmd(string.format("hi TelescopeSelection guifg=%s guibg=%s", base30.white, base30.one_bg3))
+vim.cmd(string.format("hi TelescopeSelectionCaret guifg=%s guibg=%s", base30.one_bg3, base30.one_bg3))
+vim.cmd(string.format("hi TelescopeResultsDiffAdd guifg=%s", base30.green))
+vim.cmd(string.format("hi TelescopeResultsDiffChange guifg=%s", base30.yellow))
+vim.cmd(string.format("hi TelescopeResultsDiffDelete guifg=%s", base30.pink))
+vim.cmd(string.format("hi TelescopeMatching guifg=%s", base30.orange))
+vim.cmd(string.format("hi TelescopeBorder guifg=%s guibg=%s", base30.black2, base30.black2))
+vim.cmd(string.format("hi TelescopePromptBorder guifg=%s guibg=%s", base30.one_bg2, base30.one_bg2))
+vim.cmd(string.format("hi TelescopePromptNormal guifg=%s guibg=%s", base30.white, base30.one_bg2))
+vim.cmd(string.format("hi TelescopeResultsTitle guifg=%s guibg=%s", base30.one_bg2, base30.orange))
+vim.cmd(string.format("hi TelescopePromptPrefix guifg=%s guibg=%s", base30.pink, base30.one_bg2))
+vim.cmd(string.format("hi TelescopePromptCounter guifg=%s guibg=%s", base30.pink, base30.one_bg2))
+
 vim.g.minimap_auto_start = 1
 vim.g.minimap_auto_start_win_enter = 1
 
@@ -95,7 +114,7 @@ vim.g.neovide_scale_factor = 1.0
 vim.g.neovide_transparency = 0.8
 vim.g.neovide_window_blurred = true
 vim.g.neovide_floating_shadow = true
-vim.g.neovide_scroll_animation_length = 0.2
+vim.g.neovide_scroll_animation_length = 0
 -- vim.g.neovide_background_color = "#0f111700"
 
 -- vim.g.transparency = 0.8
@@ -104,11 +123,11 @@ vim.g.neovide_scroll_animation_length = 0.2
 -- end
 -- vim.g.neovide_background_color = "#0f1117" .. alpha()
 
-vim.g.neovide_scroll_animation_far_lines = 0
+vim.g.neovide_scroll_animation_far_lines = 1
 vim.g.neovide_input_ime = true
 
 -- vim.g.neovide_hide_mouse_when_typing = true
-vim.g.neovide_cursor_animation_length = 0.05
+vim.g.neovide_cursor_animation_length = 0
 vim.g.neovide_cursor_trail_size = 0
 vim.g.neovide_refresh_rate_idle = 60
 vim.g.neovide_confirm_quit = true
