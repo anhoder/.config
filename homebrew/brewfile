@@ -62,6 +62,7 @@ brew "yarn"
 brew "g-ls"
 brew "coreutils"
 brew "vegeta"
+brew "imagemagick"
 brew "anhoder/repo/neovim", link: false
 brew "git-chglog/git-chglog/git-chglog"
 brew "anhoder/repo/neovim-nightly"
