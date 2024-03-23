@@ -52,7 +52,8 @@ return {
       --   end,
       --   group = format_sync_grp,
       -- })
-      vim.keymap.set("n", "<leader>ci", require("go.format").goimport, { desc = "import go module" })
+      vim.keymap.set("n", "<leader>ci", require("go.format").goimport, { desc = "Import go module" })
+      vim.keymap.set("n", "<leader>tc", "<cmd>GoCoverage -p<cr>", { desc = "Run converage package" })
     end,
     build = ':lua require("go.install").update_all_sync()',
   },
