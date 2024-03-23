@@ -58,6 +58,7 @@ function M.gopls_config()
     single_file_support = true,
     settings = {
       gopls = {
+        gofumpt = true,
         buildFlags = { "-tags=wireinject" },
         analyses = {
           fieldalignment = false,
@@ -65,6 +66,7 @@ function M.gopls_config()
           ST1003 = false,
           SA4006 = false,
         },
+        usePlaceholders = false,
       },
     },
   }

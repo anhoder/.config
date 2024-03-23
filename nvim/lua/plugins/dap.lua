@@ -1,6 +1,7 @@
 ---@param config {args?:string[]|fun():string[]?}
 local function get_args(config)
   local args = type(config.args) == "function" and (config.args() or {}) or config.args or {}
+  args = type(args) == "table" and args or {}
   config = vim.deepcopy(config)
   ---@cast args string[]
   config.args = function()
@@ -8,6 +9,27 @@ local function get_args(config)
     return vim.split(vim.fn.expand(new_args) --[[@as string]], " ")
   end
   return config
+end
+
+local dapui_opened = false
+
+local dapui_close = function()
+  require("dapui").close()
+  dapui_opened = false
+end
+
+local dapui_open = function(opts)
+  require("dapui").open(opts)
+  vim.cmd("Neotree close")
+  dapui_opened = true
+end
+
+local dapui_toggle = function()
+  if dapui_opened then
+    dapui_close()
+  else
+    dapui_open()
+  end
 end
 
 return {
@@ -26,10 +48,7 @@ return {
       keys = {
         {
           "<leader>du",
-          function()
-            require("dapui").toggle({ reset = true })
-            vim.cmd("Neotree close") -- close neotree
-          end,
+          dapui_toggle,
           desc = "Dap UI",
           mode = { "n", "v" },
         },
@@ -67,19 +86,26 @@ return {
         require("nvim-dap-projects").search_project_config()
         require("dap.ext.vscode").load_launchjs()
         local dap = require("dap")
-        require("dapui").setup(opts)
-        dap.listeners.after.event_initialized["dapui_config"] = function()
-          -- 自动开启
-          -- vim.cmd("Neotree close")
+        local dapui = require("dapui")
+        dapui.setup(opts)
+        dap.listeners.before.attach.dapui_config = function()
+          if not dapui_opened then
+            dapui_open({ layout = 2 })
+          end
         end
-        dap.listeners.before.event_terminated["dapui_config"] = function()
-          require("dapui").close()
+        dap.listeners.before.launch.dapui_config = function()
+          if not dapui_opened then
+            dapui_open({ layout = 2 })
+          end
         end
-        dap.listeners.before.event_exited["dapui_config"] = function()
-          require("dapui").close()
+        dap.listeners.before.event_terminated.dapui_config = function()
+          dapui_close()
         end
-        dap.listeners.before.disconnect["dapui_config"] = function()
-          require("dapui").close()
+        dap.listeners.before.event_exited.dapui_config = function()
+          dapui_close()
+        end
+        dap.listeners.before.disconnect.dapui_config = function()
+          dapui_close()
         end
       end,
     },
