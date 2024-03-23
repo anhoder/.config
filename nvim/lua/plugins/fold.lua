@@ -31,6 +31,7 @@ return {
       close_fold_kinds_for_ft = {
         default = { "imports" },
       },
+      ---@diagnostic disable-next-line: unused-local
       provider_selector = function(bufnr, filetype, buftype)
         return ftMap[filetype] or customizeSelector
       end,

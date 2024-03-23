@@ -1,3 +1,8 @@
+-- bootstrap lazy.nvim, LazyVim and your plugins
+
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
+package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
+
 -- for kitty, must be here
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
   group = vim.api.nvim_create_augroup("KittySetVarVimEnter", { clear = true }),
@@ -13,9 +18,7 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
   end,
 })
 
--- bootstrap lazy.nvim, LazyVim and your plugins
 require("config.lazy")
-local colors = require("utils.colors")
 
 vim.g.guifont = "JetBrainsMono Nerd Font Mono"
 vim.g.guifontsize = 15
@@ -49,14 +52,18 @@ vim.diagnostic.config({
   },
 })
 
+vim.g.minimap_auto_start = 1
+vim.g.minimap_auto_start_win_enter = 1
+
+vim.g.go_highlight_build_constraints = 1
+vim.g.go_highlight_generate_tags = 1
+
+-- highlight
 vim.cmd("hi Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
 vim.cmd("hi GitSignsCurrentLineBlame cterm=italic gui=italic guifg=#858577 guibg=0")
-if vim.g.neovide then
-  vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
-else
-  vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=0 guifg=#767676")
-end
+vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=0 guifg=#767676")
 
+local colors = require("utils.colors")
 vim.cmd("hi DashboardHeader guifg=" .. colors.random_color())
 vim.cmd("hi DashboardFooter guifg=#787c99")
 vim.cmd("hi DashboardFind guifg=#C0CAF5")
@@ -104,12 +111,12 @@ vim.cmd(string.format("hi TelescopeResultsTitle guifg=%s guibg=%s", base30.one_b
 vim.cmd(string.format("hi TelescopePromptPrefix guifg=%s guibg=%s", base30.pink, base30.one_bg2))
 vim.cmd(string.format("hi TelescopePromptCounter guifg=%s guibg=%s", base30.pink, base30.one_bg2))
 
-vim.g.minimap_auto_start = 1
-vim.g.minimap_auto_start_win_enter = 1
+-- next is for neovide
+if not vim.g.neovide then
+  return
+end
 
-vim.g.go_highlight_build_constraints = 1
-vim.g.go_highlight_generate_tags = 1
-
+vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
 vim.g.neovide_scale_factor = 1.0
 vim.g.neovide_transparency = 0.8
 vim.g.neovide_window_blurred = true

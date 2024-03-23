@@ -31,13 +31,5 @@ return {
         require("mason-nvim-dap").default_setup(config) -- don't forget this!
       end,
     },
-    ensure_installed = {
-      -- Update this to ensure that you have the debuggers for the langs you want
-      "php",
-      "codelldb",
-      "cpptools",
-      --   "bash",
-      --   "python",
-    },
   },
 }

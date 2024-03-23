@@ -236,6 +236,7 @@ function M.prettyGrepPicker(pickerAndOptions)
       local tailForDisplay = tail .. " "
 
       -- Encode text if necessary
+      ---@diagnostic disable-next-line: param-type-mismatch
       local text = options.file_encoding and vim.iconv(entry.text, options.file_encoding, "utf8") or entry.text
 
       -- INSIGHT: This return value should be a tuple of 2, where the first value is the actual value
@@ -360,6 +361,7 @@ function M.prettyLsp(pickerAndOptions)
       local tailForDisplay = tail .. " "
 
       -- Encode text if necessary
+      ---@diagnostic disable-next-line: param-type-mismatch
       local text = options.file_encoding and vim.iconv(entry.text, options.file_encoding, "utf8") or entry.text
 
       -- INSIGHT: This return value should be a tuple of 2, where the first value is the actual value

@@ -10,10 +10,10 @@ if vim.g.vscode then
 end
 
 local toggleterm = require("toggleterm.terminal")
-local telescope = require("telescope")
-local telescope_builtin = require("telescope.builtin")
-local telescope_themes = require("telescope.themes")
-local ivy_theme = telescope_themes.get_ivy({ sorting_strategy = "descending" })
+-- local telescope = require("telescope")
+-- local telescope_builtin = require("telescope.builtin")
+-- local telescope_themes = require("telescope.themes")
+-- local ivy_theme = telescope_themes.get_ivy({ sorting_strategy = "descending" })
 local Util = require("lazyvim.util")
 local neotree_manager = require("neo-tree.sources.manager")
 local neotree_render = require("neo-tree.ui.renderer")
@@ -104,7 +104,7 @@ map({ "n", "i", "v", "t" }, "<C-A-Right>", "<Esc><Esc><C-w>l", { desc = "Go to r
 map({ "n", "i", "v", "t" }, "<D-w>", close_buf, { desc = "Close buffer" })
 
 -- Save
-map({ "n", "i", "v" }, "<D-s>", "<cmd>w<cr><Esc>", { desc = "Save" })
+map({ "n", "i", "v" }, "<D-s>", "<Esc><cmd>w<cr>", { desc = "Save" })
 map({ "n", "i", "v", "s", "c" }, "<D-z>", "<cmd>undo<cr>", { desc = "Undo" })
 map({ "n", "i", "v", "s", "c" }, "<D-y>", "<cmd>redo<cr>", { desc = "Redo" })
 map({ "n", "i", "v", "s", "c" }, "<D-S-z>", "<cmd>redo<cr>", { desc = "Redo" })

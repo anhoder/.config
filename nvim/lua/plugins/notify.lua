@@ -1,11 +1,15 @@
 return {
   "rcarriga/nvim-notify",
   opts = {
-    timeout = 1500,
+    timeout = 2000,
     fps = 60,
-    max_width = 50,
-    max_height = 10,
-    -- render = "wrapped-compact",
-    top_down = false,
+    max_height = function()
+      return math.floor(vim.o.lines * 0.2)
+    end,
+    max_width = function()
+      return math.floor(vim.o.columns * 0.5)
+    end,
+    render = "wrapped-compact",
+    top_down = true,
   },
 }

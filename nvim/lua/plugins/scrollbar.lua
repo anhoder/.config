@@ -16,6 +16,7 @@ return {
       "neo-tree-popup",
       "sagafinder",
       "saga_codeaction",
+      "notify",
       "",
     },
     handle = {

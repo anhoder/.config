@@ -1,6 +1,16 @@
 return {
   "NvChad/nvim-colorizer.lua",
-  config = function()
-    require("colorizer").setup({})
-  end,
+  opts = {
+    filetypes = {
+      "*",
+      "!noice",
+      "!notify",
+      "!neo-tree",
+    },
+    user_default_options = {
+      names = false,
+      -- Available methods are false / true / "normal" / "lsp" / "both"
+      tailwind = false,
+    },
+  },
 }

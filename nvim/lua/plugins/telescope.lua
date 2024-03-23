@@ -33,6 +33,8 @@ return {
             ["<D-Down>"] = require("telescope.actions").cycle_history_next,
           },
         },
+        winblend = 0,
+        pumblend = 0,
       },
       extensions = {
         frecency = {
@@ -46,14 +48,6 @@ return {
     build = "make",
     config = function()
       require("telescope").load_extension("fzf")
-    end,
-  },
-  {
-    "nvim-telescope/telescope-frecency.nvim",
-    event = { "VeryLazy" },
-    enabled = false,
-    config = function()
-      require("telescope").load_extension("frecency")
     end,
   },
   {

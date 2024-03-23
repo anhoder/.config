@@ -84,6 +84,7 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
 vim.api.nvim_create_autocmd("User", {
   pattern = "GitConflictDetected",
   callback = function()
+    vim.notify("Conflict detected in " .. vim.fn.expand("<afile>"))
     vim.keymap.set("n", "<leader>gx]", "<cmd>GitConflictNextConflict<cr>", { desc = "Next git conflict" })
     vim.keymap.set("n", "<leader>gx[", "<cmd>GitConflictPrevConflict<cr>", { desc = "Prev git conflict" })
     vim.keymap.set("n", "<leader>gxo", "<cmd>GitConflictChooseOurs<cr>", { desc = "GitConflict choose ours" })

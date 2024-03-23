@@ -17,7 +17,7 @@ return {
       capabilities = {
         textDocument = {
           foldingRange = {
-            dynamicRegistration = false,
+            dynamicRegistration = true,
             lineFoldingOnly = true,
           },
         },

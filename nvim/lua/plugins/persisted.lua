@@ -1,5 +1,6 @@
 return {
   "anhoder/persisted.nvim",
+  lazy = true,
   opts = {
     autosave = true,
     should_autosave = function()
