@@ -1,6 +1,6 @@
 return {
   "anhoder/persisted.nvim",
-  lazy = true,
+  event = { "VeryLazy", "CmdlineEnter" },
   opts = {
     autosave = true,
     should_autosave = function()
