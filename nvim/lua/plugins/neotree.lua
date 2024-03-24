@@ -8,6 +8,9 @@ return {
     -- "mrbjarksen/neo-tree-diagnostics.nvim",
     {
       "3rd/image.nvim",
+      enabled = function()
+        return not vim.g.neovide
+      end,
       opts = {
         backend = "kitty",
         integrations = {
