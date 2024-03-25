@@ -239,6 +239,12 @@ map("n", "<leader>gg", function()
     lazygit:set_mode(toggleterm.mode.INSERT)
   end
 end, { desc = "Run lazygit" })
+map({ "i", "n", "v", "s", "t", "o" }, "<D-g>", function()
+  lazygit:toggle()
+  if lazygit:is_open() then
+    lazygit:set_mode(toggleterm.mode.INSERT)
+  end
+end, { desc = "Run lazygit" })
 
 -- fork
 map("n", "<leader>gf", function()

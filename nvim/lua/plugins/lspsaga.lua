@@ -26,6 +26,10 @@ return {
         },
       },
       finder = {
+        max_height = 0.6,
+        left_width = 0.2,
+        right_width = 0.8,
+        layout = "float",
         keys = {
           vsplit = "v",
           toggle_or_open = { "<CR>", "o", "<2-LeftMouse>" },

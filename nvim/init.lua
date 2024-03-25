@@ -20,7 +20,7 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
 
 require("config.lazy")
 
-vim.g.guifont = "JetbrainsMono Nerd Font"
+vim.g.guifont = "MesloLGL Nerd Font"
 vim.g.guifontsize = 15
 vim.opt.guifont = vim.g.guifont .. ":h" .. vim.g.guifontsize
 -- vim.opt.linespace = 6

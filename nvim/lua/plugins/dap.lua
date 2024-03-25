@@ -14,14 +14,15 @@ end
 local dapui_opened = false
 
 local dapui_close = function()
-  require("dapui").close()
   dapui_opened = false
+  require("dapui").close()
 end
 
 local dapui_open = function(opts)
+  dapui_opened = true
+  opts.reset = true
   require("dapui").open(opts)
   vim.cmd("Neotree close")
-  dapui_opened = true
 end
 
 local dapui_toggle = function()
@@ -98,15 +99,15 @@ return {
             dapui_open({ layout = 2 })
           end
         end
-        dap.listeners.before.event_terminated.dapui_config = function()
-          dapui_close()
-        end
-        dap.listeners.before.event_exited.dapui_config = function()
-          dapui_close()
-        end
-        dap.listeners.before.disconnect.dapui_config = function()
-          dapui_close()
-        end
+        -- dap.listeners.before.event_terminated.dapui_config = function()
+        --   dapui_close()
+        -- end
+        -- dap.listeners.before.event_exited.dapui_config = function()
+        --   dapui_close()
+        -- end
+        -- dap.listeners.before.disconnect.dapui_config = function()
+        --   dapui_close()
+        -- end
       end,
     },
 
