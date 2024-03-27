@@ -112,6 +112,23 @@ vim.cmd(string.format("hi TelescopeResultsTitle guifg=%s guibg=%s", base30.one_b
 vim.cmd(string.format("hi TelescopePromptPrefix guifg=%s guibg=%s", base30.pink, base30.one_bg2))
 vim.cmd(string.format("hi TelescopePromptCounter guifg=%s guibg=%s", base30.pink, base30.one_bg2))
 
+--  lazygit theme
+local get_color = function(hl, default)
+  return LazyVim.ui.color(hl) and hl or default
+end
+require("lazyvim.util.lazygit").theme = {
+  [241] = { fg = get_color("Special", "GruvboxBlue") },
+  activeBorderColor = { fg = get_color("MatchParen", "GruvboxBlue"), bold = true },
+  cherryPickedCommitBgColor = { fg = "GruvboxAqua" },
+  cherryPickedCommitFgColor = { fg = "GruvboxBlue" },
+  defaultFgColor = { fg = "default" },
+  inactiveBorderColor = { fg = get_color("FloatBorder", "Comment") },
+  optionsTextColor = { fg = "GruvboxBlue" },
+  searchingActiveBorderColor = { fg = get_color("MatchParen", "GruvboxBlue"), bold = true },
+  selectedLineBgColor = { bg = "Visual" }, -- set to `default` to have no background colour
+  unstagedChangesColor = { fg = "GruvboxRed" },
+}
+
 -- next is for neovide
 if not vim.g.neovide then
   return
@@ -146,6 +163,3 @@ vim.g.neovide_cursor_animate_command_line = false
 -- vim.g.neovide_cursor_vfx_particle_density = 15.0
 vim.g.neovide_fullscreen = true
 vim.g.neovide_input_macos_alt_is_meta = true
-
--- vim.lsp.set_log_level("debug")
--- require("vim.lsp.log").set_format_func(vim.inspect)
