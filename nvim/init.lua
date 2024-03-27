@@ -76,7 +76,6 @@ vim.cmd("hi DashboardLazy guifg=#0DB9D7")
 vim.cmd("hi DashboardServer guifg=#e0af68")
 vim.cmd("hi DashboardQuit guifg=#f7768e")
 vim.cmd("hi ColorColumn guibg=#323232")
-vim.cmd("hi CursorLine guibg=#464240")
 
 -- for neovim >= 0.10.0
 vim.cmd("hi! link @variable Identifier")
