@@ -118,13 +118,13 @@ local get_color = function(hl, default)
 end
 require("lazyvim.util.lazygit").theme = {
   [241] = { fg = get_color("Special", "GruvboxBlue") },
-  activeBorderColor = { fg = get_color("MatchParen", "GruvboxBlue"), bold = true },
+  activeBorderColor = { fg = get_color("MatchParen", "GruvboxBlueBold"), bold = true },
   cherryPickedCommitBgColor = { fg = "GruvboxAqua" },
   cherryPickedCommitFgColor = { fg = "GruvboxBlue" },
   defaultFgColor = { fg = "default" },
   inactiveBorderColor = { fg = get_color("FloatBorder", "Comment") },
   optionsTextColor = { fg = "GruvboxBlue" },
-  searchingActiveBorderColor = { fg = get_color("MatchParen", "GruvboxBlue"), bold = true },
+  searchingActiveBorderColor = { fg = get_color("MatchParen", "GruvboxBlueBold"), bold = true },
   selectedLineBgColor = { bg = "Visual" }, -- set to `default` to have no background colour
   unstagedChangesColor = { fg = "GruvboxRed" },
 }

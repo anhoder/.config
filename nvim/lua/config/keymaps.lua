@@ -42,23 +42,23 @@ end
 local lazyterm1 = function()
   LazyVim.terminal(
     nil,
-    { title = "term1", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term1" } }
+    { title = "term1", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term1" }, esc_esc = true }
   )
 end
 local lazyterm2 = function()
   LazyVim.terminal(
     nil,
-    { title = "term2", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term2" } }
+    { title = "term2", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term2" }, esc_esc = true }
   )
 end
 local lazyterm3 = function()
   LazyVim.terminal(
     nil,
-    { title = "term3", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term3" } }
+    { title = "term3", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term3" }, esc_esc = true }
   )
 end
 local musicfox = function()
-  LazyVim.terminal("musicfox", { size = lazyterm_size(), env = { TERM_NAME = "musicfox" } })
+  LazyVim.terminal("musicfox", { size = lazyterm_size(), env = { TERM_NAME = "musicfox" }, esc_esc = true })
 end
 
 local Terminal = toggleterm.Terminal
@@ -187,23 +187,24 @@ map({ "i", "n", "v", "s", "t", "o" }, "<D-3>", lazyterm3, { desc = "Open term3" 
 
 -- musicfox
 map("n", "<leader>mf", musicfox, { desc = "Run musicfox" })
+map({ "i", "n", "v", "s", "t", "o" }, "<D-S-`>", musicfox, { desc = "Run musicfox" })
 
 -- lazygit
 map("n", "<leader>gg", function()
-  LazyVim.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size() })
+  LazyVim.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size(), esc_esc = true })
 end, { desc = "Lazygit (root dir)" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-g>", function()
-  LazyVim.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size() })
+  LazyVim.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size(), esc_esc = true })
 end, { desc = "Lazygit (root dir)" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-Esc>", function()
-  LazyVim.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size() })
+  LazyVim.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size(), esc_esc = true })
 end, { desc = "Lazygit (root dir)" })
 map("n", "<leader>gG", function()
-  LazyVim.lazygit({ size = lazyterm_size() })
+  LazyVim.lazygit({ size = lazyterm_size(), esc_esc = true })
 end, { desc = "Lazygit (cwd)" })
 map("n", "<leader>gf", function()
   local git_path = vim.api.nvim_buf_get_name(0)
-  LazyVim.lazygit({ args = { "-f", vim.trim(git_path) }, size = lazyterm_size() })
+  LazyVim.lazygit({ args = { "-f", vim.trim(git_path) }, size = lazyterm_size(), esc_esc = true })
 end, { desc = "Lazygit current file history" })
 
 -- fork
@@ -231,12 +232,6 @@ map({ "i", "n", "v", "s", "t", "o" }, "<C-0>", function()
   local font = string.gsub(vim.g.guifont, " ", "\\ ")
   vim.cmd("set guifont=" .. font .. ":h" .. 15)
 end, { desc = "Reset font size" })
-
--- GenComment
-local neogen = require("neogen")
-map({ "n" }, "<leader>cc", function()
-  neogen.generate({})
-end, { desc = "Gen Comment" })
 
 -- telescope
 map({ "n" }, "<leader>sg", function()

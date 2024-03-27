@@ -1,5 +1,6 @@
 return {
   "NvChad/nvim-colorizer.lua",
+  ft = { "lua", "css", "html", "js", "ts" },
   opts = {
     filetypes = {
       "*",
