@@ -99,7 +99,7 @@ return {
     },
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "gr", "<cmd>Lspsaga finder ref<cr>", desc = "Saga List references" }
+      keys[#keys + 1] = { "gr", "<cmd>Glance references<cr>", desc = "Goto references" }
       keys[#keys + 1] = {
         "gR",
         function()
@@ -110,7 +110,7 @@ return {
         desc = "Goto references",
       }
 
-      keys[#keys + 1] = { "gi", "<cmd>Lspsaga finder imp<cr>", desc = "Saga Goto implementations" }
+      keys[#keys + 1] = { "gi", "<cmd>Glance implementations<cr>", desc = "Goto implementations" }
       keys[#keys + 1] = {
         "gI",
         function()
@@ -122,7 +122,7 @@ return {
         desc = "Goto implementations",
       }
 
-      keys[#keys + 1] = { "gy", "Lspsaga goto_type_definition", desc = "Saga Goto type definitions" }
+      keys[#keys + 1] = { "gy", "<cmd>Glance definitions<cr>", desc = "Goto type definitions" }
       keys[#keys + 1] = {
         "gY",
         function()
@@ -139,13 +139,13 @@ return {
         function()
           lsputil.definition_handle(function(is_definition)
             if is_definition then
-              vim.cmd("Lspsaga goto_definition")
+              vim.cmd("Glance definitions")
               return
             end
-            vim.cmd("Lspsaga finder ref")
+            vim.cmd("Glance references")
           end)
         end,
-        desc = "Saga Goto definition",
+        desc = "Goto definition",
       }
       keys[#keys + 1] = {
         "gD",
@@ -175,11 +175,11 @@ return {
         desc = "Hover",
       }
 
-      keys[#keys + 1] = { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Saga Code Action" }
-      keys[#keys + 1] = { "<leader>co", vim.lsp.codelens.run, desc = "Saga Run CodeLenAct" }
-      keys[#keys + 1] = { "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Saga Goto next diagnostic" }
-      keys[#keys + 1] = { "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Saga Goto prev diagnostic" }
-      keys[#keys + 1] = { "<leader>cs", "<cmd>Lspsaga outline<cr>", desc = "Saga Open outline" }
+      -- keys[#keys + 1] = { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Saga Code Action" }
+      keys[#keys + 1] = { "<leader>co", vim.lsp.codelens.run, desc = "Run CodeLenAct" }
+      -- keys[#keys + 1] = { "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Saga Goto next diagnostic" }
+      -- keys[#keys + 1] = { "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Saga Goto prev diagnostic" }
+      -- keys[#keys + 1] = { "<leader>cs", "<cmd>Lspsaga outline<cr>", desc = "Saga Open outline" }
       -- keys[#keys + 1] = { "<leader>cr", "<cmd>Lspsaga rename ++project<cr>", desc = "Rename" }
 
       -- local lspconfig = require("lspconfig")

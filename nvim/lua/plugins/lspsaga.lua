@@ -1,5 +1,6 @@
 return {
   "nvimdev/lspsaga.nvim",
+  enabled = false,
   config = function()
     require("lspsaga").setup({
       symbol_in_winbar = {
@@ -26,11 +27,12 @@ return {
         },
       },
       finder = {
-        max_height = 0.6,
-        left_width = 0.2,
-        right_width = 0.8,
+        max_height = 0.8,
+        -- left_width = 0.2,
+        -- right_width = 0.8,
         layout = "float",
         keys = {
+          shuttle = { "[w", "]w" },
           vsplit = "v",
           toggle_or_open = { "<CR>", "o", "<2-LeftMouse>" },
           quit = { "q", "<ESC>" },

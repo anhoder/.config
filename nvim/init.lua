@@ -20,7 +20,8 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
 
 require("config.lazy")
 
-vim.g.guifont = "MesloLGL Nerd Font"
+-- vim.g.guifont = "MesloLGL Nerd Font"
+vim.g.guifont = "JetBrainsMono Nerd Font"
 vim.g.guifontsize = 15
 vim.opt.guifont = vim.g.guifont .. ":h" .. vim.g.guifontsize
 -- vim.opt.linespace = 6
@@ -75,6 +76,7 @@ vim.cmd("hi DashboardLazy guifg=#0DB9D7")
 vim.cmd("hi DashboardServer guifg=#e0af68")
 vim.cmd("hi DashboardQuit guifg=#f7768e")
 vim.cmd("hi ColorColumn guibg=#323232")
+vim.cmd("hi CursorLine guibg=#464240")
 
 -- for neovim >= 0.10.0
 vim.cmd("hi! link @variable Identifier")
@@ -121,7 +123,7 @@ vim.g.neovide_scale_factor = 1.0
 vim.g.neovide_transparency = 0.8
 vim.g.neovide_window_blurred = true
 vim.g.neovide_floating_shadow = true
-vim.g.neovide_scroll_animation_length = 0
+vim.g.neovide_scroll_animation_length = 0.2
 -- vim.g.neovide_background_color = "#0f111700"
 
 -- vim.g.transparency = 0.8
@@ -134,8 +136,8 @@ vim.g.neovide_scroll_animation_far_lines = 1
 vim.g.neovide_input_ime = true
 
 -- vim.g.neovide_hide_mouse_when_typing = true
-vim.g.neovide_cursor_animation_length = 0
-vim.g.neovide_cursor_trail_size = 0
+vim.g.neovide_cursor_animation_length = 0.08
+vim.g.neovide_cursor_trail_size = 0.5
 vim.g.neovide_refresh_rate_idle = 60
 vim.g.neovide_confirm_quit = true
 vim.g.neovide_remember_window_size = true

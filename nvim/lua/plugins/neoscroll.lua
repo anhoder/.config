@@ -5,6 +5,7 @@ end
 
 return {
   "karb94/neoscroll.nvim",
+  enabled = false,
   config = function()
     local scroll = require("neoscroll")
     scroll.setup({})

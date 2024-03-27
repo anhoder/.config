@@ -10,10 +10,10 @@ if vim.g.vscode then
 end
 
 local toggleterm = require("toggleterm.terminal")
--- local telescope = require("telescope")
--- local telescope_builtin = require("telescope.builtin")
--- local telescope_themes = require("telescope.themes")
--- local ivy_theme = telescope_themes.get_ivy({ sorting_strategy = "descending" })
+local telescope = require("telescope")
+local telescope_builtin = require("telescope.builtin")
+local telescope_themes = require("telescope.themes")
+local ivy_theme = telescope_themes.get_ivy({ sorting_strategy = "descending" })
 local Util = require("lazyvim.util")
 local neotree_manager = require("neo-tree.sources.manager")
 local neotree_render = require("neo-tree.ui.renderer")
@@ -36,34 +36,42 @@ local close_buf = function()
   end
 end
 
+local lazyterm_size = function()
+  return { width = math.floor(vim.o.columns * 0.95), height = math.floor(vim.o.lines * 0.92) }
+end
+local lazyterm1 = function()
+  LazyVim.terminal(
+    nil,
+    { title = "term1", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term1" } }
+  )
+end
+local lazyterm2 = function()
+  LazyVim.terminal(
+    nil,
+    { title = "term2", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term2" } }
+  )
+end
+local lazyterm3 = function()
+  LazyVim.terminal(
+    nil,
+    { title = "term3", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term3" } }
+  )
+end
+local musicfox = function()
+  LazyVim.terminal("musicfox", { size = lazyterm_size(), env = { TERM_NAME = "musicfox" } })
+end
+
 local Terminal = toggleterm.Terminal
-local float_opts = {
-  border = "curved",
-  width = function()
-    return math.floor(vim.o.columns * 0.98)
-  end,
-  height = function()
-    return math.floor(vim.o.lines * 0.94)
-  end,
-}
-local term0 = Terminal:new({ display_name = "term0", direction = "horizontal" })
-local term1 = Terminal:new({ display_name = "term1", direction = "float", float_opts = float_opts })
-local term2 = Terminal:new({ display_name = "term2", direction = "float", float_opts = float_opts })
-local term3 = Terminal:new({ display_name = "term3", direction = "float", float_opts = float_opts })
-local musicfox = Terminal:new({
-  cmd = "musicfox",
-  display_name = "musicfox",
-  hidden = true,
-  direction = "float",
-  float_opts = float_opts,
-})
-local lazygit = Terminal:new({
-  cmd = "lazygit",
-  display_name = "lazygit",
-  hidden = true,
-  direction = "float",
-  float_opts = float_opts,
-})
+-- local float_opts = {
+--   border = "curved",
+--   width = function()
+--     return math.floor(vim.o.columns * 0.95)
+--   end,
+--   height = function()
+--     return math.floor(vim.o.lines * 0.90)
+--   end,
+-- }
+local term0 = Terminal:new({ direction = "horizontal" })
 local function get_folder_node(tree, node)
   if not tree then
     return nil
@@ -158,96 +166,48 @@ end, { expr = true, desc = "Comment" })
 map("v", "<D-/>", "gc", { remap = true, desc = "Comment selection" })
 
 -- Terminal
-local hide_all = function()
-  for _, value in ipairs(toggleterm.get_all(false)) do
-    value:close()
-  end
-end
-map({ "i", "n", "v", "t" }, "<D-`>", function()
+-- local hide_all = function()
+--   for _, value in ipairs(toggleterm.get_all(false)) do
+--     value:close()
+--   end
+-- end
+map({ "i", "n", "v", "s", "t", "o" }, "<D-`>", function()
   vim.cmd("stopinsert")
   if term0:is_open() then
     term0:toggle()
     return
   end
-  hide_all()
+  -- hide_all()
   term0:toggle()
   term0:set_mode(toggleterm.mode.INSERT)
 end, { desc = "Open terminal" })
-map({ "i", "n", "v", "t" }, "<D-1>", function()
-  vim.cmd("stopinsert")
-  term1:toggle()
-  if term1:is_open() then
-    term1:set_mode(toggleterm.mode.INSERT)
-  end
-end, { desc = "Open terminal 1" })
-map({ "i", "n", "v", "t" }, "<D-2>", function()
-  vim.cmd("stopinsert")
-  term2:toggle()
-  if term2:is_open() then
-    term2:set_mode(toggleterm.mode.INSERT)
-  end
-end, { desc = "Open terminal 2" })
-map({ "i", "n", "v", "t" }, "<D-3>", function()
-  vim.cmd("stopinsert")
-  term3:toggle()
-  if term3:is_open() then
-    term3:set_mode(toggleterm.mode.INSERT)
-  end
-end, { desc = "Open terminal 3" })
-map({ "i", "n", "v", "t" }, "<D-S-1>", function()
-  vim.cmd("stopinsert")
-  term1:toggle()
-  if term1:is_open() then
-    term1:set_mode(toggleterm.mode.INSERT)
-  end
-end, { desc = "Open terminal 1" })
-map({ "i", "n", "v", "t" }, "<D-S-2>", function()
-  vim.cmd("stopinsert")
-  term2:toggle()
-  if term2:is_open() then
-    term2:set_mode(toggleterm.mode.INSERT)
-  end
-end, { desc = "Open terminal 2" })
-map({ "i", "n", "v", "t" }, "<D-S-3>", function()
-  vim.cmd("stopinsert")
-  term3:toggle()
-  if term3:is_open() then
-    term3:set_mode(toggleterm.mode.INSERT)
-  end
-end, { desc = "Open terminal 3" })
+map({ "i", "n", "v", "s", "t", "o" }, "<D-1>", lazyterm1, { desc = "Open term1" })
+map({ "i", "n", "v", "s", "t", "o" }, "<D-2>", lazyterm2, { desc = "Open term2" })
+map({ "i", "n", "v", "s", "t", "o" }, "<D-3>", lazyterm3, { desc = "Open term3" })
 
 -- musicfox
-map("n", "<leader>mf", function()
-  musicfox:toggle()
-  if musicfox:is_open() then
-    musicfox:set_mode(toggleterm.mode.INSERT)
-  end
-end, { desc = "Run musicfox" })
-
-map({ "i", "n", "v", "t" }, "<D-Esc>", function()
-  vim.cmd("stopinsert")
-  musicfox:toggle()
-  if musicfox:is_open() then
-    musicfox:set_mode(toggleterm.mode.INSERT)
-  end
-end, { desc = "Run musicfox" })
+map("n", "<leader>mf", musicfox, { desc = "Run musicfox" })
 
 -- lazygit
 map("n", "<leader>gg", function()
-  lazygit:toggle()
-  if lazygit:is_open() then
-    lazygit:set_mode(toggleterm.mode.INSERT)
-  end
-end, { desc = "Run lazygit" })
+  LazyVim.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size() })
+end, { desc = "Lazygit (root dir)" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-g>", function()
-  lazygit:toggle()
-  if lazygit:is_open() then
-    lazygit:set_mode(toggleterm.mode.INSERT)
-  end
-end, { desc = "Run lazygit" })
+  LazyVim.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size() })
+end, { desc = "Lazygit (root dir)" })
+map({ "i", "n", "v", "s", "t", "o" }, "<D-Esc>", function()
+  LazyVim.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size() })
+end, { desc = "Lazygit (root dir)" })
+map("n", "<leader>gG", function()
+  LazyVim.lazygit({ size = lazyterm_size() })
+end, { desc = "Lazygit (cwd)" })
+map("n", "<leader>gf", function()
+  local git_path = vim.api.nvim_buf_get_name(0)
+  LazyVim.lazygit({ args = { "-f", vim.trim(git_path) }, size = lazyterm_size() })
+end, { desc = "Lazygit current file history" })
 
 -- fork
-map("n", "<leader>gf", function()
+map("n", "<leader>gF", function()
   os.execute("fork " .. Util.root())
 end, { desc = "Open fork" })
 
@@ -311,15 +271,15 @@ end, { desc = "Telescope Live Grep(selected or root dir)" })
 
 -- Document symbols
 map({ "i", "n", "v" }, "<D-m>", function()
-  -- telescope_builtin.lsp_document_symbols(ivy_theme)
-  -- telescope.extensions.aerial.aerial(ivy_theme)
-  vim.cmd("Lspsaga outline")
+  telescope_builtin.lsp_document_symbols(ivy_theme)
+  telescope.extensions.aerial.aerial(ivy_theme)
+  -- vim.cmd("Lspsaga outline")
 end, { desc = "Document symbols" })
 map({ "i", "n", "v" }, "<D-S-m>", function()
-  -- telescope_pickers.prettyDocumentSymbols({ symbols = require("lazyvim.config").get_kind_filter() })
-  -- telescope_builtin.lsp_document_symbols(ivy_theme)
-  -- telescope.extensions.aerial.aerial(ivy_theme)
-  vim.cmd("Lspsaga outline")
+  telescope_pickers.prettyDocumentSymbols({ symbols = require("lazyvim.config").get_kind_filter() })
+  telescope_builtin.lsp_document_symbols(ivy_theme)
+  telescope.extensions.aerial.aerial(ivy_theme)
+  -- vim.cmd("Lspsaga outline")
 end, { desc = "Document symbols" })
 
 -- Find files(root)

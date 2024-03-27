@@ -16,8 +16,6 @@ alias ga="git add"
 alias gm="git merge"
 alias gc="git commit"
 
-# ls
-alias ls="gls --color -h --hyperlink=auto"
 
 alias kssh="kitten ssh"
 
@@ -107,4 +105,17 @@ end
 
 if command -v kitten >/dev/null 2>&1
     alias icat="kitten icat"
+end
+
+# ls
+if command -v g >/dev/null 2>&1
+    functions -e ll
+    functions -e l
+    functions -e la
+    functions -e ls
+    alias ls 'g --hyperlink=always'
+    alias la 'g --show-hidden --hyperlink=always'
+    alias ll 'g --perm --icons --time --group --owner --size --title --lh --hyperlink=always --time-style=long-iso'
+    alias ll 'g --perm --icons --time --group --owner --size --title --lh --hyperlink=always --time-style=long-iso'
+    alias l 'g --perm --icons --time --group --owner --size --title --show-hidden --lh --hyperlink=always --time-style=long-iso'
 end

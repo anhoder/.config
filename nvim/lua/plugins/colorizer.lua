@@ -3,8 +3,6 @@ return {
   opts = {
     filetypes = {
       "*",
-      "!noice",
-      "!notify",
       "!neo-tree",
     },
     user_default_options = {

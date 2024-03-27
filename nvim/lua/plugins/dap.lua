@@ -22,7 +22,9 @@ local dapui_open = function(opts)
   dapui_opened = true
   opts.reset = true
   require("dapui").open(opts)
-  vim.cmd("Neotree close")
+  if not opts or not opts.layout then
+    vim.cmd("Neotree close")
+  end
 end
 
 local dapui_toggle = function()
