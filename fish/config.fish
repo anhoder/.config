@@ -105,6 +105,7 @@ end
 
 if command -v kitten >/dev/null 2>&1
     alias icat="kitten icat"
+    alias k="kitten"
 end
 
 # ls

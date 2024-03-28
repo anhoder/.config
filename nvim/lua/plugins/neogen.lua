@@ -1,7 +1,8 @@
 return {
   "danymat/neogen",
   dependencies = "nvim-treesitter/nvim-treesitter",
-  enabled = false,
+  -- enabled = false,
+  ft = { "php" },
   config = true,
   keys = {
     {
