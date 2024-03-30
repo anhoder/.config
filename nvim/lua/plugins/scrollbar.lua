@@ -1,6 +1,7 @@
 return {
   "petertriho/nvim-scrollbar",
   event = { "BufReadPost", "BufNewFile" },
+  enabled = false,
   opts = {
     show_in_active_only = true,
     excluded_filetypes = {
@@ -25,7 +26,7 @@ return {
     },
     handlers = {
       gitsigns = false,
-      cursor = true,
+      cursor = false,
       diagnostic = false,
       handle = true,
       search = false,

@@ -2,14 +2,14 @@ return {
   "dnlhc/glance.nvim",
   opts = function()
     local glance = require("glance")
-    vim.cmd("hi! GlanceListNormal guibg=#393939 guifg=#909090 gui=NONE")
+    -- vim.cmd("hi! GlanceListNormal guibg=#393939 guifg=#909090 gui=NONE")
+    -- vim.cmd("hi! GlanceListCursorLine gui=bold guibg=#393939 guifg=#ebdbb2")
     vim.cmd("hi! GlanceWinBarTitle gui=bold guibg=#393939 guifg=#b8bb26")
     vim.cmd("hi! link GlanceFoldIcon GruvboxOrange")
     vim.cmd("hi! link GlanceIndent GruvboxOrange")
     vim.cmd("hi! link GlanceBorderTop Comment")
     vim.cmd("hi! link GlancePreviewBorderBottom Comment")
     vim.cmd("hi! link GlanceListBorderBottom Comment")
-    vim.cmd("hi! GlanceListCursorLine gui=bold guibg=#393939 guifg=#ebdbb2")
     return {
       height = 22,
       detached = function(winid)
