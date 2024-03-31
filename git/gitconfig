@@ -2,6 +2,9 @@
   name = anhoder
   email = anhoder@88.com
 
+[pull]
+	rebase = true
+
 [log]
 	date = iso-strict-local
 
