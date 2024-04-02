@@ -20,6 +20,7 @@ local neotree_render = require("neo-tree.ui.renderer")
 local telescope_pickers = require("utils.telescope_pickers")
 local ufo = require("ufo")
 local spectre = require("spectre")
+local daputil = require("utils.dap")
 
 local close_buf = function()
   local bd = require("mini.bufremove").delete
@@ -177,6 +178,7 @@ map({ "i", "n", "v", "s", "t", "o" }, "<D-`>", function()
     term0:toggle()
     return
   end
+  daputil.dapui_close() -- close dapui
   -- hide_all()
   term0:toggle()
   term0:set_mode(toggleterm.mode.INSERT)

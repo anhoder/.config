@@ -59,7 +59,7 @@ function M.gopls_config()
     settings = {
       gopls = {
         gofumpt = true,
-        buildFlags = { "-tags=wireinject" },
+        -- buildFlags = { "-tags=wireinject" },
         analyses = {
           fieldalignment = false,
           ST1000 = false,

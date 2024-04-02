@@ -1,7 +1,7 @@
 return {
   "petertriho/nvim-scrollbar",
   event = { "BufReadPost", "BufNewFile" },
-  enabled = false,
+  enabled = true,
   opts = {
     show_in_active_only = true,
     excluded_filetypes = {
@@ -25,7 +25,7 @@ return {
       blend = 10, -- Integer between 0 and 100. 0 for fully opaque and 100 to full transparent. Defaults to 30.
     },
     handlers = {
-      gitsigns = false,
+      gitsigns = true,
       cursor = false,
       diagnostic = false,
       handle = true,

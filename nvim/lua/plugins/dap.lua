@@ -11,29 +11,7 @@ local function get_args(config)
   return config
 end
 
-local dapui_opened = false
-
-local dapui_close = function()
-  dapui_opened = false
-  require("dapui").close()
-end
-
-local dapui_open = function(opts)
-  dapui_opened = true
-  opts.reset = true
-  require("dapui").open(opts)
-  if not opts or not opts.layout then
-    vim.cmd("Neotree close")
-  end
-end
-
-local dapui_toggle = function()
-  if dapui_opened then
-    dapui_close()
-  else
-    dapui_open()
-  end
-end
+local daputil = require("utils.dap")
 
 return {
   "mfussenegger/nvim-dap",
@@ -51,7 +29,7 @@ return {
       keys = {
         {
           "<leader>du",
-          dapui_toggle,
+          daputil.dapui_toggle,
           desc = "Dap UI",
           mode = { "n", "v" },
         },
@@ -92,13 +70,13 @@ return {
         local dapui = require("dapui")
         dapui.setup(opts)
         dap.listeners.before.attach.dapui_config = function()
-          if not dapui_opened then
-            dapui_open({ layout = 2 })
+          if not daputil.dapui_opened then
+            daputil.dapui_open({ layout = 2 })
           end
         end
         dap.listeners.before.launch.dapui_config = function()
-          if not dapui_opened then
-            dapui_open({ layout = 2 })
+          if not daputil.dapui_opened then
+            daputil.dapui_open({ layout = 2 })
           end
         end
         -- dap.listeners.before.event_terminated.dapui_config = function()
