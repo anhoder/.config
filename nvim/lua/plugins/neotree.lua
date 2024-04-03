@@ -9,7 +9,7 @@ return {
     {
       "3rd/image.nvim",
       enabled = function()
-        return not vim.g.neovide
+        return not require("utils.gui").is_gui()
       end,
       opts = {
         backend = "kitty",

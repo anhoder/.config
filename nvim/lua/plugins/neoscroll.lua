@@ -1,5 +1,5 @@
 -- neovide 不使用neoscroll
-if vim.g.neovide then
+if require("utils.gui").is_gui() then
   return {}
 end
 
