@@ -72,4 +72,22 @@ function M.gopls_config()
   }
 end
 
+function M.goto_def()
+  M.definition_handle(function(is_definition)
+    if is_definition then
+      vim.cmd("Glance definitions")
+      return
+    end
+    vim.cmd("Glance references")
+  end)
+end
+
+function M.hover()
+  local winid = require("ufo").peekFoldedLinesUnderCursor()
+  if not winid then
+    -- vim.cmd("Lspsaga hover_doc")
+    vim.lsp.buf.hover()
+  end
+end
+
 return M

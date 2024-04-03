@@ -136,15 +136,7 @@ return {
 
       keys[#keys + 1] = {
         "gd",
-        function()
-          lsputil.definition_handle(function(is_definition)
-            if is_definition then
-              vim.cmd("Glance definitions")
-              return
-            end
-            vim.cmd("Glance references")
-          end)
-        end,
+        lsputil.goto_def,
         desc = "Goto definition",
       }
       keys[#keys + 1] = {
@@ -165,13 +157,7 @@ return {
 
       keys[#keys + 1] = {
         "K",
-        function()
-          local winid = require("ufo").peekFoldedLinesUnderCursor()
-          if not winid then
-            -- vim.cmd("Lspsaga hover_doc")
-            vim.lsp.buf.hover()
-          end
-        end,
+        lsputil.hover,
         desc = "Hover",
       }
 

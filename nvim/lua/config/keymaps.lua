@@ -385,9 +385,24 @@ map("n", "<leader>ghb", function()
 end, { desc = "Git Blame", noremap = true })
 
 -- mouse go tnormalo
-map({ "n", "i", "v" }, "<D-LeftMouse>", "<LeftMouse>gd", { desc = "Jump to", remap = true })
-map({ "n", "i", "v" }, "<RightMouse>", "<LeftMouse><cmd>normal K<cr>", { desc = "Jump to", noremap = true })
-map({ "n", "i", "v" }, "<2-RightMouse>", "<LeftMouse>gd", { desc = "Jump to", remap = true })
+map(
+  { "n", "i", "v" },
+  "<D-LeftMouse>",
+  "<LeftMouse><cmd>lua require('utils.lsp').goto_def()<cr>",
+  { desc = "Jump to", noremap = true }
+)
+map(
+  { "n", "i", "v" },
+  "<RightMouse>",
+  "<LeftMouse><cmd>lua require('utils.lsp').hover()<cr>",
+  { desc = "Show desc", noremap = true }
+)
+map(
+  { "n", "i", "v" },
+  "<2-RightMouse>",
+  "<LeftMouse><cmd>lua require('utils.lsp').goto_def()<cr>",
+  { desc = "Jump to", noremap = true }
+)
 
 -- ufo fold
 map({ "n" }, "zM", ufo.closeAllFolds, { desc = "Close all folds(ufo)", remap = true })

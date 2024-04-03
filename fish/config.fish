@@ -100,7 +100,14 @@ if command -v nvim >/dev/null 2>&1
 end
 
 if command -v neovide >/dev/null 2>&1
-    alias vd="neovide"
+    # alias vd=fn_neovide
+    function vd
+        neovide $argv
+        if uname -s | grep -i darwin >/dev/null
+            sleep 1.5
+            killall Dock
+        end
+    end
 end
 
 if command -v trash >/dev/null 2>&1
