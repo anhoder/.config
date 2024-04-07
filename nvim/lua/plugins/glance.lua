@@ -12,9 +12,7 @@ return {
     vim.cmd("hi! link GlanceListBorderBottom Comment")
     return {
       height = 22,
-      detached = function(winid)
-        return vim.api.nvim_win_get_width(winid) < 100
-      end,
+      detached = true,
       preview_win_opts = {
         cursorline = true,
         number = true,

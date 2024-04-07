@@ -130,10 +130,11 @@ map({ "n", "v" }, "<D-x>", '"+x', { desc = "Cut", noremap = true })
 map({ "i", "c" }, "<D-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { desc = "Paste", noremap = true })
 
 -- Delete a word
-map({ "i" }, "<D-BS>", "<C-w>", { desc = "Delete word backword", noremap = true })
-map({ "n" }, "<D-BS>", '"_cb', { desc = "Delete word backward", noremap = false })
+map({ "i" }, "<C-BS>", "<C-w>", { desc = "Delete word backword", noremap = true })
+map({ "n" }, "<C-BS>", '"_cb', { desc = "Delete word backward", noremap = false })
 map({ "n" }, "<A-BS>", '"_cw', { desc = "Delete word forward", noremap = false })
 map({ "i" }, "<A-BS>", '<Esc>l"_cw', { desc = "Delete word forward", noremap = false })
+map({ "i", "n", "v" }, "<D-BS>", '<Esc>"_ciw', { desc = "Delete a whole word", noremap = false })
 map({ "i", "n", "v" }, "<D-S-BS>", '<Esc>"_ciw', { desc = "Delete a whole word", noremap = false })
 
 -- Move to beginning/end of line

@@ -8,9 +8,7 @@ return {
     -- "mrbjarksen/neo-tree-diagnostics.nvim",
     {
       "3rd/image.nvim",
-      enabled = function()
-        return not require("utils.gui").is_gui()
-      end,
+      enabled = not require("utils.gui").is_gui(),
       opts = {
         backend = "kitty",
         integrations = {

@@ -1,11 +1,7 @@
--- neovide 不使用neoscroll
-if require("utils.gui").is_gui() then
-  return {}
-end
-
 return {
   "karb94/neoscroll.nvim",
-  enabled = false,
+  -- enabled = not require("utils.gui").is_gui(),
+  enabled = true,
   config = function()
     local scroll = require("neoscroll")
     scroll.setup({})
