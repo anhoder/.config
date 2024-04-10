@@ -179,6 +179,7 @@ return {
     { "<leader>ds", function() require("dap").session() end, desc = "Session" },
     { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
     { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
+    { "<leader>tL", function() require('dap-go').debug_last_test() end, desc = "Debug Last (Go)" },
   },
 
   config = function()

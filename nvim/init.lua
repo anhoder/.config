@@ -92,6 +92,7 @@ vim.cmd("hi! link @lsp.type.member Function")
 vim.cmd("hi! link @lsp.type.property Field")
 vim.cmd("hi! link SagaTitle GruvboxBlueBold")
 vim.cmd("hi! link SagaFinderFname GruvboxAqua")
+vim.cmd("hi! Substitute guibg=#9d7cd8")
 
 -- for telescope
 local base30 = require("utils.gruvbox").base_30
@@ -158,7 +159,7 @@ vim.g.neovide_refresh_rate_idle = 60
 vim.g.neovide_confirm_quit = true
 vim.g.neovide_remember_window_size = true
 vim.g.neovide_cursor_animate_in_insert_mode = false
-vim.g.neovide_cursor_animate_command_line = false
+vim.g.neovide_cursor_animate_command_line = true
 -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
 -- vim.g.neovide_cursor_vfx_particle_density = 15.0
 vim.g.neovide_fullscreen = true

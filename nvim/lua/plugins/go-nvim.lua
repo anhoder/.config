@@ -24,7 +24,7 @@ return {
       require("go").setup({
         lsp_cfg = false,
         icons = false,
-        build_tags = "wireinject",
+        -- build_tags = "wireinject",
         lsp_keymaps = false,
         diagnostic = {
           hdlr = true,
