@@ -174,7 +174,6 @@ map("v", "<D-/>", "gc", { remap = true, desc = "Comment selection" })
 --   end
 -- end
 map({ "i", "n", "v", "s", "t", "o" }, "<D-`>", function()
-  vim.cmd("stopinsert")
   if term0:is_open() then
     term0:toggle()
     return
@@ -182,7 +181,6 @@ map({ "i", "n", "v", "s", "t", "o" }, "<D-`>", function()
   daputil.dapui_close() -- close dapui
   -- hide_all()
   term0:toggle()
-  term0:set_mode(toggleterm.mode.INSERT)
 end, { desc = "Open terminal" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-1>", lazyterm1, { desc = "Open term1" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-2>", lazyterm2, { desc = "Open term2" })
