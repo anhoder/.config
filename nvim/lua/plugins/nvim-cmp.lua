@@ -18,16 +18,16 @@ return {
       ["<S-Tab>"] = cmp.mapping.select_prev_item(),
     }),
   },
-  init = function()
-    cmp.setup.cmdline(":", {
-      completion = { completeopt = "menu,menuone,noselect" },
-      mapping = cmp.mapping.preset.cmdline(),
-      sources = cmp.config.sources({
-        { name = "path" },
-      }, {
-        { name = "cmdline" },
-      }),
-      matching = { disallow_symbol_nonprefix_matching = false },
-    })
-  end,
+  -- init = function()
+  --   cmp.setup.cmdline(":", {
+  --     completion = { completeopt = "menu,menuone,noselect" },
+  --     mapping = cmp.mapping.preset.cmdline(),
+  --     sources = cmp.config.sources({
+  --       { name = "path" },
+  --     }, {
+  --       { name = "cmdline" },
+  --     }),
+  --     matching = { disallow_symbol_nonprefix_matching = false },
+  --   })
+  -- end,
 }
