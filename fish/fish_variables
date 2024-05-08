@@ -1,9 +1,5 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
-SETUVAR --export HOMEBREW_BOTTLE_DOMAIN:https\x3a//mirrors\x2ealiyun\x2ecom/homebrew/homebrew\x2dbottles
-SETUVAR --export HOMEBREW_BREW_GIT_REMOTE:https\x3a//mirrors\x2ealiyun\x2ecom/homebrew/brew\x2egit
-SETUVAR --export HOMEBREW_CORE_GIT_REMOTE:https\x3a//mirrors\x2ealiyun\x2ecom/homebrew/homebrew\x2dcore\x2egit
-SETUVAR --export HOMEBREW_UPDATE_PREINSTALL:0
 SETUVAR __fish_initialized:3400
 SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fisher\x2efish\x1e\x7e/\x2econfig/fish/completions/fisher\x2efish
 SETUVAR _fisher_plugins:jorgebucaran/fisher
