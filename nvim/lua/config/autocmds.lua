@@ -26,13 +26,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 
 -- vim startup
 local startup = vim.api.nvim_create_augroup("startup", { clear = true })
-vim.api.nvim_create_autocmd("VimEnter", {
-  group = startup,
-  pattern = "*",
-  callback = function()
-    vim.api.nvim_set_current_dir(vim.fn.expand("%:p:h"))
-  end,
-})
+-- vim.api.nvim_create_autocmd("VimEnter", {
+--   group = startup,
+--   pattern = "*",
+--   callback = function()
+--     vim.api.nvim_set_current_dir(vim.fn.expand("%:p:h"))
+--   end,
+-- })
 vim.api.nvim_create_autocmd("BufEnter", {
   group = startup,
   pattern = "*",
@@ -91,6 +91,22 @@ vim.api.nvim_create_autocmd("User", {
     vim.keymap.set("n", "<leader>gxt", "<cmd>GitConflictChooseTheirs<cr>", { desc = "GitConflict choose theirs" })
     vim.keymap.set("n", "<leader>gxb", "<cmd>GitConflictChooseBoth<cr>", { desc = "GitConflict choose both" })
     vim.keymap.set("n", "<leader>gx0", "<cmd>GitConflictChooseNone<cr>", { desc = "GitConflict choose none" })
+  end,
+})
+
+local json_detect = vim.api.nvim_create_augroup("JsonDetect", { clear = true })
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = json_detect,
+  pattern = { "composer.lock" },
+  callback = function()
+    vim.o.filetype = "json"
+  end,
+})
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+  group = json_detect,
+  pattern = { "launch.json", "*.cjsn", "*.cjson", "*.jsonc", ".eslintrc.json", "tsconfig.json" },
+  callback = function()
+    vim.o.filetype = "jsonc"
   end,
 })
 

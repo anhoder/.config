@@ -45,6 +45,7 @@ vim.opt.foldlevel = 999 -- Using ufo provider need a large value, feel free to d
 vim.opt.foldlevelstart = 999
 vim.opt.foldenable = true
 vim.opt.list = false
+vim.opt.autochdir = false
 
 vim.diagnostic.config({
   underline = true,
@@ -92,7 +93,6 @@ vim.cmd("hi! link @lsp.type.member Function")
 vim.cmd("hi! link @lsp.type.property Field")
 vim.cmd("hi! link SagaTitle GruvboxBlueBold")
 vim.cmd("hi! link SagaFinderFname GruvboxAqua")
-vim.cmd("hi! Substitute guibg=#9d7cd8")
 
 -- for telescope
 local base30 = require("utils.gruvbox").base_30
@@ -158,9 +158,9 @@ vim.g.neovide_cursor_trail_size = 0.5
 vim.g.neovide_refresh_rate_idle = 60
 vim.g.neovide_confirm_quit = true
 vim.g.neovide_remember_window_size = true
-vim.g.neovide_cursor_animate_in_insert_mode = false
+vim.g.neovide_cursor_animate_in_insert_mode = true
 vim.g.neovide_cursor_animate_command_line = true
 -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
 -- vim.g.neovide_cursor_vfx_particle_density = 15.0
 vim.g.neovide_fullscreen = true
-vim.g.neovide_input_macos_alt_is_meta = true
+vim.g.neovide_input_macos_option_key_is_meta = true

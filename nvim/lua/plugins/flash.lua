@@ -6,6 +6,15 @@ return {
       search = {
         enabled = false,
       },
+      char = {
+        jump_labels = true,
+      },
+    },
+    label = {
+      rainbow = {
+        enabled = true,
+        shade = 6,
+      },
     },
   },
   keys = {

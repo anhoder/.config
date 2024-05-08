@@ -113,7 +113,10 @@ map({ "n", "i", "v", "t" }, "<C-A-Right>", "<Esc><Esc><C-w>l", { desc = "Go to r
 map({ "n", "i", "v", "t" }, "<D-w>", close_buf, { desc = "Close buffer" })
 
 -- Save
-map({ "n", "i", "v" }, "<D-s>", "<Esc><cmd>w<cr>", { desc = "Save" })
+map({ "n", "i", "v" }, "<D-s>", function()
+  vim.cmd("stopinsert")
+  vim.cmd("w")
+end, { desc = "Save" })
 map({ "n", "i", "v", "s", "c" }, "<D-z>", "<cmd>undo<cr>", { desc = "Undo" })
 map({ "n", "i", "v", "s", "c" }, "<D-y>", "<cmd>redo<cr>", { desc = "Redo" })
 map({ "n", "i", "v", "s", "c" }, "<D-S-z>", "<cmd>redo<cr>", { desc = "Redo" })
@@ -268,7 +271,7 @@ end, { desc = "Telescope Live Grep(selected or root dir)" })
 -- Document symbols
 map({ "i", "n", "v" }, "<D-m>", function()
   telescope_builtin.lsp_document_symbols(ivy_theme)
-  telescope.extensions.aerial.aerial(ivy_theme)
+  -- telescope.extensions.aerial.aerial(ivy_theme)
   -- vim.cmd("Lspsaga outline")
 end, { desc = "Document symbols" })
 map({ "i", "n", "v" }, "<D-S-m>", function()

@@ -25,6 +25,9 @@ local config = {
     },
   },
   default_component_configs = {
+    container = {
+      enable_character_fade = true,
+    },
     indent = {
       indent_size = 2,
       padding = 1, -- extra padding on left hand side
@@ -45,7 +48,8 @@ local config = {
       folder_empty_open = "",
       -- The next two settings are only a fallback, if you use nvim-web-devicons and configure default icons there
       -- then these will never be used.
-      default = " ",
+      -- default = " ",
+      default = "*",
     },
     modified = { symbol = "" },
     git_status = { symbols = icons.git },

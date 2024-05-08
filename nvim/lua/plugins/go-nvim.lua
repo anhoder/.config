@@ -30,7 +30,7 @@ return {
           hdlr = true,
         },
         lsp_inlay_hints = {
-          enable = false,
+          enable = true,
           style = "eol",
           highlight = "LspInlayHint",
         },

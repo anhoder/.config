@@ -48,7 +48,8 @@ set -gx PATH "$HOME/.composer/vendor/bin:$PATH"
 
 # openjdk
 set -gx PATH "$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
-set -gx JAVA_HOME "$HOMEBREW_PREFIX/opt/openjdk"
+set -gx JAVA_HOME "$HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
+set -gx GRADLE_USER_HOME "$HOME/.gradle"
 
 # PATH
 set -gx PATH "$HOMEBREW_PREFIX/opt/openssl@1.1/bin:$HOMEBREW_PREFIX/opt/libiconv/bin:$HOMEBREW_PREFIX/opt/curl/bin:$HOMEBREW_PREFIX/opt/bison/bin:$GOPATH/bin:$PATH"

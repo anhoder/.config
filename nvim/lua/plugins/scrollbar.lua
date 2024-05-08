@@ -6,6 +6,7 @@ end
 return {
   "lewis6991/satellite.nvim",
   event = { "BufReadPost", "BufNewFile" },
+  enabled = false,
   opts = {
     current_only = true,
     winblend = 50,
@@ -24,6 +25,7 @@ return {
       "sagafinder",
       "saga_codeaction",
       "notify",
+      "neotest-summary",
     },
     width = 2,
     handlers = {

@@ -14,8 +14,6 @@ return {
       ["<C-e>"] = cmp.mapping.abort(),
       ["<Esc>"] = cmp.mapping.abort(),
       ["<CR>"] = cmp.mapping.confirm({ select = true }),
-      ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
-      ["<S-Tab>"] = cmp.mapping.select_prev_item(),
     }),
   },
   -- init = function()
