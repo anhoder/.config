@@ -85,12 +85,26 @@ return {
           filetypes = { "c", "cpp", "objc", "objcpp", "cuda" },
         },
 
-        --lua
+        -- lua
         lua_ls = {
           settings = {
             Lua = {
               codeLens = {
                 enable = false,
+              },
+            },
+          },
+        },
+
+        -- java
+        jdtls = {
+          settings = {
+            java = {
+              referencesCodeLens = {
+                enabled = false,
+              },
+              implementationsCodeLens = {
+                enabled = false,
               },
             },
           },
