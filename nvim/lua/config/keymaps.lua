@@ -150,6 +150,10 @@ map({ "c" }, "<D-Left>", "<C-b>", { desc = "Beginning of line" })
 map({ "t" }, "<D-Left>", "<C-a>", { desc = "Beginning of line" })
 map({ "c", "t" }, "<D-Right>", "<C-e>", { desc = "End of line" })
 
+-- Move line
+map({ "n", "i", "v", "s", "c" }, "<S-D-Up>", "<A-k>", { desc = "move up", remap = true })
+map({ "n", "i", "v", "s", "c" }, "<S-D-Down>", "<A-j>", { desc = "move down", remap = true })
+
 -- move to left/right
 map({ "n", "v", "i" }, "<A-Left>", "<cmd>normal! z5h<cr>", { desc = "Scroll to left", noremap = true })
 map({ "n", "v", "i" }, "<A-Right>", "<cmd>normal! z5l<cr>", { desc = "Scroll to right", noremap = true })

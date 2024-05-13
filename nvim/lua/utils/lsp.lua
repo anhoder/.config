@@ -65,6 +65,7 @@ function M.gopls_config()
           ST1000 = false,
           ST1003 = false,
           SA4006 = false,
+          QF1008 = false,
         },
         usePlaceholders = false,
       },
