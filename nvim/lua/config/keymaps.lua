@@ -37,26 +37,42 @@ local close_buf = function()
   end
 end
 
-local lazyterm_size = function()
-  return { width = math.floor(vim.o.columns * 0.95), height = math.floor(vim.o.lines * 0.92) }
+local lazyterm_size = function(percent)
+  percent = percent or 1.0
+  return { width = math.floor(vim.o.columns * 0.95 * percent), height = math.floor(vim.o.lines * 0.92 * percent) }
 end
 local lazyterm1 = function()
-  LazyVim.terminal(
-    nil,
-    { title = "term1", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term1" }, esc_esc = true }
-  )
+  LazyVim.terminal(nil, {
+    title = "term1",
+    cwd = LazyVim.root(),
+    size = lazyterm_size(0.85),
+    env = { TERM_NAME = "term1" },
+    esc_esc = true,
+    border = "solid",
+    title_pos = "left",
+  })
 end
 local lazyterm2 = function()
-  LazyVim.terminal(
-    nil,
-    { title = "term2", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term2" }, esc_esc = true }
-  )
+  LazyVim.terminal(nil, {
+    title = "term2",
+    cwd = LazyVim.root(),
+    size = lazyterm_size(0.9),
+    env = { TERM_NAME = "term2" },
+    esc_esc = true,
+    border = "solid",
+    title_pos = "left",
+  })
 end
 local lazyterm3 = function()
-  LazyVim.terminal(
-    nil,
-    { title = "term3", cwd = LazyVim.root(), size = lazyterm_size(), env = { TERM_NAME = "term3" }, esc_esc = true }
-  )
+  LazyVim.terminal(nil, {
+    title = "term3",
+    cwd = LazyVim.root(),
+    size = lazyterm_size(1.0),
+    env = { TERM_NAME = "term3" },
+    esc_esc = true,
+    border = "solid",
+    title_pos = "left",
+  })
 end
 local musicfox = function()
   LazyVim.terminal("musicfox", { size = lazyterm_size(), env = { TERM_NAME = "musicfox" }, esc_esc = true })
