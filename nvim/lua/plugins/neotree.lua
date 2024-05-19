@@ -1,3 +1,5 @@
+local os = vim.loop.os_uname().sysname
+
 return {
   "nvim-neo-tree/neo-tree.nvim",
   branch = "v3.x",
@@ -8,7 +10,7 @@ return {
     -- "mrbjarksen/neo-tree-diagnostics.nvim",
     {
       "3rd/image.nvim",
-      enabled = not require("utils.gui").is_gui(),
+      enabled = not require("utils.gui").is_gui() and os ~= "Linux",
       opts = {
         backend = "kitty",
         integrations = {

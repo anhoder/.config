@@ -49,7 +49,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
     local buflist = require("utils.buffer").get_listed_buffers()
 
     for _, bufnr in ipairs(buflist) do
-      require("mini.bufremove").delete(bufnr, true)
+      LazyVim.ui.bufremove(bufnr)
     end
   end,
 })
@@ -64,7 +64,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
       -- vim.notify(vim.api.nvim_buf_get_name(bufnr))
       local name = vim.api.nvim_buf_get_name(bufnr)
       if name == cwd or string.sub(name, -1) == "/" then
-        require("mini.bufremove").delete(bufnr, true)
+        LazyVim.ui.bufremove(bufnr)
       end
     end
 
