@@ -103,7 +103,7 @@ end
 if command -v neovide >/dev/null 2>&1
     # alias vd=fn_neovide
     function vd
-        neovide $argv &
+        neovide $argv --fork
         if uname -s | grep -i darwin >/dev/null
             sleep 1.5
             killall Dock

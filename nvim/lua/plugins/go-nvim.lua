@@ -29,11 +29,11 @@ return {
         diagnostic = {
           hdlr = true,
         },
-        lsp_inlay_hints = {
-          enable = true,
-          style = "eol",
-          highlight = "LspInlayHint",
-        },
+        -- lsp_inlay_hints = {
+        --   enable = true,
+        --   style = "eol",
+        --   highlight = "LspInlayHint",
+        -- },
         dap_debug_vt = false,
         sign_covered_hl = "GruvboxAqua",
         sign_partial_hl = "GruvboxYellow",

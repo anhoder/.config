@@ -163,4 +163,4 @@ vim.g.neovide_cursor_animate_command_line = true
 -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
 -- vim.g.neovide_cursor_vfx_particle_density = 15.0
 vim.g.neovide_fullscreen = true
-vim.g.neovide_input_macos_option_key_is_meta = true
+vim.g.neovide_input_macos_option_key_is_meta = "none"
