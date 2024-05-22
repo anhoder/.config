@@ -35,6 +35,7 @@ return {
   -- glance, pretty goto like vscode
   {
     "dnlhc/glance.nvim",
+    event = "VeryLazy",
     opts = function()
       local glance = require("glance")
       -- vim.cmd("hi! GlanceListNormal guibg=#393939 guifg=#909090 gui=NONE")

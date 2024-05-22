@@ -46,12 +46,14 @@ return {
   {
     "nvim-telescope/telescope-fzf-native.nvim",
     build = "make",
+    event = { "VeryLazy" },
     config = function()
       require("telescope").load_extension("fzf")
     end,
   },
   {
     "prochri/telescope-all-recent.nvim",
+    event = { "VeryLazy" },
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "kkharji/sqlite.lua",
