@@ -1,21 +1,28 @@
 return {
-  "lewis6991/gitsigns.nvim",
-  opts = {
-    current_line_blame = true,
-    current_line_blame_opts = {
-      virt_text = true,
-      virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
-      delay = 0,
-      ignore_whitespace = false,
-      virt_text_priority = 5000,
-    },
-    current_line_blame_formatter = "   <author>, <author_time:%Y/%m/%d %H:%M>, <summary>",
-    on_attach = function(bufnr)
-      local gs = package.loaded.gitsigns
+  -- git tools
+  {
+    "tpope/vim-fugitive",
+  },
 
-      local function map(mode, l, r, desc)
-        vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
-      end
+  -- git sign
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = {
+      current_line_blame = true,
+      current_line_blame_opts = {
+        virt_text = true,
+        virt_text_pos = "eol", -- 'eol' | 'overlay' | 'right_align'
+        delay = 0,
+        ignore_whitespace = false,
+        virt_text_priority = 5000,
+      },
+      current_line_blame_formatter = "   <author>, <author_time:%Y/%m/%d %H:%M>, <summary>",
+      on_attach = function(bufnr)
+        local gs = package.loaded.gitsigns
+
+        local function map(mode, l, r, desc)
+          vim.keymap.set(mode, l, r, { buffer = bufnr, desc = desc })
+        end
 
       -- stylua: ignore start
       map("n", "]h", gs.next_hunk, "Next Hunk")
@@ -30,6 +37,7 @@ return {
       map("n", "<leader>ghd", gs.diffthis, "Diff This")
       map("n", "<leader>ghD", function() gs.diffthis("~") end, "Diff This ~")
       map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", "GitSigns Select Hunk")
-    end,
+      end,
+    },
   },
 }

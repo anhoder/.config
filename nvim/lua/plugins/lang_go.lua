@@ -11,7 +11,6 @@ return {
     -- "anhoder/go.nvim",
     "ray-x/go.nvim",
     -- enabled = false,
-    event = { "VeryLazy", "CmdlineEnter" },
     ft = { "go", "gomod", "gosum", "gotmpl", "gohtmltmpl", "gotexttmpl" },
     dependencies = { -- optional packages
       { "ray-x/guihua.lua", build = "cd lua/fzy && make" },
@@ -29,11 +28,11 @@ return {
         diagnostic = {
           hdlr = true,
         },
-        -- lsp_inlay_hints = {
-        --   enable = true,
-        --   style = "eol",
-        --   highlight = "LspInlayHint",
-        -- },
+        lsp_inlay_hints = {
+          enable = true,
+          style = "eol",
+          highlight = "LspInlayHint",
+        },
         dap_debug_vt = false,
         sign_covered_hl = "GruvboxAqua",
         sign_partial_hl = "GruvboxYellow",

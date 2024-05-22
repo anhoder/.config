@@ -8,6 +8,7 @@ return {
     enabled = false,
   },
   {
+    -- markdown
     "lukas-reineke/headlines.nvim",
     enabled = false,
   },

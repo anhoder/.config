@@ -11,6 +11,7 @@ return {
     {
       "3rd/image.nvim",
       enabled = not require("utils.gui").is_gui() and os ~= "Linux",
+      event = { "VeryLazy" },
       opts = {
         backend = "kitty",
         integrations = {
