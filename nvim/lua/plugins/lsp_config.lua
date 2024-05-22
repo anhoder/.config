@@ -58,17 +58,17 @@ return {
           },
           autostart = true,
         },
-        phpactor = {
-          single_file_support = true,
-          filetypes = { "php" },
-          init_options = {
-            ["indexer.stub_paths"] = { home .. "/Desktop/www/yii/" },
-            ["completion_worse.completor.constant.enabled"] = true,
-            ["language_server.diagnostics_on_update"] = false,
-            ["language_server.diagnostic_sleep_time"] = 500,
-          },
-          autostart = false,
-        },
+        -- phpactor = {
+        --   single_file_support = true,
+        --   filetypes = { "php" },
+        --   init_options = {
+        --     ["indexer.stub_paths"] = { home .. "/Desktop/www/yii/" },
+        --     ["completion_worse.completor.constant.enabled"] = true,
+        --     ["language_server.diagnostics_on_update"] = false,
+        --     ["language_server.diagnostic_sleep_time"] = 500,
+        --   },
+        --   autostart = false,
+        -- },
 
         -- golang
         gopls = require("utils.lsp").gopls_config(),
@@ -94,18 +94,18 @@ return {
         },
 
         -- java
-        jdtls = {
-          settings = {
-            java = {
-              referencesCodeLens = {
-                enabled = false,
-              },
-              implementationsCodeLens = {
-                enabled = false,
-              },
-            },
-          },
-        },
+        -- jdtls = {
+        --   settings = {
+        --     java = {
+        --       referencesCodeLens = {
+        --         enabled = false,
+        --       },
+        --       implementationsCodeLens = {
+        --         enabled = false,
+        --       },
+        --     },
+        --   },
+        -- },
       },
     },
     init = function()

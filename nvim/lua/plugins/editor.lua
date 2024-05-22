@@ -33,7 +33,7 @@ return {
     opts = {
       filesize = 1,
       pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-      features = { -- features to disable
+      features = {       -- features to disable
         "indent_blankline",
         "illuminate",
         "lsp",
