@@ -18,13 +18,25 @@ return {
     event = { "VeryLazy" },
   },
 
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      style = "storm",
+      transparent = true,
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
+    },
+  },
+
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     -- version = "10.15.0",
     opts = {
       colorscheme = "gruvbox",
-      -- colorscheme = "habamax",
+      -- colorscheme = "tokyonight",
     },
   },
 }

@@ -73,11 +73,17 @@ return {
   -- syntax highlight
   {
     "nvim-treesitter/nvim-treesitter",
-    opts = {
-      highlight = { enable = true },
-      indent = { enable = true },
-      auto_install = true,
-      ensure_installed = { "lua", "luadoc", "go", "bash", "fish", "php", "phpdoc", "jsdoc", "vimdoc" },
-    },
+    opts = function(_, opts)
+      opts.auto_install = true
+      vim.list_extend(opts.ensure_installed, {
+        "luadoc",
+        "go",
+        "fish",
+        "php",
+        "phpdoc",
+        "jsdoc",
+        "vimdoc",
+      })
+    end,
   },
 }
