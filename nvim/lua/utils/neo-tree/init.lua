@@ -66,6 +66,8 @@ local config = {
       hide_dotfiles = false,
       hide_gitignored = false,
       hide_by_name = {
+        ".",
+        "..",
         ".git",
         ".idea",
         -- ".vscode",
