@@ -29,7 +29,7 @@ return {
           hdlr = true,
         },
         lsp_inlay_hints = {
-          enable = true,
+          enable = false,
           style = "eol",
           highlight = "LspInlayHint",
         },
@@ -55,5 +55,67 @@ return {
       vim.keymap.set("n", "<leader>tc", "<cmd>GoCoverage -p<cr>", { desc = "Run converage package" })
     end,
     build = ':lua require("go.install").update_all_sync()',
+  },
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "anhoder/nvim-ginkgo",
+      "nvim-neotest/neotest-go",
+    },
+    opts = function(_, opts)
+      opts.adapters = opts.adapters or {}
+      vim.list_extend(opts.adapters, {
+        require("nvim-ginkgo"),
+      })
+      opts.adapters["neotest-go"] = {
+        experimental = {
+          test_table = true,
+        },
+      }
+    end,
+    init = function()
+      local last_filetype = ""
+      vim.api.nvim_create_autocmd({ "BufEnter" }, {
+        pattern = "*",
+        callback = function()
+          local cur_filetype = vim.o.filetype
+
+          if cur_filetype == "go" then
+            if last_filetype == "go" then
+              last_filetype = cur_filetype
+              return
+            end
+
+            last_filetype = cur_filetype
+
+            local path = vim.fn.expand("%:p:h")
+            vim.keymap.del({ "n" }, "<leader>tr")
+            vim.keymap.set({ "n" }, "<leader>tr", function()
+              require("neotest").run.run({
+                adapter = "neotest-go:" .. require("neotest-go").root(path),
+              })
+            end, { desc = "Run Nearest(neotest-go)" })
+            vim.keymap.set({ "n" }, "<leader>tR", function()
+              require("neotest").run.run({ adapter = "nvim-ginkgo:" .. require("nvim-ginkgo").root(path) })
+            end, { desc = "Run Nearest(ginkgo)" })
+
+            return
+          end
+
+          if last_filetype ~= "go" then
+            last_filetype = cur_filetype
+            return
+          end
+
+          last_filetype = cur_filetype
+
+          vim.keymap.del({ "n" }, "<leader>tr")
+          vim.keymap.del({ "n" }, "<leader>tR")
+          vim.keymap.set({ "n" }, "<leader>tr", function()
+            require("neotest").run.run()
+          end, { desc = "Run Nearest" })
+        end,
+      })
+    end,
   },
 }

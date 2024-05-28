@@ -8,9 +8,9 @@ return {
     "neovim/nvim-lspconfig",
     opts = {
       single_file_support = true,
-      inlay_hints = {
-        enabled = false,
-      },
+      -- inlay_hints = {
+      --   enabled = false,
+      -- },
       capabilities = {
         textDocument = {
           foldingRange = {

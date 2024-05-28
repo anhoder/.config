@@ -24,10 +24,10 @@ return {
       -- fancy UI for the debugger
       {
         "rcarriga/nvim-dap-ui",
-      -- stylua: ignore
-      dependencies = {
-        "nvim-neotest/nvim-nio",
-      },
+        -- stylua: ignore
+        dependencies = {
+          "nvim-neotest/nvim-nio",
+        },
         keys = {
           {
             "<leader>du",
@@ -197,42 +197,5 @@ return {
         )
       end
     end,
-  },
-
-  -- mason-nvim-dap
-  {
-    "jay-babu/mason-nvim-dap.nvim",
-    dependencies = "mason.nvim",
-    cmd = { "DapInstall", "DapUninstall" },
-    opts = {
-      -- Makes a best effort to setup the various debuggers with
-      -- reasonable debug configurations
-      automatic_setup = true,
-      -- You can provide additional configuration to the handlers,
-      -- see mason-nvim-dap README for more information
-      handlers = {
-        function(config)
-          -- all sources with no handler get passed here
-
-          -- Keep original functionality
-          require("mason-nvim-dap").default_setup(config)
-        end,
-        php = function(config)
-          config.configurations = {
-            {
-              type = "php",
-              request = "launch",
-              name = "Listen for Xdebug",
-              port = 9003,
-              -- pathMappings = {
-              --   ["/var/www/html"] = "${workspaceFolder}",
-              --   ["${workspaceFolder}"] = "${workspaceFolder}",
-              -- },
-            },
-          }
-          require("mason-nvim-dap").default_setup(config) -- don't forget this!
-        end,
-      },
-    },
   },
 }
