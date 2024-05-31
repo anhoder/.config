@@ -55,6 +55,9 @@ function M.gopls_config()
     --   "gopls",
     --   "-remote=127.0.0.1:37374",
     -- },
+    keys = {
+      { "<leader>td", false },
+    },
     single_file_support = true,
     settings = {
       gopls = {

@@ -3,6 +3,7 @@ local Logos = require("utils.logos")
 return {
   "nvimdev/dashboard-nvim",
   event = "VimEnter",
+  commit = "5182c09ac8085dc73b78ad0ea9f5479c9a866fc4",
   dependencies = { { "nvim-tree/nvim-web-devicons" } },
   keys = { { "<leader>0", "<cmd>Dashboard<CR>", desc = "Dashboard" } },
   opts = function()
@@ -59,11 +60,19 @@ return {
             action = "Lazy",
           },
           {
+            icon = " ",
+            icon_hl = "DashboardLazyExtras",
+            desc = "LazyExtras",
+            key = "x",
+            key_hl = "DashboardLazyExtras",
+            action = "LazyExtras",
+          },
+          {
             icon = " ",
-            icon_hl = "DashboardServer",
+            icon_hl = "DashboardMason",
             desc = "Mason",
             key = "m",
-            key_hl = "DashboardServer",
+            key_hl = "DashboardMason",
             action = "Mason",
           },
           {

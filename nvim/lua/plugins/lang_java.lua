@@ -1,34 +1,29 @@
+local lazyutil = require("utils.lazyvim")
+
+if not lazyutil.check_extra_enabled("lazyvim.plugins.extras.lang.java") then
+  return {}
+end
+
 return {
-  "nvim-java/nvim-java",
-  enabled = false,
-  dependencies = {
-    "nvim-java/lua-async-await",
-    "nvim-java/nvim-java-refactor",
-    "nvim-java/nvim-java-core",
-    "nvim-java/nvim-java-test",
-    "nvim-java/nvim-java-dap",
-    "MunifTanjim/nui.nvim",
+  {
     "neovim/nvim-lspconfig",
-    "mfussenegger/nvim-dap",
-    {
-      "williamboman/mason.nvim",
-      opts = {
-        registries = {
-          "github:nvim-java/mason-registry",
-          "github:mason-org/mason-registry",
-        },
-      },
-    },
-    {
-      "williamboman/mason-lspconfig.nvim",
-      opts = {
-        handlers = {
-          ["jdtls"] = function()
-            require("java").setup()
-          end,
+    optional = true,
+    opts = {
+      servers = {
+        -- java
+        jdtls = {
+          settings = {
+            java = {
+              referencesCodeLens = {
+                enabled = false,
+              },
+              implementationsCodeLens = {
+                enabled = false,
+              },
+            },
+          },
         },
       },
     },
   },
-  opts = {},
 }

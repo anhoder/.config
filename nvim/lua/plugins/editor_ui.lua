@@ -55,21 +55,22 @@ return {
   },
 
   -- colorizer
-  {
-    "NvChad/nvim-colorizer.lua",
-    ft = { "lua", "css", "html", "js", "ts" },
-    opts = {
-      filetypes = {
-        "*",
-        "!neo-tree",
-      },
-      user_default_options = {
-        names = false,
-        -- Available methods are false / true / "normal" / "lsp" / "both"
-        tailwind = false,
-      },
-    },
-  },
+  -- {
+  --   "NvChad/nvim-colorizer.lua",
+  --   ft = { "lua", "css", "html", "js", "ts" },
+  --   optional = true,
+  --   opts = {
+  --     filetypes = {
+  --       "*",
+  --       "!neo-tree",
+  --     },
+  --     user_default_options = {
+  --       names = false,
+  --       -- Available methods are false / true / "normal" / "lsp" / "both"
+  --       tailwind = false,
+  --     },
+  --   },
+  -- },
 
   -- lualine
   {
@@ -159,9 +160,28 @@ return {
   {
     "anuvyklack/windows.nvim",
     event = "WinNew",
-    -- enabled = false,
+    enabled = false,
     dependencies = {
       { "anuvyklack/middleclass" },
+      {
+        "nvim-neotest/neotest",
+        optional = true,
+        keys = {
+          {
+            "<leader>ts",
+            function()
+              if vim.list_contains(package.loaded, "windows.nvim") then
+                vim.cmd("WindowsDisableAutowidth")
+                require("neotest").summary.toggle()
+                vim.cmd("WindowsEnableAutowidth")
+                return
+              end
+              require("neotest").summary.toggle()
+            end,
+            desc = "Toggle Summary",
+          },
+        },
+      },
       -- { "anuvyklack/animation.nvim", enabled = true },
     },
     opts = {

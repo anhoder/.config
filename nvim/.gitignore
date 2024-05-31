@@ -7,4 +7,3 @@ foo.*
 *.log
 data
 .DS_Store
-lazy-lock.json

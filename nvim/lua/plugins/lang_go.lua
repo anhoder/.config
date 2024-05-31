@@ -1,10 +1,28 @@
+local lazyutil = require("utils.lazyvim")
+
+if not lazyutil.check_extra_enabled("lazyvim.plugins.extras.lang.go") then
+  return {}
+end
+
+-- if has >=2 adapter, unexpected exceptions from neotest may occur
+local enable_e2e_test = false
+
 return {
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      servers = {
+        -- golang
+        gopls = require("utils.lsp").gopls_config(),
+      },
+    },
+  },
   {
     "fatih/vim-go",
     enabled = false,
     config = function()
-      vim.cmd("hi goCoverageCovered ctermfg=0 ctermbg=0 guifg=0 guibg=#1e500c")
-      vim.cmd("hi goCoverageUncover ctermfg=0 ctermbg=0 guifg=0 guibg=#590602")
+      vim.cmd("hi! link goCoverageCovered CoverageCovered")
+      vim.cmd("hi! link goCoverageUncover CoverageUncovered")
     end,
   },
   {
@@ -23,7 +41,7 @@ return {
       require("go").setup({
         lsp_cfg = false,
         icons = false,
-        build_tags = "wireinject",
+        -- build_tags = "wireinject",
         lsp_keymaps = false,
         diagnostic = {
           hdlr = true,
@@ -34,9 +52,9 @@ return {
           highlight = "LspInlayHint",
         },
         dap_debug_vt = false,
-        sign_covered_hl = "GruvboxAqua",
-        sign_partial_hl = "GruvboxYellow",
-        sign_uncovered_hl = "GruvboxRed",
+        sign_covered_hl = "CoverageCovered",
+        sign_partial_hl = "CoveragePartial",
+        sign_uncovered_hl = "CoverageUncovered",
       })
       local cfg = require("go.lsp").config()
       cfg = vim.tbl_deep_extend("force", cfg, require("utils.lsp").gopls_config())
@@ -58,64 +76,40 @@ return {
   },
   {
     "nvim-neotest/neotest",
+    optional = true,
     dependencies = {
-      "anhoder/nvim-ginkgo",
-      "nvim-neotest/neotest-go",
+      {
+        "anhoder/nvim-ginkgo",
+        ft = { "go" },
+        cond = enable_e2e_test,
+        config = function()
+          vim.keymap.set({ "n" }, "<leader>tr", function()
+            local path = vim.fn.expand("%:p:h")
+            require("neotest").run.run({ adapter = "nvim-ginkgo:" .. require("nvim-ginkgo").root(path) })
+          end, { desc = "Run Nearest(ginkgo)" })
+          return true
+        end,
+      },
+      {
+        "nvim-neotest/neotest-go",
+        optional = true,
+        cond = not enable_e2e_test,
+      },
     },
     opts = function(_, opts)
       opts.adapters = opts.adapters or {}
-      vim.list_extend(opts.adapters, {
-        require("nvim-ginkgo"),
-      })
-      opts.adapters["neotest-go"] = {
-        experimental = {
-          test_table = true,
-        },
-      }
-    end,
-    init = function()
-      local last_filetype = ""
-      vim.api.nvim_create_autocmd({ "BufEnter" }, {
-        pattern = "*",
-        callback = function()
-          local cur_filetype = vim.o.filetype
-
-          if cur_filetype == "go" then
-            if last_filetype == "go" then
-              last_filetype = cur_filetype
-              return
-            end
-
-            last_filetype = cur_filetype
-
-            local path = vim.fn.expand("%:p:h")
-            vim.keymap.del({ "n" }, "<leader>tr")
-            vim.keymap.set({ "n" }, "<leader>tr", function()
-              require("neotest").run.run({
-                adapter = "neotest-go:" .. require("neotest-go").root(path),
-              })
-            end, { desc = "Run Nearest(neotest-go)" })
-            vim.keymap.set({ "n" }, "<leader>tR", function()
-              require("neotest").run.run({ adapter = "nvim-ginkgo:" .. require("nvim-ginkgo").root(path) })
-            end, { desc = "Run Nearest(ginkgo)" })
-
-            return
-          end
-
-          if last_filetype ~= "go" then
-            last_filetype = cur_filetype
-            return
-          end
-
-          last_filetype = cur_filetype
-
-          vim.keymap.del({ "n" }, "<leader>tr")
-          vim.keymap.del({ "n" }, "<leader>tR")
-          vim.keymap.set({ "n" }, "<leader>tr", function()
-            require("neotest").run.run()
-          end, { desc = "Run Nearest" })
-        end,
-      })
+      if enable_e2e_test then
+        vim.list_extend(opts.adapters, {
+          require("nvim-ginkgo"),
+        })
+        opts.adapters["neotest-go"] = nil
+      else
+        opts.adapters["neotest-go"] = {
+          experimental = {
+            test_table = true,
+          },
+        }
+      end
     end,
   },
 }

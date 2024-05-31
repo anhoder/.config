@@ -60,11 +60,28 @@ vim.g.minimap_auto_start_win_enter = 1
 vim.g.go_highlight_build_constraints = 1
 vim.g.go_highlight_generate_tags = 1
 
+-- neovim >= 0.10
+vim.cmd("hi Pmenu guifg=0 guibg=#353535")
+vim.cmd("hi! link @variable Identifier")
+vim.cmd("hi! link @constant Constant")
+vim.cmd("hi! link NormalFloat Pmenu")
+vim.cmd("hi! link Delimiter Special")
+vim.cmd("hi! link @type.builtin Type")
+vim.cmd("hi! link @variable.builtin Special")
+vim.cmd("hi! link @lsp.typemod.variable.readonly Constant")
+vim.cmd("hi! link @lsp.type.member Function")
+vim.cmd("hi! link @lsp.type.property Field")
+
 -- highlight
+vim.cmd("hi! LspReferenceRead guibg=#505c54")
+vim.cmd("hi! LspReferenceWrite guibg=#7f5c54")
+vim.cmd("hi! LspReferenceText guibg=#564c44")
+vim.cmd("hi! Visual guibg=#796f67")
 vim.cmd("hi Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
 vim.cmd("hi GitSignsCurrentLineBlame cterm=italic gui=italic guifg=#858577 guibg=0")
 vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=0 guifg=#767676")
 
+-- dashboard
 local colors = require("utils.colors")
 vim.cmd("hi DashboardHeader guifg=" .. colors.random_color())
 vim.cmd("hi DashboardFooter guifg=#787c99")
@@ -74,25 +91,15 @@ vim.cmd("hi DashboardProject guifg=#7aa2f7")
 vim.cmd("hi DashboardConfiguration guifg=#ffffff")
 vim.cmd("hi DashboardSession guifg=#9ece6a")
 vim.cmd("hi DashboardLazy guifg=#0DB9D7")
-vim.cmd("hi DashboardServer guifg=#e0af68")
+vim.cmd("hi DashboardLazyExtras guifg=#737aa2")
+vim.cmd("hi DashboardMason guifg=#e0af68")
 vim.cmd("hi DashboardQuit guifg=#f7768e")
 vim.cmd("hi ColorColumn guibg=#323232")
 
--- for neovim >= 0.10.0
-vim.cmd("hi! link @variable Identifier")
-vim.cmd("hi! link @constant Constant")
-vim.cmd("hi Pmenu guifg=0 guibg=#353535")
-vim.cmd("hi! link NormalFloat Pmenu")
-vim.cmd("hi! link Delimiter Special")
-vim.cmd("hi! link Title GruvboxGreenBold")
-vim.cmd("hi! link @type.builtin GruvboxYellow")
-vim.cmd("hi! link @variable.builtin Special")
-vim.cmd("hi! link @lsp.typemod.variable.readonly Constant")
-vim.cmd("hi! link @lsp.typemod.variable.defaultLibrary GruvboxPurple")
-vim.cmd("hi! link @lsp.type.member Function")
-vim.cmd("hi! link @lsp.type.property Field")
-vim.cmd("hi! link SagaTitle GruvboxBlueBold")
-vim.cmd("hi! link SagaFinderFname GruvboxAqua")
+-- coverage
+vim.cmd("hi! CoverageCovered ctermfg=0 ctermbg=0 guifg=0 guibg=#8ec07c")
+vim.cmd("hi! CoveragePartial ctermfg=0 ctermbg=0 guifg=0 guibg=#fabd2f")
+vim.cmd("hi! CoverageUncovered ctermfg=0 ctermbg=0 guifg=0 guibg=#fb4934")
 
 -- for telescope
 local base30 = require("utils.gruvbox").base_30
@@ -112,23 +119,6 @@ vim.cmd(string.format("hi TelescopePromptNormal guifg=%s guibg=%s", base30.white
 vim.cmd(string.format("hi TelescopeResultsTitle guifg=%s guibg=%s", base30.one_bg2, base30.orange))
 vim.cmd(string.format("hi TelescopePromptPrefix guifg=%s guibg=%s", base30.pink, base30.one_bg2))
 vim.cmd(string.format("hi TelescopePromptCounter guifg=%s guibg=%s", base30.pink, base30.one_bg2))
-
---  lazygit theme
-local get_color = function(hl, default)
-  return LazyVim.ui.color(hl) and hl or default
-end
-require("lazyvim.util.lazygit").theme = {
-  [241] = { fg = get_color("Special", "GruvboxBlue") },
-  activeBorderColor = { fg = get_color("MatchParen", "GruvboxBlueBold"), bold = true },
-  cherryPickedCommitBgColor = { fg = "GruvboxAqua" },
-  cherryPickedCommitFgColor = { fg = "GruvboxBlue" },
-  defaultFgColor = { fg = "default" },
-  inactiveBorderColor = { fg = get_color("FloatBorder", "Comment") },
-  optionsTextColor = { fg = "GruvboxBlue" },
-  searchingActiveBorderColor = { fg = get_color("MatchParen", "GruvboxBlueBold"), bold = true },
-  selectedLineBgColor = { bg = "Visual" }, -- set to `default` to have no background colour
-  unstagedChangesColor = { fg = "GruvboxRed" },
-}
 
 -- next is for neovide
 if not vim.g.neovide then
