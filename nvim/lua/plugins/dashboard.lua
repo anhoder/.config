@@ -3,7 +3,6 @@ local Logos = require("utils.logos")
 return {
   "nvimdev/dashboard-nvim",
   event = "VimEnter",
-  commit = "5182c09ac8085dc73b78ad0ea9f5479c9a866fc4",
   dependencies = { { "nvim-tree/nvim-web-devicons" } },
   keys = { { "<leader>0", "<cmd>Dashboard<CR>", desc = "Dashboard" } },
   opts = function()
