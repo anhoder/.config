@@ -82,32 +82,28 @@ return {
         "anhoder/nvim-ginkgo",
         ft = { "go" },
         cond = enable_e2e_test,
-        config = function()
-          vim.keymap.set({ "n" }, "<leader>tr", function()
-            local path = vim.fn.expand("%:p:h")
-            require("neotest").run.run({ adapter = "nvim-ginkgo:" .. require("nvim-ginkgo").root(path) })
-          end, { desc = "Run Nearest(ginkgo)" })
-          return true
-        end,
+      },
+      {
+        "fredrikaverpil/neotest-golang",
+        ft = { "go" },
+        cond = not enable_e2e_test,
       },
       {
         "nvim-neotest/neotest-go",
         optional = true,
-        cond = not enable_e2e_test,
+        enabled = false,
       },
     },
     opts = function(_, opts)
       opts.adapters = opts.adapters or {}
+      opts.adapters["neotest-go"] = nil
       if enable_e2e_test then
         vim.list_extend(opts.adapters, {
           require("nvim-ginkgo"),
         })
-        opts.adapters["neotest-go"] = nil
       else
-        opts.adapters["neotest-go"] = {
-          experimental = {
-            test_table = true,
-          },
+        opts.adapters["neotest-golang"] = {
+          require("neotest-golang"),
         }
       end
     end,

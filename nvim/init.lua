@@ -97,9 +97,9 @@ vim.cmd("hi DashboardQuit guifg=#f7768e")
 vim.cmd("hi ColorColumn guibg=#323232")
 
 -- coverage
-vim.cmd("hi! CoverageCovered ctermfg=0 ctermbg=0 guifg=0 guibg=#8ec07c")
-vim.cmd("hi! CoveragePartial ctermfg=0 ctermbg=0 guifg=0 guibg=#fabd2f")
-vim.cmd("hi! CoverageUncovered ctermfg=0 ctermbg=0 guifg=0 guibg=#fb4934")
+vim.cmd("hi! CoverageCovered ctermfg=0 ctermbg=0 guibg=0 guifg=#8ec07c")
+vim.cmd("hi! CoveragePartial ctermfg=0 ctermbg=0 guibg=0 guifg=#fabd2f")
+vim.cmd("hi! CoverageUncovered ctermfg=0 ctermbg=0 guibg=0 guifg=#fb4934")
 
 -- for telescope
 local base30 = require("utils.gruvbox").base_30

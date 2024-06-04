@@ -74,8 +74,14 @@ return {
     event = "LazyFile",
     opts = {
       -- symbol = "▏",
-      -- symbol = "│",
-      symbol = "╎",
+      symbol = "│",
+      -- symbol = "╎",
     },
+  },
+
+  {
+    "lukas-reineke/indent-blankline.nvim",
+    optional = true,
+    enabled = false,
   },
 }

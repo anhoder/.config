@@ -110,22 +110,6 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   end,
 })
 
--- Resolve <Tab> jump issues
-if not vim.g.vscode then
-  local unlinkgrp = vim.api.nvim_create_augroup("UnlinkSnippetOnModeChange", { clear = true })
-  vim.api.nvim_create_autocmd("ModeChanged", {
-    group = unlinkgrp,
-    pattern = { "s:n", "i:*" },
-    desc = "Forget the current snippet when leaving the insert mode",
-    callback = function(evt)
-      local luasnip = require("luasnip")
-      if luasnip.session and luasnip.session.current_nodes[evt.buf] and not luasnip.session.jump_active then
-        luasnip.unlink_current()
-      end
-    end,
-  })
-end
-
 -- for neovide
 -- if vim.g.neovide then
 --   vim.api.nvim_create_autocmd("BufLeave", {

@@ -21,7 +21,6 @@ local telescope_pickers = require("utils.telescope_pickers")
 local ufo = require("ufo")
 local spectre = require("spectre")
 local daputil = require("utils.dap")
-local MiniComment = require("mini.comment")
 
 local lazyterm_size = function(percent)
   percent = percent or 1.0
@@ -171,9 +170,7 @@ map({ "n", "i", "v" }, "<D-a>", "<Esc>ggVG", { desc = "Select all" })
 map({ "n", "i", "v" }, "<A-f>", vim.lsp.buf.format, { desc = "Format code" })
 
 -- Comment
-map({ "i", "n" }, "<D-/>", function()
-  return "<Esc>" .. MiniComment.operator() .. "_"
-end, { expr = true, desc = "Comment" })
+map({ "i", "n" }, "<D-/>", "<Esc>gcc", { remap = true, desc = "Comment" })
 map("v", "<D-/>", "gc", { remap = true, desc = "Comment selection" })
 
 -- Terminal

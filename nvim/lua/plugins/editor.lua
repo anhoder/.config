@@ -64,6 +64,7 @@ return {
   -- lua snip: Snippet Engine
   {
     "L3MON4D3/LuaSnip",
+    optional = true,
     opts = {
       region_check_events = "InsertEnter",
       delete_check_events = "TextChanged,InsertLeave",
@@ -73,6 +74,7 @@ return {
   -- syntax highlight
   {
     "nvim-treesitter/nvim-treesitter",
+    optional = true,
     opts = function(_, opts)
       opts.auto_install = true
       vim.list_extend(opts.ensure_installed, {

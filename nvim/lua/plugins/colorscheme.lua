@@ -17,6 +17,9 @@ return {
     end,
   },
   {
+    "xiantang/darcula-dark.nvim",
+  },
+  {
     "folke/tokyonight.nvim",
     opts = {
       style = "storm",
@@ -33,8 +36,10 @@ return {
     "LazyVim/LazyVim",
     -- version = "10.15.0",
     opts = {
-      colorscheme = "gruvbox",
+      -- colorscheme = "gruvbox",
       -- colorscheme = "tokyonight",
+      -- colorscheme = "habamax",
+      colorscheme = "darcula-dark",
     },
   },
 }

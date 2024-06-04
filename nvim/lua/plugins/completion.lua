@@ -24,7 +24,7 @@ return {
   -- github copilot
   {
     "zbirenbaum/copilot.lua",
-    enabled = false,
+    cond = false,
     init = function()
       -- disable default
       vim.cmd("Copilot disable")
