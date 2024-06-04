@@ -19,27 +19,16 @@ return {
   {
     "xiantang/darcula-dark.nvim",
   },
-  {
-    "folke/tokyonight.nvim",
-    opts = {
-      style = "storm",
-      -- transparent = true,
-      -- styles = {
-      --   sidebars = "transparent",
-      --   floats = "transparent",
-      -- },
-    },
-  },
 
   -- Configure LazyVim to load gruvbox
   {
     "LazyVim/LazyVim",
     -- version = "10.15.0",
     opts = {
-      -- colorscheme = "gruvbox",
+      colorscheme = "gruvbox",
       -- colorscheme = "tokyonight",
       -- colorscheme = "habamax",
-      colorscheme = "darcula-dark",
+      -- colorscheme = "darcula-dark",
     },
   },
 }

@@ -193,7 +193,6 @@ map({ "i", "n", "v", "s", "t", "o" }, "<D-2>", lazyterm2, { desc = "Open term2" 
 map({ "i", "n", "v", "s", "t", "o" }, "<D-3>", lazyterm3, { desc = "Open term3" })
 
 -- musicfox
-map("n", "<leader>mf", musicfox, { desc = "Run musicfox" })
 map({ "i", "n", "v", "s", "t", "o" }, "<C-Esc>", musicfox, { desc = "Run musicfox" })
 
 -- lazygit

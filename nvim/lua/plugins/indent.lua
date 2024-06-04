@@ -39,7 +39,7 @@ return {
         end,
         fold_virt_text_handler = function(virtText, lnum, endLnum, width, truncate)
           local newVirtText = {}
-          local suffix = (" ... 󰁂 %d "):format(endLnum - lnum)
+          local suffix = (" ... 󰁂 %dl "):format(endLnum - lnum)
           local sufWidth = vim.fn.strdisplaywidth(suffix)
           local targetWidth = width - sufWidth
           local curWidth = 0
@@ -82,6 +82,11 @@ return {
   {
     "lukas-reineke/indent-blankline.nvim",
     optional = true,
-    enabled = false,
+    -- enabled = false,
+    opts = {
+      scope = {
+        enabled = false,
+      },
+    },
   },
 }
