@@ -71,22 +71,12 @@ return {
   -- indent line
   {
     "echasnovski/mini.indentscope",
+    optional = true,
     event = "LazyFile",
     opts = {
       -- symbol = "▏",
       symbol = "│",
       -- symbol = "╎",
-    },
-  },
-
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    optional = true,
-    -- enabled = false,
-    opts = {
-      scope = {
-        enabled = false,
-      },
     },
   },
 }

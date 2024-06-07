@@ -29,7 +29,7 @@ end
 local lazyterm1 = function()
   LazyVim.terminal(nil, {
     title = "term1",
-    cwd = LazyVim.root(),
+    -- cwd = LazyVim.root(),
     size = lazyterm_size(0.85),
     env = { TERM_NAME = "term1" },
     esc_esc = true,
@@ -40,7 +40,7 @@ end
 local lazyterm2 = function()
   LazyVim.terminal(nil, {
     title = "term2",
-    cwd = LazyVim.root(),
+    -- cwd = LazyVim.root(),
     size = lazyterm_size(0.9),
     env = { TERM_NAME = "term2" },
     esc_esc = true,
@@ -51,7 +51,7 @@ end
 local lazyterm3 = function()
   LazyVim.terminal(nil, {
     title = "term3",
-    cwd = LazyVim.root(),
+    -- cwd = LazyVim.root(),
     size = lazyterm_size(1.0),
     env = { TERM_NAME = "term3" },
     esc_esc = true,

@@ -101,6 +101,9 @@ vim.cmd("hi! CoverageCovered ctermfg=0 ctermbg=0 guibg=0 guifg=#8ec07c")
 vim.cmd("hi! CoveragePartial ctermfg=0 ctermbg=0 guibg=0 guifg=#fabd2f")
 vim.cmd("hi! CoverageUncovered ctermfg=0 ctermbg=0 guibg=0 guifg=#fb4934")
 
+-- codeium suggestion
+vim.cmd("hi! CodeiumSuggestion guifg=#686868")
+
 -- for telescope
 local base30 = require("utils.gruvbox").base_30
 vim.cmd(string.format("hi TelescopePromptPrefix guifg=%s guibg=%s", base30.pink, base30.one_bg2))
@@ -153,4 +156,4 @@ vim.g.neovide_cursor_animate_command_line = true
 -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
 -- vim.g.neovide_cursor_vfx_particle_density = 15.0
 vim.g.neovide_fullscreen = true
-vim.g.neovide_input_macos_option_key_is_meta = "none"
+vim.g.neovide_input_macos_option_key_is_meta = "both"

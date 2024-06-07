@@ -21,13 +21,20 @@ return {
     },
   },
 
-  -- github copilot
   {
-    "zbirenbaum/copilot.lua",
-    cond = false,
-    init = function()
-      -- disable default
-      vim.cmd("Copilot disable")
-    end,
+    "Exafunction/codeium.vim",
+    event = "BufEnter",
+    commit = "289eb72",
+    keys = {
+      {
+        "<A-Tab>",
+        function()
+          return vim.fn["codeium#Accept"]()
+        end,
+        expr = true,
+        silent = true,
+        mode = { "i", "s" },
+      },
+    },
   },
 }

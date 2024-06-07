@@ -31,7 +31,7 @@ format = '\([$state( $progress_current/$progress_total)]($style)\)'
 style = "bright-yellow"
 
 [git_status]
-disabled = false
+disabled = true
 format = '[[(*$conflicted$untracked$modified$staged$renamed$deleted)](red)($ahead_behind)]($style)'
 style = "red"
 ignore_submodules = true

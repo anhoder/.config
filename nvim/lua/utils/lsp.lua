@@ -64,11 +64,11 @@ function M.gopls_config()
         gofumpt = true,
         -- buildFlags = { "-tags=wireinject" },
         analyses = {
-          fieldalignment = false,
-          ST1000 = false,
-          ST1003 = false,
-          SA4006 = false,
-          QF1008 = false,
+          -- fieldalignment = false,
+          -- ST1000 = false, -- Incorrect or missing package comment
+          -- ST1003 = false, -- Poorly chosen identifier
+          -- SA4006 = false, -- A value assigned to a variable is never read before being overwritten. Forgotten error check or dead code?
+          -- QF1008 = false, -- Omit embedded fields from selector expression
         },
         usePlaceholders = false,
       },
