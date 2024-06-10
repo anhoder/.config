@@ -65,10 +65,10 @@ brew "coreutils"
 brew "vegeta"
 brew "imagemagick"
 brew "luarocks" # for `luarocks --lua-version=5.1 --lua-dir=$HOMEBREW/opt/lua@5.1/bin --local install magick`
-brew "anhoder/repo/neovim"
+brew "anhoder/repo/neovim", link: false
 brew "anhoder/repo/lua@5.1", link: false
 brew "git-chglog/git-chglog/git-chglog"
-brew "anhoder/repo/neovim-nightly", link: false
+brew "anhoder/repo/neovim-nightly"
 brew "go-musicfox/go-musicfox/go-musicfox"
 brew "go-musicfox/go-musicfox/spotifox"
 brew "shivammathur/php/php@8.0"
