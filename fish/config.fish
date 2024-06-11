@@ -120,6 +120,11 @@ if command -v kitten >/dev/null 2>&1
     alias k="kitten"
 end
 
+if command -v aerospace >/dev/null 2>&1
+    alias aerospace-next="aerospace list-workspaces --monitor focused --empty no | aerospace workspace next"
+    alias aerospace-prev="aerospace list-workspaces --monitor focused --empty no | aerospace workspace prev"
+end
+
 # ls
 if command -v g >/dev/null 2>&1
     functions -e ll

@@ -20,60 +20,74 @@ local neotree_render = require("neo-tree.ui.renderer")
 local telescope_pickers = require("utils.telescope_pickers")
 local ufo = require("ufo")
 local spectre = require("spectre")
-local daputil = require("utils.dap")
 
 local lazyterm_size = function(percent)
   percent = percent or 1.0
   return { width = math.floor(vim.o.columns * 0.95 * percent), height = math.floor(vim.o.lines * 0.92 * percent) }
 end
-local lazyterm1 = function()
-  LazyVim.terminal(nil, {
-    title = "term1",
-    -- cwd = LazyVim.root(),
-    size = lazyterm_size(0.85),
-    env = { TERM_NAME = "term1" },
-    esc_esc = true,
-    border = "solid",
-    title_pos = "left",
-  })
-end
-local lazyterm2 = function()
-  LazyVim.terminal(nil, {
-    title = "term2",
-    -- cwd = LazyVim.root(),
-    size = lazyterm_size(0.9),
-    env = { TERM_NAME = "term2" },
-    esc_esc = true,
-    border = "solid",
-    title_pos = "left",
-  })
-end
-local lazyterm3 = function()
-  LazyVim.terminal(nil, {
-    title = "term3",
-    -- cwd = LazyVim.root(),
-    size = lazyterm_size(1.0),
-    env = { TERM_NAME = "term3" },
-    esc_esc = true,
-    border = "solid",
-    title_pos = "left",
-  })
-end
-local musicfox = function()
-  LazyVim.terminal("musicfox", { size = lazyterm_size(), env = { TERM_NAME = "musicfox" }, esc_esc = true })
-end
+-- local lazyterm1 = function()
+--   LazyVim.terminal(nil, {
+--     title = "term1",
+--     -- cwd = LazyVim.root(),
+--     size = lazyterm_size(0.85),
+--     env = { TERM_NAME = "term1" },
+--     esc_esc = true,
+--     border = "solid",
+--     title_pos = "left",
+--   })
+-- end
+-- local lazyterm2 = function()
+--   LazyVim.terminal(nil, {
+--     title = "term2",
+--     -- cwd = LazyVim.root(),
+--     size = lazyterm_size(0.9),
+--     env = { TERM_NAME = "term2" },
+--     esc_esc = true,
+--     border = "solid",
+--     title_pos = "left",
+--   })
+-- end
+-- local lazyterm3 = function()
+--   LazyVim.terminal(nil, {
+--     title = "term3",
+--     -- cwd = LazyVim.root(),
+--     size = lazyterm_size(1.0),
+--     env = { TERM_NAME = "term3" },
+--     esc_esc = true,
+--     border = "solid",
+--     title_pos = "left",
+--   })
+-- end
+-- local musicfox = function()
+--   LazyVim.terminal("musicfox", { size = lazyterm_size(), env = { TERM_NAME = "musicfox" }, esc_esc = true })
+-- end
 
 local Terminal = toggleterm.Terminal
--- local float_opts = {
---   border = "curved",
---   width = function()
---     return math.floor(vim.o.columns * 0.95)
---   end,
---   height = function()
---     return math.floor(vim.o.lines * 0.90)
---   end,
--- }
+local terminal_opts = {
+  direction = "float",
+  hidden = false,
+  close_on_exit = false,
+  auto_scroll = false,
+  float_opts = {
+    border = "curved",
+    width = function()
+      return math.floor(vim.o.columns * 0.8)
+    end,
+    height = function()
+      return math.floor(vim.o.lines * 0.8)
+    end,
+  },
+}
+local musicfox = Terminal:new(vim.tbl_extend("force", terminal_opts, {
+  cmd = "musicfox",
+  id = 99,
+  display_name = "musicfox",
+}))
 local term0 = Terminal:new({ direction = "horizontal" })
+local term1 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 1, display_name = "term1" }))
+local term2 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 2, display_name = "term2" }))
+local term3 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 3, display_name = "term3" }))
+
 local function get_folder_node(tree, node)
   if not tree then
     return nil
@@ -180,20 +194,22 @@ map("v", "<D-/>", "gc", { remap = true, desc = "Comment selection" })
 --   end
 -- end
 map({ "i", "n", "v", "s", "t", "o" }, "<D-`>", function()
-  if term0:is_open() then
-    term0:toggle()
-    return
-  end
-  daputil.dapui_close() -- close dapui
-  -- hide_all()
   term0:toggle()
 end, { desc = "Open terminal" })
-map({ "i", "n", "v", "s", "t", "o" }, "<D-1>", lazyterm1, { desc = "Open term1" })
-map({ "i", "n", "v", "s", "t", "o" }, "<D-2>", lazyterm2, { desc = "Open term2" })
-map({ "i", "n", "v", "s", "t", "o" }, "<D-3>", lazyterm3, { desc = "Open term3" })
+map({ "i", "n", "v", "s", "t", "o" }, "<D-1>", function()
+  term1:toggle()
+end, { desc = "Open term1" })
+map({ "i", "n", "v", "s", "t", "o" }, "<D-2>", function()
+  term2:toggle()
+end, { desc = "Open term2" })
+map({ "i", "n", "v", "s", "t", "o" }, "<D-3>", function()
+  term3:toggle()
+end, { desc = "Open term3" })
 
 -- musicfox
-map({ "i", "n", "v", "s", "t", "o" }, "<C-Esc>", musicfox, { desc = "Run musicfox" })
+map({ "i", "n", "v", "s", "t", "o" }, "<C-Esc>", function()
+  musicfox:toggle()
+end, { desc = "Run musicfox" })
 
 -- lazygit
 map("n", "<leader>gg", function()

@@ -77,9 +77,10 @@ vim.cmd("hi! LspReferenceRead guibg=#505c54")
 vim.cmd("hi! LspReferenceWrite guibg=#7f5c54")
 vim.cmd("hi! LspReferenceText guibg=#564c44")
 vim.cmd("hi! Visual guibg=#796f67")
-vim.cmd("hi Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
-vim.cmd("hi GitSignsCurrentLineBlame cterm=italic gui=italic guifg=#858577 guibg=0")
-vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=0 guifg=#767676")
+vim.cmd("hi! Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
+vim.cmd("hi! GitSignsCurrentLineBlame cterm=italic gui=italic guifg=#858577 guibg=0")
+vim.cmd("hi! LspInlayHint cterm=italic gui=italic guibg=0 guifg=#767676")
+vim.cmd("hi! MatchParen gui=bold,underline guibg=#665c54 guifg=#83a598")
 
 -- dashboard
 local colors = require("utils.colors")
