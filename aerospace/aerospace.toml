@@ -78,7 +78,8 @@ inherit-env-vars = true # If you don't touch "exec" section,
 # alt-enter = 'exec-and-forget open -n /System/Applications/Utilities/Terminal.app'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-alt-slash = 'flatten-workspace-tree'
+alt-slash = 'layout tiles accordion'
+alt-shift-slash = 'layout floating tiling'
 
 # See: https://nikitabobko.github.io/AeroSpace/commands#focus
 alt-h = 'focus left'

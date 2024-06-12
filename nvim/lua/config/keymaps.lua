@@ -69,7 +69,7 @@ local terminal_opts = {
   close_on_exit = false,
   auto_scroll = false,
   float_opts = {
-    border = "curved",
+    border = vim.g.neovide and "solid" or "curved",
     width = function()
       return math.floor(vim.o.columns * 0.8)
     end,
