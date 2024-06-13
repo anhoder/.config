@@ -222,3 +222,15 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'com.tencent.xinWeChat'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.netease.163music'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.apple.ActivityMonitor'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'dev.kdrag0n.MacVirt'
+run = ['layout floating']

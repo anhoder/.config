@@ -432,9 +432,15 @@ map({ "n" }, "zR", ufo.openAllFolds, { desc = "Close all folds(ufo)", remap = tr
 map({ "n" }, "<leader>w<Tab>", "<C-w>T", { desc = "Break out into a new tab", remap = true })
 
 -- spectre: search and replace
+map({ "n", "v" }, "<D-r>", function()
+  spectre.open_file_search()
+end, { desc = "Search on current file" })
 map({ "n", "v" }, "<leader>sr", function()
   spectre.open_file_search()
 end, { desc = "Search on current file" })
+map({ "n", "v" }, "<D-R>", function()
+  spectre.open_visual()
+end, { desc = "Search " })
 map({ "n", "v" }, "<leader>sR", function()
   spectre.open_visual()
 end, { desc = "Search " })

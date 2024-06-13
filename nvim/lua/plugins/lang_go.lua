@@ -99,11 +99,16 @@ return {
       opts.adapters["neotest-go"] = nil
       if enable_e2e_test then
         vim.list_extend(opts.adapters, {
-          require("nvim-ginkgo"),
+          require("nvim-ginkgo").setup({
+            ginkgo_args = { "-v", "--keep-going", "--tags", "e2e" },
+          }),
         })
       else
         opts.adapters["neotest-golang"] = {
-          require("neotest-golang"),
+          require("neotest-golang").setup({
+            dap_go_enabled = true,
+            go_test_args = { "-v", "-count=1", "-timeout=60s" },
+          }),
         }
       end
     end,
