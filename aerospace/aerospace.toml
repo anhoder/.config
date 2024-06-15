@@ -234,3 +234,11 @@ run = ['layout floating']
 [[on-window-detected]]
 if.app-id = 'dev.kdrag0n.MacVirt'
 run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.wutian.weibo'
+run = ['layout floating']
+
+[[on-window-detected]]
+if.app-id = 'com.tdesktop.Telegram'
+run = ['layout floating']
