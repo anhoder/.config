@@ -105,7 +105,7 @@ return {
         })
       else
         opts.adapters["neotest-golang"] = {
-          require("neotest-golang").setup({
+          require("neotest-golang")({
             dap_go_enabled = true,
             go_test_args = { "-v", "-count=1", "-timeout=60s" },
           }),
