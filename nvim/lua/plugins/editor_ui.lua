@@ -200,4 +200,8 @@ return {
       vim.o.equalalways = true
     end,
   },
+
+  {
+    "nvim-tree/nvim-web-devicons",
+  },
 }
