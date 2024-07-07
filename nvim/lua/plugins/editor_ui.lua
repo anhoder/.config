@@ -204,4 +204,9 @@ return {
   {
     "nvim-tree/nvim-web-devicons",
   },
+
+  -- helper for surround
+  {
+    "roobert/surround-ui.nvim",
+  },
 }
