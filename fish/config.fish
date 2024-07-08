@@ -137,3 +137,8 @@ if command -v g >/dev/null 2>&1
     alias ll 'g --perm --icons --time --group --owner --size --title --lh --hyperlink=always --time-style=long-iso'
     alias l 'g --perm --icons --time --group --owner --size --title --show-hidden --lh --hyperlink=always --time-style=long-iso'
 end
+
+bind -M insert \ca beginning-of-line
+bind -M insert \ce end-of-line
+
+fish_vi_key_bindings
