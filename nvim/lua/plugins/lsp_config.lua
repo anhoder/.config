@@ -2,27 +2,27 @@ local telescope_pickers = require("utils.telescope_pickers")
 local telescope_themes = require("telescope.themes")
 local lsputil = require("utils.lsp")
 
+-- 匹配数组中的第一个匹配项
+local function match_and_replace_keymap(array, value)
+  local replaced = false
+  for i, v in ipairs(array) do
+    if v[1] == value[1] then
+      array[i] = value
+      replaced = true
+    end
+  end
+  if not replaced then
+    table.insert(array, value)
+  end
+end
+
 return {
   {
     "neovim/nvim-lspconfig",
-    opts = {
-      single_file_support = true,
-      -- inlay_hints = {
-      --   enabled = false,
-      -- },
-      capabilities = {
-        textDocument = {
-          foldingRange = {
-            dynamicRegistration = true,
-            lineFoldingOnly = true,
-          },
-        },
-      },
-    },
-    init = function()
+    opts = function(_, opts)
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "gr", "<cmd>Glance references<cr>", desc = "Goto references" }
-      keys[#keys + 1] = {
+      match_and_replace_keymap(keys, { "gr", "<cmd>Glance references<cr>", desc = "Goto references" })
+      match_and_replace_keymap(keys, {
         "gR",
         function()
           local opts = telescope_themes.get_ivy()
@@ -30,10 +30,9 @@ return {
           telescope_pickers.prettyLsp(opts)
         end,
         desc = "Goto references",
-      }
-
-      keys[#keys + 1] = { "gi", "<cmd>Glance implementations<cr>", desc = "Goto implementations" }
-      keys[#keys + 1] = {
+      })
+      match_and_replace_keymap(keys, { "gi", "<cmd>Glance implementations<cr>", desc = "Goto implementations" })
+      match_and_replace_keymap(keys, {
         "gI",
         function()
           local opts = telescope_themes.get_ivy()
@@ -42,10 +41,9 @@ return {
           telescope_pickers.prettyLsp(opts)
         end,
         desc = "Goto implementations",
-      }
-
-      keys[#keys + 1] = { "gy", "<cmd>Glance definitions<cr>", desc = "Goto type definitions" }
-      keys[#keys + 1] = {
+      })
+      match_and_replace_keymap(keys, { "gy", "<cmd>Glance definitions<cr>", desc = "Goto type definitions" })
+      match_and_replace_keymap(keys, {
         "gY",
         function()
           local opts = telescope_themes.get_ivy()
@@ -54,14 +52,13 @@ return {
           telescope_pickers.prettyLsp(opts)
         end,
         desc = "Goto type definitions",
-      }
-
-      keys[#keys + 1] = {
+      })
+      match_and_replace_keymap(keys, {
         "gd",
         lsputil.goto_def,
         desc = "Goto definition",
-      }
-      keys[#keys + 1] = {
+      })
+      match_and_replace_keymap(keys, {
         "gD",
         function()
           lsputil.definition_handle(function(is_definition)
@@ -75,34 +72,24 @@ return {
           end)
         end,
         desc = "Goto definition",
-      }
+      })
+      match_and_replace_keymap(keys, { "K", lsputil.hover, desc = "Hover" })
+      match_and_replace_keymap(keys, { "<leader>co", vim.lsp.codelens.run, desc = "Run CodeLenAct" })
 
-      keys[#keys + 1] = {
-        "K",
-        lsputil.hover,
-        desc = "Hover",
-      }
-
-      -- keys[#keys + 1] = { "<leader>ca", "<cmd>Lspsaga code_action<cr>", desc = "Saga Code Action" }
-      keys[#keys + 1] = { "<leader>co", vim.lsp.codelens.run, desc = "Run CodeLenAct" }
-      -- keys[#keys + 1] = { "]d", "<cmd>Lspsaga diagnostic_jump_next<cr>", desc = "Saga Goto next diagnostic" }
-      -- keys[#keys + 1] = { "[d", "<cmd>Lspsaga diagnostic_jump_prev<cr>", desc = "Saga Goto prev diagnostic" }
-      -- keys[#keys + 1] = { "<leader>cs", "<cmd>Lspsaga outline<cr>", desc = "Saga Open outline" }
-      -- keys[#keys + 1] = { "<leader>cr", "<cmd>Lspsaga rename ++project<cr>", desc = "Rename" }
-
-      -- local lspconfig = require("lspconfig")
-      -- local configs = require("lspconfig.configs")
-      --
-      -- if not configs.pls then
-      --   configs.pls = {
-      --     default_config = {
-      --       cmd = { "pls" },
-      --       root_dir = lspconfig.util.root_pattern(".git"),
-      --       filetypes = { "proto" },
-      --     },
-      --   }
-      -- end
-      -- lspconfig.pls.setup({})
+      vim.tbl_extend("force", opts, {
+        single_file_support = true,
+        -- inlay_hints = {
+        --   enabled = false,
+        -- },
+        capabilities = {
+          textDocument = {
+            foldingRange = {
+              dynamicRegistration = true,
+              lineFoldingOnly = true,
+            },
+          },
+        },
+      })
     end,
   },
 }

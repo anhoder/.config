@@ -109,7 +109,10 @@ return {
         "folke/which-key.nvim",
         optional = true,
         opts = {
-          defaults = {
+          modes = {
+            t = false,
+          },
+          spec = {
             ["<leader>d"] = { name = "+debug" },
           },
         },

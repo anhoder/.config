@@ -64,10 +64,10 @@ set -gx DYLD_FALLBACK_LIBRARY_PATH "$DYLD_FALLBACK_LIBRARY_PATH:$HOMEBREW_PREFIX
 set -gx LIBS "$LIBS -lssl -lcrypto"
 
 # CFLAGS
-set -gx CFLAGS "$CFLAGS -I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include -I$HOMEBREW_PREFIX/opt/php/include"
+set -gx CFLAGS "$CFLAGS -I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include"
 
 # CPPFLAGS
-set -gx CPPFLAGS "$CPPFLAGS -I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include -I$HOMEBREW_PREFIX/opt/php/include"
+set -gx CPPFLAGS "$CPPFLAGS -I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include"
 
 # PKG_COFNIG_PATH
 set -gx PKG_COFNIG_PATH "$HOMEBREW_PREFIX/opt/openssl@1.1/lib/pkgconfig:$HOMEBREW_PREFIX/opt/curl/lib/pkgconfig:$PKG_COFNIG_PATH"
