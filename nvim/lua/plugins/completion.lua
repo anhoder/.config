@@ -4,6 +4,7 @@ return {
   -- completion
   {
     "hrsh7th/nvim-cmp",
+    -- commmit = "7e348da6e5085ac447144a2ef4b637220ba27209",
     dependencies = {
       "hrsh7th/cmp-cmdline",
     },

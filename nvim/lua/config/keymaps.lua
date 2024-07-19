@@ -444,3 +444,8 @@ end, { desc = "Search " })
 map({ "n", "v" }, "<leader>sR", function()
   spectre.open_visual()
 end, { desc = "Search " })
+
+-- disable neovim internal grr, gra, grn...
+map({ "n" }, "grr", "<Nop>", { desc = "Disable grr" })
+map({ "n" }, "gra", "<Nop>", { desc = "Disable gra" })
+map({ "n" }, "grn", "<Nop>", { desc = "Disable grn" })

@@ -109,8 +109,8 @@ return {
         "folke/which-key.nvim",
         optional = true,
         opts = {
-          modes = {
-            t = false,
+          triggers = {
+            { "<auto>", mode = "nixsoc" },
           },
           spec = {
             ["<leader>d"] = { name = "+debug" },
