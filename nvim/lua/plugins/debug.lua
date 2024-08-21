@@ -18,13 +18,11 @@ return {
   {
     "mfussenegger/nvim-dap",
     dependencies = {
-      {
-        "ldelossa/nvim-dap-projects",
-      },
       -- fancy UI for the debugger
       {
         "rcarriga/nvim-dap-ui",
         -- stylua: ignore
+        enabled = false,
         dependencies = {
           "nvim-neotest/nvim-nio",
         },
@@ -66,8 +64,6 @@ return {
         opts = {},
         config = function(_, opts)
           -- setup dap config by VsCode launch.json file
-          require("nvim-dap-projects").search_project_config()
-          require("dap.ext.vscode").load_launchjs()
           local dap = require("dap")
           local dapui = require("dapui")
           dapui.setup(opts)
@@ -183,10 +179,23 @@ return {
       { "<leader>dr", function() require("dap").repl.toggle() end, desc = "Toggle REPL" },
       { "<leader>ds", function() require("dap").session() end, desc = "Session" },
       { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
-      { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
+      { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets hover" },
+      { "<leader>dh", function() require("dap.ui.widgets").preview() end, desc = "Widgets preview" },
+      { "<leader>ds", function()
+        local widgets = require("dap.ui.widgets")
+        widgets.centered_float(widgets.frames)
+        end, desc = "Widgets stacks" },
       { "<leader>tL", function() require('dap-go').debug_last_test() end, desc = "Debug Last (Go)" },
     },
 
+    init = function()
+      vim.api.nvim_create_autocmd({ "FileType" }, {
+        pattern = "dap-float",
+        callback = function()
+          vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = true, silent = true })
+        end,
+      })
+    end,
     -- config = function()
     --   local Config = require("lazyvim.config")
     --   vim.api.nvim_set_hl(0, "DapStoppedLine", { default = true, link = "Visual" })

@@ -8,6 +8,10 @@ set -gx CLICOLOR Yes
 set -gx LS_OPTIONS '--color=auto'
 set -gx XDG_CONFIG_HOME "$HOME/.config"
 
+# php
+alias dphp="XDEBUG_SESSION=1 php"
+alias xphp="XDEBUG_SESSION=1 php"
+
 # Git
 alias gp="git push"
 alias gl="git pull"
