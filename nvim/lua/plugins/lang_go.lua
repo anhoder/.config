@@ -46,11 +46,11 @@ return {
         diagnostic = {
           hdlr = true,
         },
-        lsp_inlay_hints = {
-          enable = false,
-          style = "eol",
-          highlight = "LspInlayHint",
-        },
+        -- lsp_inlay_hints = {
+        --   enable = false,
+        --   style = "eol",
+        --   highlight = "LspInlayHint",
+        -- },
         dap_debug_vt = false,
         sign_covered_hl = "CoverageCovered",
         sign_partial_hl = "CoveragePartial",

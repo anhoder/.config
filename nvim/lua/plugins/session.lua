@@ -5,7 +5,7 @@ return {
     event = { "VeryLazy", "CmdlineEnter" },
     opts = {
       autosave = true,
-      should_autosave = function()
+      should_save = function()
         return vim.g.persisted_loaded_session
       end,
     },
