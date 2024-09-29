@@ -26,3 +26,5 @@
 !goneovim/**
 !aerospace/
 !aerospace/**
+!nix-darwin/
+!nix-darwin/**
