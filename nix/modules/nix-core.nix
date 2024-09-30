@@ -1,10 +1,7 @@
-
-{ pkgs, ... }:
-
-{
+{ pkgs, username, ... }: {
   nix.settings = {
     # enable flakes globally
-    experimental-features = ["nix-command" "flakes"];
+    experimental-features = [ "nix-command" "flakes" ];
 
     # substituers that will be considered before the official ones(https://cache.nixos.org)
     substituters = [
@@ -17,7 +14,7 @@
     builders-use-substitutes = true;
   };
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
+  # Auto upgrade nix package and the daemon service. 
   nix.package = pkgs.nix;
+  nix.settings.trusted-users = [ username ];
 }
