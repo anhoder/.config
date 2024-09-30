@@ -145,7 +145,8 @@ map({ "n", "v" }, "<D-c>", '"+y', { desc = "Copy", noremap = true })
 map({ "n", "v" }, "<D-v>", "P", { desc = "Paste", noremap = true })
 map({ "t" }, "<D-v>", '<cmd>stopinsert<cr>"+pi', { desc = "Paste", noremap = true })
 map({ "n", "v" }, "<D-x>", '"+x', { desc = "Cut", noremap = true })
-map({ "i", "c" }, "<D-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { desc = "Paste", noremap = true })
+map({ "c" }, "<D-v>", "<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>", { desc = "Paste", noremap = true })
+map({ "i" }, "<D-v>", "<cmd>normal! Pl<cr>", { desc = "Paste", noremap = true })
 
 -- Delete a word
 map({ "i" }, "<C-BS>", "<C-w>", { desc = "Delete word backword", noremap = true })
