@@ -21,6 +21,9 @@ alias gco="git checkout"
 alias ga="git add"
 alias gm="git merge"
 alias gc="git commit"
+function gba
+    git symbolic-ref "refs/heads/$argv[1]" "refs/heads/$argv[2]"
+end
 
 
 alias kssh="kitten ssh"
