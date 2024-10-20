@@ -25,9 +25,9 @@ return {
       match_and_replace_keymap(keys, {
         "gR",
         function()
-          local opts = telescope_themes.get_ivy()
-          opts["picker"] = "lsp_references"
-          telescope_pickers.prettyLsp(opts)
+          local options = telescope_themes.get_ivy()
+          options["picker"] = "lsp_references"
+          telescope_pickers.prettyLsp(options)
         end,
         desc = "Goto references",
       })
@@ -35,10 +35,10 @@ return {
       match_and_replace_keymap(keys, {
         "gI",
         function()
-          local opts = telescope_themes.get_ivy()
-          opts["picker"] = "lsp_implementations"
-          opts["reuse_win"] = true
-          telescope_pickers.prettyLsp(opts)
+          local options = telescope_themes.get_ivy()
+          options["picker"] = "lsp_implementations"
+          options["reuse_win"] = true
+          telescope_pickers.prettyLsp(options)
         end,
         desc = "Goto implementations",
       })
@@ -46,10 +46,10 @@ return {
       match_and_replace_keymap(keys, {
         "gY",
         function()
-          local opts = telescope_themes.get_ivy()
-          opts["picker"] = "lsp_type_definitions"
-          opts["reuse_win"] = true
-          telescope_pickers.prettyLsp(opts)
+          local options = telescope_themes.get_ivy()
+          options["picker"] = "lsp_type_definitions"
+          options["reuse_win"] = true
+          telescope_pickers.prettyLsp(options)
         end,
         desc = "Goto type definitions",
       })
@@ -62,19 +62,21 @@ return {
         "gD",
         function()
           lsputil.definition_handle(function(is_definition)
-            local opts = telescope_themes.get_ivy()
-            opts["picker"] = "lsp_references"
+            local options = telescope_themes.get_ivy()
+            options["picker"] = "lsp_references"
 
             if is_definition then
-              opts["picker"] = "lsp_definitions"
+              options["picker"] = "lsp_definitions"
             end
-            telescope_pickers.prettyLsp(opts)
+            telescope_pickers.prettyLsp(options)
           end)
         end,
         desc = "Goto definition",
       })
       match_and_replace_keymap(keys, { "K", lsputil.hover, desc = "Hover" })
       match_and_replace_keymap(keys, { "<leader>co", vim.lsp.codelens.run, desc = "Run CodeLenAct" })
+
+      match_and_replace_keymap(keys, { "<leader>ca", false })
 
       vim.tbl_extend("force", opts, {
         single_file_support = true,

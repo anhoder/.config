@@ -331,6 +331,11 @@ map({ "n" }, "<leader>bt", function()
   telescope_pickers.prettyBuffersPicker()
 end, { desc = "Buffers" })
 
+-- code action with preview
+map("n", "<leader>ca", function()
+  require("tiny-code-action").code_action()
+end, { noremap = true, silent = true })
+
 -- upload to remote
 map({ "n", "v", "i" }, "<C-D-u>", function()
   vim.cmd("ARsyncUp")

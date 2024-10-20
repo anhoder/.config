@@ -25,11 +25,11 @@ return {
         find_files = {
           hidden = true,
         },
-        live_grep = {
-          additional_args = function(_)
-            return { "--hidden" }
-          end,
-        },
+        -- live_grep = {
+        --   additional_args = function(_)
+        --     return { "--hidden" }
+        --   end,
+        -- },
       },
       defaults = {
         buffer_previewer_maker = new_maker,
@@ -80,6 +80,39 @@ return {
           disable = false,
           use_cwd = false,
           sorting = "frecency",
+        },
+      },
+    },
+  },
+
+  -- preview code action diff in telescope
+  {
+    "rachartier/tiny-code-action.nvim",
+    dependencies = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-telescope/telescope.nvim" },
+    },
+    event = "LspAttach",
+    opts = {
+      backend = "delta",
+      backend_opts = {
+        delta = {
+          header_lines_to_remove = 4,
+          args = {
+            "--line-numbers",
+          },
+        },
+      },
+      telescope_opts = {
+        layout_strategy = "vertical",
+        layout_config = {
+          width = 0.7,
+          height = 0.9,
+          preview_cutoff = 1,
+          preview_height = function(_, _, max_lines)
+            local h = math.floor(max_lines * 0.4)
+            return math.max(h, 10)
+          end,
         },
       },
     },
