@@ -76,8 +76,6 @@ return {
       match_and_replace_keymap(keys, { "K", lsputil.hover, desc = "Hover" })
       match_and_replace_keymap(keys, { "<leader>co", vim.lsp.codelens.run, desc = "Run CodeLenAct" })
 
-      match_and_replace_keymap(keys, { "<leader>ca", false })
-
       vim.tbl_extend("force", opts, {
         single_file_support = true,
         -- inlay_hints = {
