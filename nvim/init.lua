@@ -21,11 +21,8 @@ vim.api.nvim_create_autocmd({ "VimLeave" }, {
     io.stdout:write("\x1b]1337;SetUserVar=in_editor\007")
     local window_id = vim.env.ALACRITTY_WINDOW_ID
     if window_id then
-      local jobid =
-        vim.fn.jobstart("alacritty msg config -w " .. window_id .. ' "$(cat ~/.config/alacritty/keybindings.toml)"')
-      if jobid > 0 then
-        vim.fn.jobwait(jobid)
-      end
+      -- os.execute wait for `alacritty msg config`
+      os.execute("alacritty msg config -w " .. window_id .. ' "$(cat ~/.config/alacritty/keybindings.toml)"')
     end
   end,
 })
