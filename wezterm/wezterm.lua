@@ -4,6 +4,7 @@ local config = wezterm.config_builder()
 local term_editors = { "hx", "nvim", "vim" }
 local win_ext = ".exe" -- extension to add to match Windows process names
 
+-- check is editor
 local function is_editor(name)
 	if type(name) ~= "string" then
 		return nil
@@ -17,7 +18,8 @@ local function is_editor(name)
 	return false
 end
 
-local function basename(path) -- get filename from path
+-- get filename from path
+local function basename(path)
 	local isWin = wezterm.target_triple == "x86_64-pc-windows-msvc"
 	if type(path) ~= "string" then
 		return nil
@@ -29,7 +31,8 @@ local function basename(path) -- get filename from path
 	end -- replace (path/)(file)          with (file)
 end
 
-local cb_pane_unless_editor = function(win, pane, mods, key, fallback_action) -- close unless in an Editor, see github.com/wez/wezterm/issues/1417
+-- close unless in an Editor, see github.com/wez/wezterm/issues/1417
+local cb_pane_unless_editor = function(win, pane, mods, key, fallback_action)
 	local proc_name = basename(pane:get_foreground_process_name())
 	if is_editor(proc_name) then
 		win:perform_action({ SendKey = { mods = mods, key = key } }, pane)
@@ -39,7 +42,7 @@ local cb_pane_unless_editor = function(win, pane, mods, key, fallback_action) --
 end
 
 config.font = wezterm.font_with_fallback({
-	{ family = "FiraMono Nerd Font Mono", weight = "Medium" },
+	{ family = "JetBrainsMono Nerd Font Mono" },
 	"Symbols Nerd Font",
 })
 config.font_size = 15
@@ -57,6 +60,8 @@ config.macos_window_background_blur = 5
 config.max_fps = 60
 config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
+config.use_ime = true
+config.native_macos_fullscreen_mode = true
 config.window_padding = {
 	left = 0,
 	right = 0,
@@ -64,7 +69,7 @@ config.window_padding = {
 	bottom = 0,
 }
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
-config.debug_key_events = true
+config.debug_key_events = false
 config.keys = {
 	{
 		key = "\\",
@@ -105,14 +110,19 @@ config.keys = {
 		key = "w",
 		mods = "CMD",
 		action = wezterm.action_callback(function(win, pane)
-			cb_pane_unless_editor(
+			return cb_pane_unless_editor(
 				win,
 				pane,
 				nil,
 				utf8.char(0xAA),
-				wezterm.action({ CloseCurrentPane = { confirm = true } })
+				wezterm.action.CloseCurrentPane({ confirm = true })
 			)
 		end),
+	},
+	{
+		key = "Enter",
+		mods = "CMD",
+		action = wezterm.action.ToggleFullScreen,
 	},
 }
 

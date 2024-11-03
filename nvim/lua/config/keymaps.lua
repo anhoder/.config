@@ -126,6 +126,7 @@ map({ "n", "i", "v", "t" }, "<C-A-Right>", "<Esc><Esc><C-w>l", { desc = "Go to r
 
 -- Close window
 map({ "n", "i", "v", "t" }, "<D-w>", LazyVim.ui.bufremove, { desc = "Close buffer" })
+map({ "n", "i", "v", "t" }, "<Char-0xAA>", LazyVim.ui.bufremove, { desc = "Close buffer" }) -- for wezterm
 
 -- Save
 map({ "n", "i", "v" }, "<D-s>", function()
