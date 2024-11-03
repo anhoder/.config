@@ -19,8 +19,8 @@ bindings = [
   { key = "Right", mods = "Control|Shift", action = "SelectNextTab" },
   { key = "Enter", mods = "Command", action = "ToggleFullscreen" },
   { key = "Enter", mods = "Command|Shift", action = "ToggleViMode" },
-  { key = "w", mods = "Command", action = "ReceiveChar" },
-  { key = "w", mods = "Command|Shift", action = "Quit" },
-  { key = "c", mods = "Command", action = "ReceiveChar" },
-  { key = "c", mods = "Command|Shift", action = "Copy" },
+  # { key = "w", mods = "Command", action = "ReceiveChar" },
+  # { key = "w", mods = "Command|Shift", action = "Quit" },
+  # { key = "c", mods = "Command", action = "ReceiveChar" },
+  # { key = "c", mods = "Command|Shift", action = "Copy" },
 ]
