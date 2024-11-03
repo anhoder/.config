@@ -1,0 +1,15 @@
+[keyboard]
+bindings = [
+  { key = "w", mods = "Command", action = "ReceiveChar" },
+  { key = "c", mods = "Command", action = "ReceiveChar" },
+  { key = "1", mods = "Command", action = "ReceiveChar" },
+  { key = "2", mods = "Command", action = "ReceiveChar" },
+  { key = "3", mods = "Command", action = "ReceiveChar" },
+  { key = "`", mods = "Command", action = "ReceiveChar" },
+
+  { key = "Enter", mods = "Command|Shift", action = "ToggleViMode", mode = "~Vi" },
+  { key = "Escape", action = "ToggleViMode", mode = "Vi" },
+  { key = "Left", mods = "Control|Shift", action = "SelectPreviousTab" },
+  { key = "Right", mods = "Control|Shift", action = "SelectNextTab" },
+  { key = "Enter", mods = "Command", action = "ToggleFullscreen" },
+]

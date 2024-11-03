@@ -105,7 +105,7 @@ end
 
 if vim.g.neovide then
   map({ "n", "i", "v", "t" }, "<D-n>", function()
-    os.execute("neovide")
+    vim.fn.jobstart("neovide")
   end, { desc = "New neovide instance" })
   map({ "n", "i", "v", "t" }, "<C-D-f>", function()
     vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
@@ -233,7 +233,7 @@ end, { desc = "Lazygit current file history" })
 
 -- fork
 map("n", "<leader>gF", function()
-  os.execute("fork " .. Util.root())
+  vim.fn.jobstart("fork " .. Util.root())
 end, { desc = "Open fork" })
 
 -- Increase, Decrease Font size
@@ -348,7 +348,7 @@ map({ "n" }, "<leader>p", function()
     local node = fs_state.tree:get_node()
     path = node.path
   end
-  os.execute("open " .. path)
+  vim.fn.jobstart("open " .. path)
 end, { desc = "Open file in Finder" })
 
 -- open file in vscode
@@ -359,11 +359,11 @@ map({ "n" }, "<leader>P", function()
     local node = fs_state.tree:get_node()
     path = node.path
   end
-  local _, _, code = os.execute("code " .. path)
+  local _, _, code = vim.fn.jobstart("code " .. path)
   if code == 0 then
     return
   end
-  os.execute("code-insiders " .. path)
+  vim.fn.jobstart("code-insiders " .. path)
 end, { desc = "Open file in code" })
 
 -- locate cur file in neo-tree

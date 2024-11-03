@@ -1,0 +1,14 @@
+[keyboard]
+bindings = [
+  { key = "w", mods = "Command", action = "Quit" },
+  { key = "c", mods = "Command", action = "Copy" },
+  { key = "1", mods = "Command", action = "SelectTab1" },
+  { key = "2", mods = "Command", action = "SelectTab2" },
+  { key = "3", mods = "Command", action = "SelectTab3" },
+
+  { key = "Enter", mods = "Command|Shift", action = "ToggleViMode", mode = "~Vi" },
+  { key = "Escape", action = "ToggleViMode", mode = "Vi" },
+  { key = "Left", mods = "Control|Shift", action = "SelectPreviousTab" },
+  { key = "Right", mods = "Control|Shift", action = "SelectNextTab" },
+  { key = "Enter", mods = "Command", action = "ToggleFullscreen" },
+]

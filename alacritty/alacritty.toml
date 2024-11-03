@@ -1,5 +1,8 @@
 [general]
-import = ["~/.config/alacritty/gruvbox_dark.toml"]
+import = [
+  "~/.config/alacritty/gruvbox_dark.toml",
+  "~/.config/alacritty/keybindings-nvim.toml",
+]
 
 [window]
 # decorations = "Buttonless"
@@ -12,15 +15,3 @@ multiplier = 1
 [font]
 normal = { family = "JetBrainsMono Nerd Font Mono", style = "Regular" }
 size = 16.0
-
-[keyboard]
-bindings = [
-  { key = "Left", mods = "Control|Shift", action = "SelectPreviousTab" },
-  { key = "Right", mods = "Control|Shift", action = "SelectNextTab" },
-  { key = "Enter", mods = "Command", action = "ToggleFullscreen" },
-  { key = "Enter", mods = "Command|Shift", action = "ToggleViMode" },
-  # { key = "w", mods = "Command", action = "ReceiveChar" },
-  # { key = "w", mods = "Command|Shift", action = "Quit" },
-  # { key = "c", mods = "Command", action = "ReceiveChar" },
-  # { key = "c", mods = "Command|Shift", action = "Copy" },
-]

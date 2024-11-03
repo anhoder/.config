@@ -3,18 +3,30 @@
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?/init.lua;"
 package.path = package.path .. ";" .. vim.fn.expand("$HOME") .. "/.luarocks/share/lua/5.1/?.lua;"
 
--- for kitty, must be here
+-- for kitty and alacritty, must be here
 vim.api.nvim_create_autocmd({ "VimEnter" }, {
-  group = vim.api.nvim_create_augroup("KittySetVarVimEnter", { clear = true }),
+  group = vim.api.nvim_create_augroup("TerminalInitVimEnter", { clear = true }),
   callback = function()
     io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQo\007")
+    local window_id = vim.env.ALACRITTY_WINDOW_ID
+    if window_id then
+      vim.fn.jobstart("alacritty msg config -w " .. window_id .. ' "$(cat ~/.config/alacritty/keybindings-nvim.toml)"')
+    end
   end,
 })
 
 vim.api.nvim_create_autocmd({ "VimLeave" }, {
-  group = vim.api.nvim_create_augroup("KittyUnsetVarVimLeave", { clear = true }),
+  group = vim.api.nvim_create_augroup("TerminalQuitVimLeave", { clear = true }),
   callback = function()
     io.stdout:write("\x1b]1337;SetUserVar=in_editor\007")
+    local window_id = vim.env.ALACRITTY_WINDOW_ID
+    if window_id then
+      local jobid =
+        vim.fn.jobstart("alacritty msg config -w " .. window_id .. ' "$(cat ~/.config/alacritty/keybindings.toml)"')
+      if jobid > 0 then
+        vim.fn.jobwait(jobid)
+      end
+    end
   end,
 })
 
