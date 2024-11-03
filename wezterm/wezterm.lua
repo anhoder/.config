@@ -62,6 +62,7 @@ config.use_fancy_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
 config.use_ime = true
 config.native_macos_fullscreen_mode = true
+config.debug_key_events = true
 config.window_padding = {
 	left = 0,
 	right = 0,
@@ -69,7 +70,6 @@ config.window_padding = {
 	bottom = 0,
 }
 config.leader = { key = "a", mods = "CTRL", timeout_milliseconds = 1000 }
-config.debug_key_events = false
 config.keys = {
 	{
 		key = "\\",
