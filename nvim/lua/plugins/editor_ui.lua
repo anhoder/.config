@@ -75,6 +75,7 @@ return {
   -- lualine
   {
     "nvim-lualine/lualine.nvim",
+    commit = "12f86da07ae2060b738e70d2937f7850d994c84a",
     dependencies = {
       "folke/noice.nvim",
     },

@@ -25,7 +25,7 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
-    commit = "289eb72",
+    -- commit = "289eb72",
     keys = {
       {
         "<A-Tab>",
