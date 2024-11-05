@@ -37,15 +37,12 @@
         KeyRepeat = 1;
         "com.apple.swipescrolldirection" = true;
       };
-      dock = {
-        persistent-others = [ "~/Downloads" ];
-      };
       finder = {
         AppleShowAllFiles = true;
-        ShowStatusBar = true;
+        ShowStatusBar = false;
         ShowPathbar = true;
         AppleShowAllExtensions = true;
-        _FXShowPosixPathInTitle = true;
+        _FXShowPosixPathInTitle = false;
         _FXSortFoldersFirst = true;
       };
       ActivityMonitor = {

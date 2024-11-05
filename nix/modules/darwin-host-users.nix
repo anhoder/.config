@@ -16,4 +16,4 @@
     home = "/Users/${username}";
     description = username;
   };
-
+}
