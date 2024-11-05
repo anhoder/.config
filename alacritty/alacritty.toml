@@ -4,6 +4,9 @@ import = [
   "~/.config/alacritty/keybindings-nvim.toml",
 ]
 
+[colors]
+transparent_background_colors = true
+
 [env]
 LANG = "zh_CN.UTF-8"
 LC_COLLATE = "zh_CN.UTF-8"
@@ -15,10 +18,19 @@ LC_TIME = "zh_CN.UTF-8"
 LC_ALL = "zh_CN.UTF-8"
 TERM = "xterm-256color"
 
+[[hints.enabled]]
+command = "open"
+hyperlinks = true
+post_processing = true
+persist = false
+mouse.enabled = true
+mouse.mods = "Command"
+
 [window]
 # decorations = "Buttonless"
 opacity = 0.8
 blur = true
+option_as_alt = "Both"
 
 [scrolling]
 multiplier = 1
