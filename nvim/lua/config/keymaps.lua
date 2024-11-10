@@ -125,8 +125,12 @@ map({ "n", "i", "v", "t" }, "<C-A-Up>", "<Esc><Esc><C-w>k", { desc = "Go to uppe
 map({ "n", "i", "v", "t" }, "<C-A-Right>", "<Esc><Esc><C-w>l", { desc = "Go to right window", noremap = true })
 
 -- Close window
-map({ "n", "i", "v", "t" }, "<D-w>", LazyVim.ui.bufremove, { desc = "Close buffer" })
-map({ "n", "i", "v", "t" }, "<Char-0xAA>", LazyVim.ui.bufremove, { desc = "Close buffer" }) -- for wezterm
+map({ "n", "i", "v", "t" }, "<D-w>", function()
+  Snacks.bufdelete()
+end, { desc = "Close buffer" })
+map({ "n", "i", "v", "t" }, "<Char-0xAA>", function()
+  Snacks.bufdelete()
+end, { desc = "Close buffer" }) -- for wezterm
 
 -- Save
 map({ "n", "i", "v" }, "<D-s>", function()
