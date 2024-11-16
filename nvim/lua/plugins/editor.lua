@@ -98,7 +98,7 @@ return {
       retirementAgeMins = 10,
       minimumBufferNum = 3,
       notificationOnAutoClose = true,
-      deleteBufferWhenFileDeleted = true,
+      deleteBufferWhenFileDeleted = false,
     },
   },
 }
