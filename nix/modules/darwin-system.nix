@@ -46,7 +46,7 @@
         _FXSortFoldersFirst = true;
       };
       ActivityMonitor = {
-        ShowCategory = 103;
+        # ShowCategory = 103;
         IconType = 3;
         SortColumn = "CPUUsage";
         SortDirection = 0;
