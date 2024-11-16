@@ -67,7 +67,7 @@
   "persistence.nvim": { "branch": "main", "commit": "f6aad7dde7fcf54148ccfc5f622c6d5badd0cc3d" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
-  "snacks.nvim": { "branch": "main", "commit": "f126609b57c0ec07cfd7bcef7085e3905adb4d42" },
+  "snacks.nvim": { "branch": "main", "commit": "971cb237b95031988a546013fd30e806fa614400" },
   "sqlite.lua": { "branch": "master", "commit": "d0ffd703b56d090d213b497ed4eb840495f14a11" },
   "stickybuf.nvim": { "branch": "master", "commit": "183b9569bef78f44b17c078214f7d731f19cbefe" },
   "surround-ui.nvim": { "branch": "main", "commit": "40abcba017a943d6d3dd304e523f34a43d80405b" },
