@@ -10,6 +10,7 @@ return {
       hide_numbers = true,
       start_in_insert = true,
       persist_size = true,
+      close_on_exit = true,
       on_open = function(term)
         vim.defer_fn(function()
           vim.wo[term.window].winbar = ""
