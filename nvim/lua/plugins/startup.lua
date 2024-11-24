@@ -2,6 +2,14 @@ local Logos = require("utils.logos")
 
 return {
   {
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        enabled = false,
+      },
+    },
+  },
+  {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
