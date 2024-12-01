@@ -1,4 +1,5 @@
 local home = vim.fn.expand("$HOME")
+local dap = require("dap")
 
 return {
   {
@@ -68,5 +69,63 @@ return {
         -- },
       },
     },
+  },
+  {
+    "nvim-neotest/neotest",
+    optional = true,
+    dependencies = {
+      "anhoder/neotest-phpunit",
+    },
+    opts = function(_, opts)
+      opts.adapters = opts.adapters or {}
+      opts.adapters["neotest-phpunit"] = {
+        require("neotest-phpunit")({
+          filter_dirs = { ".git", "node_modules", "vendor" },
+          root_files = { "composer.json", "phpunit.xml", ".gitignore" },
+          phpunit_cmd = function()
+            if vim.fn.filereadable(home .. "/Desktop/www/tools/vendor/phpunit/phpunit/phpunit") == 1 then
+              return home .. "/Desktop/www/tools/vendor/phpunit/phpunit/phpunit"
+            end
+            return "vendor/bin/phpunit"
+          end,
+          args = function()
+            if vim.fn.filereadable(home .. "/Desktop/www/tools/vendor/phpunit/phpunit/phpunit") == 1 then
+              return {
+                "--bootstrap",
+                home .. "/Desktop/www/php-crm/protected/tests/bootstrap.php",
+                "--configuration",
+                home .. "/Desktop/www/php-crm/protected/tests/phpunit.xml",
+              }
+            end
+            return {}
+          end,
+          env = {
+            XDEBUG_SESSION = 1,
+          },
+          dap = {
+            log = true,
+            type = "php",
+            request = "launch",
+            name = "Listen for XDebug",
+            port = 9003,
+            stopOnEntry = false,
+            xdebugSettings = {
+              max_children = 512,
+              max_data = 1024,
+              max_depth = 4,
+            },
+            breakpoints = {
+              exception = {
+                Notice = false,
+                Warning = false,
+                Error = false,
+                Exception = false,
+                ["*"] = false,
+              },
+            },
+          },
+        }),
+      }
+    end,
   },
 }

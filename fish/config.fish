@@ -21,8 +21,11 @@ alias gco="git checkout"
 alias ga="git add"
 alias gm="git merge"
 alias gc="git commit"
+alias gop="git open"
+## git lost found
+alias glf="git fsck --unreachable | grep commit | awk '{print \$3}' | xargs git show"
 function gba
-    git symbolic-ref "refs/heads/$argv[1]" "refs/heads/$argv[2]"
+    git symbolic-ref "refs/heads/$argv[2]" "refs/heads/$argv[1]"
 end
 
 
@@ -92,10 +95,12 @@ set -gx OPENSSL_LIBS "-L$HOMEBREW_PREFIX/opt/openssl@1.1/lib"
 set -gx OPENSSL_CFLAGS "-I$HOMEBREW_PREFIX/opt/openssl@1.1/include"
 
 # starship
-set -gx STARSHIP_CONFIG $HOME/.config/starship/starship.toml
-set -gx command_timeout 200
-set -gx STARSHIP_LOG error
-starship init fish | source
+if command -v starship >/dev/null 2>&1
+    set -gx STARSHIP_CONFIG "$HOME/.config/starship/starship.toml"
+    set -gx command_timeout 200
+    set -gx STARSHIP_LOG error
+    starship init fish | source
+end
 
 set -gx EDITOR vim
 if command -v nvim >/dev/null 2>&1
