@@ -301,7 +301,7 @@ end, { desc = "Telescope Live Grep(selected or root dir)" })
 
 -- Document symbols
 map({ "i", "n", "v" }, "<D-m>", function()
-  LazyVim.pick("document_symbols")
+  require("fzf-lua.providers.lsp").document_symbols()
   -- telescope_builtin.lsp_document_symbols(ivy_theme)
   -- telescope.extensions.aerial.aerial(ivy_theme)
 end, { desc = "Document symbols" })
