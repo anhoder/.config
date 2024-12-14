@@ -10,14 +10,14 @@ if vim.g.vscode then
 end
 
 local toggleterm = require("toggleterm.terminal")
-local telescope = require("telescope")
-local telescope_builtin = require("telescope.builtin")
-local telescope_themes = require("telescope.themes")
-local ivy_theme = telescope_themes.get_ivy({ sorting_strategy = "descending" })
+-- local telescope = require("telescope")
+-- local telescope_builtin = require("telescope.builtin")
+-- local telescope_themes = require("telescope.themes")
+-- local ivy_theme = telescope_themes.get_ivy({ sorting_strategy = "descending" })
 local Util = require("lazyvim.util")
 local neotree_manager = require("neo-tree.sources.manager")
 local neotree_render = require("neo-tree.ui.renderer")
-local telescope_pickers = require("utils.telescope_pickers")
+-- local telescope_pickers = require("utils.telescope_pickers")
 local ufo = require("ufo")
 local grug_far = require("grug-far")
 
@@ -262,66 +262,67 @@ map({ "i", "n", "v", "s", "t", "o" }, "<C-0>", function()
 end, { desc = "Reset font size" })
 
 -- telescope
-map({ "n" }, "<leader>sg", function()
-  telescope_pickers.prettyGrepPicker({
-    picker = "live_grep",
-    options = {
-      glob_pattern = {
-        "!vendor/",
-        "!node_modules/",
-      },
-    },
-  })
-end, { desc = "Telescope Live Grep(ignore vendor/node_modules...)" })
+-- map({ "n" }, "<leader>sg", function()
+--   fzf_lua_grep.live_grep({
+--     rg_glob = {
+--       "!vendor/",
+--       "!node_modules/",
+--     },
+--   })
+-- telescope_pickers.prettyGrepPicker({
+--   picker = "live_grep",
+--   options = {
+--     glob_pattern = {
+--       "!vendor/",
+--       "!node_modules/",
+--     },
+--   },
+-- })
+-- end, { desc = "Live Grep" })
 map({ "n" }, "<leader>sG", function()
   local fs_state = neotree_manager.get_state("filesystem")
   if neotree_render.tree_is_visible(fs_state) then
     local dir = get_folder_node(fs_state.tree)
     if dir then
       vim.notify("search in " .. dir.path)
-      telescope_pickers.prettyGrepPicker({
-        picker = "live_grep",
-        options = {
-          cwd = dir.path,
-        },
-      })
+      LazyVim.pick("live_grep", { cwd = dir.path })
+      -- telescope_pickers.prettyGrepPicker({
+      --   picker = "live_grep",
+      --   options = {
+      --     cwd = dir.path,
+      --   },
+      -- })
       return
     end
   end
   vim.notify("search in " .. vim.fn.getcwd())
-  telescope_pickers.prettyGrepPicker({ picker = "live_grep" })
+  LazyVim.pick("live_grep", { root = true })
 end, { desc = "Telescope Live Grep(selected or root dir)" })
 
 -- Document symbols
 map({ "i", "n", "v" }, "<D-m>", function()
-  telescope_builtin.lsp_document_symbols(ivy_theme)
+  LazyVim.pick("document_symbols")
+  -- telescope_builtin.lsp_document_symbols(ivy_theme)
   -- telescope.extensions.aerial.aerial(ivy_theme)
-  -- vim.cmd("Lspsaga outline")
-end, { desc = "Document symbols" })
-map({ "i", "n", "v" }, "<D-S-m>", function()
-  telescope_pickers.prettyDocumentSymbols({ symbols = require("lazyvim.config").get_kind_filter() })
-  telescope_builtin.lsp_document_symbols(ivy_theme)
-  telescope.extensions.aerial.aerial(ivy_theme)
-  -- vim.cmd("Lspsaga outline")
 end, { desc = "Document symbols" })
 
 -- Find files(root)
-map({ "n" }, "<leader>ff", function()
-  telescope_pickers.prettyFilesPicker({ picker = "find_files" })
-end, { desc = "Find files(root)" })
-map({ "n" }, "<leader><space>", function()
-  telescope_pickers.prettyFilesPicker({ picker = "find_files" })
-end, { desc = "Find files(root)" })
+-- map({ "n" }, "<leader>ff", function()
+--   telescope_pickers.prettyFilesPicker({ picker = "find_files" })
+-- end, { desc = "Find files(root)" })
+-- map({ "n" }, "<leader><space>", function()
+--   telescope_pickers.prettyFilesPicker({ picker = "find_files" })
+-- end, { desc = "Find files(root)" })
 
 -- Find files(cwd)
-map({ "n" }, "<leader>fF", function()
-  telescope_pickers.prettyFilesPicker({ picker = "find_files", options = { cwd = vim.fn.getcwd() } })
-end, { desc = "Find files(cwd)" })
+-- map({ "n" }, "<leader>fF", function()
+--   telescope_pickers.prettyFilesPicker({ picker = "find_files", options = { cwd = vim.fn.getcwd() } })
+-- end, { desc = "Find files(cwd)" })
 
 -- Git files
-map({ "n" }, "<leader>fg", function()
-  telescope_pickers.prettyFilesPicker({ picker = "git_files" })
-end, { desc = "Git files" })
+-- map({ "n" }, "<leader>fg", function()
+--   telescope_pickers.prettyFilesPicker({ picker = "git_files" })
+-- end, { desc = "Git files" })
 
 -- Open git remote
 map({ "n" }, "<leader>go", function()
@@ -329,12 +330,13 @@ map({ "n" }, "<leader>go", function()
 end, { desc = "Open git remote" })
 
 -- Buffer picker
-map({ "n" }, "<leader>fb", function()
-  telescope_pickers.prettyBuffersPicker()
-end, { desc = "Buffers" })
-map({ "n" }, "<leader>bt", function()
-  telescope_pickers.prettyBuffersPicker()
-end, { desc = "Buffers" })
+-- map({ "n" }, "<leader>fb", function()
+--
+--   telescope_pickers.prettyBuffersPicker()
+-- end, { desc = "Buffers" })
+-- map({ "n" }, "<leader>bt", function()
+--   telescope_pickers.prettyBuffersPicker()
+-- end, { desc = "Buffers" })
 
 -- upload to remote
 map({ "n", "v", "i" }, "<C-D-u>", function()

@@ -1,5 +1,5 @@
-local telescope_pickers = require("utils.telescope_pickers")
-local telescope_themes = require("telescope.themes")
+-- local telescope_pickers = require("utils.telescope_pickers")
+-- local telescope_themes = require("telescope.themes")
 local lsputil = require("utils.lsp")
 
 -- 匹配数组中的第一个匹配项
@@ -22,57 +22,57 @@ return {
     opts = function(_, opts)
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
       match_and_replace_keymap(keys, { "gr", "<cmd>Glance references<cr>", desc = "Goto references" })
-      match_and_replace_keymap(keys, {
-        "gR",
-        function()
-          local options = telescope_themes.get_ivy()
-          options["picker"] = "lsp_references"
-          telescope_pickers.prettyLsp(options)
-        end,
-        desc = "Goto references",
-      })
+      -- match_and_replace_keymap(keys, {
+      --   "gR",
+      --   function()
+      --     local options = telescope_themes.get_ivy()
+      --     options["picker"] = "lsp_references"
+      --     telescope_pickers.prettyLsp(options)
+      --   end,
+      --   desc = "Goto references",
+      -- })
       match_and_replace_keymap(keys, { "gi", "<cmd>Glance implementations<cr>", desc = "Goto implementations" })
-      match_and_replace_keymap(keys, {
-        "gI",
-        function()
-          local options = telescope_themes.get_ivy()
-          options["picker"] = "lsp_implementations"
-          options["reuse_win"] = true
-          telescope_pickers.prettyLsp(options)
-        end,
-        desc = "Goto implementations",
-      })
+      -- match_and_replace_keymap(keys, {
+      --   "gI",
+      --   function()
+      --     local options = telescope_themes.get_ivy()
+      --     options["picker"] = "lsp_implementations"
+      --     options["reuse_win"] = true
+      --     telescope_pickers.prettyLsp(options)
+      --   end,
+      --   desc = "Goto implementations",
+      -- })
       match_and_replace_keymap(keys, { "gy", "<cmd>Glance definitions<cr>", desc = "Goto type definitions" })
-      match_and_replace_keymap(keys, {
-        "gY",
-        function()
-          local options = telescope_themes.get_ivy()
-          options["picker"] = "lsp_type_definitions"
-          options["reuse_win"] = true
-          telescope_pickers.prettyLsp(options)
-        end,
-        desc = "Goto type definitions",
-      })
+      -- match_and_replace_keymap(keys, {
+      --   "gY",
+      --   function()
+      --     local options = telescope_themes.get_ivy()
+      --     options["picker"] = "lsp_type_definitions"
+      --     options["reuse_win"] = true
+      --     telescope_pickers.prettyLsp(options)
+      --   end,
+      --   desc = "Goto type definitions",
+      -- })
       match_and_replace_keymap(keys, {
         "gd",
         lsputil.goto_def,
         desc = "Goto definition",
       })
-      match_and_replace_keymap(keys, {
-        "gD",
-        function()
-          lsputil.definition_handle(function(is_definition)
-            local options = telescope_themes.get_ivy()
-            options["picker"] = "lsp_references"
-
-            if is_definition then
-              options["picker"] = "lsp_definitions"
-            end
-            telescope_pickers.prettyLsp(options)
-          end)
-        end,
-        desc = "Goto definition",
-      })
+      -- match_and_replace_keymap(keys, {
+      --   "gD",
+      --   function()
+      --     lsputil.definition_handle(function(is_definition)
+      --       local options = telescope_themes.get_ivy()
+      --       options["picker"] = "lsp_references"
+      --
+      --       if is_definition then
+      --         options["picker"] = "lsp_definitions"
+      --       end
+      --       telescope_pickers.prettyLsp(options)
+      --     end)
+      --   end,
+      --   desc = "Goto definition",
+      -- })
       match_and_replace_keymap(keys, { "K", lsputil.hover, desc = "Hover" })
       match_and_replace_keymap(keys, { "<leader>co", vim.lsp.codelens.run, desc = "Run CodeLenAct" })
 

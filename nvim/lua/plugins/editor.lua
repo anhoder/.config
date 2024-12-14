@@ -7,25 +7,25 @@ return {
   },
 
   -- autopairs
-  {
-    "windwp/nvim-autopairs",
-    event = "InsertEnter",
-    dependcies = "hrsh7th/nvim-cmp",
-    -- enabled = false,
-    opts = {
-      ignored_next_char = [=[[%*%w%%%'%[%"%.%`%$]]=],
-      fast_wrap = {
-        map = "<A-e>",
-      },
-    },
-    config = function(_, opts)
-      local npairs = require("nvim-autopairs")
-      npairs.setup(opts)
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      local cmp = require("cmp")
-      cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-    end,
-  },
+  -- {
+  --   "windwp/nvim-autopairs",
+  --   event = "InsertEnter",
+  --   dependcies = "hrsh7th/nvim-cmp",
+  --   -- enabled = false,
+  --   opts = {
+  --     ignored_next_char = [=[[%*%w%%%'%[%"%.%`%$]]=],
+  --     fast_wrap = {
+  --       map = "<A-e>",
+  --     },
+  --   },
+  --   config = function(_, opts)
+  --     local npairs = require("nvim-autopairs")
+  --     npairs.setup(opts)
+  --     local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+  --     local cmp = require("cmp")
+  --     cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+  --   end,
+  -- },
 
   -- load big file quickly
   {

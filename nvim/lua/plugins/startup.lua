@@ -44,7 +44,7 @@ return {
               key_hl = "DashboardRecent",
             },
             {
-              action = "Telescope persisted",
+              action = "SessionSelect",
               desc = "Sessions",
               key = "s",
               icon = " ",
