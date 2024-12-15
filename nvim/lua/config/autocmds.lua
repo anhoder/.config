@@ -76,7 +76,7 @@ vim.api.nvim_create_autocmd({ "User" }, {
 -- VimLeave (wait libuv)
 vim.api.nvim_create_autocmd({ "VimLeave" }, {
   callback = function()
-    vim.cmd("sleep 10m")
+    vim.cmd("sleep 10ms")
   end,
 })
 

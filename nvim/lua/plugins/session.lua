@@ -1,6 +1,7 @@
 return {
   {
     "olimorris/persisted.nvim",
+    enabled = false,
     -- dependencies = { "nvim-telescope/telescope.nvim" },
     lazy = false,
     opts = {
