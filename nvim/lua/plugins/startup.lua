@@ -1,7 +1,7 @@
 local Logos = require("utils.logos")
 local persisted = require("persisted")
 local utils = require("persisted.utils")
-local config = persisted.config
+local config = require("persisted.config")
 
 ---Escapes special characters before performing string substitution
 ---@param str string
@@ -15,51 +15,6 @@ local function escape_pattern(str, pattern, replace, n)
   replace = string.gsub(replace, "[%%]", "%%%%") -- escape replacement
 
   return string.gsub(str, pattern, replace, n)
-end
-
-local function pick()
-  if LazyVim.pick.picker.name == "telescope" then
-    return vim.cmd("Telescope persisted")
-  elseif LazyVim.pick.picker.name == "fzf" then
-    local fzf_lua = require("fzf-lua")
-    local util = require("fzf-lua.utils")
-
-    local function hl_validate(hl)
-      return not util.is_hl_cleared(hl) and hl or nil
-    end
-
-    local function ansi_from_hl(hl, s)
-      return util.ansi_from_hl(hl_validate(hl), s)
-    end
-
-    local opts = {
-      fzf_opts = {
-        ["--header"] = string.format(
-          ":: <%s> to %s",
-          ansi_from_hl("FzfLuaHeaderBind", "ctrl-d"),
-          ansi_from_hl("FzfLuaHeaderText", "delete")
-        ),
-      },
-      fzf_colors = true,
-      actions = {
-        ["default"] = {
-          function(selected)
-            fzf_lua.files({ cwd = selected[1] })
-          end,
-        },
-        -- ["ctrl-d"] = function(selected)
-        --   local path = selected[1]
-        --   local choice = vim.fn.confirm("Delete '" .. path .. "' project? ", "&Yes\n&No")
-        --   if choice == 1 then
-        --     history.delete_project({ value = path })
-        --   end
-        --   pick()
-        -- end,
-      },
-    }
-
-    fzf_lua.fzf_exec(results, opts)
-  end
 end
 
 local function list_sessions()
@@ -96,6 +51,75 @@ local function list_sessions()
     })
   end
   return sessions
+end
+
+local function pick()
+  if LazyVim.pick.picker.name == "telescope" then
+    return vim.cmd("Telescope persisted")
+  elseif LazyVim.pick.picker.name == "fzf" then
+    local fzf_lua = require("fzf-lua")
+    local util = require("fzf-lua.utils")
+    local sessions = list_sessions()
+
+    local session_names = {}
+    for _, value in pairs(sessions) do
+      table.insert(session_names, value.name)
+    end
+
+    local function hl_validate(hl)
+      return not util.is_hl_cleared(hl) and hl or nil
+    end
+
+    local function ansi_from_hl(hl, s)
+      return util.ansi_from_hl(hl_validate(hl), s)
+    end
+
+    local function action_cb(selected, cb)
+      for i, value in ipairs(session_names) do
+        if selected[1] == value then
+          fzf_lua.hide()
+          cb(i)
+          return
+        end
+      end
+      pick()
+    end
+
+    local opts = {
+      fzf_opts = {
+        ["--header"] = string.format(
+          "%s%s %s%s",
+          ansi_from_hl("FzfLuaDirPart", "<"),
+          ansi_from_hl("FzfLuaHeaderText", "delete"),
+          ansi_from_hl("FzfLuaDirPart", "ctrl-d"),
+          ansi_from_hl("FzfLuaDirPart", ">")
+        ),
+      },
+      fzf_colors = true,
+      actions = {
+        ["default"] = {
+          function(selected)
+            action_cb(selected, function(index)
+              vim.schedule(function()
+                persisted.load({ session = sessions[index].file_path })
+              end)
+            end)
+          end,
+        },
+        ["ctrl-d"] = function(selected)
+          action_cb(selected, function(index)
+            local session = sessions[index]
+            local choice = vim.fn.confirm("Remove '" .. session.name .. "' project? ", "&Yes\n&No")
+            if choice == 1 then
+              vim.fn.delete(vim.fn.expand(session.file_path))
+            end
+          end)
+        end,
+      },
+    }
+
+    fzf_lua.fzf_exec(session_names, opts)
+  end
 end
 
 return {
@@ -141,14 +165,14 @@ return {
               icon_hl = "DashboardRecent",
               key_hl = "DashboardRecent",
             },
-            -- {
-            --   action = "SessionSelect",
-            --   desc = "Sessions",
-            --   key = "s",
-            --   icon = " ",
-            --   icon_hl = "DashboardSession",
-            --   key_hl = "DashboardSession",
-            -- },
+            {
+              action = pick,
+              desc = "Sessions",
+              key = "s",
+              icon = " ",
+              icon_hl = "DashboardSession",
+              key_hl = "DashboardSession",
+            },
             {
               icon = " ",
               icon_hl = "DashboardConfiguration",
