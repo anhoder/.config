@@ -95,8 +95,8 @@ return {
     config = true,
     event = "VeryLazy",
     opts = {
-      retirementAgeMins = 10,
-      minimumBufferNum = 3,
+      retirementAgeMins = 30,
+      minimumBufferNum = 5,
       notificationOnAutoClose = true,
       deleteBufferWhenFileDeleted = false,
     },
