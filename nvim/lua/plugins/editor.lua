@@ -32,7 +32,7 @@ return {
     "LunarVim/bigfile.nvim",
     event = { "BufEnter" },
     opts = {
-      filesize = 1,
+      filesize = 5,
       pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
       features = { -- features to disable
         "indent_blankline",
