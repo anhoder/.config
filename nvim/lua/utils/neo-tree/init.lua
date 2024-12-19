@@ -61,6 +61,7 @@ local config = {
     },
   },
   filesystem = {
+    bind_to_cwd = true,
     filtered_items = {
       show_hidden_count = true,
       hide_dotfiles = false,

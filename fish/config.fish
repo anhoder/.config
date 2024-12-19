@@ -67,32 +67,30 @@ set -gx GRADLE_USER_HOME "$HOME/.gradle"
 set -gx OPENSSL_PREFIX "$HOMEBREW_PREFIX/opt/openssl@1.1"
 set -gx OPENSSL_CFLAGS "-I$OPENSSL_PREFIX}/include"
 set -gx OPENSSL_LIBS "-L$OPENSSL_PREFIX/lib -lcrypto -lssl"
+set -gx OPENSSL_ROOT_DIR "$OPENSSL_PREFIX"
+set -gx OPENSSL_LIBS "-L$OPENSSL_PREFIX/lib"
+set -gx OPENSSL_CFLAGS "-I$OPENSSL_PREFIX/include"
 
 # PATH
-set -gx PATH "$HOMEBREW_PREFIX/opt/openssl@1.1/bin:$HOMEBREW_PREFIX/opt/libiconv/bin:$HOMEBREW_PREFIX/opt/curl/bin:$HOMEBREW_PREFIX/opt/bison/bin:$GOPATH/bin:$PATH"
+set -gx PATH "$OPENSSL_PREFIX/bin:$HOMEBREW_PREFIX/opt/libiconv/bin:$HOMEBREW_PREFIX/opt/curl/bin:$HOMEBREW_PREFIX/opt/bison/bin:$GOPATH/bin:$PATH"
 
 # LDFLAGS
-set -gx LDFLAGS "$LDFLAGS -L$HOMEBREW_PREFIX/lib -L$HOMEBREW_PREFIX/opt/openssl@1.1/lib -L$HOMEBREW_PREFIX/opt/libiconv/lib -L$HOMEBREW_PREFIX/opt/curl/lib -L$HOMEBREW_PREFIX/opt/bison/lib -L$HOMEBREW_PREFIX/opt/cairo/lib"
+set -gx LDFLAGS "$LDFLAGS -L$HOMEBREW_PREFIX/lib -L$OPENSSL_PREFIX/lib -L$HOMEBREW_PREFIX/opt/libiconv/lib -L$HOMEBREW_PREFIX/opt/curl/lib -L$HOMEBREW_PREFIX/opt/bison/lib -L$HOMEBREW_PREFIX/opt/cairo/lib"
 
 # DYLD_LIBRARY_PATH
-set -gx DYLD_FALLBACK_LIBRARY_PATH "$DYLD_FALLBACK_LIBRARY_PATH:$HOMEBREW_PREFIX/lib:$HOMEBREW_PREFIX/opt/openssl@1.1/lib:$HOMEBREW_PREFIX/opt/libiconv/lib:$HOMEBREW_PREFIX/opt/curl/lib:$HOMEBREW_PREFIX/opt/bison/lib:$HOMEBREW_PREFIX/opt/cairo/lib"
+set -gx DYLD_FALLBACK_LIBRARY_PATH "$DYLD_FALLBACK_LIBRARY_PATH:$HOMEBREW_PREFIX/lib:$OPENSSL_PREFIX/lib:$HOMEBREW_PREFIX/opt/libiconv/lib:$HOMEBREW_PREFIX/opt/curl/lib:$HOMEBREW_PREFIX/opt/bison/lib:$HOMEBREW_PREFIX/opt/cairo/lib"
 
 # LIBS
 set -gx LIBS "$LIBS -lssl -lcrypto"
 
 # CFLAGS
-set -gx CFLAGS "$CFLAGS -I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include"
+set -gx CFLAGS "$CFLAGS -I$OPENSSL_PREFIX/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include"
 
 # CPPFLAGS
-set -gx CPPFLAGS "$CPPFLAGS -I$HOMEBREW_PREFIX/opt/openssl@1.1/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include"
+set -gx CPPFLAGS "$CPPFLAGS -I$OPENSSL_PREFIX/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include"
 
 # PKG_COFNIG_PATH
-set -gx PKG_COFNIG_PATH "$HOMEBREW_PREFIX/opt/openssl@1.1/lib/pkgconfig:$HOMEBREW_PREFIX/opt/curl/lib/pkgconfig:$PKG_COFNIG_PATH"
-
-# OpenSSL
-set -gx OPENSSL_ROOT_DIR "$HOMEBREW_PREFIX/opt/openssl@1.1"
-set -gx OPENSSL_LIBS "-L$HOMEBREW_PREFIX/opt/openssl@1.1/lib"
-set -gx OPENSSL_CFLAGS "-I$HOMEBREW_PREFIX/opt/openssl@1.1/include"
+set -gx PKG_COFNIG_PATH "$OPENSSL_PREFIX/lib/pkgconfig:$HOMEBREW_PREFIX/opt/curl/lib/pkgconfig:$PKG_COFNIG_PATH"
 
 # starship
 if command -v starship >/dev/null 2>&1

@@ -36,7 +36,7 @@ return {
         "indent_blankline",
         "illuminate",
         "lsp",
-        "treesitter",
+        -- "treesitter",
         "syntax",
         "matchparen",
         "vimopts",
