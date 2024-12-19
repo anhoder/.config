@@ -1,3 +1,5 @@
+local persisted_util = require("utils.persisted")
+
 return {
   {
     "olimorris/persisted.nvim",
@@ -12,7 +14,7 @@ return {
     },
     keys = {
       -- { "<D-S-p>", "<cmd>Telescope persisted<cr>", desc = "Select project" },
-      { "<D-S-p>", "<cmd>SessionSelect<cr>", desc = "Select project" },
+      { "<D-S-p>", persisted_util.pick, desc = "Select project" },
     },
   },
 }
