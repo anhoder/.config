@@ -88,19 +88,6 @@ local term1 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 1, disp
 local term2 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 2, display_name = "term2" }))
 local term3 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 3, display_name = "term3" }))
 
-local function get_folder_node(tree, node)
-  if not tree then
-    return nil
-  end
-  if not node then
-    node = tree:get_node()
-  end
-  if node.type == "directory" then
-    return node
-  end
-  return get_folder_node(tree, tree:get_node(node:get_parent_id()))
-end
-
 -- n normal, i insert, v visual, s select, c command, t terminal, o operator pending
 
 if vim.g.neovide then
@@ -279,25 +266,25 @@ end, { desc = "Reset font size" })
 --   },
 -- })
 -- end, { desc = "Live Grep" })
-map({ "n" }, "<leader>sG", function()
-  local fs_state = neotree_manager.get_state("filesystem")
-  if neotree_render.tree_is_visible(fs_state) then
-    local dir = get_folder_node(fs_state.tree)
-    if dir then
-      vim.notify("search in " .. dir.path)
-      LazyVim.pick("live_grep", { cwd = dir.path })
-      -- telescope_pickers.prettyGrepPicker({
-      --   picker = "live_grep",
-      --   options = {
-      --     cwd = dir.path,
-      --   },
-      -- })
-      return
-    end
-  end
-  vim.notify("search in " .. vim.fn.getcwd())
-  LazyVim.pick("live_grep", { root = true })
-end, { desc = "Telescope Live Grep(selected or root dir)" })
+-- map({ "n" }, "<leader>sG", function()
+--   local fs_state = neotree_manager.get_state("filesystem")
+--   if neotree_render.tree_is_visible(fs_state) then
+--     local dir = get_folder_node(fs_state.tree)
+--     if dir then
+--       vim.notify("search in " .. dir.path)
+--       LazyVim.pick("live_grep", { cwd = dir.path })
+--       -- telescope_pickers.prettyGrepPicker({
+--       --   picker = "live_grep",
+--       --   options = {
+--       --     cwd = dir.path,
+--       --   },
+--       -- })
+--       return
+--     end
+--   end
+--   vim.notify("search in " .. vim.fn.getcwd())
+--   LazyVim.pick("live_grep", { root = true })
+-- end, { desc = "Telescope Live Grep(selected or root dir)" })
 
 -- Document symbols
 map({ "i", "n", "v" }, "<D-m>", function()

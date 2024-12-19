@@ -17,4 +17,9 @@ return {
       { "<D-S-p>", persisted_util.pick, desc = "Select project" },
     },
   },
+  {
+    "folke/persistence.nvim",
+    optional = true,
+    enabled = false,
+  },
 }

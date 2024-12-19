@@ -64,9 +64,15 @@ vim.api.nvim_create_autocmd({ "User" }, {
       -- vim.notify(vim.api.nvim_buf_get_name(bufnr))
       local name = vim.api.nvim_buf_get_name(bufnr)
       if name == cwd or string.sub(name, -1) == "/" then
-        Snacks.bufdelete(bufnr)
+        ---@diagnostic disable-next-line: param-type-mismatch
+        pcall(vim.cmd, "bdelete! " .. bufnr)
       end
     end
+
+    vim.api.nvim_set_current_dir(cwd)
+
+    ---@diagnostic disable-next-line: param-type-mismatch
+    pcall(vim.cmd, "Neotree show dir=" .. cwd)
 
     -- manually load launch.json
     require("dap.ext.vscode").load_launchjs()
