@@ -1,3 +1,4 @@
+---@diagnostic disable-next-line: undefined-field
 local os = vim.loop.os_uname().sysname
 
 return {

@@ -68,6 +68,7 @@ vim.g.minimap_auto_start_win_enter = 1
 
 vim.g.go_highlight_build_constraints = 1
 vim.g.go_highlight_generate_tags = 1
+vim.g.root_spec = { "cwd", "lsp", { ".git", "lua" } }
 
 -- neovim >= 0.10
 vim.cmd("hi Pmenu guifg=0 guibg=#353535")
