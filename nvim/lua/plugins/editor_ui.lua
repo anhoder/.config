@@ -91,6 +91,7 @@ return {
   -- notify
   {
     "rcarriga/nvim-notify",
+    optional = true,
     opts = {
       timeout = 2000,
       fps = 60,
@@ -108,6 +109,7 @@ return {
   --notification
   {
     "folke/noice.nvim",
+    optional = true,
     dependencies = {
       "MunifTanjim/nui.nvim",
       "rcarriga/nvim-notify",

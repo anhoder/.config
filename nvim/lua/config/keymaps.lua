@@ -313,7 +313,11 @@ end, { desc = "Document symbols" })
 
 -- Open git remote
 map({ "n" }, "<leader>go", function()
-  vim.fn.system("git open")
+  Snacks.gitbrowse.open({ what = "branch" })
+  -- vim.fn.system("git open")
+end, { desc = "Open git remote" })
+map({ "n" }, "<leader>gO", function()
+  Snacks.gitbrowse.open({ what = "file" })
 end, { desc = "Open git remote" })
 
 -- Buffer picker

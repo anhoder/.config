@@ -26,24 +26,25 @@ return {
   },
 
   -- load big file quickly
-  {
-    "LunarVim/bigfile.nvim",
-    event = { "BufEnter" },
-    opts = {
-      filesize = 5,
-      pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
-      features = { -- features to disable
-        "indent_blankline",
-        "illuminate",
-        "lsp",
-        -- "treesitter",
-        "syntax",
-        "matchparen",
-        "vimopts",
-        "filetype",
-      },
-    },
-  },
+  -- NOTE: replace by snacks bigfile
+  -- {
+  --   "LunarVim/bigfile.nvim",
+  --   event = { "BufEnter" },
+  --   opts = {
+  --     filesize = 5,
+  --     pattern = { "*" }, -- autocmd pattern or function see <### Overriding the detection of big files>
+  --     features = { -- features to disable
+  --       "indent_blankline",
+  --       "illuminate",
+  --       "lsp",
+  --       -- "treesitter",
+  --       "syntax",
+  --       "matchparen",
+  --       "vimopts",
+  --       "filetype",
+  --     },
+  --   },
+  -- },
 
   -- donot cut when type `c`
   {
@@ -97,6 +98,45 @@ return {
       minimumBufferNum = 5,
       notificationOnAutoClose = true,
       deleteBufferWhenFileDeleted = false,
+    },
+  },
+
+  {
+    "folke/snacks.nvim",
+    optional = true,
+    ---@type snacks.Config
+    opts = {
+      animate = {
+        enabled = true,
+        fps = 120,
+      },
+      bigfile = {
+        enabled = true,
+        size = 1.5 * 1024 * 1024, -- 1.5MB
+      },
+      gitbrowse = {
+        enabled = true,
+        notify = false,
+        url_patterns = {
+          ["gitlab%..*"] = {
+            branch = "/-/tree/{branch}",
+            file = "/-/blob/{branch}/{file}#L{line_start}-L{line_end}",
+            commit = "/-/commit/{commit}",
+          },
+        },
+      },
+      indent = {
+        enabled = false,
+      },
+      scope = {
+        enabled = false,
+      },
+      quickfile = {
+        enabled = true,
+      },
+      words = {
+        enabled = false,
+      },
     },
   },
 }
