@@ -106,6 +106,9 @@ return {
     optional = true,
     ---@type snacks.Config
     opts = {
+      dashboard = {
+        enabled = false,
+      },
       animate = {
         enabled = true,
         fps = 120,
@@ -135,7 +138,7 @@ return {
         enabled = true,
       },
       words = {
-        enabled = false,
+        enabled = true,
       },
     },
   },

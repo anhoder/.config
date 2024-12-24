@@ -50,6 +50,7 @@ return {
       return {
         height = 22,
         detached = true,
+        preserve_win_context = true,
         preview_win_opts = {
           cursorline = true,
           number = true,

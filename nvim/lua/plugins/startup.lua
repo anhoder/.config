@@ -3,14 +3,6 @@ local persisted_util = require("utils.persisted")
 
 return {
   {
-    "folke/snacks.nvim",
-    opts = {
-      dashboard = {
-        enabled = false,
-      },
-    },
-  },
-  {
     "nvimdev/dashboard-nvim",
     event = "VimEnter",
     dependencies = { { "nvim-tree/nvim-web-devicons" } },
