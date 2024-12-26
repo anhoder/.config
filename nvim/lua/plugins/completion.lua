@@ -26,7 +26,7 @@ return {
     "Exafunction/codeium.vim",
     event = "BufEnter",
     -- commit = "289eb72",
-    enabled = false,
+    -- enabled = false,
     keys = {
       {
         "<A-Tab>",
@@ -41,6 +41,6 @@ return {
   },
   {
     "github/copilot.vim",
-    -- enabled = false,
+    enabled = false,
   },
 }

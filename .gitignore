@@ -30,3 +30,5 @@
 !nix/**
 !alacritty/
 !alacritty/**
+!ghostty/
+!ghostty/**

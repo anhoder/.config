@@ -18,7 +18,8 @@ return {
           winbar = false,
         },
         config = {
-          header = Logos("night_fury"),
+          -- header = Logos("night_fury"),
+          header = Logos("neovim"),
           center = {
             {
               action = "FzfLua files",

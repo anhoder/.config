@@ -140,9 +140,9 @@ if not vim.g.neovide then
 end
 
 vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
-vim.g.neovide_scale_factor = 1.0
-vim.g.neovide_transparency = 0.8
-vim.g.neovide_window_blurred = true
+vim.g.neovide_scale_factor = 1
+-- vim.g.neovide_transparency = 0.8
+-- vim.g.neovide_window_blurred = true
 vim.g.neovide_floating_shadow = true
 -- vim.g.neovide_scroll_animation_length = 0.2
 -- vim.g.neovide_background_color = "#0f111700"
@@ -157,8 +157,8 @@ vim.g.neovide_floating_shadow = true
 vim.g.neovide_input_ime = true
 
 -- vim.g.neovide_hide_mouse_when_typing = true
--- vim.g.neovide_cursor_animation_length = 0.08
--- vim.g.neovide_cursor_trail_size = 0.5
+vim.g.neovide_cursor_animation_length = 0.08
+vim.g.neovide_cursor_trail_size = 0.5
 vim.g.neovide_refresh_rate = 120
 vim.g.neovide_no_idle = true
 vim.g.neovide_confirm_quit = true

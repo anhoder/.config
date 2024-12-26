@@ -1,0 +1,44 @@
+
+# ghostty +list-fonts
+font-family = JetBrainsMono Nerd Font Mono
+font-style = Regular
+font-size = 15
+font-thicken = true
+
+macos-titlebar-style = tabs
+macos-titlebar-proxy-icon = hidden
+macos-option-as-alt = true
+
+adjust-underline-position = 40%
+adjust-underline-thickness = -60%
+
+cursor-style = block
+cursor-style-blink = false
+
+shell-integration = fish
+shell-integration-features = no-cursor
+
+# keymaps
+# keybind=clear
+keybind = shift+ctrl+left=previous_tab
+keybind = shift+ctrl+right=next_tab
+
+window-theme = dark
+window-width = 120
+window-height = 45
+window-padding-x = 4
+
+
+background-opacity = 0.8
+background-blur-radius = 20
+
+confirm-close-surface = true
+clipboard-paste-protection = false
+unfocused-split-opacity = 0.7
+
+# ghostty +list-themes
+theme = GruvboxDark
+
+auto-update = check
+link-url = true
+term = xterm-ghostty

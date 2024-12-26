@@ -114,7 +114,26 @@ local week_days = {
   ]],
 }
 
----@param type? DragonType | "week_day"
+---@enum (key) Neovim
+local neovim = {
+  [[                                                                       ]],
+  [[                                                                       ]],
+  [[                                                                       ]],
+  [[                                                                       ]],
+  [[                                                                     ]],
+  [[       ████ ██████           █████      ██                     ]],
+  [[      ███████████             █████                             ]],
+  [[      █████████ ███████████████████ ███   ███████████   ]],
+  [[     █████████  ███    █████████████ █████ ██████████████   ]],
+  [[    █████████ ██████████ █████████ █████ █████ ████ █████   ]],
+  [[  ███████████ ███    ███ █████████ █████ █████ ████ █████  ]],
+  [[ ██████  █████████████████████ ████ █████ █████ ████ ██████ ]],
+  [[                                                                       ]],
+  [[                                                                       ]],
+  [[                                                                       ]],
+}
+
+---@param type? DragonType | "week_day" | "neovim"
 function M.get(type)
   -- get random dragon logo
   if type == nil then
@@ -132,6 +151,9 @@ function M.get(type)
   if type == "week_day" then
     local current_day = os.date("%A")
     return vim.split("\n\n\n" .. week_days[current_day] .. "\n\n" .. os.date("%Y-%m-%d %H:%M:%S" .. "\n"), "\n")
+  end
+  if type == "neovim" then
+    return vim.split("\n\n\n" .. table.concat(neovim, "\n") .. "\n\n", "\n")
   end
   return vim.split("\n" .. dragons[type], "\n")
 end
