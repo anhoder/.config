@@ -39,6 +39,8 @@ unfocused-split-opacity = 0.7
 # ghostty +list-themes
 theme = GruvboxDark
 
+auto-update-channel = tip
 auto-update = check
 link-url = true
 term = xterm-ghostty
+
