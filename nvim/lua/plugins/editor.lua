@@ -104,7 +104,6 @@ return {
   {
     "folke/snacks.nvim",
     optional = true,
-    ---@type snacks.Config
     opts = {
       dashboard = {
         enabled = false,
