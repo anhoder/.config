@@ -55,6 +55,8 @@ vim.opt.foldlevelstart = 999
 vim.opt.foldenable = true
 vim.opt.list = false
 vim.opt.autochdir = false
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.diagnostic.config({
   underline = true,
@@ -91,6 +93,11 @@ vim.cmd("hi! Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 
 vim.cmd("hi! GitSignsCurrentLineBlame cterm=italic gui=italic guifg=#858577 guibg=0")
 vim.cmd("hi! LspInlayHint cterm=italic gui=italic guibg=0 guifg=#767676")
 vim.cmd("hi! MatchParen gui=bold,underline guibg=#665c54 guifg=#0DB9D7")
+
+vim.cmd("hi! DiffAdd guibg=#35360b guifg=none gui=none")
+vim.cmd("hi! DiffDelete guibg=#4d0003 guifg=none gui=none")
+vim.cmd("hi! DiffChange guibg=#1f3828 guifg=none gui=none")
+vim.cmd("hi! DiffText guibg=#3b2606 guifg=none gui=none")
 
 -- dashboard
 local colors = require("utils.colors")

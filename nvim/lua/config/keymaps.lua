@@ -15,6 +15,7 @@ local toggleterm = require("toggleterm.terminal")
 -- local telescope_themes = require("telescope.themes")
 -- local ivy_theme = telescope_themes.get_ivy({ sorting_strategy = "descending" })
 local Util = require("lazyvim.util")
+local helper = require("utils.helper")
 local neotree_manager = require("neo-tree.sources.manager")
 local neotree_render = require("neo-tree.ui.renderer")
 -- local telescope_pickers = require("utils.telescope_pickers")
@@ -387,10 +388,19 @@ map(
   { desc = "Disabled", noremap = true }
 )
 
--- notify cwd
+-- copy cur file path
 map({ "n" }, "<leader>cp", function()
-  vim.notify(vim.fn.expand("%"))
+  local p = helper.get_current_position()
+  helper.copy_to_clipboard(p)
+  vim.notify(p)
 end, { desc = "Display cur file path" })
+
+-- copy cur file path with line no
+map({ "n" }, "<leader>cP", function()
+  local p = helper.get_current_position({ with_line = true })
+  helper.copy_to_clipboard(p)
+  vim.notify(p)
+end, { desc = "Display cur file path with line no" })
 
 -- add quotation
 map("v", "'", "\"+xi'<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>'", { desc = "Add single quotation", noremap = true })
@@ -401,6 +411,11 @@ map("s", '"', '""<cmd>norm! h<cr>', { desc = "Avoiding effect", noremap = true }
 -- git blame
 map("n", "<leader>ghb", function()
   vim.cmd("Git blame")
+end, { desc = "Git Blame", noremap = true })
+
+-- git conflict
+map("n", "<leader>ghc", function()
+  vim.cmd("Gvdiffsplit!")
 end, { desc = "Git Blame", noremap = true })
 
 -- mouse go tnormalo
@@ -432,10 +447,10 @@ map({ "n" }, "<leader>w<Tab>", "<C-w>T", { desc = "Break out into a new tab", re
 
 -- spectre: search and replace
 map({ "n" }, "<D-r>", function()
-  grug_far.grug_far({ prefills = { flags = vim.fn.expand("%"), search = vim.fn.expand("<cword>") } })
+  grug_far.open({ prefills = { flags = vim.fn.expand("%"), search = vim.fn.expand("<cword>") } })
 end, { desc = "Search on current file" })
 map({ "n" }, "<leader>sr", function()
-  grug_far.grug_far({ prefills = { flags = vim.fn.expand("%"), search = vim.fn.expand("<cword>") } })
+  grug_far.open({ prefills = { flags = vim.fn.expand("%"), search = vim.fn.expand("<cword>") } })
 end, { desc = "Search on current file" })
 map({ "v" }, "<D-r>", function()
   grug_far.with_visual_selection({ prefills = { flags = vim.fn.expand("%") } })
@@ -444,10 +459,10 @@ map({ "v" }, "<leader>sr", function()
   grug_far.with_visual_selection({ prefills = { flags = vim.fn.expand("%") } })
 end, { desc = "Search on current file" })
 map({ "n" }, "<D-R>", function()
-  grug_far.grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
+  grug_far.open({ prefills = { search = vim.fn.expand("<cword>") } })
 end, { desc = "Search " })
 map({ "n" }, "<leader>sR", function()
-  grug_far.grug_far({ prefills = { search = vim.fn.expand("<cword>") } })
+  grug_far.open({ prefills = { search = vim.fn.expand("<cword>") } })
 end, { desc = "Search " })
 map({ "v" }, "<D-R>", function()
   grug_far.with_visual_selection()

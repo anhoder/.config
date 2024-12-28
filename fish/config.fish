@@ -28,6 +28,9 @@ function gba
     git symbolic-ref "refs/heads/$argv[2]" "refs/heads/$argv[1]"
 end
 
+# alilang
+alias alilang="~/Library/Android/sdk/emulator/emulator -avd alilang"
+
 
 alias kssh="kitten ssh"
 
