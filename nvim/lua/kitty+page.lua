@@ -1,5 +1,20 @@
 return function(INPUT_LINE_NUMBER, CURSOR_LINE, CURSOR_COLUMN)
-  print("kitty sent:", INPUT_LINE_NUMBER, CURSOR_LINE, CURSOR_COLUMN)
+  -- print("kitty sent:", INPUT_LINE_NUMBER, CURSOR_LINE, CURSOR_COLUMN)
+
+  -- for kitty and alacritty, must be here
+  vim.api.nvim_create_autocmd({ "VimEnter" }, {
+    group = vim.api.nvim_create_augroup("TerminalInitVimEnter", { clear = true }),
+    callback = function()
+      io.stdout:write("\x1b]1337;SetUserVar=in_editor=MQo\007")
+    end,
+  })
+  vim.api.nvim_create_autocmd({ "VimLeave" }, {
+    group = vim.api.nvim_create_augroup("TerminalQuitVimLeave", { clear = true }),
+    callback = function()
+      io.stdout:write("\x1b]1337;SetUserVar=in_editor\007")
+    end,
+  })
+
   vim.opt.encoding = "utf-8"
   vim.opt.clipboard = "unnamed"
   vim.opt.compatible = false
@@ -59,4 +74,6 @@ return function(INPUT_LINE_NUMBER, CURSOR_LINE, CURSOR_COLUMN)
       vim.schedule(setCursor)
     end,
   })
+
+  require("config.keymaps_without_dep")
 end
