@@ -328,6 +328,16 @@ map("n", "<leader>ghc", function()
   vim.cmd("Gvdiffsplit!")
 end, { desc = "Git Blame", noremap = true })
 
+-- git diffview open
+map("n", "<leader>ghd", function()
+  vim.cmd("DiffviewOpen")
+end, { desc = "Git diffview open", noremap = true })
+
+-- git diffview close
+map("n", "<leader>ghD", function()
+  vim.cmd("DiffviewClose")
+end, { desc = "Git diffview close", noremap = true })
+
 -- mouse go tnormalo
 map(
   { "n", "i", "v" },
