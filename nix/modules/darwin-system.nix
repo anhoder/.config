@@ -26,6 +26,7 @@
         AppleFontSmoothing = 1;
         AppleICUForce24HourTime = true;
         AppleShowAllExtensions = true;
+        ApplePressAndHoldEnabled = false;
         NSAutomaticCapitalizationEnabled = false;
         NSAutomaticInlinePredictionEnabled = false;
         NSAutomaticDashSubstitutionEnabled = false;
