@@ -1,5 +1,4 @@
 local home = vim.fn.expand("$HOME")
-local dap = require("dap")
 
 return {
   {
@@ -47,7 +46,6 @@ return {
               environment = {
                 includePaths = {
                   home .. "/Desktop/www/yii/",
-                  home .. "/.config/phpstorm-stubs/",
                 },
               },
             },

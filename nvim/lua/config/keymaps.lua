@@ -329,14 +329,15 @@ map("n", "<leader>ghc", function()
 end, { desc = "Git Blame", noremap = true })
 
 -- git diffview open
-map("n", "<leader>ghd", function()
-  vim.cmd("DiffviewOpen")
-end, { desc = "Git diffview open", noremap = true })
-
--- git diffview close
-map("n", "<leader>ghD", function()
-  vim.cmd("DiffviewClose")
-end, { desc = "Git diffview close", noremap = true })
+local diffview_opened = false
+map({ "i", "n", "v", "s", "t", "o" }, "<D-4>", function()
+  if not diffview_opened then
+    vim.cmd("DiffviewOpen")
+  else
+    vim.cmd("DiffviewClose")
+  end
+  diffview_opened = not diffview_opened
+end, { desc = "Git diffview", noremap = true })
 
 -- mouse go tnormalo
 map(

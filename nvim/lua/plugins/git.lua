@@ -6,6 +6,15 @@ return {
   --
   {
     "sindrets/diffview.nvim",
+    opts = {
+      enhanced_diff_hl = true,
+      view = {
+        merge_tool = {
+          disable_diagnostics = false,
+          winbar_info = true,
+        },
+      },
+    },
   },
 
   -- git sign

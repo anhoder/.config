@@ -25,6 +25,14 @@ alias gop="git open"
 ## git lost found
 alias glf="git fsck --unreachable | grep commit | awk '{print \$3}' | xargs git show"
 function gba
+    if test -z "$argv[1]"
+        echo "Usage: gba [<branch>] <to-alias>"
+        return -1
+    end
+    if test -z "$argv[2]"
+        set argv[2] $argv[1]
+        set argv[1] $(git symbolic-ref --short HEAD 2>/dev/null)
+    end
     git symbolic-ref "refs/heads/$argv[2]" "refs/heads/$argv[1]"
 end
 
