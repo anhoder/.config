@@ -23,6 +23,20 @@ return {
   -- },
 
   {
+    "saghen/blink.cmp",
+    optional = true,
+    opts = {
+      completion = {
+        list = {
+          selection = function(ctx)
+            return ctx.mode == "cmdline" and "auto_insert" or "manual"
+          end,
+        },
+      },
+    },
+  },
+
+  {
     "Exafunction/codeium.vim",
     event = "BufEnter",
     -- commit = "289eb72",
