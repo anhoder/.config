@@ -1,4 +1,10 @@
 local map = vim.keymap.set
+local disable_map = function(scope, key, deleted)
+  map(scope, key, "<Nop>", { desc = "Disabled" })
+  if deleted then
+    pcall(vim.keymap.del, scope, key)
+  end
+end
 local all_scope = { "n", "v", "i", "s", "c", "o", "t" }
 
 -- Resize window using <ctrl> arrow keys
@@ -72,10 +78,10 @@ map({ "i", "n" }, "<D-/>", "<Esc>gcc", { remap = true, desc = "Comment" })
 map({ "v" }, "<D-/>", "gc", { remap = true, desc = "Comment selection" })
 
 -- disable ScrollWheelLeft, ScrollWheelRight
-map(all_scope, "<ScrollWheelLeft>", "<Nop>", { desc = "Disabled", noremap = true })
-map(all_scope, "<ScrollWheelRight>", "<Nop>", { desc = "Disabled", noremap = true })
-map(all_scope, "<S-ScrollWheelLeft>", "<ScrollWheelLeft>", { desc = "Disabled", noremap = true })
-map(all_scope, "<S-ScrollWheelRight>", "<ScrollWheelRight>", { desc = "Disabled", noremap = true })
+disable_map(all_scope, "<ScrollWheelLeft>")
+disable_map(all_scope, "<ScrollWheelRight>")
+map(all_scope, "<S-ScrollWheelLeft>", "<ScrollWheelLeft>", { desc = "ScrollWheelLeft", noremap = true })
+map(all_scope, "<S-ScrollWheelRight>", "<ScrollWheelRight>", { desc = "ScrollWheelRight", noremap = true })
 
 -- add quotation
 map("v", "'", "\"+xi'<cmd>set paste<cr><C-r>+<cmd>set nopaste<cr>'", { desc = "Add single quotation", noremap = true })
@@ -87,6 +93,6 @@ map("s", '"', '""<cmd>norm! h<cr>', { desc = "Avoiding effect", noremap = true }
 map({ "n" }, "<leader>w<Tab>", "<C-w>T", { desc = "Break out into a new tab", remap = true })
 
 -- disable neovim internal grr, gra, grn...
-map({ "n" }, "grr", "<Nop>", { desc = "Disable grr" })
-map({ "n" }, "gra", "<Nop>", { desc = "Disable gra" })
-map({ "n" }, "grn", "<Nop>", { desc = "Disable grn" })
+disable_map({ "n" }, "grr", true)
+disable_map({ "n" }, "gra", true)
+disable_map({ "n" }, "grn", true)

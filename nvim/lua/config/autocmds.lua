@@ -37,7 +37,7 @@ vim.api.nvim_create_autocmd("BufEnter", {
   group = startup,
   pattern = "*",
   callback = function()
-    vim.opt.formatoptions = vim.opt.formatoptions - { "o" }
+    vim.opt.formatoptions = vim.opt.formatoptions - { "o", "c", "r" }
   end,
 })
 
@@ -72,7 +72,8 @@ vim.api.nvim_create_autocmd({ "User" }, {
     vim.api.nvim_set_current_dir(cwd)
 
     ---@diagnostic disable-next-line: param-type-mismatch
-    pcall(vim.cmd, "Neotree show dir=" .. cwd)
+    -- pcall(vim.cmd, "Neotree show dir=" .. cwd)
+    -- require("neo-tree.command").execute({ action = "show", dir = cwd })
 
     -- manually load launch.json
     require("dap.ext.vscode").load_launchjs()

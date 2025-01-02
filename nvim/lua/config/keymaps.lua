@@ -23,6 +23,7 @@ local neotree_render = require("neo-tree.ui.renderer")
 -- local telescope_pickers = require("utils.telescope_pickers")
 local ufo = require("ufo")
 local grug_far = require("grug-far")
+local neotree = require("neo-tree.command")
 
 local lazyterm_size = function(percent)
   percent = percent or 1.0
@@ -296,8 +297,20 @@ map({ "n" }, "<leader>P", function()
   vim.fn.jobstart("code-insiders " .. path)
 end, { desc = "Open file in code" })
 
+-- neo-tree keymaps
 -- locate cur file in neo-tree
-map({ "n", "v", "i", "o", "s" }, "<C-D-/>", "<cmd>Neotree reveal<cr>", { desc = "Locate cur file in neo-tree" })
+map({ "n", "v", "i", "o", "s" }, "<C-D-/>", function()
+  neotree.execute({ reveal = true, toggle = true })
+end, { desc = "Locate cur file in neo-tree" })
+map({ "n", "v", "i", "o", "s" }, "<A-1>", function()
+  neotree.execute({ toggle = true })
+end, { desc = "Open neotree" })
+map({ "n", "v", "i", "o", "s" }, "<A-2>", function()
+  neotree.execute({ source = "buffers", toggle = true })
+end, { desc = "Open neotree buffers" })
+map({ "n", "v", "i", "o", "s" }, "<A-3>", function()
+  neotree.execute({ source = "git_status", toggle = true })
+end, { desc = "Open neotree git_status" })
 
 -- toggle pin buffer
 map({ "n", "v", "i" }, "<D-p>", function()
@@ -330,7 +343,7 @@ end, { desc = "Git Blame", noremap = true })
 
 -- git diffview open
 local diffview_opened = false
-map({ "i", "n", "v", "s", "t", "o" }, "<D-4>", function()
+map({ "i", "n", "v", "s", "t", "o" }, "<A-4>", function()
   if not diffview_opened then
     vim.cmd("DiffviewOpen")
   else

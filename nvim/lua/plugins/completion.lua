@@ -27,20 +27,22 @@ return {
     optional = true,
     opts = {
       completion = {
-        list = {
-          selection = function(ctx)
-            return ctx.mode == "cmdline" and "auto_insert" or "manual"
-          end,
+        trigger = {
+          show_on_insert_on_trigger_character = false,
         },
+      },
+      keymap = {
+        ["<A-/>"] = { require("blink.cmp").show },
       },
     },
   },
 
+  -- codeium
+  -- WARN: nvim和phpstorm都开启使用codeium的话，会导致CPU飙高🥲，先不用吧
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
-    -- commit = "289eb72",
-    -- enabled = false,
+    enabled = false,
     keys = {
       {
         "<A-Tab>",
@@ -53,8 +55,26 @@ return {
       },
     },
   },
+
+  -- github copilot
   {
     "github/copilot.vim",
-    enabled = false,
+    -- enabled = false,
+  },
+
+  -- auto gen comment/anotation
+  {
+    "danymat/neogen",
+    config = true,
+    keys = {
+      {
+        "<leader>cg",
+        function()
+          require("neogen").generate()
+        end,
+        desc = "Generate comment",
+        mode = { "n" },
+      },
+    },
   },
 }
