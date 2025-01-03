@@ -154,16 +154,16 @@ if command -v aerospace >/dev/null 2>&1
 end
 
 # ls
-if command -v g >/dev/null 2>&1
+if command -v lsd >/dev/null 2>&1
     functions -e ll
     functions -e l
     functions -e la
     functions -e ls
-    alias ls 'g --hyperlink=always'
-    alias la 'g --show-hidden --hyperlink=always'
-    alias ll 'g --perm --icons --time --group --owner --size --title --lh --hyperlink=always --time-style=long-iso'
-    alias ll 'g --perm --icons --time --group --owner --size --title --lh --hyperlink=always --time-style=long-iso'
-    alias l 'g --perm --icons --time --group --owner --size --title --show-hidden --lh --hyperlink=always --time-style=long-iso'
+    alias ls 'lsd --icon=never --group-dirs=first --hyperlink=auto'
+    alias la 'ls -A'
+    alias ll "lsd -l --date='+%Y-%m-%d %H:%M:%S' --group-dirs=first --hyperlink=auto"
+    alias l "ll -A"
+    alias lt "la --tree --depth=1"
 end
 
 bind -M insert \ca beginning-of-line

@@ -331,11 +331,6 @@ map({ "n" }, "<leader>cP", function()
   vim.notify(p)
 end, { desc = "Display cur file path with line no" })
 
--- git blame
-map("n", "<leader>ghb", function()
-  vim.cmd("Git blame")
-end, { desc = "Git Blame", noremap = true })
-
 -- git conflict
 map("n", "<leader>ghc", function()
   vim.cmd("Gvdiffsplit!")
