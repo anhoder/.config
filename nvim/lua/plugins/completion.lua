@@ -39,22 +39,22 @@ return {
 
   -- codeium
   -- WARN: nvim和phpstorm都开启使用codeium的话，会导致CPU飙高🥲，先不用吧
-  {
-    "Exafunction/codeium.vim",
-    event = "BufEnter",
-    enabled = false,
-    keys = {
-      {
-        "<A-Tab>",
-        function()
-          return vim.fn["codeium#Accept"]()
-        end,
-        expr = true,
-        silent = true,
-        mode = { "i", "s" },
-      },
-    },
-  },
+  -- {
+  --   "Exafunction/codeium.vim",
+  --   event = "BufEnter",
+  --   enabled = false,
+  --   keys = {
+  --     {
+  --       "<A-Tab>",
+  --       function()
+  --         return vim.fn["codeium#Accept"]()
+  --       end,
+  --       expr = true,
+  --       silent = true,
+  --       mode = { "i", "s" },
+  --     },
+  --   },
+  -- },
 
   -- github copilot
   {

@@ -104,6 +104,9 @@ return {
   {
     "folke/snacks.nvim",
     optional = true,
+    keys = {
+      { "<leader>S", false },
+    },
     opts = {
       dashboard = {
         enabled = false,

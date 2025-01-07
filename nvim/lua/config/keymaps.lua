@@ -6,6 +6,7 @@ require("config.keymaps_without_dep")
 
 local map = vim.keymap.set
 
+---@diagnostic disable-next-line: undefined-field
 if vim.g.vscode then
   map("n", "gi", "<Cmd>call VSCodeNotify('editor.action.goToImplementation')<CR>")
   return
@@ -73,6 +74,7 @@ local terminal_opts = {
   close_on_exit = false,
   auto_scroll = false,
   float_opts = {
+    ---@diagnostic disable-next-line: undefined-field
     border = vim.g.neovide and "solid" or "curved",
     width = function()
       return math.floor(vim.o.columns * 0.8)
@@ -94,6 +96,7 @@ local term3 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 3, disp
 
 -- n normal, i insert, v visual, s select, c command, t terminal, o operator pending
 
+---@diagnostic disable-next-line: undefined-field
 if vim.g.neovide then
   map({ "n", "i", "v", "t" }, "<D-n>", function()
     vim.fn.jobstart("neovide")
@@ -322,14 +325,22 @@ map({ "n" }, "<leader>cp", function()
   local p = helper.get_current_position()
   helper.copy_to_clipboard(p)
   vim.notify(p)
-end, { desc = "Display cur file path" })
+end, { desc = "Copy cur file path" })
 
 -- copy cur file path with line no
 map({ "n" }, "<leader>cP", function()
   local p = helper.get_current_position({ with_line = true })
   helper.copy_to_clipboard(p)
   vim.notify(p)
-end, { desc = "Display cur file path with line no" })
+end, { desc = "Copy cur file path with line no" })
+
+-- copy cur branch
+map({ "n" }, "<leader>cb", function()
+  ---@diagnostic disable-next-line: undefined-field
+  local branch = vim.b.gitsigns_head
+  helper.copy_to_clipboard(branch)
+  vim.notify(branch)
+end, { desc = "Copy cur path" })
 
 -- git conflict
 map("n", "<leader>ghc", function()
