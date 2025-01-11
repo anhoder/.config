@@ -49,6 +49,7 @@ function M.get_current_position(opts)
     path = vim.fn.expand("%:p")
   else
     path = M.remove_prefix(vim.fn.expand("%"), vim.fn.getcwd())
+    path = M.remove_prefix(path, "/")
   end
   if opts.with_line ~= nil and opts.with_line == true then
     local line = vim.api.nvim_win_get_cursor(0)[1]

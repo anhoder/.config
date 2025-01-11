@@ -72,7 +72,7 @@ brew "anhoder/repo/lua@5.1", link: false
 brew "git-chglog/git-chglog/git-chglog"
 brew "anhoder/repo/neovim-nightly"
 brew "go-musicfox/go-musicfox/go-musicfox"
-brew "go-musicfox/go-musicfox/spotifox"
+brew "TheZoraiz/ascii-image-converter/ascii-image-converter"
 brew "shivammathur/php/php@8.0"
 cask "jordanbaird-ice"
 cask "font-fira-code-nerd-font"

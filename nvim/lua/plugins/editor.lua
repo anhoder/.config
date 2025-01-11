@@ -108,9 +108,6 @@ return {
       { "<leader>S", false },
     },
     opts = {
-      dashboard = {
-        enabled = false,
-      },
       animate = {
         enabled = true,
         fps = 120,
