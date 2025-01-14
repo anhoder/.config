@@ -42,7 +42,7 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
-    enabled = false,
+    -- enabled = false,
     keys = {
       {
         "<A-Tab>",
@@ -60,6 +60,50 @@ return {
     "yetone/avante.nvim",
     event = "VeryLazy",
     build = "make lua51",
+    keys = function(_, keys)
+      ---@type avante.Config
+      local opts =
+        require("lazy.core.plugin").values(require("lazy.core.config").spec.plugins["avante.nvim"], "opts", false)
+
+      local mappings = {
+        {
+          opts.mappings.ask,
+          function()
+            require("avante.api").ask()
+          end,
+          desc = "avante: ask",
+          mode = { "n", "v" },
+        },
+        {
+          opts.mappings.refresh,
+          function()
+            require("avante.api").refresh()
+          end,
+          desc = "avante: refresh",
+          mode = "v",
+        },
+        {
+          opts.mappings.edit,
+          function()
+            require("avante.api").edit()
+          end,
+          desc = "avante: edit",
+          mode = { "n", "v" },
+        },
+        {
+          opts.mappings.toggle,
+          function()
+            require("avante.api").toggle()
+          end,
+          desc = "avante: toggle",
+          mode = { "n", "v" },
+        },
+      }
+      mappings = vim.tbl_filter(function(m)
+        return m[1] and #m[1] > 0
+      end, mappings)
+      return vim.list_extend(mappings, keys)
+    end,
     opts = {
       provider = "openai",
       auto_suggestions_provider = "openai",
@@ -74,6 +118,10 @@ return {
       },
 
       mappings = {
+        ask = "<leader>xa", -- ask
+        edit = "<leader>xe", -- edit
+        refresh = "<leader>xr", -- refresh
+        toggle = "<leader>xo", -- toggle
         suggestion = {
           accept = "<Tab>",
         },
@@ -100,42 +148,6 @@ return {
         "grapp-dev/nui-components.nvim",
         dependencies = {
           "MunifTanjim/nui.nvim",
-        },
-      },
-      {
-        "blink.compat",
-        lazy = true,
-      },
-      {
-        "saghen/blink.cmp",
-        opts = {
-          sources = {
-            compat = {
-              "avante_commands",
-              "avante_mentions",
-              "avante_files",
-            },
-            providers = {
-              avante_commands = {
-                name = "avante_commands",
-                module = "blink.compat.source",
-                score_offset = 90, -- show at a higher priority than lsp
-                opts = {},
-              },
-              avante_files = {
-                name = "avante_commands",
-                module = "blink.compat.source",
-                score_offset = 100, -- show at a higher priority than lsp
-                opts = {},
-              },
-              avante_mentions = {
-                name = "avante_mentions",
-                module = "blink.compat.source",
-                score_offset = 1000, -- show at a higher priority than lsp
-                opts = {},
-              },
-            },
-          },
         },
       },
     },
