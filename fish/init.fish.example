@@ -14,3 +14,4 @@ set -gx CANGJIE_HOME /usr/local/cangjie
 set -gx PATH "$CANGJIE_HOME/bin:$CANGJIE_HOME/tools/bin:$PATH:$HOME/.cjpm/bin"
 set -gx DYLD_LIBRARY_PATH "$CANGJIE_HOME/runtime/lib/darwin_aarch64_llvm:$CANGJIE_HOME/tools/lib:$DYLD_LIBRARY_PATH"
 set -gx SDKROOT "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk"
+# set -gx SDKROOT "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk"
