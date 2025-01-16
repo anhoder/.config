@@ -38,7 +38,6 @@ return {
   },
 
   -- codeium
-  -- WARN: nvim和phpstorm都开启使用codeium的话，会导致CPU飙高🥲，先不用吧
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
