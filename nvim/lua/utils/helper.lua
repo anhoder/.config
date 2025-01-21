@@ -59,4 +59,12 @@ function M.get_current_position(opts)
   return path
 end
 
+--- replace '\' or '/' to %
+---@param path string
+---@return string
+function M.path_escape(path)
+  local res, _ = string.gsub(path, "[/\\]", "%%")
+  return res
+end
+
 return M

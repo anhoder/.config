@@ -41,7 +41,7 @@ return {
   {
     "Exafunction/codeium.vim",
     event = "BufEnter",
-    -- enabled = false,
+    enabled = false,
     keys = {
       {
         "<A-Tab>",
