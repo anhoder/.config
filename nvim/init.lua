@@ -31,7 +31,7 @@ require("config.lazy")
 
 -- vim.g.guifont = "MesloLGL Nerd Font"
 vim.g.guifont = "JetBrainsMono Nerd Font"
-vim.g.guifontsize = 15
+vim.g.guifontsize = 16
 vim.opt.guifont = vim.g.guifont .. ":h" .. vim.g.guifontsize
 -- vim.opt.linespace = 6
 -- vim.opt.guifont = "ComicMono NF:h16"
@@ -148,11 +148,11 @@ end
 
 vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
 vim.g.neovide_scale_factor = 1
--- vim.g.neovide_transparency = 0.8
--- vim.g.neovide_window_blurred = true
+vim.g.neovide_transparency = 0.8
+vim.g.neovide_window_blurred = true
 vim.g.neovide_floating_shadow = true
 -- vim.g.neovide_scroll_animation_length = 0.2
--- vim.g.neovide_background_color = "#0f111700"
+vim.g.neovide_background_color = "#0f111700"
 
 -- vim.g.transparency = 0.8
 -- local alpha = function()

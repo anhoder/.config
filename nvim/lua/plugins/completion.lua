@@ -104,9 +104,16 @@ return {
       return vim.list_extend(mappings, keys)
     end,
     opts = {
-      provider = "openai",
-      auto_suggestions_provider = "openai",
-
+      provider = "deepseek",
+      auto_suggestions_provider = "deepseek",
+      vendors = {
+        deepseek = {
+          __inherited_from = "openai",
+          api_key_name = "DEEPSEEK_API_KEY",
+          endpoint = "https://api.deepseek.com/v1",
+          model = "deepseek-coder",
+        },
+      },
       behaviour = {
         auto_suggestions = false, -- Experimental stage
         auto_set_highlight_group = true,
@@ -132,7 +139,6 @@ return {
       },
 
       file_selector = {
-        --- @alias FileSelectorProvider "native" | "fzf" | "telescope" | string
         provider = "fzf",
         -- Options override for custom providers
         provider_opts = {},

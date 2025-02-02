@@ -7,3 +7,25 @@ srgb = false
 idle = true
 frame = "transparent"
 tab = false
+
+[font]
+size = 16
+
+[[font.normal]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "SemiBold"
+
+[[font.bold]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "ExtraBold"
+
+[[font.italic]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "Italic"
+
+[[font.bold_italic]]
+family = "JetBrainsMono Nerd Font Mono"
+style = "ExtraBoldItalic"
+
+[font.features]
+"JetBrainsMono Nerd Font Mono" = ["+zero", "+ss19"]

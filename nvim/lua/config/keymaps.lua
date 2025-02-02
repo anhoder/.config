@@ -12,7 +12,7 @@ if vim.g.vscode then
   return
 end
 
-local toggleterm = require("toggleterm.terminal")
+-- local toggleterm = require("toggleterm.terminal")
 -- local telescope = require("telescope")
 -- local telescope_builtin = require("telescope.builtin")
 -- local telescope_themes = require("telescope.themes")
@@ -26,56 +26,21 @@ local ufo = require("ufo")
 local grug_far = require("grug-far")
 local neotree = require("neo-tree.command")
 
-local lazyterm_size = function(percent)
+local lazygit_size = function(percent)
   percent = percent or 1.0
   return { width = math.floor(vim.o.columns * 0.95 * percent), height = math.floor(vim.o.lines * 0.92 * percent) }
 end
--- local lazyterm1 = function()
---   LazyVim.terminal(nil, {
---     title = "term1",
---     -- cwd = LazyVim.root(),
---     size = lazyterm_size(0.85),
---     env = { TERM_NAME = "term1" },
---     esc_esc = true,
---     border = "solid",
---     title_pos = "left",
---   })
--- end
--- local lazyterm2 = function()
---   LazyVim.terminal(nil, {
---     title = "term2",
---     -- cwd = LazyVim.root(),
---     size = lazyterm_size(0.9),
---     env = { TERM_NAME = "term2" },
---     esc_esc = true,
---     border = "solid",
---     title_pos = "left",
---   })
--- end
--- local lazyterm3 = function()
---   LazyVim.terminal(nil, {
---     title = "term3",
---     -- cwd = LazyVim.root(),
---     size = lazyterm_size(1.0),
---     env = { TERM_NAME = "term3" },
---     esc_esc = true,
---     border = "solid",
---     title_pos = "left",
---   })
--- end
--- local musicfox = function()
---   LazyVim.terminal("musicfox", { size = lazyterm_size(), env = { TERM_NAME = "musicfox" }, esc_esc = true })
--- end
 
-local Terminal = toggleterm.Terminal
+---@type snacks.terminal.Opts
 local terminal_opts = {
-  direction = "float",
-  hidden = false,
-  close_on_exit = false,
-  auto_scroll = false,
-  float_opts = {
-    ---@diagnostic disable-next-line: undefined-field
-    border = vim.g.neovide and "solid" or "curved",
+  win = {
+    style = "terminal",
+    position = "float",
+    border = "rounded",
+    enter = true,
+    backdrop = 100,
+    fixbuf = true,
+    resize = true,
     width = function()
       return math.floor(vim.o.columns * 0.8)
     end,
@@ -84,15 +49,50 @@ local terminal_opts = {
     end,
   },
 }
-local musicfox = Terminal:new(vim.tbl_extend("force", terminal_opts, {
-  cmd = "musicfox",
-  id = 99,
-  display_name = "musicfox",
-}))
-local term0 = Terminal:new({ direction = "horizontal" })
-local term1 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 1, display_name = "term1" }))
-local term2 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 2, display_name = "term2" }))
-local term3 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 3, display_name = "term3" }))
+
+---@param term_name string
+local resolve_term_opts = function(term_name)
+  return vim.tbl_extend("force", terminal_opts, {
+    env = { nvim_term_name = term_name },
+    win = {
+      wo = {
+        winbar = term_name,
+      },
+    },
+  })
+end
+
+local term1_opts = resolve_term_opts("term1")
+local term2_opts = resolve_term_opts("term2")
+local term3_opts = resolve_term_opts("term3")
+local musicfox_opts = resolve_term_opts("musicfox")
+
+-- local Terminal = toggleterm.Terminal
+-- local terminal_opts = {
+--   direction = "float",
+--   hidden = false,
+--   close_on_exit = false,
+--   auto_scroll = false,
+--   float_opts = {
+--     ---@diagnostic disable-next-line: undefined-field
+--     border = vim.g.neovide and "solid" or "curved",
+--     width = function()
+--       return math.floor(vim.o.columns * 0.8)
+--     end,
+--     height = function()
+--       return math.floor(vim.o.lines * 0.8)
+--     end,
+--   },
+-- }
+-- local musicfox = Terminal:new(vim.tbl_extend("force", terminal_opts, {
+--   cmd = "musicfox",
+--   id = 99,
+--   display_name = "musicfox",
+-- }))
+-- local term0 = Terminal:new({ direction = "horizontal" })
+-- local term1 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 1, display_name = "term1" }))
+-- local term2 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 2, display_name = "term2" }))
+-- local term3 = Terminal:new(vim.tbl_extend("force", terminal_opts, { id = 3, display_name = "term3" }))
 
 -- n normal, i insert, v visual, s select, c command, t terminal, o operator pending
 
@@ -123,40 +123,39 @@ map({ "n", "i", "v" }, "<A-f>", vim.lsp.buf.format, { desc = "Format code" })
 --     value:close()
 --   end
 -- end
-map({ "i", "n", "v", "s", "t", "o" }, "<D-`>", function()
-  term0:toggle()
-end, { desc = "Open terminal" })
+map({ "i", "n", "v", "s", "t", "o" }, "<D-`>", Snacks.terminal.toggle, { desc = "Open terminal" })
+map({ "i", "n", "v", "s", "t", "o" }, "<C-`>", Snacks.terminal.toggle, { desc = "Open terminal" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-1>", function()
-  term1:toggle()
+  Snacks.terminal.toggle(vim.o.shell, term1_opts)
 end, { desc = "Open term1" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-2>", function()
-  term2:toggle()
+  Snacks.terminal.toggle(vim.o.shell, term2_opts)
 end, { desc = "Open term2" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-3>", function()
-  term3:toggle()
+  Snacks.terminal.toggle(vim.o.shell, term3_opts)
 end, { desc = "Open term3" })
 
 -- musicfox
 map({ "i", "n", "v", "s", "t", "o" }, "<C-Esc>", function()
-  musicfox:toggle()
+  Snacks.terminal.toggle("musicfox", musicfox_opts)
 end, { desc = "Run musicfox" })
 
 -- lazygit
 map("n", "<leader>gg", function()
-  Snacks.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size(), esc_esc = true })
+  Snacks.lazygit({ cwd = LazyVim.root.git(), size = lazygit_size(), esc_esc = true })
 end, { desc = "Lazygit (root dir)" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-g>", function()
-  Snacks.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size(), esc_esc = true })
+  Snacks.lazygit({ cwd = LazyVim.root.git(), size = lazygit_size(), esc_esc = true })
 end, { desc = "Lazygit (root dir)" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-Esc>", function()
-  Snacks.lazygit({ cwd = LazyVim.root.git(), size = lazyterm_size(), esc_esc = true })
+  Snacks.lazygit({ cwd = LazyVim.root.git(), size = lazygit_size(), esc_esc = true })
 end, { desc = "Lazygit (root dir)" })
 map("n", "<leader>gG", function()
-  Snacks.lazygit({ size = lazyterm_size(), esc_esc = true })
+  Snacks.lazygit({ size = lazygit_size(), esc_esc = true })
 end, { desc = "Lazygit (cwd)" })
 map("n", "<leader>gf", function()
   local git_path = vim.api.nvim_buf_get_name(0)
-  Snacks.lazygit({ args = { "-f", vim.trim(git_path) }, size = lazyterm_size(), esc_esc = true })
+  Snacks.lazygit({ args = { "-f", vim.trim(git_path) }, size = lazygit_size(), esc_esc = true })
 end, { desc = "Lazygit current file history" })
 
 -- fork

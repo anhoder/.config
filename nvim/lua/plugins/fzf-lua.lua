@@ -12,7 +12,6 @@ local getSelectedCwd = function()
   return vim.fn.getcwd()
 end
 
-local actions = require("fzf-lua").actions
 local helper = require("utils.helper")
 
 local fzf_grep_history = function()
@@ -52,9 +51,16 @@ return {
     end,
     keys = {
       {
+        "<leader>sb",
+        function()
+          require("fzf-lua").buffers()
+        end,
+        desc = "Buffers",
+      },
+      {
         "<leader>sg",
         function()
-          require("fzf-lua").live_grep_native({ resume = true, fzf_opts = { ["--history"] = fzf_grep_history() } })
+          require("fzf-lua").live_grep_native({ fzf_opts = { ["--history"] = fzf_grep_history() } })
         end,
         desc = "live grep",
       },
@@ -90,7 +96,7 @@ return {
         function()
           local cwd = getSelectedCwd()
           vim.notify("search file in " .. cwd)
-          require("fzf-lua").files({ cwd = cwd, resume = true, fzf_opts = { ["--history"] = fzf_files_history() } })
+          require("fzf-lua").files({ cwd = cwd, fzf_opts = { ["--history"] = fzf_files_history() } })
         end,
         desc = "search file in selected directory",
       },

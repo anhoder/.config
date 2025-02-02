@@ -63,7 +63,7 @@ end
 ---@param path string
 ---@return string
 function M.path_escape(path)
-  local res, _ = string.gsub(path, "[/\\]", "%%")
+  local res, _ = Snacks.util.file_encode(path)
   return res
 end
 
