@@ -112,6 +112,7 @@ return {
           api_key_name = "DEEPSEEK_API_KEY",
           endpoint = "https://api.deepseek.com/v1",
           model = "deepseek-coder",
+          -- model = "deepseek-reasoner",
         },
       },
       behaviour = {

@@ -82,6 +82,10 @@ set -gx OPENSSL_ROOT_DIR "$OPENSSL_PREFIX"
 set -gx OPENSSL_LIBS "-L$OPENSSL_PREFIX/lib"
 set -gx OPENSSL_CFLAGS "-I$OPENSSL_PREFIX/include"
 
+# rust
+set -gx RUSTUP_HOME "$HOMEBREW_PREFIX/opt/rustup"
+set -gx PATH "$RUSTUP_HOME/bin:$PATH"
+
 # PATH
 set -gx PATH "$OPENSSL_PREFIX/bin:$HOMEBREW_PREFIX/opt/libiconv/bin:$HOMEBREW_PREFIX/opt/curl/bin:$HOMEBREW_PREFIX/opt/bison/bin:$GOPATH/bin:$PATH"
 
