@@ -37,24 +37,6 @@ return {
     },
   },
 
-  -- codeium
-  {
-    "Exafunction/codeium.vim",
-    event = "BufEnter",
-    enabled = false,
-    keys = {
-      {
-        "<A-Tab>",
-        function()
-          return vim.fn["codeium#Accept"]()
-        end,
-        expr = true,
-        silent = true,
-        mode = { "i", "s" },
-      },
-    },
-  },
-
   {
     "yetone/avante.nvim",
     event = "VeryLazy",
