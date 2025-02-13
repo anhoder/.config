@@ -127,8 +127,31 @@ return {
           },
         },
       },
+      lazygit = {
+        configure = true,
+      },
       indent = {
-        enabled = false,
+        priority = 1,
+        enabled = true,
+        -- can be a list of hl groups to cycle through
+        hl = "SnacksIndent",
+        animate = {
+          enabled = vim.fn.has("nvim-0.10") == 1,
+          style = "out",
+          easing = "linear",
+          duration = {
+            step = 20, -- ms per step
+            total = 500, -- maximum duration
+          },
+        },
+        scope = {
+          enabled = true, -- enable highlighting the current scope
+          priority = 200,
+          char = "│",
+          underline = false, -- underline the start of the scope
+          only_current = false, -- only show scope in the current window
+          hl = "SnacksIndentScope", ---@type string|string[] hl group for scopes
+        },
       },
       scope = {
         enabled = false,
@@ -138,6 +161,19 @@ return {
       },
       words = {
         enabled = true,
+      },
+      statuscolumn = {
+        left = { "mark", "sign" }, -- priority of signs on the left (high to low)
+        right = { "fold", "git" }, -- priority of signs on the right (high to low)
+        folds = {
+          open = true, -- show open fold icons
+          git_hl = true, -- use Git Signs hl for fold icons
+        },
+        git = {
+          -- patterns to match Git signs
+          patterns = { "GitSign", "MiniDiffSign" },
+        },
+        refresh = 50, -- refresh at most every 50ms
       },
     },
   },

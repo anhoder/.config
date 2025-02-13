@@ -21,8 +21,6 @@ local Util = require("lazyvim.util")
 local helper = require("utils.helper")
 local neotree_manager = require("neo-tree.sources.manager")
 local neotree_render = require("neo-tree.ui.renderer")
--- local telescope_pickers = require("utils.telescope_pickers")
-local ufo = require("ufo")
 local grug_far = require("grug-far")
 local neotree = require("neo-tree.command")
 
@@ -376,10 +374,6 @@ map(
   "<LeftMouse><cmd>lua require('utils.lsp').goto_def()<cr>",
   { desc = "Jump to", noremap = true }
 )
-
--- ufo fold
-map({ "n" }, "zM", ufo.closeAllFolds, { desc = "Close all folds(ufo)", remap = true })
-map({ "n" }, "zR", ufo.openAllFolds, { desc = "Close all folds(ufo)", remap = true })
 
 -- spectre: search and replace
 map({ "n" }, "<D-r>", function()

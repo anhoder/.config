@@ -55,8 +55,11 @@ vim.opt.foldlevelstart = 999
 vim.opt.foldenable = true
 vim.opt.list = false
 vim.opt.autochdir = false
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+
+vim.opt.foldtext = "v:lua.require('utils.fold_highlight').highlight_foldtext()"
+
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
 vim.diagnostic.config({
   underline = true,

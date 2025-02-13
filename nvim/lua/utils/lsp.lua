@@ -87,11 +87,11 @@ function M.goto_def()
 end
 
 function M.hover()
-  local winid = require("ufo").peekFoldedLinesUnderCursor()
-  if not winid then
-    -- vim.cmd("Lspsaga hover_doc")
-    vim.lsp.buf.hover()
-  end
+  -- local winid = require("ufo").peekFoldedLinesUnderCursor()
+  -- if not winid then
+  -- vim.cmd("Lspsaga hover_doc")
+  vim.lsp.buf.hover()
+  -- end
 end
 
 return M
