@@ -109,7 +109,7 @@ return {
     },
     opts = {
       animate = {
-        enabled = true,
+        enabled = not vim.g.neovide,
         fps = 120,
       },
       bigfile = {

@@ -55,11 +55,12 @@ vim.opt.foldlevelstart = 999
 vim.opt.foldenable = true
 vim.opt.list = false
 vim.opt.autochdir = false
-
 vim.opt.foldtext = "v:lua.require('utils.fold_highlight').highlight_foldtext()"
-
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "v:lua.vim.lsp.foldexpr()"
 -- vim.opt.foldmethod = "expr"
 -- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
 
 vim.diagnostic.config({
   underline = true,
@@ -151,7 +152,7 @@ end
 
 vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
 vim.g.neovide_scale_factor = 1
-vim.g.neovide_transparency = 0.8
+vim.g.neovide_transparency = 1
 vim.g.neovide_window_blurred = true
 vim.g.neovide_floating_shadow = true
 -- vim.g.neovide_scroll_animation_length = 0.2

@@ -40,7 +40,7 @@ function M.highlight_foldtext()
     end
   end
 
-  local suffix = (" #   󱞥 %d "):format(vim.v.foldend - vim.v.foldstart + 1)
+  local suffix = ("   // ... %d lines "):format(vim.v.foldend - vim.v.foldstart + 1)
   table.insert(result, { suffix, "Comment" })
 
   return result

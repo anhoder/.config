@@ -20,6 +20,9 @@ end
 local fzf_files_history = function()
   return vim.fn.stdpath("data") .. "/fzf-files-" .. helper.path_escape(vim.fn.getcwd())
 end
+local fzf_lsp_history = function()
+  return vim.fn.stdpath("data") .. "/fzf-lsp-" .. helper.path_escape(vim.fn.getcwd())
+end
 
 return {
   {
@@ -45,6 +48,11 @@ return {
         grep = {
           fzf_opts = {
             ["--history"] = vim.fn.stdpath("data") .. "/fzf-grep-common",
+          },
+        },
+        lsp = {
+          fzf_opts = {
+            ["--history"] = vim.fn.stdpath("data") .. "/fzf-lsp-common",
           },
         },
       })
@@ -106,6 +114,20 @@ return {
           require("fzf-lua").resume()
         end,
         desc = "restore last fzf search",
+      },
+      {
+        "<leader>sp",
+        function()
+          require("fzf-lua").lsp_live_workspace_symbols({ fzf_opts = { ["--history"] = fzf_lsp_history() } })
+        end,
+        desc = "search lsp symbols in workspace",
+      },
+      {
+        "<D-m>",
+        function()
+          require("fzf-lua").lsp_document_symbols()
+        end,
+        desc = "search lsp symbols in document",
       },
     },
   },

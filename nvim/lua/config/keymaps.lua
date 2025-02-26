@@ -102,6 +102,10 @@ if vim.g.neovide then
   map({ "n", "i", "v", "t" }, "<C-D-f>", function()
     vim.g.neovide_fullscreen = not vim.g.neovide_fullscreen
   end, { desc = "Toggle neovide fullscreen" })
+  map({ "n", "i", "v", "t" }, "<D-S-t>", function()
+    vim.g.neovide_transparency = 0.8
+    pcall(vim.fn.jobstart, { "killall", "Dock" })
+  end, { desc = "Open neovide transparency" })
 end
 
 -- Close window
@@ -219,13 +223,6 @@ end, { desc = "Reset font size" })
 --   vim.notify("search in " .. vim.fn.getcwd())
 --   LazyVim.pick("live_grep", { root = true })
 -- end, { desc = "Telescope Live Grep(selected or root dir)" })
-
--- Document symbols
-map({ "i", "n", "v" }, "<D-m>", function()
-  require("fzf-lua.providers.lsp").document_symbols()
-  -- telescope_builtin.lsp_document_symbols(ivy_theme)
-  -- telescope.extensions.aerial.aerial(ivy_theme)
-end, { desc = "Document symbols" })
 
 -- Find files(root)
 -- map({ "n" }, "<leader>ff", function()
