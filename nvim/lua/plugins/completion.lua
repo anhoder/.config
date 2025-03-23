@@ -30,6 +30,9 @@ return {
         trigger = {
           show_on_insert_on_trigger_character = false,
         },
+        list = {
+          selection = { preselect = false, auto_insert = false },
+        },
       },
       keymap = {
         ["<A-/>"] = { require("blink.cmp").show },

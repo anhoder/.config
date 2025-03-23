@@ -108,6 +108,7 @@ return {
       { "<leader>S", false },
     },
     opts = {
+      scroll = { enabled = false },
       animate = {
         enabled = not vim.g.neovide,
         fps = 120,

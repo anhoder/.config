@@ -32,6 +32,16 @@ function M.remove_prefix(str, prefix)
   return (string.sub(str, 0, #prefix) == prefix) and string.sub(str, #prefix + 1) or str
 end
 
+--- remove project prefix
+--- @param path string
+function M.remove_project_prefix(path)
+  local prefix = vim.fn.getcwd()
+  if string.sub(path, 0, #prefix) == prefix then
+    path = M.remove_prefix(M.remove_prefix(path, prefix), "/")
+  end
+  return path
+end
+
 --- copy str to system clipboard
 --- @param str string
 function M.copy_to_clipboard(str)
@@ -48,8 +58,7 @@ function M.get_current_position(opts)
   if opts.absolute ~= nil and opts.absolute == true then
     path = vim.fn.expand("%:p")
   else
-    path = M.remove_prefix(vim.fn.expand("%"), vim.fn.getcwd())
-    path = M.remove_prefix(path, "/")
+    path = M.remove_project_prefix(vim.fn.expand("%"))
   end
   if opts.with_line ~= nil and opts.with_line == true then
     local line = vim.api.nvim_win_get_cursor(0)[1]

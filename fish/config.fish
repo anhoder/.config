@@ -3,6 +3,12 @@ if test -e $HOME/.config/fish/init.fish
 end
 
 set fish_greeting Hello, anhoder!
+set fish_cursor_insert block
+set fish_cursor_default block
+bind --erase ctrl-`
+bind -M visual -m default y fish_clipboard_copy yank end-selection repaint
+bind -M normal -m insert shift-a end-of-line
+bind -M normal -m insert shift-i beginning-of-line
 
 set -gx CLICOLOR Yes
 set -gx LS_OPTIONS '--color=auto'
@@ -39,7 +45,6 @@ end
 # alilang
 alias alilang="~/Library/Android/sdk/emulator/emulator -avd alilang"
 
-
 alias kssh="kitten ssh"
 
 # VSCode-Insider
@@ -52,7 +57,8 @@ alias code="code-insiders"
 # set -gx HOMEBREW_BREW_GIT_REMOTE https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/brew.git
 # set -gx HOMEBREW_CORE_GIT_REMOTE https://mirrors.tuna.tsinghua.edu.cn/git/homebrew/homebrew-core.git
 # set -gx HOMEBREW_BOTTLE_DOMAIN https://mirrors.tuna.tsinghua.edu.cn/homebrew-bottles
-set -gx HOMEBREW_AUTO_UPDATE_SECS 86400
+# set -gx HOMEBREW_AUTO_UPDATE_SECS 86400
+set -gx HOMEBREW_NO_AUTO_UPDATE 1
 set -gx HOMEBREW_BUNDLE_FILE "$HOME/.config/homebrew/brewfile"
 if test -z "$HOMEBREW_PREFIX"
     # 默认/usr/local，需要变更，在init.fish中设置
