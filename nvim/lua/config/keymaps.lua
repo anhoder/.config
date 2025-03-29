@@ -169,21 +169,29 @@ end, { desc = "Open fork" })
 local change_font_size = function(delta)
   return function()
     vim.g.guifontsize = vim.g.guifontsize + delta
-    local font = string.gsub(vim.g.guifont, " ", "\\ ")
-    vim.cmd("set guifont=" .. font .. ":h" .. vim.g.guifontsize)
+    -- local font = string.gsub(vim.g.guifont, " ", "\\ ")
+    -- vim.cmd("set guifont=" .. font .. ":h" .. vim.g.guifontsize)
+    local font = vim.g.build_guifont(true)
+    vim.cmd("set guifont=" .. font)
   end
 end
 map({ "i", "n", "v", "s", "t", "o" }, "<D-=>", change_font_size(1), { desc = "Increase font size" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-->", change_font_size(-1), { desc = "Decrease font size" })
 map({ "i", "n", "v", "s", "t", "o" }, "<D-0>", function()
-  local font = string.gsub(vim.g.guifont, " ", "\\ ")
-  vim.cmd("set guifont=" .. font .. ":h" .. 15)
+  -- local font = string.gsub(vim.g.guifont, " ", "\\ ")
+  -- vim.cmd("set guifont=" .. font .. ":h" .. 16)
+  vim.g.guifontsize = vim.g.guifontsize_default
+  local font = vim.g.build_guifont(true)
+  vim.cmd("set guifont=" .. font)
 end, { desc = "Reset font size" })
 map({ "i", "n", "v", "s", "t", "o" }, "<C-=>", change_font_size(1), { desc = "Increase font size" })
 map({ "i", "n", "v", "s", "t", "o" }, "<C-->", change_font_size(-1), { desc = "Decrease font size" })
 map({ "i", "n", "v", "s", "t", "o" }, "<C-0>", function()
-  local font = string.gsub(vim.g.guifont, " ", "\\ ")
-  vim.cmd("set guifont=" .. font .. ":h" .. 15)
+  -- local font = string.gsub(vim.g.guifont, " ", "\\ ")
+  -- vim.cmd("set guifont=" .. font .. ":h" .. 16)
+  vim.g.guifontsize = vim.g.guifontsize_default
+  local font = vim.g.build_guifont(true)
+  vim.cmd("set guifont=" .. font)
 end, { desc = "Reset font size" })
 
 -- telescope

@@ -31,7 +31,7 @@ return {
           show_on_insert_on_trigger_character = false,
         },
         list = {
-          selection = { preselect = false, auto_insert = false },
+          selection = { preselect = true, auto_insert = false },
         },
       },
       keymap = {

@@ -31,8 +31,22 @@ require("config.lazy")
 
 -- vim.g.guifont = "MesloLGL Nerd Font"
 vim.g.guifont = "JetBrainsMono Nerd Font"
-vim.g.guifontsize = 16
-vim.opt.guifont = vim.g.guifont .. ":h" .. vim.g.guifontsize
+vim.g.guifontsize_default = 16
+vim.g.guifontsize = vim.g.guifontsize_default
+vim.g.build_guifont = function(escape_space)
+  local str = string.format("%s:h%d", vim.g.guifont, vim.g.guifontsize)
+  if not vim.g.neovide and not vim.g.neogurt then
+    str = str
+      .. string.format(",%s:h%d,%s:h%d", "PingFang TC", vim.g.guifontsize, "Symbols Nerd Font", vim.g.guifontsize)
+  end
+  escape_space = escape_space or false
+  if escape_space then
+    str = string.gsub(str, " ", "\\ ")
+  end
+  return str
+end
+vim.opt.guifont = vim.g.build_guifont()
+
 -- vim.opt.linespace = 6
 -- vim.opt.guifont = "ComicMono NF:h16"
 -- vim.opt.guifont = "MesloLGLDZ Nerd Font Mono:h15"
@@ -180,3 +194,32 @@ vim.g.neovide_cursor_animate_command_line = false
 -- vim.g.neovide_cursor_vfx_particle_density = 15.0
 vim.g.neovide_fullscreen = true
 vim.g.neovide_input_macos_option_key_is_meta = "both"
+
+-- neogurt
+if vim.g.neogurt then
+  vim.g.neogurt_opts = {
+    -- these options are per application
+    vsync = true,
+    high_dpi = true,
+    borderless = true,
+    blur = 0,
+
+    -- rest of the options are per session
+    margin_top = 0,
+    margin_bottom = 0,
+    margin_left = 0,
+    margin_right = 0,
+
+    mac_opt_is_meta = true,
+    cursor_idle_time = 10,
+    scroll_speed = 1,
+
+    bg_color = 0x000000, -- bg color used if opacity < 1.0
+    opacity = 1.0,
+
+    gamma = 1.7,
+
+    fps = 144,
+  }
+  vim.o.guifont = "JetBrainsMono Nerd Font,PingFang TC"
+end
