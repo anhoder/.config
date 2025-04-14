@@ -160,40 +160,38 @@ vim.cmd("hi! CodeiumSuggestion guifg=#686868")
 -- vim.cmd(string.format("hi TelescopePromptCounter guifg=%s guibg=%s", base30.pink, base30.one_bg2))
 
 -- next is for neovide
-if not vim.g.neovide then
-  return
+if vim.g.neovide then
+  vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
+  vim.g.neovide_scale_factor = 1
+  vim.g.neovide_opacity = 1
+  vim.g.neovide_window_blurred = true
+  vim.g.neovide_floating_shadow = true
+  -- vim.g.neovide_scroll_animation_length = 0.2
+  vim.g.neovide_background_color = "#0f111700"
+
+  -- vim.g.transparency = 0.8
+  -- local alpha = function()
+  --   return string.format("%x", math.floor(255 * (vim.g.transparency or 0.8)))
+  -- end
+  -- vim.g.neovide_background_color = "#0f1117" .. alpha()
+
+  -- vim.g.neovide_scroll_animation_far_lines = 1
+  vim.g.neovide_input_ime = true
+
+  -- vim.g.neovide_hide_mouse_when_typing = true
+  vim.g.neovide_cursor_animation_length = 0.2
+  vim.g.neovide_cursor_trail_size = 0.7
+  vim.g.neovide_refresh_rate = 144
+  vim.g.neovide_no_idle = true
+  vim.g.neovide_confirm_quit = true
+  vim.g.neovide_remember_window_size = true
+  vim.g.neovide_cursor_animate_in_insert_mode = false
+  vim.g.neovide_cursor_animate_command_line = false
+  -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
+  -- vim.g.neovide_cursor_vfx_particle_density = 15.0
+  vim.g.neovide_fullscreen = true
+  vim.g.neovide_input_macos_option_key_is_meta = "both"
 end
-
-vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
-vim.g.neovide_scale_factor = 1
-vim.g.neovide_transparency = 1
-vim.g.neovide_window_blurred = true
-vim.g.neovide_floating_shadow = true
--- vim.g.neovide_scroll_animation_length = 0.2
-vim.g.neovide_background_color = "#0f111700"
-
--- vim.g.transparency = 0.8
--- local alpha = function()
---   return string.format("%x", math.floor(255 * (vim.g.transparency or 0.8)))
--- end
--- vim.g.neovide_background_color = "#0f1117" .. alpha()
-
--- vim.g.neovide_scroll_animation_far_lines = 1
-vim.g.neovide_input_ime = true
-
--- vim.g.neovide_hide_mouse_when_typing = true
-vim.g.neovide_cursor_animation_length = 0.08
-vim.g.neovide_cursor_trail_size = 0.5
-vim.g.neovide_refresh_rate = 144
-vim.g.neovide_no_idle = true
-vim.g.neovide_confirm_quit = true
-vim.g.neovide_remember_window_size = true
-vim.g.neovide_cursor_animate_in_insert_mode = false
-vim.g.neovide_cursor_animate_command_line = false
--- vim.g.neovide_cursor_vfx_mode = "pixiedust"
--- vim.g.neovide_cursor_vfx_particle_density = 15.0
-vim.g.neovide_fullscreen = true
-vim.g.neovide_input_macos_option_key_is_meta = "both"
 
 -- neogurt
 if vim.g.neogurt then
