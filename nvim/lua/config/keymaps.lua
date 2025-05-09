@@ -305,7 +305,8 @@ end, { desc = "Open file in code" })
 -- neo-tree keymaps
 -- locate cur file in neo-tree
 map({ "n", "v", "i", "o", "s" }, "<C-D-/>", function()
-  neotree.execute({ reveal = true, toggle = true })
+  neotree.execute({ reveal = true, toggle = vim.bo.filetype == "neo-tree" })
+  -- neotree.execute({ reveal = true, action = "focus" })
 end, { desc = "Locate cur file in neo-tree" })
 map({ "n", "v", "i", "o", "s" }, "<A-1>", function()
   neotree.execute({ toggle = true })

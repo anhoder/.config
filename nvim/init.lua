@@ -179,8 +179,8 @@ if vim.g.neovide then
   vim.g.neovide_input_ime = true
 
   -- vim.g.neovide_hide_mouse_when_typing = true
-  vim.g.neovide_cursor_animation_length = 0.2
-  vim.g.neovide_cursor_trail_size = 0.7
+  vim.g.neovide_cursor_animation_length = 0.25
+  vim.g.neovide_cursor_trail_size = 0.3
   vim.g.neovide_refresh_rate = 144
   vim.g.neovide_no_idle = true
   vim.g.neovide_confirm_quit = true
