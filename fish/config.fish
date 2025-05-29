@@ -105,10 +105,10 @@ set -gx DYLD_FALLBACK_LIBRARY_PATH "$DYLD_FALLBACK_LIBRARY_PATH:$HOMEBREW_PREFIX
 set -gx LIBS "$LIBS -lssl -lcrypto"
 
 # CFLAGS
-set -gx CFLAGS "$CFLAGS -I$OPENSSL_PREFIX/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include -I$HOMEBREW_PREFIX/include"
+set -gx CFLAGS "$CFLAGS -I$OPENSSL_PREFIX/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include -I$HOMEBREW_PREFIX/include -I$HOMEBREW_PREFIX/include/php -I$HOMEBREW_PREFIX/include/php/main -I$HOMEBREW_PREFIX/include/php/Zend -I$HOMEBREW_PREFIX/include/php/TSRM"
 
 # CPPFLAGS
-set -gx CPPFLAGS "$CPPFLAGS -I$OPENSSL_PREFIX/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include -I$HOMEBREW_PREFIX/include"
+set -gx CPPFLAGS "$CPPFLAGS -I$OPENSSL_PREFIX/include -I$HOMEBREW_PREFIX/opt/libiconv/include -I$HOMEBREW_PREFIX/opt/curl/include -I$HOMEBREW_PREFIX/include -I$HOMEBREW_PREFIX/include/php -I$HOMEBREW_PREFIX/include/php/main -I$HOMEBREW_PREFIX/include/php/Zend -I$HOMEBREW_PREFIX/include/php/TSRM"
 
 # PKG_COFNIG_PATH
 set -gx PKG_COFNIG_PATH "$OPENSSL_PREFIX/lib/pkgconfig:$HOMEBREW_PREFIX/opt/curl/lib/pkgconfig:$HOMEBREW_PREFIX/lib/pkgconfig:$PKG_COFNIG_PATH"
