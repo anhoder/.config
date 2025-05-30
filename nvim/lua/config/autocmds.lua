@@ -33,13 +33,14 @@ vim.api.nvim_create_autocmd("VimEnter", {
     vim.api.nvim_set_current_dir(vim.fn.expand("%:p:h"))
   end,
 })
-vim.api.nvim_create_autocmd("BufEnter", {
-  group = startup,
-  pattern = "*",
-  callback = function()
-    vim.opt.formatoptions = vim.opt.formatoptions - { "o", "c", "r" }
-  end,
-})
+-- 换行自动补全注释前导符
+-- vim.api.nvim_create_autocmd("BufEnter", {
+--   group = startup,
+--   pattern = "*",
+--   callback = function()
+--     vim.opt.formatoptions = vim.opt.formatoptions - { "o", "c", "r" }
+--   end,
+-- })
 
 -- PersistedLoadPre
 vim.api.nvim_create_autocmd({ "User" }, {
