@@ -34,13 +34,15 @@ vim.api.nvim_create_autocmd("VimEnter", {
   end,
 })
 -- 换行自动补全注释前导符
--- vim.api.nvim_create_autocmd("BufEnter", {
---   group = startup,
---   pattern = "*",
---   callback = function()
---     vim.opt.formatoptions = vim.opt.formatoptions - { "o", "c", "r" }
---   end,
--- })
+vim.api.nvim_create_autocmd("BufEnter", {
+  group = startup,
+  pattern = "*",
+  callback = function()
+    -- vim.opt.formatoptions = vim.opt.formatoptions - { "o", "c", "r" }
+    vim.opt.autoindent = true -- 继承上一行缩进
+    vim.opt.smartindent = true -- 智能识别代码块
+  end,
+})
 
 -- PersistedLoadPre
 vim.api.nvim_create_autocmd({ "User" }, {
