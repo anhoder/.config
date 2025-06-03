@@ -91,13 +91,12 @@ return {
     opts = {
       provider = "deepseek",
       auto_suggestions_provider = "deepseek",
-      vendors = {
+      providers = {
         deepseek = {
           __inherited_from = "openai",
           api_key_name = "DEEPSEEK_API_KEY",
-          endpoint = "https://api.deepseek.com/v1",
+          endpoint = "https://api.deepseek.com",
           model = "deepseek-coder",
-          -- model = "deepseek-reasoner",
         },
       },
       behaviour = {
@@ -117,11 +116,6 @@ return {
         suggestion = {
           accept = "<Tab>",
         },
-      },
-
-      openai = {
-        endpoint = "https://api.deepseek.com/v1",
-        model = "deepseek-coder",
       },
 
       file_selector = {
