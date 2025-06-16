@@ -1,0 +1,21 @@
+[
+  {
+    "bindings": {
+      "cmd-shift-o": "projects::OpenRecent",
+      "cmd-`": "terminal_panel::ToggleFocus"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-`": "terminal_panel::ToggleFocus",
+      "cmd-u": "editor::FindAllReferences"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-`": "workspace::ToggleBottomDock"
+    }
+  }
+]

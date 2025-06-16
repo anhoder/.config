@@ -32,4 +32,7 @@
 !alacritty/**
 !ghostty/
 !ghostty/**
+!zed/
+!zed/keymap.json
+!zed/settings.json
 !musicfox.png

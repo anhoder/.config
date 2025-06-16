@@ -114,7 +114,16 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 })
 vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
   group = json_detect,
-  pattern = { "launch.json", "*.cjsn", "*.cjson", "*.jsonc", ".eslintrc.json", "tsconfig.json" },
+  pattern = {
+    "launch.json",
+    "*.cjsn",
+    "*.cjson",
+    "*.jsonc",
+    ".eslintrc.json",
+    "tsconfig.json",
+    "settings.json",
+    "keymap.json",
+  },
   callback = function()
     vim.o.filetype = "jsonc"
   end,
