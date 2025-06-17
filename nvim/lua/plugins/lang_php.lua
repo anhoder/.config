@@ -44,6 +44,7 @@ return {
           settings = {
             intelephense = {
               environment = {
+                phpVersion = "8.0",
                 includePaths = {
                   home .. "/Desktop/www/yii/",
                 },

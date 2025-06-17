@@ -41,6 +41,10 @@ return {
   },
 
   {
+    "github/copilot.vim",
+  },
+
+  {
     "yetone/avante.nvim",
     event = "VeryLazy",
     build = "make lua51",
