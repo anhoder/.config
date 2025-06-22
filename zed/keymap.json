@@ -3,6 +3,8 @@
     "bindings": {
       "cmd-shift-o": "projects::OpenRecent",
       "cmd-`": "terminal_panel::ToggleFocus",
+      "ctrl-cmd-/": "project_panel::RevealInFileManager",
+      "alt-f": "editor::Format",
       "cmd-escape": [
         "task::Spawn",
         {
@@ -23,7 +25,6 @@
     "context": "Editor",
     "bindings": {
       "cmd-`": "terminal_panel::ToggleFocus",
-      "cmd-ctrl-/": "project_panel::SelectParent",
       "cmd-1": "project_panel::ToggleFocus",
       "cmd-2": "outline_panel::ToggleFocus",
       "cmd-3": "git_panel::ToggleFocus",
