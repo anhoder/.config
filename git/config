@@ -1,0 +1,81 @@
+[user]
+  name = anhoder
+  email = anhoder@88.com
+  signingkey = C4753B1D6AA4EE126BCAE1A811B18CC04D5C4850
+
+[commit]
+  gpgSign = true
+
+[pull]
+  default = current
+  rebase = true
+
+[push]
+  autoSetupRemote = true
+  default = current
+
+[rebase]
+  autoStash = true
+  missingCommitsCheck = warn
+
+[log]
+  date = iso-strict-local
+  abbrevCommit = true
+
+[merge]
+  conflictStyle = diff3
+
+[credential]
+  helper = osxkeychain
+
+[core]
+  compression = 5
+  whitespace = error
+  preloadindex = true
+  editor = nvim
+  pager = delta
+  excludesFile = ~/.config/git/ignore
+
+[branch]
+  sort = -committerdate
+
+[tag]
+  sort = -taggerdate
+
+[status]
+  branch = true
+  showStash = true
+  showUntrackedFiles = all
+
+[interactive]
+  diffFilter = delta --color-only --features=interactive
+
+[delta]
+  features = gruvmax-fang
+  navigate = true
+  light = false
+  line-numbers = true
+  side-by-side = false
+  hyperlinks = true
+  paging = auto
+
+[delta "interactive"]
+  keep-plus-minus-markers = true
+
+[merge]
+  conflictstyle = diff3
+
+[diff]
+  colorMoved = default
+  renames = copies
+  context = 3
+  interHunkContext = 10
+
+[url "git@github.com:anhoder/"]
+  insteadOf = "ah:"
+
+[url "https://github.com/anhoder/"]
+  insteadOf = "ah/"
+
+[include]
+  path = ./themes.config

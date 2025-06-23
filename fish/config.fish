@@ -23,6 +23,7 @@ alias xphp="XDEBUG_SESSION=1 php"
 # Git
 alias gp="git push"
 alias gl="git pull"
+alias glg="git log --graph --all --pretty=format:'%C(magenta)%h %C(white) %an  %ar%C(auto)  %D%n%s%n'"
 alias gco="git checkout"
 alias ga="git add"
 alias gm="git merge"
