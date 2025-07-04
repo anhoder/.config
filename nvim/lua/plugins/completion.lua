@@ -41,11 +41,12 @@ return {
   },
 
   {
-    "github/copilot.vim",
+    "Exafunction/windsurf.vim",
   },
 
   {
     "yetone/avante.nvim",
+    -- enabled = false,
     event = "VeryLazy",
     build = "make lua51",
     keys = function(_, keys)
@@ -100,7 +101,8 @@ return {
           __inherited_from = "openai",
           api_key_name = "DEEPSEEK_API_KEY",
           endpoint = "https://api.deepseek.com",
-          model = "deepseek-coder",
+          -- model = "deepseek-coder",
+          model = "deepseek-chat",
         },
       },
       behaviour = {
@@ -145,6 +147,7 @@ return {
   -- auto gen comment/anotation
   {
     "danymat/neogen",
+    enabled = false,
     config = true,
     keys = {
       {

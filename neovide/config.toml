@@ -12,20 +12,19 @@ tab = false
 size = 16
 
 [[font.normal]]
-family = "JetBrainsMono Nerd Font Mono"
+# family = "JetBrainsMono Nerd Font Mono"
+family = "Maple Mono NF CN"
 style = "SemiBold"
 
 [[font.bold]]
-family = "JetBrainsMono Nerd Font Mono"
-style = "ExtraBold"
+family = "Maple Mono NF CN"
 
 [[font.italic]]
-family = "JetBrainsMono Nerd Font Mono"
-style = "Italic"
+family = "Maple Mono NF CN"
 
 [[font.bold_italic]]
-family = "JetBrainsMono Nerd Font Mono"
-style = "ExtraBoldItalic"
+family = "Maple Mono NF CN"
 
 [font.features]
 "JetBrainsMono Nerd Font Mono" = ["+zero", "+ss19"]
+"Maple Mono NF CN" = ["cv35=1", "cv61=1", "cv62=1", "+ss05"]

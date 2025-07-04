@@ -3,6 +3,7 @@ local bookmarks_util = require("utils.bookmarks")
 return {
   {
     "tomasky/bookmarks.nvim",
+    enabled = false,
     opts = {
       save_file = vim.fn.expand("$HOME/.config/.bookmarks"), -- bookmarks save file path
       keywords = {

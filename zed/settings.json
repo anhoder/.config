@@ -10,8 +10,8 @@
   "agent": {
     "model_parameters": [],
     "default_model": {
-      "provider": "deepseek",
-      "model": "deepseek-reasoner"
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4-thinking"
     },
     "version": "2"
   },

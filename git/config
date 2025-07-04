@@ -1,10 +1,9 @@
 [user]
   name = anhoder
-  email = anhoder@88.com
-  signingkey = C4753B1D6AA4EE126BCAE1A811B18CC04D5C4850
+  email = anhoder@88.com 
 
 [commit]
-  gpgSign = true
+  #gpgSign = true
 
 [pull]
   default = current

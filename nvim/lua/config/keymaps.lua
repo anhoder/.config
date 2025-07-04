@@ -116,6 +116,9 @@ map({ "n", "i", "v", "t" }, "<Char-0xAA>", function()
   Snacks.bufdelete()
 end, { desc = "Close buffer" }) -- for wezterm
 
+-- disable macro
+map({ "n", "v", "t" }, "q", "<Nop>", { desc = "Disable macro" })
+
 -- Format code
 map({ "n", "i", "v" }, "<A-f>", vim.lsp.buf.format, { desc = "Format code" })
 
@@ -383,10 +386,10 @@ map(
 
 -- spectre: search and replace
 map({ "n" }, "<D-r>", function()
-  grug_far.open({ prefills = { flags = vim.fn.expand("%"), search = vim.fn.expand("<cword>") } })
+  grug_far.open({ prefills = { paths = vim.fn.expand("%"), search = vim.fn.expand("<cword>") } })
 end, { desc = "Search on current file" })
 map({ "n" }, "<leader>sr", function()
-  grug_far.open({ prefills = { flags = vim.fn.expand("%"), search = vim.fn.expand("<cword>") } })
+  grug_far.open({ prefills = { paths = vim.fn.expand("%"), search = vim.fn.expand("<cword>") } })
 end, { desc = "Search on current file" })
 map({ "v" }, "<D-r>", function()
   grug_far.with_visual_selection({ prefills = { flags = vim.fn.expand("%") } })
