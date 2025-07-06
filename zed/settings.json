@@ -15,7 +15,7 @@
     },
     "version": "2"
   },
-  "theme": "Gruvbox Material Dark Colorscheme",
+  "theme": "Gruvbox Dark",
   "base_keymap": "JetBrains",
   // "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_family": "Maple Mono NF CN",
