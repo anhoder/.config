@@ -10,10 +10,9 @@
   "agent": {
     "model_parameters": [],
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4-thinking"
+      "provider": "openai",
+      "model": "kimi-k2-0711-preview"
     },
-    "version": "2"
   },
   "theme": "Gruvbox Dark",
   "base_keymap": "JetBrains",
@@ -70,6 +69,23 @@
           "enable": true
         }
       }
+    }
+  },
+  "language_models": {
+    "openai": {
+      "api_url": "https://api.moonshot.cn/v1",
+      "available_models": [
+        {
+          "name": "kimi-k2-0711-preview",
+          "display_name": "Kimi-K2",
+          "max_tokens": 128000
+        },
+        {
+          "name": "moonshot-v1-8k",
+          "display_name": "Kimi-V1",
+          "max_tokens": 128000
+        }
+      ]
     }
   }
 }
