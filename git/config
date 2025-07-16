@@ -67,7 +67,7 @@
 [diff]
   colorMoved = default
   renames = copies
-  context = 3
+  context = 5
   interHunkContext = 10
 
 [url "git@github.com:anhoder/"]

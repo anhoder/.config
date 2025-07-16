@@ -119,6 +119,9 @@ end, { desc = "Close buffer" }) -- for wezterm
 -- disable macro
 map({ "n", "v" }, "q", "<Nop>", { desc = "Disable macro" })
 
+-- disable mark
+map({ "n", "v" }, "n", "<Nop>", { desc = "Disable mark" })
+
 -- Format code
 map({ "n", "i", "v" }, "<A-f>", vim.lsp.buf.format, { desc = "Format code" })
 
