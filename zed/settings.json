@@ -10,8 +10,8 @@
   "agent": {
     "model_parameters": [],
     "default_model": {
-      "provider": "openai",
-      "model": "kimi-k2-0711-preview"
+      "provider": "deepseek",
+      "model": "deepseek-reasoner"
     },
   },
   "theme": "Gruvbox Dark",
