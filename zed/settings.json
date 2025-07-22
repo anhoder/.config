@@ -12,7 +12,7 @@
     "default_model": {
       "provider": "deepseek",
       "model": "deepseek-reasoner"
-    },
+    }
   },
   "theme": "Gruvbox Dark",
   "base_keymap": "JetBrains",
@@ -35,12 +35,6 @@
   "project_panel": {
     "auto_reveal_entries": false
   },
-  "language_overrides": {
-    "Go": {
-      "tab_size": 4,
-      "hard_tabs": true
-    }
-  },
   "terminal": {
     "font_family": "JetBrainsMono Nerd Font",
     "font_size": 14,
@@ -54,6 +48,10 @@
         "!phpactor",
         "..."
       ]
+    },
+    "Go": {
+      "tab_size": 4,
+      "hard_tabs": true
     }
   },
   "lsp": {
