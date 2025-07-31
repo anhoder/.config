@@ -36,9 +36,15 @@
     "auto_reveal_entries": false
   },
   "terminal": {
-    "font_family": "JetBrainsMono Nerd Font",
+    "font_family": "Maple Mono NF CN",
     "font_size": 14,
-    "line_height": "standard"
+    "line_height": "standard",
+    "font_features": {
+      "cv35": 1,
+      "cv61": 1,
+      "cv62": 1,
+      "ss05": true
+    }
   },
   "format_on_save": "off",
   "languages": {

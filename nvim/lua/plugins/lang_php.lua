@@ -89,11 +89,12 @@ return {
           end,
           args = function()
             if vim.fn.filereadable(home .. "/Desktop/www/tools/vendor/phpunit/phpunit/phpunit") == 1 then
+              local root = require("lazyvim.util").root()
               return {
                 "--bootstrap",
-                home .. "/Desktop/www/php-crm/protected/tests/bootstrap.php",
+                root .. "/protected/tests/bootstrap.php",
                 "--configuration",
-                home .. "/Desktop/www/php-crm/protected/tests/phpunit.xml",
+                root .. "/protected/tests/phpunit.xml",
               }
             end
             return {}
