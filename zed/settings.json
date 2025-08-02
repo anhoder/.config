@@ -8,11 +8,12 @@
 // from the command palette or from `Zed` application menu.
 {
   "agent": {
+    "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "deepseek",
-      "model": "deepseek-reasoner"
-    }
+      "provider": "zed.dev",
+      "model": "claude-sonnet-4"
+    },
   },
   "theme": "Gruvbox Dark",
   "base_keymap": "JetBrains",

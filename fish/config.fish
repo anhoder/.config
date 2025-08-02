@@ -183,3 +183,11 @@ bind -M insert \ca beginning-of-line
 bind -M insert \ce end-of-line
 
 fish_vi_key_bindings
+
+if test -e $HOME/.config/fish/conf.d/local.env.fish
+    source $HOME/.config/fish/conf.d/local.env.fish
+end
+
+if test -e $HOME/.claude/local
+    alias claude=$HOME/.claude/local/claude
+end

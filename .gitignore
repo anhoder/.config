@@ -35,4 +35,8 @@
 !zed/
 !zed/keymap.json
 !zed/settings.json
+!zed/rules
+!zed/rules/**
 !musicfox.png
+!claude/
+!claude/**

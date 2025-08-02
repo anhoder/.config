@@ -7,6 +7,9 @@ set -gx OPENAI_API_KEY xxx
 # for deepseek
 set -gx DEEPSEEK_API_KEY xxx
 
+# for moonshot
+set -gx MOONSHOT_API_KEY xxx
+
 # for claude code
 set -gx ANTHROPIC_BASE_URL https://api.moonshot.cn/anthropic
 set -gx ANTHROPIC_AUTH_TOKEN xxx
