@@ -107,7 +107,7 @@ return {
             type = "php",
             request = "launch",
             name = "Listen for XDebug",
-            port = 9003,
+            port = 9903,
             stopOnEntry = false,
             xdebugSettings = {
               max_children = 512,
