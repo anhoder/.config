@@ -1,2 +1,3 @@
-
-source "$HOME/.local/bin/env.fish"
+if test -e $HOME/.local/bin/env.fish
+    source "$HOME/.local/bin/env.fish"
+end
