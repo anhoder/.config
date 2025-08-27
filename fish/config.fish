@@ -51,7 +51,9 @@ alias alilang="~/Library/Android/sdk/emulator/emulator -avd alilang"
 alias kssh="kitten ssh"
 
 # VSCode-Insider
-alias code="code-insiders"
+if command -v nvim >/dev/null 2>&1
+    alias code="code-insiders"
+end
 
 # set -gx TERM tmux-256color
 
