@@ -7,6 +7,18 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "ssh_connections": [
+    {
+      "host": "dev-idc",
+      "projects": [
+        {
+          "paths": [
+            "/data/codebase/anhoder/php-crm"
+          ]
+        }
+      ]
+    }
+  ],
   "agent": {
     "always_allow_tool_actions": true,
     "model_parameters": [],
@@ -52,6 +64,7 @@
     "PHP": {
       "language_servers": [
         "intelephense",
+        "!phptools",
         "!phpactor",
         "..."
       ]

@@ -140,6 +140,11 @@ return {
                   request = "launch",
                   name = "Listen for Xdebug",
                   port = 9903,
+                  xdebugSettings = {
+                    max_children = 512,
+                    max_data = 0,
+                    max_depth = 4,
+                  },
                   -- pathMappings = {
                   --   ["/var/www/html"] = "${workspaceFolder}",
                   --   ["${workspaceFolder}"] = "${workspaceFolder}",
@@ -181,6 +186,7 @@ return {
       { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
       { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets hover" },
       { "<leader>dh", function() require("dap.ui.widgets").preview() end, desc = "Widgets preview" },
+      { "<leader>de", daputil.copy_eval_expression, desc = "Export var to json" },
       { "<leader>ds", function()
         local widgets = require("dap.ui.widgets")
         widgets.centered_float(widgets.frames)

@@ -1,7 +1,8 @@
 
 # ghostty +list-fonts
-font-family = JetBrainsMono Nerd Font Mono
-font-style = Regular
+font-family = Maple Mono NF CN
+font-style = SemiBold
+font-feature = "cv35=1, cv61=1, cv62=1, +ss05"
 font-size = 15
 font-thicken = true
 
@@ -22,6 +23,21 @@ shell-integration-features = no-cursor
 # keybind=clear
 keybind = shift+ctrl+left=previous_tab
 keybind = shift+ctrl+right=next_tab
+keybind = shift+cmd+left=unbind
+keybind = shift+cmd+right=unbind
+keybind = shift+cmd+up=unbind
+keybind = shift+cmd+down=unbind
+keybind = performable:cmd+c=copy_to_clipboard
+keybind = cmd+w=unbind
+keybind = cmd+shift+w=close_tab
+keybind = cmd+left=unbind
+keybind = cmd+right=unbind
+keybind = cmd+1=unbind
+keybind = cmd+2=unbind
+keybind = cmd+3=unbind
+keybind = cmd+`=unbind
+keybind = ctrl+cmd+left=unbind
+keybind = ctrl+cmd+right=unbind
 
 window-theme = dark
 window-width = 120

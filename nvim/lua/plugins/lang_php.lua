@@ -111,7 +111,7 @@ return {
             stopOnEntry = false,
             xdebugSettings = {
               max_children = 512,
-              max_data = 1024,
+              max_data = 0,
               max_depth = 4,
             },
             breakpoints = {
