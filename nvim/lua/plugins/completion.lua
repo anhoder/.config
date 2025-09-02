@@ -65,6 +65,14 @@ return {
           mode = { "n", "v" },
         },
         {
+          "<leader>xA",
+          function()
+            require("avante.api").ask({ new_chat = true })
+          end,
+          desc = "avante: new ask",
+          mode = { "n", "v" },
+        },
+        {
           opts.mappings.refresh,
           function()
             require("avante.api").refresh()
@@ -97,6 +105,10 @@ return {
     opts = {
       provider = "deepseek",
       auto_suggestions_provider = "deepseek",
+      rules = {
+        project_dir = ".avante/rules",
+        global_dir = "~/.config/avante/rules",
+      },
       providers = {
         deepseek = {
           __inherited_from = "openai",
@@ -104,6 +116,12 @@ return {
           endpoint = "https://api.deepseek.com",
           -- model = "deepseek-coder",
           model = "deepseek-chat",
+        },
+        openrouter = {
+          __inherited_from = "openai",
+          api_key_name = "OPENROUTER_API_KEY",
+          endpoint = "https://openrouter.ai",
+          model = "anthropic/claude-sonnet-4",
         },
       },
       behaviour = {
@@ -117,6 +135,7 @@ return {
 
       mappings = {
         ask = "<leader>xa", -- ask
+        new_ask = "<leader>xA", -- ask
         edit = "<leader>xe", -- edit
         refresh = "<leader>xr", -- refresh
         toggle = "<leader>xo", -- toggle
@@ -125,8 +144,14 @@ return {
         },
       },
 
+      selector = {
+        --- @alias avante.SelectorProvider "native" | "fzf_lua" | "mini_pick" | "snacks" | "telescope" | fun(selector: avante.ui.Selector): nil
+        provider = "fzf_lua",
+        -- 自定义提供者的选项覆盖
+        provider_opts = {},
+      },
       file_selector = {
-        provider = "fzf",
+        provider = "fzf_lua",
         -- Options override for custom providers
         provider_opts = {},
       },
@@ -135,6 +160,7 @@ return {
       "nvim-tree/nvim-web-devicons",
       "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
+      "ibhagwan/fzf-lua",
 
       {
         "grapp-dev/nui-components.nvim",

@@ -71,6 +71,7 @@ vim.opt.list = false
 vim.opt.autochdir = false
 vim.opt.foldtext = "v:lua.require('utils.fold_highlight').highlight_foldtext()"
 vim.opt.smoothscroll = true
+vim.opt.laststatus = 3
 
 vim.diagnostic.config({
   underline = true,
