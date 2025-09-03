@@ -1,0 +1,14 @@
+// Project-local debug tasks
+//
+// For more documentation on how to configure debug tasks,
+// see: https://zed.dev/docs/debugger
+[
+  {
+    "request": "launch",
+    "adapter": "PHP",
+    "label": "Listen to xdebug (PHP)",
+    "hostname": "0.0.0.0",
+    "port": 9903,
+    "log": true
+  }
+]

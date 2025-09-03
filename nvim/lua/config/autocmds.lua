@@ -123,6 +123,8 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
     "tsconfig.json",
     "settings.json",
     "keymap.json",
+    "debug.json",
+    "tasks.json",
   },
   callback = function()
     vim.o.filetype = "jsonc"

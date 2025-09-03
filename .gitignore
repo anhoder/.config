@@ -35,6 +35,8 @@
 !zed/
 !zed/keymap.json
 !zed/settings.json
+!zed/tasks.json
+!zed/debug.json
 !zed/rules
 !zed/rules/**
 !musicfox.png

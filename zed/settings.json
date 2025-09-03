@@ -23,8 +23,8 @@
     "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "zed.dev",
-      "model": "claude-sonnet-4"
+      "provider": "openrouter",
+      "model": "moonshotai/kimi-k2:free"
     }
   },
   "theme": "Gruvbox Dark",
@@ -90,6 +90,26 @@
     }
   },
   "language_models": {
+    "openai_compatible": {
+      "cerebras": {
+        "api_url": "https://api.cerebras.ai/v1",
+        "available_models": [
+          {
+            "name": "gpt-oss-120b",
+            "display_name": null,
+            "max_tokens": 200000,
+            "max_output_tokens": 32000,
+            "max_completion_tokens": 200000,
+            "capabilities": {
+              "tools": true,
+              "images": false,
+              "parallel_tool_calls": false,
+              "prompt_cache_key": false
+            }
+          }
+        ]
+      }
+    },
     "openai": {
       "api_url": "https://api.moonshot.cn/v1",
       "available_models": [
