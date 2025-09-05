@@ -23,8 +23,8 @@
     "always_allow_tool_actions": true,
     "model_parameters": [],
     "default_model": {
-      "provider": "openrouter",
-      "model": "moonshotai/kimi-k2:free"
+      "provider": "google",
+      "model": "gemini-2.5-pro"
     }
   },
   "theme": "Gruvbox Dark",
