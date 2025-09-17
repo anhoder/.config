@@ -80,6 +80,9 @@ vim.api.nvim_create_autocmd({ "User" }, {
 
     -- manually load launch.json
     require("dap.ext.vscode").load_launchjs()
+
+    ---@diagnostic disable-next-line: param-type-mismatch
+    pcall(vim.cmd, "LspRestart")
   end,
 })
 

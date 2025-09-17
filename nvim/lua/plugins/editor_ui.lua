@@ -38,17 +38,221 @@ return {
       options = {
         style_preset = bufferline.style_preset.default,
         themable = true,
-        separator_style = "thick",
+        separator_style = "slant",
         sort_by = "insert_at_end",
+        indicator = {
+          icon = "▎", -- this should be omitted if indicator style is not 'icon'
+          style = "underline",
+        },
         hover = {
           enabled = true,
           delay = 50,
-          reveal = { "close" },
+          -- reveal = { "close" },
         },
+        -- groups = {
+        --   options = {
+        --     toggle_hidden_on_enter = true, -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
+        --   },
+        --   items = {
+        --     {
+        --       name = "Default",
+        --       highlight = { underline = true, sp = "#7aa2f7" },
+        --       priority = 1,
+        --       auto_close = true,
+        --       matcher = function(buf)
+        --         local name = buf.name:lower()
+        --         return not name:match("%.md")
+        --           and not name:match("%.txt")
+        --           and not name:match("%test")
+        --           and not name:match("%spec")
+        --       end,
+        --     },
+        --     {
+        --       name = "Tests", -- Mandatory
+        --       highlight = { underline = true, sp = "#9d7cd8" }, -- Optional
+        --       auto_close = true,
+        --       priority = 2, -- determines where it will appear relative to other groups (Optional)
+        --       -- icon = " ", -- Optional
+        --       matcher = function(buf) -- Mandatory
+        --         local name = buf.name:lower()
+        --         return name:match("%test") or name:match("%spec")
+        --       end,
+        --     },
+        --     {
+        --       name = "Docs",
+        --       highlight = { underline = true, sp = "#9ece6a" },
+        --       auto_close = true,
+        --       priority = 3,
+        --       matcher = function(buf)
+        --         local name = buf.name:lower()
+        --         return name:match("%.md") or name:match("%.txt")
+        --       end,
+        --     },
+        --   },
+        -- },
       },
       highlights = {
         indicator_selected = {
-          fg = "#61B0D8",
+          fg = "#0DB9D7",
+        },
+        buffer = {
+          fg = "#928374",
+          bg = "#1e1e1e",
+          underline = false,
+          bold = false,
+          italic = true,
+        },
+        buffer_selected = {
+          fg = "#ebdbb2",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        tab_selected = {
+          fg = "#ebdbb2",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        tab_separator_selected = {
+          fg = "#1e1e1e",
+          sp = "#0DB9D7",
+          underline = true,
+        },
+        buffer_visible = {
+          fg = "#928374",
+          bg = "#242424",
+          sp = "#3a6982",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        group_separator = {
+          fg = "#0DB9D7",
+          bg = "#0DB9D7",
+        },
+        separator = {
+          fg = "#1e1e1e",
+          bg = "#1e1e1e",
+        },
+        separator_visible = {
+          fg = "#1e1e1e",
+          bg = "#1e1e1e",
+          sp = "#3a6982",
+          underline = true,
+        },
+        separator_selected = {
+          fg = "#1e1e1e",
+          sp = "#0DB9D7",
+          underline = true,
+        },
+        close_button = {
+          fg = "#928374",
+          bg = "#1e1e1e",
+        },
+        close_button_visible = {
+          fg = "#928374",
+          bg = "#1e1e1e",
+          sp = "#3a6982",
+          underline = true,
+        },
+        close_button_selected = {
+          fg = "#ebdbb2",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+        },
+        error_selected = {
+          fg = "#ffc0b9",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        error_diagnostic_selected = {
+          fg = "#bf908a",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        modified_selected = {
+          fg = "#b8bb26",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        diagnostic_selected = {
+          fg = "#b0a485",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        info_selected = {
+          fg = "#8cf8f7",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        info_diagnostic_selected = {
+          fg = "#69bab9",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        warning_selected = {
+          fg = "#fce094",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        warning_diagnostic_selected = {
+          fg = "#bda86f",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        hint_selected = {
+          fg = "#a6dbff",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        hint_diagnostic_selected = {
+          fg = "#7ca4bf",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
+        },
+        duplicate_selected = {
+          fg = "#8a7c6e",
+          bg = "#282828",
+          sp = "#0DB9D7",
+          underline = true,
+          bold = true,
+          italic = false,
         },
       },
     },

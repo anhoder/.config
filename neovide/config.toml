@@ -1,7 +1,7 @@
 wsl = false
 no-multigrid = false
 # multigrid = false
-vsync = false
+vsync = true
 maximized = true
 srgb = false
 idle = true
@@ -26,5 +26,5 @@ family = "Maple Mono NF CN"
 family = "Maple Mono NF CN"
 
 [font.features]
-"JetBrainsMono Nerd Font Mono" = ["+zero", "+ss19"]
+# "JetBrainsMono Nerd Font Mono" = ["+zero", "+ss19"]
 "Maple Mono NF CN" = ["cv35=1", "cv61=1", "cv62=1", "+ss05"]

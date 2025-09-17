@@ -181,6 +181,23 @@ if command -v lsd >/dev/null 2>&1
     alias lt "la --tree --depth=1"
 end
 
+# set proxy
+function enable_proxy
+    if test -z "$CUSTOM_PROXY_HOST"
+        return
+    end
+    set -gx https_proxy "http://$CUSTOM_PROXY_USER:$CUSTOM_PROXY_PASSWD@$CUSTOM_PROXY_HOST:$CUSTOM_PROXY_PORT"
+    set -gx http_proxy "http://$CUSTOM_PROXY_USER:$CUSTOM_PROXY_PASSWD@$CUSTOM_PROXY_HOST:$CUSTOM_PROXY_PORT"
+    set -gx all_proxy "socket5://$CUSTOM_PROXY_USER:$CUSTOM_PROXY_PASSWD@$CUSTOM_PROXY_HOST:$CUSTOM_PROXY_PORT"
+end
+
+# unset proxy
+function disable_proxy
+    set -ge https_proxy
+    set -ge http_proxy
+    set -ge all_proxy
+end
+
 bind -M insert \ca beginning-of-line
 bind -M insert \ce end-of-line
 
