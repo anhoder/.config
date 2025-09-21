@@ -1,4 +1,7 @@
 .ignore
 .phpactor.json
+.qoder/
+.idea/
+.kiro/
 
 **/.claude/settings.local.json

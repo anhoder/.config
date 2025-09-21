@@ -46,7 +46,10 @@ vim.g.build_guifont = function(escape_space)
   end
   return str
 end
-vim.opt.guifont = vim.g.build_guifont()
+if not vim.g.neovide then
+  -- neovide 不设置
+  vim.opt.guifont = vim.g.build_guifont()
+end
 
 -- vim.opt.linespace = 6
 -- vim.opt.guifont = "ComicMono NF:h16"
@@ -177,7 +180,7 @@ if vim.g.neovide then
   vim.g.neovide_input_ime = true
 
   -- vim.g.neovide_hide_mouse_when_typing = true
-  vim.g.neovide_cursor_animation_length = 0.25
+  vim.g.neovide_cursor_animation_length = 0
   vim.g.neovide_cursor_trail_size = 0.3
   vim.g.neovide_refresh_rate = 144
   vim.g.neovide_no_idle = true

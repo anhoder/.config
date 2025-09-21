@@ -208,5 +208,4 @@ if test -e $HOME/.config/fish/conf.d/local.env.fish
 end
 
 if test -e $HOME/.claude/local
-    alias claude=$HOME/.claude/local/claude
 end
