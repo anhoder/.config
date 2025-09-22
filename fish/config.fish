@@ -182,7 +182,7 @@ if command -v lsd >/dev/null 2>&1
 end
 
 # set proxy
-function enable_proxy
+function proxy_enable
     if test -z "$CUSTOM_PROXY_HOST"
         return
     end
@@ -192,7 +192,7 @@ function enable_proxy
 end
 
 # unset proxy
-function disable_proxy
+function proxy_disable
     set -ge https_proxy
     set -ge http_proxy
     set -ge all_proxy
