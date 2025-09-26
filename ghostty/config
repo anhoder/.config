@@ -29,13 +29,14 @@ keybind = shift+cmd+up=unbind
 keybind = shift+cmd+down=unbind
 keybind = performable:cmd+c=copy_to_clipboard
 keybind = cmd+w=unbind
-keybind = cmd+shift+w=close_tab
+keybind = cmd+shift+w=close_surface
 keybind = cmd+left=unbind
 keybind = cmd+right=unbind
 keybind = cmd+1=unbind
 keybind = cmd+2=unbind
 keybind = cmd+3=unbind
 keybind = cmd+`=unbind
+keybind = cmd+d=unbind
 keybind = ctrl+cmd+left=unbind
 keybind = ctrl+cmd+right=unbind
 
@@ -53,7 +54,7 @@ clipboard-paste-protection = false
 unfocused-split-opacity = 0.7
 
 # ghostty +list-themes
-theme = GruvboxDark
+theme = Gruvbox Dark Hard
 
 auto-update-channel = tip
 auto-update = check

@@ -80,6 +80,9 @@ set -gx PATH "$GOPATH/bin:$PATH"
 # composer
 set -gx PATH "$HOME/.composer/vendor/bin:$PATH"
 
+# uv
+set -gx PATH "$HOME/.local/bin:$PATH"
+
 # openjdk
 set -gx PATH "$HOMEBREW_PREFIX/opt/openjdk/bin:$PATH"
 set -gx JAVA_HOME "$HOMEBREW_PREFIX/opt/openjdk/libexec/openjdk.jdk/Contents/Home"
