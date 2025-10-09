@@ -189,9 +189,19 @@ function proxy_enable
     if test -z "$CUSTOM_PROXY_HOST"
         return
     end
-    set -gx https_proxy "http://$CUSTOM_PROXY_USER:$CUSTOM_PROXY_PASSWD@$CUSTOM_PROXY_HOST:$CUSTOM_PROXY_PORT"
-    set -gx http_proxy "http://$CUSTOM_PROXY_USER:$CUSTOM_PROXY_PASSWD@$CUSTOM_PROXY_HOST:$CUSTOM_PROXY_PORT"
-    set -gx all_proxy "socket5://$CUSTOM_PROXY_USER:$CUSTOM_PROXY_PASSWD@$CUSTOM_PROXY_HOST:$CUSTOM_PROXY_PORT"
+
+    set proxy_auth ''
+    if test ! -z "$CUSTOM_PROXY_USER"
+        if test -z "$CUSTOM_PROXY_PASSWD"
+            set proxy_auth "$CUSTOM_PROXY_USER@"
+        else
+            set proxy_auth "$CUSTOM_PROXY_USER:$CUSTOM_PROXY_PASSW@"
+        end
+    end
+
+    set -gx https_proxy "http://$proxy_auth$CUSTOM_PROXY_HOST:$CUSTOM_PROXY_PORT"
+    set -gx http_proxy "http://$proxy_auth$CUSTOM_PROXY_HOST:$CUSTOM_PROXY_PORT"
+    set -gx all_proxy "socket5://$proxy_auth$CUSTOM_PROXY_HOST:$CUSTOM_PROXY_PORT"
 end
 
 # unset proxy
