@@ -8,14 +8,6 @@ return {
       -- inlay_hints = {
       --   enabled = false,
       -- },
-      capabilities = {
-        textDocument = {
-          foldingRange = {
-            dynamicRegistration = true,
-            lineFoldingOnly = true,
-          },
-        },
-      },
       servers = {
         -- php
         intelephense = {
@@ -23,6 +15,10 @@ return {
             textDocument = {
               rangeFormatting = true,
               formatting = true,
+              foldingRange = {
+                dynamicRegistration = true,
+                lineFoldingOnly = true,
+              },
             },
           },
           single_file_support = true,

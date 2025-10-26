@@ -32,6 +32,10 @@ keybind = cmd+w=unbind
 keybind = cmd+shift+w=close_surface
 keybind = cmd+left=unbind
 keybind = cmd+right=unbind
+keybind = cmd+a=unbind
+keybind = cmd+digit_1=unbind
+keybind = cmd+digit_2=unbind
+keybind = cmd+digit_3=unbind
 keybind = cmd+1=unbind
 keybind = cmd+2=unbind
 keybind = cmd+3=unbind

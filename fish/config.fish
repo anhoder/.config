@@ -35,7 +35,7 @@ alias gop="git open"
 alias glf="git fsck --unreachable | grep commit | awk '{print \$3}' | xargs git show"
 function gba
     if test -z "$argv[1]"
-        echo "Usage: gba [<branch>] <to-alias>"
+        echo "Set alias for a specify branch or current branch(default). \nUsage: gba [<branch>] <to-alias>"
         return -1
     end
     if test -z "$argv[2]"
@@ -43,6 +43,14 @@ function gba
         set argv[1] $(git symbolic-ref --short HEAD 2>/dev/null)
     end
     git symbolic-ref "refs/heads/$argv[2]" "refs/heads/$argv[1]"
+end
+function gmrc
+    if test -z "$argv[1]"
+        echo "Merge remote branch with the same name as the current branch.\nUsage: gmrc <remote-name>"
+        return -1
+    end
+    set current_branch $(git symbolic-ref --short HEAD 2>/dev/null)
+    git merge "$argv[1]/$current_branch"
 end
 
 # alilang

@@ -48,7 +48,7 @@ return {
 
   {
     "yetone/avante.nvim",
-    -- enabled = false,
+    enabled = false,
     event = "VeryLazy",
     build = "make lua51",
     keys = function(_, keys)

@@ -20,8 +20,8 @@ return {
   {
     "neovim/nvim-lspconfig",
     opts = function(_, opts)
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      match_and_replace_keymap(keys, { "gr", "<cmd>Glance references<cr>", desc = "Goto references" })
+      -- local keys = require("lazyvim.plugins.lsp.keymaps").get()
+      -- match_and_replace_keymap(keys, { "gr", "<cmd>Glance references<cr>", desc = "Goto references" })
       -- match_and_replace_keymap(keys, {
       --   "gR",
       --   function()
@@ -31,7 +31,7 @@ return {
       --   end,
       --   desc = "Goto references",
       -- })
-      match_and_replace_keymap(keys, { "gi", "<cmd>Glance implementations<cr>", desc = "Goto implementations" })
+      -- match_and_replace_keymap(keys, { "gi", "<cmd>Glance implementations<cr>", desc = "Goto implementations" })
       -- match_and_replace_keymap(keys, {
       --   "gI",
       --   function()
@@ -42,7 +42,7 @@ return {
       --   end,
       --   desc = "Goto implementations",
       -- })
-      match_and_replace_keymap(keys, { "gy", "<cmd>Glance definitions<cr>", desc = "Goto type definitions" })
+      -- match_and_replace_keymap(keys, { "gy", "<cmd>Glance definitions<cr>", desc = "Goto type definitions" })
       -- match_and_replace_keymap(keys, {
       --   "gY",
       --   function()
@@ -53,11 +53,11 @@ return {
       --   end,
       --   desc = "Goto type definitions",
       -- })
-      match_and_replace_keymap(keys, {
-        "gd",
-        lsputil.goto_def,
-        desc = "Goto definition",
-      })
+      -- match_and_replace_keymap(keys, {
+      --   "gd",
+      --   lsputil.goto_def,
+      --   desc = "Goto definition",
+      -- })
       -- match_and_replace_keymap(keys, {
       --   "gD",
       --   function()
@@ -73,19 +73,31 @@ return {
       --   end,
       --   desc = "Goto definition",
       -- })
-      match_and_replace_keymap(keys, { "K", lsputil.hover, desc = "Hover" })
-      match_and_replace_keymap(keys, { "<leader>co", vim.lsp.codelens.run, desc = "Run CodeLenAct" })
+      -- match_and_replace_keymap(keys, { "K", lsputil.hover, desc = "Hover" })
+      -- match_and_replace_keymap(keys, { "<leader>co", vim.lsp.codelens.run, desc = "Run CodeLenAct" })
 
       vim.tbl_extend("force", opts, {
         single_file_support = true,
         -- inlay_hints = {
         --   enabled = false,
         -- },
-        capabilities = {
-          textDocument = {
-            foldingRange = {
-              dynamicRegistration = true,
-              lineFoldingOnly = true,
+        servers = {
+          ["*"] = {
+            keys = {
+              { "gr", "<cmd>Glance references<cr>", desc = "Goto references" },
+              { "gi", "<cmd>Glance implementations<cr>", desc = "Goto implementations" },
+              { "gy", "<cmd>Glance definitions<cr>", desc = "Goto type definitions" },
+              { "gd", lsputil.goto_def, desc = "Goto definition" },
+              { "K", lsputil.hover, desc = "Hover" },
+              { "<leader>co", vim.lsp.codelens.run, desc = "Run CodeLenAct" },
+            },
+            capabilities = {
+              textDocument = {
+                foldingRange = {
+                  dynamicRegistration = true,
+                  lineFoldingOnly = true,
+                },
+              },
             },
           },
         },
