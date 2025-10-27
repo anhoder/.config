@@ -42,6 +42,9 @@
 !musicfox.png
 !claude/
 !claude/**
+!codex/
+!codex/prompts/
+!codex/prompts/**
 !go-musicfox/
 !go-musicfox/**
 !avante/

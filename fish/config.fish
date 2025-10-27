@@ -137,6 +137,9 @@ if command -v starship >/dev/null 2>&1
     starship init fish | source
 end
 
+# codex
+set -gx CODEX_HOME "$HOME/.config/codex"
+
 set -gx EDITOR vim
 if command -v nvim >/dev/null 2>&1
     set -gx EDITOR nvim
