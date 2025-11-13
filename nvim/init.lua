@@ -35,11 +35,7 @@ vim.g.guifont = "Maple Mono NF CN"
 vim.g.guifontsize_default = 16
 vim.g.guifontsize = vim.g.guifontsize_default
 vim.g.build_guifont = function(escape_space)
-  local str = string.format("%s:h%d", vim.g.guifont, vim.g.guifontsize)
-  if not vim.g.neovide and not vim.g.neogurt then
-    str = str
-      .. string.format(",%s:h%d,%s:h%d", "PingFang TC", vim.g.guifontsize, "Symbols Nerd Font", vim.g.guifontsize)
-  end
+  local str = string.format("%s,%s,%s:h%d", vim.g.guifont, "PingFang TC", "Symbols Nerd Font", vim.g.guifontsize)
   escape_space = escape_space or false
   if escape_space then
     str = string.gsub(str, " ", "\\ ")
@@ -47,18 +43,17 @@ vim.g.build_guifont = function(escape_space)
   return str
 end
 if not vim.g.neovide then
-  -- neovide 不设置
   vim.opt.guifont = vim.g.build_guifont()
 end
 
--- vim.opt.linespace = 6
+vim.opt.linespace = 1
 -- vim.opt.guifont = "ComicMono NF:h16"
 -- vim.opt.guifont = "MesloLGLDZ Nerd Font Mono:h15"
 -- vim.opt.fileencoding = "utf-8"
 vim.opt.filetype = "on"
 vim.opt.ignorecase = true
 vim.opt.smartcase = false
-vim.opt.sessionoptions = "buffers,curdir,folds,globals,tabpages,terminal"
+vim.opt.sessionoptions = "buffers,curdir,folds,globals,terminal"
 vim.opt.jumpoptions = "stack"
 vim.opt.swapfile = false
 vim.opt.autoindent = true
@@ -164,11 +159,11 @@ vim.cmd("hi! CodeiumSuggestion guifg=#686868")
 if vim.g.neovide then
   vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
   vim.g.neovide_scale_factor = 1
-  vim.g.neovide_opacity = 1
+  vim.g.neovide_opacity = 0.8
   vim.g.neovide_window_blurred = true
   vim.g.neovide_floating_shadow = true
   -- vim.g.neovide_scroll_animation_length = 0.2
-  vim.g.neovide_background_color = "#0f111700"
+  vim.g.neovide_background_color = "#0x28282800"
 
   -- vim.g.transparency = 0.8
   -- local alpha = function()
@@ -180,7 +175,7 @@ if vim.g.neovide then
   vim.g.neovide_input_ime = true
 
   -- vim.g.neovide_hide_mouse_when_typing = true
-  vim.g.neovide_cursor_animation_length = 0.2
+  vim.g.neovide_cursor_animation_length = 0
   vim.g.neovide_cursor_trail_size = 0.1
   vim.g.neovide_refresh_rate = 144
   vim.g.neovide_no_idle = true
@@ -190,35 +185,35 @@ if vim.g.neovide then
   vim.g.neovide_cursor_animate_command_line = false
   -- vim.g.neovide_cursor_vfx_mode = "pixiedust"
   -- vim.g.neovide_cursor_vfx_particle_density = 15.0
-  vim.g.neovide_fullscreen = true
+  vim.g.neovide_fullscreen = false
   vim.g.neovide_input_macos_option_key_is_meta = "both"
 end
 
 -- neogurt
 if vim.g.neogurt then
-  vim.g.neogurt_opts = {
-    -- these options are per application
+  vim.g.neogurt_cmd("option_set", {
+    -- global options (shared across all sessions)
+    titlebar = "transparent", -- "default", "transparent", "none"
+    show_title = false,
+    blur = 20,
+    gamma = 1.7,
     vsync = true,
-    high_dpi = true,
-    borderless = true,
-    blur = 0,
+    fps = 60, -- used if vsync if false
 
-    -- rest of the options are per session
     margin_top = 0,
     margin_bottom = 0,
     margin_left = 0,
     margin_right = 0,
 
-    mac_opt_is_meta = true,
+    macos_option_is_meta = "both", -- "none", "only_left", "only_right", "both"
     cursor_idle_time = 10,
     scroll_speed = 1,
 
-    bg_color = 0x000000, -- bg color used if opacity < 1.0
-    opacity = 1.0,
-
-    gamma = 1.7,
-
-    fps = 144,
-  }
-  vim.o.guifont = "JetBrainsMono Nerd Font,PingFang TC"
+    -- session specific options
+    bg_color = 0x282828, -- used when opacity < 1
+    opacity = 0.8,
+  })
+  -- vim.g.guifont = "JetBrainsMono Nerd Font"
+  vim.g.guifont = "Maple Mono NF,Maple Mono NF CN"
+  vim.o.guifont = vim.g.build_guifont()
 end

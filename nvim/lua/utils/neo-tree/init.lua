@@ -66,6 +66,7 @@ local config = {
       show_hidden_count = true,
       hide_dotfiles = false,
       hide_gitignored = false,
+      hide_ignored = false,
       hide_by_name = {
         ".",
         "..",
