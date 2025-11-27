@@ -6,7 +6,12 @@ maximized = true
 srgb = false
 idle = true
 frame = "transparent"
-tab = false
+tabs = false
+theme = "auto"
+macos-native-tabs = false
+
+macos-tab-prev-hotkey = "ctrl+shift+left"
+macos-tab-next-hotkey = "ctrl+shift+right"
 
 [font]
 size = 16

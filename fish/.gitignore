@@ -2,3 +2,4 @@ init.fish
 .DS_Store
 .code
 completions/docker.fish
+completions/orbctl.fish

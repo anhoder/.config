@@ -175,7 +175,9 @@ if vim.g.neovide then
   vim.g.neovide_input_ime = true
 
   -- vim.g.neovide_hide_mouse_when_typing = true
-  vim.g.neovide_cursor_animation_length = 0
+  -- vim.g.neovide_cursor_animation_length = 0
+  vim.g.neovide_cursor_animation_length = 0.1
+  vim.g.neovide_cursor_short_animation_length = 0.04
   vim.g.neovide_cursor_trail_size = 0.1
   vim.g.neovide_refresh_rate = 144
   vim.g.neovide_no_idle = true
@@ -187,6 +189,7 @@ if vim.g.neovide then
   -- vim.g.neovide_cursor_vfx_particle_density = 15.0
   vim.g.neovide_fullscreen = false
   vim.g.neovide_input_macos_option_key_is_meta = "both"
+  -- vim.g.neovide_macos_simple_fullscreen = true
 end
 
 -- neogurt
