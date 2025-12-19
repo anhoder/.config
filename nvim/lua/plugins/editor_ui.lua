@@ -290,7 +290,8 @@ return {
     },
     opts = {
       options = {
-        theme = bubbles_theme,
+        -- theme = bubbles_theme,
+        theme = "everforest",
         component_separators = "",
         section_separators = { left = "", right = "" },
       },
@@ -420,7 +421,8 @@ return {
   -- mode indicator
   {
     "mvllow/modes.nvim",
-    tag = "v0.2.1",
+    version = "*",
+    -- tag = "v0.3.0",
     config = function()
       require("modes").setup()
     end,

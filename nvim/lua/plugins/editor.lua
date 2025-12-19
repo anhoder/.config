@@ -1,3 +1,5 @@
+local color_utils = require("utils.colors")
+
 return {
   -- push code to remote by ssh
   {
@@ -130,6 +132,9 @@ return {
       },
       lazygit = {
         configure = true,
+        theme = {
+          selectedLineBgColor = { bg = "DiffChange" }, -- set to `default` to have no background colour
+        },
       },
       indent = {
         priority = 1,

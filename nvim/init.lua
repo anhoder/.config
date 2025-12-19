@@ -86,55 +86,58 @@ vim.g.go_highlight_build_constraints = 1
 vim.g.go_highlight_generate_tags = 1
 vim.g.root_spec = { "cwd", "lsp", { ".git", "lua" } }
 
+-- refresh extra highlight
+require("utils.extra_highlight").refresh_extra_highlight_for_dark()
+
 -- neovim >= 0.10
-vim.cmd("hi Pmenu guifg=0 guibg=#353535")
-vim.cmd("hi! link @variable Identifier")
-vim.cmd("hi! link @constant Constant")
-vim.cmd("hi! link NormalFloat Pmenu")
-vim.cmd("hi! link Delimiter Special")
-vim.cmd("hi! link @type.builtin Type")
-vim.cmd("hi! link @variable.builtin Special")
-vim.cmd("hi! link @lsp.typemod.variable.readonly Constant")
-vim.cmd("hi! link @lsp.type.member Function")
-vim.cmd("hi! link @lsp.type.property Field")
-
--- highlight
-vim.cmd("hi! LspReferenceRead guibg=#505c54")
-vim.cmd("hi! LspReferenceWrite guibg=#7f5c54")
-vim.cmd("hi! LspReferenceText guibg=#564c44")
-vim.cmd("hi! Visual guibg=#796f67")
-vim.cmd("hi! Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
-vim.cmd("hi! GitSignsCurrentLineBlame cterm=italic gui=italic guifg=#858577 guibg=0")
-vim.cmd("hi! LspInlayHint cterm=italic gui=italic guibg=0 guifg=#767676")
-vim.cmd("hi! MatchParen gui=bold,underline guibg=#665c54 guifg=#0DB9D7")
-
-vim.cmd("hi! DiffAdd guibg=#35360b guifg=none gui=none")
-vim.cmd("hi! DiffDelete guibg=#4d0003 guifg=none gui=none")
-vim.cmd("hi! DiffChange guibg=#1f3828 guifg=none gui=none")
-vim.cmd("hi! DiffText guibg=#3b2606 guifg=none gui=none")
+-- vim.cmd("hi Pmenu guifg=0 guibg=#353535")
+-- vim.cmd("hi! link @variable Identifier")
+-- vim.cmd("hi! link @constant Constant")
+-- vim.cmd("hi! link NormalFloat Pmenu")
+-- vim.cmd("hi! link Delimiter Special")
+-- vim.cmd("hi! link @type.builtin Type")
+-- vim.cmd("hi! link @variable.builtin Special")
+-- vim.cmd("hi! link @lsp.typemod.variable.readonly Constant")
+-- vim.cmd("hi! link @lsp.type.member Function")
+-- vim.cmd("hi! link @lsp.type.property Field")
+--
+-- -- highlight
+-- vim.cmd("hi! LspReferenceRead guibg=#505c54")
+-- vim.cmd("hi! LspReferenceWrite guibg=#7f5c54")
+-- vim.cmd("hi! LspReferenceText guibg=#564c44")
+-- vim.cmd("hi! Visual guibg=#796f67")
+-- vim.cmd("hi! Folded cterm=italic ctermfg=245 ctermbg=0 gui=italic guifg=#928374 guibg=0")
+-- vim.cmd("hi! GitSignsCurrentLineBlame cterm=italic gui=italic guifg=#858577 guibg=0")
+-- vim.cmd("hi! LspInlayHint cterm=italic gui=italic guibg=0 guifg=#767676")
+-- vim.cmd("hi! MatchParen gui=bold,underline guibg=#665c54 guifg=#0DB9D7")
+--
+-- vim.cmd("hi! DiffAdd guibg=#35360b guifg=none gui=none")
+-- vim.cmd("hi! DiffDelete guibg=#4d0003 guifg=none gui=none")
+-- vim.cmd("hi! DiffChange guibg=#1f3828 guifg=none gui=none")
+-- vim.cmd("hi! DiffText guibg=#3b2606 guifg=none gui=none")
 
 -- dashboard
-local colors = require("utils.colors")
-vim.cmd("hi DashboardHeader guifg=" .. colors.random_color())
-vim.cmd("hi DashboardFooter guifg=#787c99")
-vim.cmd("hi DashboardFind guifg=#C0CAF5")
-vim.cmd("hi DashboardRecent guifg=#9d7cd8")
-vim.cmd("hi DashboardProject guifg=#7aa2f7")
-vim.cmd("hi DashboardConfiguration guifg=#ffffff")
-vim.cmd("hi DashboardSession guifg=#9ece6a")
-vim.cmd("hi DashboardLazy guifg=#0DB9D7")
-vim.cmd("hi DashboardLazyExtras guifg=#737aa2")
-vim.cmd("hi DashboardMason guifg=#e0af68")
-vim.cmd("hi DashboardQuit guifg=#f7768e")
-vim.cmd("hi ColorColumn guibg=#323232")
+-- local colors = require("utils.colors")
+-- vim.cmd("hi DashboardHeader guifg=" .. colors.random_color())
+-- vim.cmd("hi DashboardFooter guifg=#787c99")
+-- vim.cmd("hi DashboardFind guifg=#C0CAF5")
+-- vim.cmd("hi DashboardRecent guifg=#9d7cd8")
+-- vim.cmd("hi DashboardProject guifg=#7aa2f7")
+-- vim.cmd("hi DashboardConfiguration guifg=#ffffff")
+-- vim.cmd("hi DashboardSession guifg=#9ece6a")
+-- vim.cmd("hi DashboardLazy guifg=#0DB9D7")
+-- vim.cmd("hi DashboardLazyExtras guifg=#737aa2")
+-- vim.cmd("hi DashboardMason guifg=#e0af68")
+-- vim.cmd("hi DashboardQuit guifg=#f7768e")
+-- vim.cmd("hi ColorColumn guibg=#323232")
 
 -- coverage
-vim.cmd("hi! CoverageCovered ctermfg=0 ctermbg=0 guibg=0 guifg=#8ec07c")
-vim.cmd("hi! CoveragePartial ctermfg=0 ctermbg=0 guibg=0 guifg=#fabd2f")
-vim.cmd("hi! CoverageUncovered ctermfg=0 ctermbg=0 guibg=0 guifg=#fb4934")
+-- vim.cmd("hi! CoverageCovered ctermfg=0 ctermbg=0 guibg=0 guifg=#8ec07c")
+-- vim.cmd("hi! CoveragePartial ctermfg=0 ctermbg=0 guibg=0 guifg=#fabd2f")
+-- vim.cmd("hi! CoverageUncovered ctermfg=0 ctermbg=0 guibg=0 guifg=#fb4934")
 
 -- codeium suggestion
-vim.cmd("hi! CodeiumSuggestion guifg=#686868")
+-- vim.cmd("hi! CodeiumSuggestion guifg=#686868")
 
 -- for telescope
 -- local base30 = require("utils.gruvbox").base_30
@@ -157,7 +160,7 @@ vim.cmd("hi! CodeiumSuggestion guifg=#686868")
 
 -- next is for neovide
 if vim.g.neovide then
-  vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
+  -- vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
   vim.g.neovide_scale_factor = 1
   vim.g.neovide_opacity = 0.8
   vim.g.neovide_window_blurred = true

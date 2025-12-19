@@ -49,6 +49,7 @@ return {
               environment = {
                 phpVersion = "8.0",
                 includePaths = {
+                  "../phpstorm-attributes",
                   "../yii/",
                   "./protected/vendor",
                 },

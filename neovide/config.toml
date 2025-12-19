@@ -8,18 +8,18 @@ idle = true
 frame = "transparent"
 tabs = false
 theme = "auto"
-macos-native-tabs = false
+macos-native-tabs = true
 
 macos-tab-prev-hotkey = "ctrl+shift+left"
 macos-tab-next-hotkey = "ctrl+shift+right"
 
 [font]
-size = 16
+size = 14
 
 [[font.normal]]
 # family = "JetBrainsMono Nerd Font Mono"
 family = "Maple Mono NF CN"
-style = "SemiBold"
+# style = "SemiBold"
 
 [[font.bold]]
 family = "Maple Mono NF CN"
