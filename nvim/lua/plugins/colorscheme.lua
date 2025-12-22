@@ -89,6 +89,10 @@ return {
     "f-person/auto-dark-mode.nvim",
     opts = {
       -- fallback = "light",
+      enabled = function()
+        local uname = vim.uv.os_uname()
+        return uname.sysname:find("Darwin") ~= nil
+      end,
       set_dark_mode = function()
         if vim.g.colors_name ~= "gruvbox" then
           vim.cmd("colorscheme gruvbox")
