@@ -71,6 +71,9 @@ vim.opt.autochdir = false
 vim.opt.foldtext = "v:lua.require('utils.fold_highlight').highlight_foldtext()"
 vim.opt.smoothscroll = true
 vim.opt.laststatus = 3
+vim.opt.spell = true
+vim.opt.spelllang = { "en", "cjk" }
+vim.opt.spelloptions = "camel"
 
 vim.diagnostic.config({
   underline = true,
