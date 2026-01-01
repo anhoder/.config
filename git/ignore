@@ -2,6 +2,6 @@
 .phpactor.json
 .qoder/
 .idea/
-.kiro/
+# .kiro/
 
 **/.claude/settings.local.json
