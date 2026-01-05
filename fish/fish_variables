@@ -5,4 +5,5 @@ SETUVAR _fisher_jorgebucaran_2F_fisher_files:\x7e/\x2econfig/fish/functions/fish
 SETUVAR _fisher_plugins:jorgebucaran/fisher
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR fish_greeting:Hello\x2c\x1eanhoder\x21
+SETUVAR fish_key_bindings:fish_default_key_bindings
 SETUVAR fish_user_paths:/opt/homebrew/opt/openjdk/bin\x1e/Applications/Ghostty\x2eapp/Contents/MacOS

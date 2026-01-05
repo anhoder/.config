@@ -8,22 +8,26 @@ ref https://github.com/kovidgoyal/kitty/blob/master/kittens/hints/main.py
 """
 
 import re
-from kitty.utils import set_primary_selection
-from kitty.fast_data_types import  set_clipboard_string
+
+# from kitty.utils import set_primary_selection
+from kitty.clipboard import set_clipboard_string
 
 RE_PATH = (
     r'(?=[ \t\n]|"|\(|\[|<|\')?'
-    '(~/|/)?'
-    '([-a-zA-Z0-9_+-,.]+/[^ \t\n\r|:"\'$%&)>\]]*)'
+    "(~/|/)?"
+    "([-a-zA-Z0-9_+-,.]+/[^ \t\n\r|:\"'$%&)>]]*)"
 )
 
-RE_URL = (r"(https?://|git@|git://|ssh://|s*ftp://|file:///)"
-          "[a-zA-Z0-9?=%/_.:,;~@!#$&()*+-]*")
+RE_URL = (
+    r"(https?://|git@|git://|ssh://|s*ftp://|file:///)"
+    "[a-zA-Z0-9?=%/_.:,;~@!#$&()*+-]*"
+)
 
 
-RE_COMMON_FILENAME = r'\s?([a-zA-Z0-9_.-/]*[a-zA-Z0-9_.-]+\.(ini|yml|yaml|vim|toml|conf|lua|go|php|rs|py|js|vue|jsx|html|htm|md|mp3|wav|flac|mp4|mkv|dll|exe|sh|txt|log|gz|tar|rar|7z|zip|mod|sum|iso|patch))\s?'
+RE_COMMON_FILENAME = r"\s?([a-zA-Z0-9_.-/]*[a-zA-Z0-9_.-]+\.(ini|yml|yaml|vim|toml|conf|lua|go|php|rs|py|js|vue|jsx|html|htm|md|mp3|wav|flac|mp4|mkv|dll|exe|sh|txt|log|gz|tar|rar|7z|zip|mod|sum|iso|patch))\s?"
 
 RE_URL_OR_PATH = RE_COMMON_FILENAME + "|" + RE_PATH + "|" + RE_URL
+
 
 def mark(text, args, Mark, extra_cli_args, *a):
     # This function is responsible for finding all
@@ -32,7 +36,7 @@ def mark(text, args, Mark, extra_cli_args, *a):
     # We mark all individual word for potential selection
     for idx, m in enumerate(re.finditer(RE_URL_OR_PATH, text)):
         start, end = m.span()
-        mark_text = text[start:end].replace('\n', '').replace('\0', '').strip()
+        mark_text = text[start:end].replace("\n", "").replace("\0", "").strip()
         # The empty dictionary below will be available as groupdicts
         # in handle_result() and can contain arbitrary data.
         yield Mark(idx, start, end, mark_text, {})
@@ -44,7 +48,7 @@ def handle_result(args, data, target_window_id, boss, extra_cli_args, *a):
     # matches is a list of the selected entries and groupdicts contains
     # the arbitrary data associated with each entry in mark() above
     matches, groupdicts = [], []
-    for m, g in zip(data['match'], data['groupdicts']):
+    for m, g in zip(data["match"], data["groupdicts"]):
         if m:
             matches.append(m), groupdicts.append(g)
     for word, match_data in zip(matches, groupdicts):
@@ -53,4 +57,3 @@ def handle_result(args, data, target_window_id, boss, extra_cli_args, *a):
         # boss.open_url(f'https://www.google.com/search?q=define:{word}')
         # set_primary_selection(word)
         set_clipboard_string(word)
-
