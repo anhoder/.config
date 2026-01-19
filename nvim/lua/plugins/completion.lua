@@ -48,7 +48,7 @@ return {
 
   {
     "yetone/avante.nvim",
-    enabled = false,
+    enabled = true,
     event = "VeryLazy",
     build = "make lua51",
     keys = function(_, keys)
@@ -123,6 +123,17 @@ return {
           api_key_name = "OPENROUTER_API_KEY",
           endpoint = "https://openrouter.ai",
           model = "anthropic/claude-sonnet-4",
+        },
+      },
+      acp_providers = {
+        ["claude-code"] = {
+          command = "npx",
+          args = { "@zed-industries/claude-code-acp" },
+          env = {
+            NODE_NO_WARNINGS = "1",
+            ANTHROPIC_BASE_URL = os.getenv("ANTHROPIC_BASE_URL"),
+            ANTHROPIC_AUTH_TOKEN = os.getenv("ANTHROPIC_AUTH_TOKEN"),
+          },
         },
       },
       behaviour = {

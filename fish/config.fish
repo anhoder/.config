@@ -233,3 +233,6 @@ end
 
 if test -e $HOME/.claude/local
 end
+
+# opencode
+fish_add_path /Users/anhoder/.opencode/bin

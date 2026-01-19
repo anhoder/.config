@@ -25,9 +25,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     -- FIXME: 临时调试，后续移除
     -- vim.lsp.start({
     --   name = "plsp",
-    --   cmd = { "/Users/anhoder/Desktop/plsp/target/release/plsp", "-l", "debug" },
+    --   cmd = {
+    --     "/Users/anhoder/Desktop/plsp-new/target/release/plsp",
+    --     "--include-path=/Users/anhoder/Desktop/www/yii",
+    --     "--include-vendor",
+    --   },
     --   filetypes = { "php" },
-    --   root_dir = vim.fs.root(0, { "composer.json", ".git" }),
+    --   root_dir = vim.fs.root(0, { ".git", "composer.json" }),
     -- })
   end,
 })
