@@ -8,15 +8,15 @@ end
 local enable_e2e_test = false
 
 return {
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      servers = {
-        -- golang
-        gopls = require("utils.lsp").gopls_config(),
-      },
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     servers = {
+  --       -- golang
+  --       gopls = require("utils.lsp").gopls_config(),
+  --     },
+  --   },
+  -- },
   {
     "fatih/vim-go",
     enabled = false,

@@ -56,6 +56,12 @@ function M.refresh_extra_highlight_for_dark()
   -- codeium suggestion
   vim.cmd("hi! CodeiumSuggestion guifg=#686868")
 
+  -- spell
+  vim.cmd("hi! SpellBad guifg=none")
+  vim.cmd("hi! SpellCap guifg=none")
+  vim.cmd("hi! SpellRare guifg=none")
+  vim.cmd("hi! SpellLocal guifg=none")
+
   if vim.g.neovide then
     vim.cmd("hi LspInlayHint cterm=italic gui=italic guibg=#393235 guifg=#767676")
   end
@@ -115,6 +121,12 @@ function M.refresh_extra_highlight_for_light()
 
   -- Codeium 建议
   vim.cmd("hi! CodeiumSuggestion guifg=#505050")
+
+  -- spell
+  vim.cmd("hi! SpellBad guifg=none")
+  vim.cmd("hi! SpellCap guifg=none")
+  vim.cmd("hi! SpellRare guifg=none")
+  vim.cmd("hi! SpellLocal guifg=none")
 
   -- Neovide 适配
   if vim.g.neovide then

@@ -27,7 +27,7 @@ checkUpdate = true
 # altScreen 显示模式
 altScreen = false
 # 是否在界面中启用鼠标事件
-enableMouseEvent = false
+enableMouseEvent = true
 # 是否开启 Debug 模式
 debug = false
 frameRate = 20
@@ -57,22 +57,10 @@ skipParseErr = false
 # 可选: smooth"(平滑), "wave"(波浪), "glow"(发光)
 renderMode = "smooth"
 
+
 [main.lyric.cover]
 show = true
-widthRatio = 0.3
 
-[main.lyric.desktop]
-enable = true
-fontSize = 32.0
-fontColor = "#00FF80"
-strokeColor = "#000000"
-strokeWidth = 2.0
-shadowEnabled = true
-opacity = 1.0
-position = "bottom"
-lockPosition = false
-duaLine = false
-renderMode = "smooth"
 
 # Go性能分析工具pprof的相关设置
 [main.pprof]
