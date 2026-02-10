@@ -22,6 +22,59 @@ set -gx NIX_CONF_DIR "$XDG_CONFIG_HOME/nix"
 alias dphp="XDEBUG_SESSION=1 php"
 alias xphp="XDEBUG_SESSION=1 php"
 
+function brew_switch
+    if test -z "$argv[1]"
+        echo "Error: Please specify package name"
+        echo "Usage: brew_switch <package> [version]"
+        return 1
+    end
+
+    set package $argv[1]
+
+    # Default to latest if no version is provided
+    if test -z "$argv[2]"
+        set pkg_version latest
+    else
+        set pkg_version $argv[2]
+    end
+
+    # Handle latest version (no version suffix)
+    if test "$pkg_version" = latest
+        set formula_name "$package"
+        set display_version latest
+    else
+        set formula_name "$package@$pkg_version"
+        set display_version "$pkg_version"
+    end
+
+    # Check if the specified package version is installed via Homebrew
+    if not brew list --formula | grep "^$formula_name\$" >/dev/null 2>&1
+        echo "Error: $package $display_version is not installed"
+        if test "$pkg_version" = latest
+            echo "Please install it first: brew install $package"
+        else
+            echo "Please install it first: brew install $formula_name"
+        end
+        return 1
+    end
+
+    # Unlink all other versions of the same package
+    for formula in (brew list --formula | grep "^$package@")
+        brew unlink $formula 2>/dev/null
+    end
+
+    # Also unlink the main package if it exists
+    if test "$pkg_version" != latest
+        brew unlink $package 2>/dev/null
+    end
+
+    # Link the requested package version
+    brew link --force --overwrite $formula_name
+
+    echo "Successfully switched to $package $display_version"
+    $package --version 2>/dev/null || echo "Version info not available for $package"
+end
+
 # Git
 alias gp="git push"
 alias gl="git pull"
@@ -59,7 +112,7 @@ alias alilang="~/Library/Android/sdk/emulator/emulator -avd alilang"
 alias kssh="kitten ssh"
 
 # VSCode-Insider
-if command -v nvim >/dev/null 2>&1
+if command -v code-insiders >/dev/null 2>&1
     alias code="code-insiders"
 end
 
@@ -86,7 +139,7 @@ set -gx GOPATH "$HOME/go"
 set -gx PATH "$GOPATH/bin:$PATH"
 
 # composer
-set -gx PATH "$HOME/.composer/vendor/bin:$PATH"
+set -gx PATH "$HOME/.config/composer/vendor/bin:$PATH"
 
 # uv
 set -gx PATH "$HOME/.local/bin:$PATH"
@@ -240,5 +293,11 @@ function cc-glm
     ANTHROPIC_BASE_URL="$GLM_CC_BASE_URL" ANTHROPIC_AUTH_TOKEN="$GLM_CC_AUTH_TOKEN" ANTHROPIC_MODEL="$GLM_CC_MODEL" ANTHROPIC_SMALL_FAST_MODEL="$GLM_CC_SMALL_FAST_MODEL" ANTHROPIC_DEFAULT_SONNET_MODEL="$GLM_CC_DEFAULT_SONNET_MODEL" ANTHROPIC_DEFAULT_OPUS_MODEL="$GLM_CC_DEFAULT_OPUS_MODEL" ANTHROPIC_DEFAULT_HAIKU_MODEL="$GLM_CC_DEFAULT_HAIKU_MODEL" CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC="$CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC" API_TIMEOUT_MS="$API_TIMEOUT_MS" DISABLE_TELEMETRY="$DISABLE_TELEMETRY" DISABLE_COST_WARNINGS="$DISABLE_COST_WARNINGS" claude $argv
 end
 
+if test -e $HOME/.claude/local
+end
+
 # opencode
-fish_add_path /Users/anhoder/.opencode/bin
+set -gx PATH "$PATH:$HOME/.opencode/bin"
+
+# bun
+set -gx PATH "$PATH:$HOME/.bun/bin"

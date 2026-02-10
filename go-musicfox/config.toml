@@ -60,6 +60,18 @@ renderMode = "smooth"
 
 [main.lyric.cover]
 show = true
+# 封面图宽度占窗口宽度的比例（取值范围 0.1-0.8，默认 0.3）
+widthRatio = 0.2
+# 封面图圆角半径百分比（取值范围 0-100，默认 8 即 8%，0 则关闭，越大越圆）
+cornerRadius = 10
+# 是否启用旋转封面（需要更高的帧率支持平滑效果）
+spin = false
+# Kitty图形协议不支持角度变化目前只能以动画呈现，合成动画需要更高的CPU性能
+# 旋转封面帧率（取值范围 1-60，默认 30，更高帧率更流畅但消耗更多CPU）
+spinFPS = 30
+# 旋转一圈的时长（秒，取值范围 1-30，默认 6）
+# 时长和帧率挂钩：60fps*6s=360帧，30fps*6s=180帧，30fps*12s=360帧
+spinDuration = 10
 
 
 # Go性能分析工具pprof的相关设置
@@ -83,7 +95,7 @@ loadingText = "[加载中...]"
 # 是否使用双列布局（需要等宽字体以获得最佳体验）
 doubleColumn = true
 # 菜单行数是否根据终端高度动态变化
-dynamicMenuRows = true
+dynamicMenuRows = false
 # 界面所有内容居中（实验性功能，未来版本中可能会大幅改动）
 centerEverything = false
 # 主题颜色

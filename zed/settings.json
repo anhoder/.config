@@ -21,6 +21,22 @@
   },
   "ui_font_size": 14.0,
   "ui_font_family": "Maple Mono NF CN",
+  "lsp_document_colors": "inlay",
+  "which_key": {
+    "enabled": true
+  },
+  "title_bar": {
+    "show_branch_icon": false
+  },
+  "agent_ui_font_size": 16.0,
+  "buffer_line_height": "comfortable",
+  "buffer_font_weight": 600.0,
+  "inlay_hints": {
+    "enabled": true
+  },
+  "minimap": {
+    "show": "auto"
+  },
   "ssh_connections": [
     {
       "host": "dev-idc",
@@ -41,7 +57,11 @@
       "model": "gemini-2.5-pro"
     }
   },
-  "theme": "Gruvbox Material Dark Mix",
+  "theme": {
+    "mode": "system",
+    "light": "Everforest Light Hard (regular)",
+    "dark": "Everforest Dark Hard (regular)"
+  },
   "base_keymap": "JetBrains",
   // "buffer_font_family": "JetBrainsMono Nerd Font",
   "buffer_font_family": "Maple Mono NF CN",

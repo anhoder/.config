@@ -21,14 +21,36 @@ shell-integration-features = no-cursor
 
 # keymaps
 # keybind=clear
+keybind = performable:cmd+w=close_surface
+keybind = performable:ctrl+w=close_surface
+
+# new split
+keybind = performable:cmd+d=new_split:left
+keybind = performable:cmd+shift+d=new_split:down
+
+# copy
+keybind = performable:cmd+c=copy_to_clipboard
+keybind = performable:cmd+v=paste_from_clipboard
+
+# resize split
+keybind = performable:cmd+ctrl+left=resize_split:left,10
+keybind = performable:cmd+ctrl+right=resize_split:right,10
+keybind = performable:cmd+ctrl+up=resize_split:up,10
+keybind = performable:cmd+ctrl+down=resize_split:down,10
+
+# goto split
+keybind = performable:alt+ctrl+left=goto_split:left
+keybind = performable:alt+ctrl+right=goto_split:right
+keybind = performable:alt+ctrl+up=goto_split:up
+keybind = performable:alt+ctrl+down=goto_split:down
+
 keybind = shift+ctrl+left=previous_tab
 keybind = shift+ctrl+right=next_tab
 keybind = shift+cmd+left=unbind
 keybind = shift+cmd+right=unbind
 keybind = shift+cmd+up=unbind
 keybind = shift+cmd+down=unbind
-keybind = performable:cmd+c=copy_to_clipboard
-keybind = cmd+w=unbind
+
 keybind = cmd+shift+w=close_surface
 keybind = cmd+left=unbind
 keybind = cmd+right=unbind
@@ -44,7 +66,7 @@ keybind = cmd+d=unbind
 keybind = ctrl+cmd+left=unbind
 keybind = ctrl+cmd+right=unbind
 
-window-theme = dark
+# window-theme = dark
 window-width = 120
 window-height = 45
 window-padding-x = 4
@@ -58,7 +80,7 @@ clipboard-paste-protection = false
 unfocused-split-opacity = 0.7
 
 # ghostty +list-themes
-theme = Gruvbox Dark Hard
+theme = light:Gruvbox Light Hard,dark:Gruvbox Dark Hard
 
 auto-update-channel = tip
 auto-update = check

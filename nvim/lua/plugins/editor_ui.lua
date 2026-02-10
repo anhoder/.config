@@ -421,8 +421,8 @@ return {
   -- mode indicator
   {
     "mvllow/modes.nvim",
-    version = "*",
-    -- tag = "v0.3.0",
+    branch = "main",
+    -- tag = "v0.2.1",
     config = function()
       require("modes").setup()
     end,
